@@ -6,10 +6,7 @@
 
 ## 📸 Wireframes
 
-> 📌 Placeholder — update with a wireframe image or markdown layout  
-> Example:
-
-![Wireframe](./docs/wireframe.png)
+![Wireframe](./docs/main-page-wireframe.svg)
 
 ```
 +-------------------------------------------+
