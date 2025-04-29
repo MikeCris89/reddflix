@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { RedditListing, RedditPost, RedditPostsPage } from "./redditTypes";
 
 export const redditApi = createApi({
 	reducerPath: "redditApi",
@@ -6,9 +7,21 @@ export const redditApi = createApi({
 	endpoints: (builder) => ({
 		fetchPostsBySubreddit: builder.query({
 			query: (subreddit) => `r/${subreddit}.json`,
+			transformResponse: (
+				response: RedditListing<RedditPost>
+			): RedditPostsPage => ({
+				after: response.data.after,
+				posts: response.data.children.map((post) => post.data),
+			}),
 		}),
 		searchPosts: builder.query({
 			query: (searchTerm) => `search.json?q=${encodeURIComponent(searchTerm)}`,
+			transformResponse: (
+				response: RedditListing<RedditPost>
+			): RedditPostsPage => ({
+				after: response.data.after,
+				posts: response.data.children.map((post) => post.data),
+			}),
 		}),
 	}),
 });
