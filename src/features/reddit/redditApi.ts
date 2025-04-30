@@ -11,7 +11,9 @@ export const redditApi = createApi({
 				response: RedditListing<RedditPost>
 			): RedditPostsPage => ({
 				after: response.data.after,
-				posts: response.data.children.map((post) => post.data),
+				posts: response.data.children
+					.filter((post) => post.data.stickied !== true)
+					.map((post) => post.data),
 			}),
 		}),
 		searchPosts: builder.query({

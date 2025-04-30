@@ -4,8 +4,7 @@ import { useFetchPostsBySubredditQuery } from "./features/reddit/redditApi";
 import { testRedditListing } from "./utils/testData";
 
 function App() {
-	const { data } = useFetchPostsBySubredditQuery("funny");
-	//const data = testRedditListing;
+	const { data } = useFetchPostsBySubredditQuery("worldnews");
 	console.log(data);
 
 	if (!data) return null;

@@ -28,6 +28,7 @@ export interface RedditPost {
 	created_utc: number;
 	over_18: boolean;
 	is_video: boolean;
+	is_self: boolean;
 	preview?: Preview;
 	post_hint?: string;
 	url_overridden_by_dest?: string;
@@ -35,6 +36,7 @@ export interface RedditPost {
 	media?: Media | null;
 	gallery_data?: GalleryData;
 	media_metadata?: MediaMetadata;
+	stickied: boolean;
 	[key: string]: unknown;
 }
 
@@ -137,7 +139,7 @@ export type GalleryPost = RedditPost & {
 	media_metadata: MediaMetadata;
 };
 
-export type SelfPost = RedditPost & { thumbnail: typeof POST_TYPES.self };
+export type SelfPost = RedditPost & { is_self: true };
 
 export type LinkPost = RedditPost & { post_hint: typeof POST_TYPES.link };
 
@@ -155,7 +157,7 @@ export const isGalleryPost = (post: RedditPost): post is GalleryPost =>
 	!!post.gallery_data && !!post.media_metadata;
 
 export const isSelfPost = (post: RedditPost): post is SelfPost =>
-	!!post.thumbnail && post.thumbnail === POST_TYPES.self;
+	post.is_self === true;
 
 export const isLinkPost = (post: RedditPost): post is LinkPost =>
-	!!post.post_hint && post.post_hint === POST_TYPES.link;
+	!!post.post_hint && post.post_hint === POST_TYPES.link && !post.is_self;

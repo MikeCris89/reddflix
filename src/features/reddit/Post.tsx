@@ -17,11 +17,12 @@ import {
 } from "./redditTypes";
 
 const Post = ({ post }: { post: RedditPost }) => {
-	if (getPostType(post) === POST_TYPES.unknown) return null;
+	const postType = getPostType(post);
 
 	return (
 		<div>
-			<h6>{post.title}</h6>
+			<h6>/r/{post.subreddit}</h6>
+			<h5>{post.title}</h5>
 			{/* VIDEOS */}
 			{isVideoPost(post) && <VideoContent post={post} />}
 			{/* GIFs */}
@@ -34,6 +35,8 @@ const Post = ({ post }: { post: RedditPost }) => {
 			{isLinkPost(post) && <LinkContent post={post} />}
 			{/* SELF */}
 			{isSelfPost(post) && <SelfContent post={post} />}
+			{/* UNKNOWN - for testing */}
+			{postType === POST_TYPES.unknown && <h6>UNKNOWN - ID: {post.id}</h6>}
 		</div>
 	);
 };
