@@ -1,6 +1,6 @@
 import { MODE } from "../../utils/types";
 import PostMedia from "./PostMedia";
-import { RedditPost } from "./redditTypes";
+import { PostWithType, RedditPost } from "./redditTypes";
 
 const PostCard = ({ post }: { post: RedditPost }) => {
 	return (

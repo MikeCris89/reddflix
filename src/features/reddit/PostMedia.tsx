@@ -4,17 +4,16 @@ import ImageContent from "../../components/ImageContent";
 import LinkContent from "../../components/LinkContent";
 import SelfContent from "../../components/SelfContent";
 import VideoContent from "../../components/VideoContent";
-import { getPostType } from "../../utils/helpers";
 import { ContentMode } from "../../utils/types";
 import {
-	isGalleryPost,
-	isGifPost,
-	isImagePost,
-	isLinkPost,
-	isSelfPost,
-	isVideoPost,
+	GalleryPost,
+	GifPost,
+	ImagePost,
+	LinkPost,
 	POST_TYPES,
 	RedditPost,
+	SelfPost,
+	VideoPost,
 } from "./redditTypes";
 
 interface MediaProps {
@@ -23,23 +22,28 @@ interface MediaProps {
 }
 
 const PostMedia = ({ post, mode }: MediaProps) => {
-	const postType = getPostType(post);
 	return (
 		<>
 			{/* VIDEOS */}
-			{isVideoPost(post) && <VideoContent post={post} mode={mode} />}
+			{post.type === POST_TYPES.video && (
+				<VideoContent post={post as VideoPost} mode={mode} />
+			)}
 			{/* GIFs */}
-			{isGifPost(post) && <GifContent post={post} />}
+			{post.type === POST_TYPES.gif && <GifContent post={post as GifPost} />}
 			{/* IMAGE */}
-			{isImagePost(post) && <ImageContent post={post} mode={mode} />}
+			{post.type === POST_TYPES.image && (
+				<ImageContent post={post as ImagePost} mode={mode} />
+			)}
 			{/* GALLERY */}
-			{isGalleryPost(post) && <GalleryContent post={post} mode={mode} />}
+			{post.type === POST_TYPES.gallery && (
+				<GalleryContent post={post as GalleryPost} mode={mode} />
+			)}
 			{/* LINK */}
-			{isLinkPost(post) && <LinkContent post={post} />}
+			{post.type === POST_TYPES.link && <LinkContent post={post as LinkPost} />}
 			{/* SELF */}
-			{isSelfPost(post) && <SelfContent post={post} />}
+			{post.type === POST_TYPES.self && <SelfContent post={post as SelfPost} />}
 			{/* UNKNOWN - for testing */}
-			{postType === POST_TYPES.unknown && <h6>UNKNOWN - ID: {post.id}</h6>}
+			{post.type === POST_TYPES.unknown && <h6>UNKNOWN - ID: {post.id}</h6>}
 		</>
 	);
 };

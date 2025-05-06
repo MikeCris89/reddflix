@@ -30,12 +30,16 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 			});
 	}, [inView]);
 
+	const vidSource =
+		post.media?.reddit_video?.fallback_url ||
+		(post.url?.endsWith(".mp4") ? post.url : "");
+
 	return (
 		<>
 			{mode === MODE.full && (
 				<div className="w-full h-full">
 					<video controls>
-						<source src={post.media.reddit_video.fallback_url} />
+						<source src={vidSource} />
 					</video>
 				</div>
 			)}
@@ -49,7 +53,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 							loop
 							playsInline
 						>
-							<source src={post.media.reddit_video.fallback_url} />
+							<source src={vidSource} />
 						</video>
 					</ContentBadge>
 				</div>

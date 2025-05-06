@@ -15,13 +15,8 @@ const GalleryContent = ({
 		loop: true,
 	});
 
-	const galleryData =
-		post.gallery_data ?? post.crosspost_parent_list?.[0]?.gallery_data;
-	const mediaMetadata =
-		post.media_metadata ?? post.crosspost_parent_list?.[0]?.media_metadata;
-
-	const images = galleryData.items.map((item) => {
-		const media = mediaMetadata[item.media_id];
+	const images = post.gallery_data.items.map((item) => {
+		const media = post.media_metadata[item.media_id];
 		const imageUrl = media?.s?.u?.replace(/&amp;/g, "&") || "";
 
 		return imageUrl;

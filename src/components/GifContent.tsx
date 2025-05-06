@@ -27,7 +27,7 @@ const GifContent = ({ post }: { post: GifPost }) => {
 		url?.endsWith(".gifv") ? url.replace(".gifv", ".mp4") : url;
 
 	const source =
-		post.media?.reddit_video.fallback_url || getGifvAsMp4(post.url);
+		post.media?.reddit_video?.fallback_url || getGifvAsMp4(post.url);
 
 	return source ? (
 		<div ref={ref} className="w-full h-full ">

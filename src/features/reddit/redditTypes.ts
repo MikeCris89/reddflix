@@ -125,58 +125,83 @@ export const POST_TYPES = {
 	unknown: "unknown",
 } as const;
 
+export type PostType = keyof typeof POST_TYPES;
+
 export type VideoPost = RedditPost & {
-	media: { reddit_video: RedditVideo & { is_gif: false } };
+	type: typeof POST_TYPES.video;
+	media?: { reddit_video?: RedditVideo & { is_gif?: false } };
+	url?: string; // fallback for external .mp4
 };
 
 export type GifPost = RedditPost & {
-	media: { reddit_video: RedditVideo & { is_gif: true } };
+	type: typeof POST_TYPES.gif;
+	media?: { reddit_video?: RedditVideo & { is_gif: true } };
+	url?: string; // fallback for .gifv
 };
 
-export type ImagePost = RedditPost & { post_hint: typeof POST_TYPES.image };
+export type ImagePost = RedditPost & {
+	type: typeof POST_TYPES.image;
+	post_hint?: typeof POST_TYPES.image;
+	url: string;
+};
 
 export type GalleryPost = RedditPost & {
+	type: typeof POST_TYPES.gallery;
 	gallery_data: GalleryData;
 	media_metadata: MediaMetadata;
 };
 
-export type SelfPost = RedditPost & { is_self: true };
+export type SelfPost = RedditPost & {
+	type: typeof POST_TYPES.self;
+	is_self: true;
+};
 
-export type LinkPost = RedditPost & { post_hint: typeof POST_TYPES.link };
+export type LinkPost = RedditPost & {
+	type: typeof POST_TYPES.link;
+	url: string;
+	post_hint?: typeof POST_TYPES.link;
+};
+
+export type UnknownPost = RedditPost & {
+	type: typeof POST_TYPES.unknown;
+};
+
+export type PostWithType =
+	| VideoPost
+	| GifPost
+	| ImagePost
+	| GalleryPost
+	| LinkPost
+	| SelfPost
+	| UnknownPost;
 
 // TYPE GUARDS
 export const isVideoPost = (post: RedditPost): post is VideoPost =>
-	post.media?.reddit_video?.is_gif === false;
+	post.media?.reddit_video?.is_gif === false ||
+	(post.url?.endsWith(".mp4") ?? false);
 
 export const isGifPost = (post: RedditPost): post is GifPost =>
 	post.media?.reddit_video?.is_gif === true ||
 	(post.url?.endsWith(".gifv") ?? false);
 
 export const isImagePost = (post: RedditPost): post is ImagePost =>
+	!isVideoPost(post) &&
+	!isGifPost(post) &&
 	(post.post_hint === POST_TYPES.image ||
-		/\.(gif|jpg|jpeg|png|webp)$/i.test(post.url ?? "")) &&
-	!post.media?.reddit_video;
+		/\.(gif|jpg|jpeg|png|webp)$/i.test(post.url ?? ""));
 
-export const isGalleryPost = (post: RedditPost): post is GalleryPost => {
-	return (
-		(!!post.gallery_data && !!post.media_metadata) ||
-		(!!post.crosspost_parent_list?.[0]?.gallery_data &&
-			!!post.crosspost_parent_list?.[0]?.media_metadata)
-	);
-};
+export const isGalleryPost = (post: RedditPost): post is GalleryPost =>
+	!!post.gallery_data && !!post.media_metadata;
 
 export const isSelfPost = (post: RedditPost): post is SelfPost =>
 	post.is_self === true;
 
-export const isLinkPost = (post: RedditPost): post is LinkPost => {
-	return (
-		!isVideoPost(post) &&
-		!isGifPost(post) &&
-		!isImagePost(post) &&
-		!isGalleryPost(post) &&
-		!isSelfPost(post) &&
-		!!post.url &&
-		!post.url.includes("reddit.com") &&
-		!post.url.includes("redd.it")
-	);
-};
+export const isLinkPost = (post: RedditPost): post is LinkPost =>
+	!isVideoPost(post) &&
+	!isGifPost(post) &&
+	!isImagePost(post) &&
+	!isGalleryPost(post) &&
+	!isSelfPost(post) &&
+	!!post.url &&
+	!post.url.includes("reddit.com") &&
+	!post.url.includes("redd.it");
