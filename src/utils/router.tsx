@@ -10,6 +10,7 @@ import Settings from "../pages/Settings";
 const routes = createRoutesFromElements(
 	<Route path="/" element={<Root />}>
 		<Route index element={<Home />} />
+		<Route path=":category/:postId" element={<Home />} />
 		<Route path="settings" element={<Settings />} />
 	</Route>
 );
