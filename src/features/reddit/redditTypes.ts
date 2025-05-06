@@ -37,6 +37,7 @@ export interface RedditPost {
 	gallery_data?: GalleryData;
 	media_metadata?: MediaMetadata;
 	stickied: boolean;
+	crosspost_parent_list?: RedditPost[];
 	[key: string]: unknown;
 }
 
@@ -148,16 +149,34 @@ export const isVideoPost = (post: RedditPost): post is VideoPost =>
 	post.media?.reddit_video?.is_gif === false;
 
 export const isGifPost = (post: RedditPost): post is GifPost =>
-	post.media?.reddit_video?.is_gif === true;
+	post.media?.reddit_video?.is_gif === true ||
+	(post.url?.endsWith(".gifv") ?? false);
 
 export const isImagePost = (post: RedditPost): post is ImagePost =>
-	!!post.post_hint && post.post_hint === POST_TYPES.image;
+	(post.post_hint === POST_TYPES.image ||
+		/\.(gif|jpg|jpeg|png|webp)$/i.test(post.url ?? "")) &&
+	!post.media?.reddit_video;
 
-export const isGalleryPost = (post: RedditPost): post is GalleryPost =>
-	!!post.gallery_data && !!post.media_metadata;
+export const isGalleryPost = (post: RedditPost): post is GalleryPost => {
+	return (
+		(!!post.gallery_data && !!post.media_metadata) ||
+		(!!post.crosspost_parent_list?.[0]?.gallery_data &&
+			!!post.crosspost_parent_list?.[0]?.media_metadata)
+	);
+};
 
 export const isSelfPost = (post: RedditPost): post is SelfPost =>
 	post.is_self === true;
 
-export const isLinkPost = (post: RedditPost): post is LinkPost =>
-	!!post.post_hint && post.post_hint === POST_TYPES.link && !post.is_self;
+export const isLinkPost = (post: RedditPost): post is LinkPost => {
+	return (
+		!isVideoPost(post) &&
+		!isGifPost(post) &&
+		!isImagePost(post) &&
+		!isGalleryPost(post) &&
+		!isSelfPost(post) &&
+		!!post.url &&
+		!post.url.includes("reddit.com") &&
+		!post.url.includes("redd.it")
+	);
+};

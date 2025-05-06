@@ -1,18 +1,12 @@
 import "./App.css";
-import ScrollContainer from "./components/ScrollContainer";
-import { useFetchPostsBySubredditQuery } from "./features/reddit/redditApi";
-import { testRedditListing } from "./utils/testData";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 function App() {
-	const { data } = useFetchPostsBySubredditQuery("worldnews");
-	console.log(data);
-
-	if (!data) return null;
-
 	return (
-		<div>
-			<ScrollContainer data={data.posts} />
-			<button>Search</button>
+		<div className="h-full w-full flex flex-col justify-between overflow-hidden">
+			<Home />
+			<Navbar />
 		</div>
 	);
 }

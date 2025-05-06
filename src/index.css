@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "keen-slider/keen-slider.min.css";
 
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 :root {
 	font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
@@ -16,6 +22,10 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 a {
 	font-weight: 500;
 	color: #646cff;
@@ -26,11 +36,11 @@ a:hover {
 }
 
 body {
-	margin: 0;
-	display: flex;
-	place-items: center;
+	/* margin: 0;
 	min-width: 320px;
-	min-height: 100vh;
+	min-height: 100vh; */
+	background-color: #242424;
+	color: rgba(255, 255, 255, 0.87);
 }
 
 h1 {

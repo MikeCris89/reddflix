@@ -1,1 +1,6 @@
-import { RedditPost } from "../features/reddit/redditTypes";
+export const MODE = {
+	preview: "preview",
+	full: "full",
+} as const;
+
+export type ContentMode = keyof typeof MODE;
