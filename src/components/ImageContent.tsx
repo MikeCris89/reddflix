@@ -18,12 +18,12 @@ const ImageContent = ({
 				<ContentBadge
 					badge={post.url?.endsWith(".gif") ? "GIF" : <Image size={14} />}
 				>
-					<img src={post.url} className="w-full h-full object-contain" />
+					<img src={post.url} className="w-full h-full object-cover" />
 				</ContentBadge>
 			)}
 			{mode === MODE.full && (
 				<Zoom>
-					<img src={post.url} className="w-full h-full object-contain" />
+					<img src={post.url} className="w-full h-full object-cover" />
 				</Zoom>
 			)}
 		</div>

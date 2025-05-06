@@ -7,7 +7,7 @@ const GifContent = ({ post }: { post: GifPost }) => {
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const { ref, inView } = useInView({
 		triggerOnce: false,
-		threshold: 1,
+		threshold: 0.5,
 	});
 
 	useEffect(() => {
@@ -23,13 +23,10 @@ const GifContent = ({ post }: { post: GifPost }) => {
 			});
 	}, [inView]);
 
-	const getGifvAsMp4 = (url?: string) =>
-		url?.endsWith(".gifv") ? url.replace(".gifv", ".mp4") : url;
+	const src =
+		post.media?.reddit_video.fallback_url || post.url?.replace(".gifv", ".mp4");
 
-	const source =
-		post.media?.reddit_video?.fallback_url || getGifvAsMp4(post.url);
-
-	return source ? (
+	return src ? (
 		<div ref={ref} className="w-full h-full ">
 			<ContentBadge badge="GIF">
 				<video
@@ -38,14 +35,14 @@ const GifContent = ({ post }: { post: GifPost }) => {
 					muted
 					loop
 					playsInline
-					className="w-full h-full object-contain"
+					className="w-full h-full object-cover"
 				>
-					<source src={source} type="video/mp4" />
+					<source src={src} type="video/mp4" />
 				</video>
 			</ContentBadge>
 		</div>
 	) : (
-		<p>GIF NOT RECOGNIZED</p>
+		<p>GIF NOT RECOGNIZED {post.id}</p>
 	);
 };
 

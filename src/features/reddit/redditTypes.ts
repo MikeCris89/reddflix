@@ -129,13 +129,13 @@ export type PostType = keyof typeof POST_TYPES;
 
 export type VideoPost = RedditPost & {
 	type: typeof POST_TYPES.video;
-	media?: { reddit_video?: RedditVideo & { is_gif?: false } };
+	media?: { reddit_video: RedditVideo & { is_gif: false } };
 	url?: string; // fallback for external .mp4
 };
 
 export type GifPost = RedditPost & {
 	type: typeof POST_TYPES.gif;
-	media?: { reddit_video?: RedditVideo & { is_gif: true } };
+	media?: { reddit_video: RedditVideo & { is_gif: true } };
 	url?: string; // fallback for .gifv
 };
 
@@ -165,15 +165,6 @@ export type LinkPost = RedditPost & {
 export type UnknownPost = RedditPost & {
 	type: typeof POST_TYPES.unknown;
 };
-
-export type PostWithType =
-	| VideoPost
-	| GifPost
-	| ImagePost
-	| GalleryPost
-	| LinkPost
-	| SelfPost
-	| UnknownPost;
 
 // TYPE GUARDS
 export const isVideoPost = (post: RedditPost): post is VideoPost =>

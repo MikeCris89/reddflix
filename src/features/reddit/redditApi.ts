@@ -1,11 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {
-	POST_TYPES,
-	PostWithType,
-	RedditListing,
-	RedditPost,
-	RedditPostsPage,
-} from "./redditTypes";
+import { RedditListing, RedditPost, RedditPostsPage } from "./redditTypes";
 import { getPostType } from "../../utils/helpers";
 
 const refineData = (data: RedditPost) => {

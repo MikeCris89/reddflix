@@ -14,7 +14,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const { ref, inView } = useInView({
 		triggerOnce: false,
-		threshold: 1,
+		threshold: 0.5,
 	});
 
 	useEffect(() => {
@@ -30,16 +30,16 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 			});
 	}, [inView]);
 
-	const vidSource =
-		post.media?.reddit_video?.fallback_url ||
-		(post.url?.endsWith(".mp4") ? post.url : "");
+	const src = post.media?.reddit_video.fallback_url || post.url;
+
+	if (!src) return <p>VIDEO NOT RECOGNIZED {post.id}</p>;
 
 	return (
 		<>
 			{mode === MODE.full && (
 				<div className="w-full h-full">
 					<video controls>
-						<source src={vidSource} />
+						<source src={src} />
 					</video>
 				</div>
 			)}
@@ -47,13 +47,13 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 				<div ref={ref} className="w-full h-full">
 					<ContentBadge badge={<Play size={14} />}>
 						<video
-							className="w-full h-full object-contain"
+							className="w-full h-full object-cover"
 							ref={videoRef}
 							muted
 							loop
 							playsInline
 						>
-							<source src={vidSource} />
+							<source src={src} />
 						</video>
 					</ContentBadge>
 				</div>
