@@ -1,12 +1,11 @@
+import { RouterProvider } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import router from "./utils/router";
 
 function App() {
 	return (
-		<div className="h-full w-full flex flex-col justify-between overflow-hidden">
-			<Home />
-			<Navbar />
+		<div className="h-full w-full">
+			<RouterProvider router={router} />
 		</div>
 	);
 }
