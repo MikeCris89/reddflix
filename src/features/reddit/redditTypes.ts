@@ -34,6 +34,7 @@ export interface RedditPost {
 	url_overridden_by_dest?: string;
 	selftext: string;
 	media?: Media | null;
+	secure_media?: Media | null;
 	gallery_data?: GalleryData;
 	media_metadata?: MediaMetadata;
 	stickied: boolean;

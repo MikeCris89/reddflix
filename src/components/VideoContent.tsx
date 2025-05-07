@@ -4,6 +4,7 @@ import { ContentMode, MODE } from "../utils/types";
 import { useEffect, useRef } from "react";
 import ContentBadge from "./ContentBadge";
 import { Play } from "lucide-react";
+import FullVideoPlayer from "./FullVideoPlayer";
 
 interface VideoProps {
 	post: VideoPost;
@@ -31,16 +32,25 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 	}, [inView]);
 
 	const src = post.media?.reddit_video.fallback_url || post.url;
+	const fullSrc =
+		post.media?.reddit_video.hls_url ||
+		post.media?.reddit_video.fallback_url ||
+		post.url;
 
-	if (!src) return <p>VIDEO NOT RECOGNIZED {post.id}</p>;
+	if (!src || !fullSrc) return <p>VIDEO NOT RECOGNIZED {post.id}</p>;
 
 	return (
 		<>
-			{mode === MODE.full && (
+			{/* {mode === MODE.full && (
 				<div className="w-full h-full">
-					<video controls>
+					<video className="w-full h-full object-contain" controls>
 						<source src={src} />
 					</video>
+				</div>
+			)} */}
+			{mode === MODE.full && (
+				<div className="w-full h-full">
+					<FullVideoPlayer url={fullSrc} />
 				</div>
 			)}
 			{mode === MODE.preview && (

@@ -33,6 +33,7 @@ const ScrollContainer = ({
 				{data &&
 					data.map((post) => (
 						<div
+							key={post.id}
 							className="h-full"
 							onClick={() =>
 								navigate(`${nav ? nav + "/" : ""}${post.id}`, {
@@ -40,7 +41,7 @@ const ScrollContainer = ({
 								})
 							}
 						>
-							<PostCard key={post.id} post={post} />
+							<PostCard post={post} />
 						</div>
 					))}
 			</div>

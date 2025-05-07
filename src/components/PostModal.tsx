@@ -2,10 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import PostMedia from "../features/reddit/PostMedia";
 import { MODE } from "../utils/types";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
+import { useEffect, useRef } from "react";
 
 const PostModal = () => {
 	const navigate = useNavigate();
 	const { subreddit, category, postId } = useParams();
+	const modalRef = useRef<HTMLDivElement | null>(null);
 
 	const { data: post } = useFetchPostsBySubredditQuery(category, {
 		selectFromResult: ({ data }) => {
@@ -13,15 +15,25 @@ const PostModal = () => {
 		},
 	});
 
+	useEffect(() => {
+		const clickEvent = (e: MouseEvent) => {
+			if (modalRef.current && !modalRef.current.contains(e.target as Node))
+				navigate(-1);
+		};
+		document.addEventListener("mousedown", clickEvent);
+
+		return () => {
+			document.removeEventListener("mousedown", clickEvent);
+		};
+	}, [navigate]);
+
 	if (!post) return <p>Post Not Found - {postId}</p>;
 
 	return (
-		<div
-			className="absolute inset-0 z-40 bg-black/60 flex justify-center items-center h-full overflow-hidden"
-			style={{ minHeight: 0 }}
-		>
+		<div className="fixed inset-0 z-40 bg-black/60 flex justify-center items-center h-full overflow-hidden">
 			<div
-				className="flex flex-col justify-center items-center bg-black rounded-md max-w-3xl w-full h-[90%] "
+				ref={modalRef}
+				className="flex flex-col justify-center items-center bg-black rounded-md max-w-3xl w-full h-[90%]"
 				style={{ boxShadow: "0 0 8px 1px #fff" }}
 			>
 				<button
@@ -30,7 +42,7 @@ const PostModal = () => {
 				>
 					X
 				</button>
-				<div className="flex-1 overflow-auto">
+				<div className="flex-1 h-full overflow-hidden">
 					<PostMedia post={post} mode={MODE.full} />
 				</div>
 			</div>
