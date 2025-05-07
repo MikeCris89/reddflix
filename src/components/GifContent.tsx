@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GifPost } from "../features/reddit/redditTypes";
 import { useInView } from "react-intersection-observer";
 import ContentBadge from "./ContentBadge";
 
 const GifContent = ({ post }: { post: GifPost }) => {
 	const videoRef = useRef<HTMLVideoElement | null>(null);
+	const [hasLoaded, setHasLoaded] = useState(false);
 	const { ref, inView } = useInView({
 		triggerOnce: false,
 		threshold: 0.5,
@@ -14,6 +15,10 @@ const GifContent = ({ post }: { post: GifPost }) => {
 		if (!videoRef.current) return;
 		const vid = videoRef.current;
 
+		if (inView && !hasLoaded) {
+			setHasLoaded(true);
+		}
+
 		const playPromise = inView ? vid.play() : Promise.resolve();
 
 		playPromise
@@ -21,13 +26,14 @@ const GifContent = ({ post }: { post: GifPost }) => {
 			.then(() => {
 				if (!inView) vid.pause();
 			});
-	}, [inView]);
+	}, [inView, hasLoaded]);
 
 	const src =
 		post.media?.reddit_video.fallback_url || post.url?.replace(".gifv", ".mp4");
 
 	return src ? (
 		<div ref={ref} className="w-full h-full ">
+			{!hasLoaded && <p>Loading...</p>}
 			<ContentBadge badge="GIF">
 				<video
 					ref={videoRef}
@@ -37,7 +43,7 @@ const GifContent = ({ post }: { post: GifPost }) => {
 					playsInline
 					className="w-full h-full object-cover"
 				>
-					<source src={src} type="video/mp4" />
+					{hasLoaded && <source src={src} type="video/mp4" />}
 				</video>
 			</ContentBadge>
 		</div>

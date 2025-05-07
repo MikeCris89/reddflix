@@ -1,6 +1,5 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import PostModal from "../components/PostModal";
 
 const Root = () => {
 	return (

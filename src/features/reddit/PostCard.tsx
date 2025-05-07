@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { MODE } from "../../utils/types";
 import PostMedia from "./PostMedia";
 import { RedditPost } from "./redditTypes";
 
 const PostCard = ({ post }: { post: RedditPost }) => {
-	const navigate = useNavigate();
 	return (
 		<>
 			<p>{post.title}</p>

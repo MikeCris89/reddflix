@@ -29,7 +29,9 @@ const PostMedia = ({ post, mode }: MediaProps) => {
 				<VideoContent post={post as VideoPost} mode={mode} />
 			)}
 			{/* GIFs */}
-			{post.type === POST_TYPES.gif && <GifContent post={post as GifPost} />}
+			{post.type === POST_TYPES.gif && (
+				<VideoContent post={post as GifPost} mode={mode} />
+			)}
 			{/* IMAGE */}
 			{post.type === POST_TYPES.image && (
 				<ImageContent post={post as ImagePost} mode={mode} />

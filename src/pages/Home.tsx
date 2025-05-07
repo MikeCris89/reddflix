@@ -1,4 +1,4 @@
-import { Outlet, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ScrollContainer from "../components/ScrollContainer";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
 import PostModal from "../components/PostModal";
@@ -34,8 +34,12 @@ const Home = () => {
 				category="worldnews"
 			/>
 			<ScrollContainer data={funnyData.posts} title="Funny" category="funny" />
-			<ScrollContainer data={gifData.posts} title="Gifs" />
-			<ScrollContainer data={confessData.posts} title="Confessions" />
+			<ScrollContainer data={gifData.posts} title="Gifs" category="gifs" />
+			<ScrollContainer
+				data={confessData.posts}
+				title="Confessions"
+				category="confession"
+			/>
 			<ScrollContainer data={artistData.posts} title="Artists" />
 		</div>
 	);
