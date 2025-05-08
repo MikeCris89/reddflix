@@ -57,7 +57,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 	return (
 		<>
 			{!isGif && !isPreview && (
-				<div className="w-full h-full">
+				<div className="h-full w-full">
 					<FullVideoPlayer url={fullSrc} />
 				</div>
 			)}

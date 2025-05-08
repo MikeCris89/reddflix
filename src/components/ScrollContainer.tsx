@@ -22,11 +22,13 @@ const ScrollContainer = ({
 	const location = useLocation();
 	const nav = category || subreddit;
 	return (
-		<div className="flex flex-col">
-			<h2 className="text-xl font-semibold">{title}</h2>
+		<div className="flex flex-col p-1">
+			<h2 className="text-xl font-extrabold bg-red-600 text-black p-1 pl-2">
+				{title}
+			</h2>
 			<div
 				className={clsx(
-					"flex items-center gap-4 p-2 border overflow-x-auto overflow-y-hidden h-[300px]",
+					"flex items-center gap-4 p-2 overflow-x-auto overflow-y-hidden h-[300px]",
 					direction === "row" ? "flex-row" : "flex-col"
 				)}
 			>

@@ -43,7 +43,9 @@ const PostMedia = ({ post, mode }: MediaProps) => {
 			{/* LINK */}
 			{post.type === POST_TYPES.link && <LinkContent post={post as LinkPost} />}
 			{/* SELF */}
-			{post.type === POST_TYPES.self && <SelfContent post={post as SelfPost} />}
+			{post.type === POST_TYPES.self && (
+				<SelfContent post={post as SelfPost} mode={mode} />
+			)}
 			{/* UNKNOWN - for testing */}
 			{post.type === POST_TYPES.unknown && <h6>UNKNOWN - ID: {post.id}</h6>}
 		</>

@@ -20,9 +20,9 @@ const LinkContent = ({ post }: { post: LinkPost }) => {
 					className="w-full h-full flex flex-col justify-center align-middle"
 				>
 					{previewImage && <img src={previewImage} alt={post.title} />}
+					{!previewImage && post.selftext && <p>{post.selftext}</p>}
+					{!previewImage && !post.selftext && <p>{linkUrl}</p>}
 				</a>
-
-				{post.selftext && <p>{post.selftext}</p>}
 			</ContentBadge>
 		</>
 	);

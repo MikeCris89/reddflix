@@ -25,7 +25,10 @@ const ImageContent = ({
 				</ContentBadge>
 			)}
 			{mode === MODE.full && (
-				<img src={post.url} className="w-full h-full object-contain" />
+				<img
+					src={post.url}
+					className="w-auto max-w-full h-auto max-h-full object-contain rounded-md"
+				/>
 			)}
 		</>
 	);

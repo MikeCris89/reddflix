@@ -6,3 +6,7 @@ body,
 	height: 100%;
 	width: 100%;
 }
+
+.box-shadow-thin {
+	box-shadow: 0 0 1px #fff;
+}
