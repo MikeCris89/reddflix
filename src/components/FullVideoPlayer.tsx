@@ -25,6 +25,7 @@ const FullVideoPlayer = ({ url }: { url: string }) => {
 			controls
 			autoPlay
 			disablePictureInPicture
+			loop
 			className="w-full h-full object-contain"
 		/>
 	);

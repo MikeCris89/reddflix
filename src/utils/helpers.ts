@@ -38,7 +38,6 @@ export const getPostType = (post: RedditPost): keyof typeof POST_TYPES => {
 
 export const getCreatedTime = (time: number): string => {
 	const today = new Date().getTime() / 1000;
-	console.log(today, time);
 	const diffS = today - time;
 	const diffM = diffS / 60;
 	const diffH = diffM / 60;

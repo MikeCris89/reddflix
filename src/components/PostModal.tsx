@@ -35,14 +35,15 @@ const PostModal = () => {
 		<div className="fixed inset-0 z-40 bg-black/90 flex justify-center items-center p-2">
 			<div
 				ref={modalRef}
-				className="bg-[#121212] rounded-md max-w-2xl w-full h-full flex flex-col items-center p-3 box-shadow-thin overflow-hidden"
-				//style={{ boxShadow: "0 0 1px #fff" }}
+				className="bg-[#121212] rounded-md max-w-2xl w-full h-full flex flex-col items-center p-3 box-shadow-thin overflow-y-auto"
 			>
 				<div className="flex justify-end items-center w-full">
 					<button onClick={() => navigate(-1)}>x</button>
 				</div>
 
+				{/* <div className="flex-1 h-full"> */}
 				<Post post={post} />
+				{/* </div> */}
 			</div>
 		</div>
 	);

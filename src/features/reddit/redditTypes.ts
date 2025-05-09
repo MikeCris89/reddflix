@@ -3,6 +3,47 @@ export interface RedditPostsPage {
 	posts: RedditPost[];
 }
 
+export interface RedditPostAndComments {
+	post: RedditPost;
+	comments: RedditCommentFormatted[];
+}
+
+export interface RedditComment {
+	id: string;
+	author: string;
+	body: string;
+	body_html: string;
+	score: number;
+	is_submitter: boolean;
+	created_utc: number;
+	replies:
+		| {
+				data: {
+					children: { kind: string; data: RedditComment }[];
+				};
+		  }
+		| "";
+	parent_id: string;
+	permalink: string;
+	[key: string]: unknown;
+}
+
+export interface RefinedCommentBase {
+	id: string;
+	author: string;
+	body: string;
+	body_html: string;
+	score: number;
+	is_submitter: boolean;
+	created_utc: number;
+	parent_id: string;
+	permalink: string;
+}
+
+export type RedditCommentFormatted = RefinedCommentBase & {
+	replies: RedditCommentFormatted[];
+};
+
 export interface RedditListing<T> {
 	kind: string;
 	data: {
@@ -14,6 +55,11 @@ export interface RedditListing<T> {
 		}>;
 	};
 }
+
+export type PostAndCommentsResponse = [
+	RedditListing<RedditPost>,
+	RedditListing<RedditComment>
+];
 
 export interface RedditPost {
 	id: string;
