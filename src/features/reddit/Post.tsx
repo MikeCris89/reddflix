@@ -45,11 +45,11 @@ const Post = ({ post }: { post: RedditPost }) => {
 				<p className="text-xs">{getCreatedTime(post.created_utc)}</p>
 			</div>
 			<h2 className="text-lg font-semibold w-full pl-1">{post.title}</h2>
-			{!showComments && (
-				<div className="flex justify-center items-center overflow-hidden px-1 py-2 w-full h-full  bg-black rounded-md my-4">
-					<PostMedia post={post} mode={MODE.full} />
-				</div>
-			)}
+			{/* {!showComments && ( */}
+			<div className="flex justify-center items-center overflow-hidden px-1 py-2 w-full h-full min-h-[200px]  bg-black rounded-md my-4">
+				<PostMedia post={post} mode={MODE.full} />
+			</div>
+			{/* )} */}
 			<div className="flex justify-between items-center w-full">
 				<div className="flex gap-2">
 					<Info icon={<ArrowBigUp size={20} />} text={post.score} />
@@ -71,7 +71,11 @@ const Post = ({ post }: { post: RedditPost }) => {
 					<p className="text-xs">Reddit</p>
 				</a>
 			</div>
-			{showComments && <Comments />}
+			{showComments && (
+				<div className="w-full px-2">
+					<Comments />
+				</div>
+			)}
 		</>
 	);
 };
