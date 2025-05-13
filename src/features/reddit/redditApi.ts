@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
 	PostAndCommentsResponse,
+	RawRedditPost,
 	RedditComment,
 	RedditCommentFormatted,
 	RedditListing,
@@ -16,6 +17,7 @@ const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	author: "[deleted]",
 	body: "",
 	body_html: "",
+	distinguished: "moderator",
 	score: 0,
 	is_submitter: false,
 	created_utc: 0,
@@ -24,38 +26,79 @@ const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	replies: [],
 };
 
-const refinePost = (data: RedditPost) => {
+const refinePost = (data: RawRedditPost): RedditPost => {
 	const parent = data.crosspost_parent_list?.[0];
 
-	if (
+	const base: RawRedditPost =
 		!data.gallery_data &&
 		!data.media_metadata &&
 		parent?.gallery_data &&
 		parent?.media_metadata
-	) {
-		const withFallback = {
-			...data,
-			gallery_data: parent.gallery_data,
-			media_metadata: parent.media_metadata,
-		};
-
-		return {
-			...withFallback,
-			type: getPostType(withFallback),
-		};
-	}
+			? {
+					...data,
+					gallery_data: parent.gallery_data,
+					media_metadata: parent.media_metadata,
+			  }
+			: data;
 
 	return {
-		...data,
-		type: getPostType(data),
+		id: base.id,
+		title: base.title,
+		subreddit: base.subreddit,
+		thumbnail: base.thumbnail,
+		url: base.url,
+		permalink: base.permalink,
+		author: base.author,
+		created_utc: base.created_utc,
+		score: base.score,
+		num_comments: base.num_comments,
+		post_hint: base.post_hint,
+		media: base.media,
+		media_metadata: base.media_metadata,
+		gallery_data: base.gallery_data,
+		secure_media: base.secure_media,
+		preview: base.preview,
+		is_video: base.is_video,
+		is_self: base.is_self,
+		selftext: base.selftext,
+		url_overridden_by_dest: base.url_overridden_by_dest,
+		type: getPostType(base),
 	};
 };
+
+// const refinePost = (data: RawRedditPost): RedditPost => {
+// 	const parent = data.crosspost_parent_list?.[0];
+
+// 	if (
+// 		!data.gallery_data &&
+// 		!data.media_metadata &&
+// 		parent?.gallery_data &&
+// 		parent?.media_metadata
+// 	) {
+// 		const withFallback = {
+// 			...data,
+// 			gallery_data: parent.gallery_data,
+// 			media_metadata: parent.media_metadata,
+// 		};
+
+// 		return {
+// 			...withFallback,
+// 			type: getPostType(withFallback),
+// 		};
+// 	}
+
+// 	return {
+// 		...data,
+// 		type: getPostType(data),
+// 	};
+// };
 
 const refineComments = (comment: RedditComment): RefinedCommentBase => ({
 	id: comment.id,
 	author: comment.author,
 	body: comment.body,
 	body_html: comment.body_html,
+	distinguished: comment.distinguished,
 	score: comment.score,
 	is_submitter: comment.is_submitter,
 	created_utc: comment.created_utc,
@@ -92,35 +135,47 @@ export const redditApi = createApi({
 	endpoints: (builder) => ({
 		fetchPostsBySubreddit: builder.query({
 			query: (subreddit) => `r/${subreddit}.json`,
+			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
-				response: RedditListing<RedditPost>
-			): RedditPostsPage => ({
-				after: response.data.after,
-				posts: response.data.children
-					.filter((post) => post.data.stickied !== true)
-					.map((post) => refinePost(post.data)),
-			}),
+				response: RedditListing<RawRedditPost>
+			): RedditPostsPage => {
+				console.log("fetchPostsBySubreddit network response.");
+				return {
+					after: response.data.after,
+					posts: response.data.children
+						.filter((post) => post.data.stickied !== true)
+						.map((post) => refinePost(post.data)),
+				};
+			},
 		}),
 		searchPosts: builder.query({
 			query: (searchTerm) => `search.json?q=${encodeURIComponent(searchTerm)}`,
+			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
-				response: RedditListing<RedditPost>
-			): RedditPostsPage => ({
-				after: response.data.after,
-				posts: response.data.children.map((post) => refinePost(post.data)),
-			}),
+				response: RedditListing<RawRedditPost>
+			): RedditPostsPage => {
+				console.log("searchPosts endpoint network request.");
+				return {
+					after: response.data.after,
+					posts: response.data.children.map((post) => refinePost(post.data)),
+				};
+			},
 		}),
 
 		fetchPostAndComments: builder.query({
 			query: (postId) => `comments/${postId}.json`,
+			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
 				response: PostAndCommentsResponse
-			): RedditPostAndComments => ({
-				post: refinePost(response[0].data.children[0].data),
-				comments: response[1].data.children.map((comment) =>
-					formatCommentTree(comment.data)
-				),
-			}),
+			): RedditPostAndComments => {
+				console.log("fetchPostsAndComments network request.");
+				return {
+					post: refinePost(response[0].data.children[0].data),
+					comments: response[1].data.children.map((comment) =>
+						formatCommentTree(comment.data)
+					),
+				};
+			},
 		}),
 	}),
 });

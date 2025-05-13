@@ -56,48 +56,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 
 	return (
 		<>
-			{!isGif && !isPreview && (
-				<div className="h-full w-full">
-					<FullVideoPlayer url={fullSrc} />
-				</div>
-			)}
-
-			{/* {!isGif && isPreview && (
-				<div ref={ref} className="w-full h-full">
-					{!hasLoaded && <p>Loading...</p>}
-					<ContentBadge badge={<Play size={14} />}>
-						<video
-							className="w-full h-full object-cover"
-							ref={videoRef}
-							muted
-							loop
-							playsInline
-						>
-							{hasLoaded && <source src={src} type="video/mp4" />}
-						</video>
-					</ContentBadge>
-				</div>
-			)}
-			{isGif && (
-				<div ref={ref} className="w-full h-full ">
-					{!hasLoaded && <p>Loading...</p>}
-					<ContentBadge badge="GIF">
-						<video
-							ref={videoRef}
-							autoPlay
-							muted
-							loop
-							playsInline
-							className={clsx(
-								"w-full h-full",
-								mode === MODE.preview ? "object-cover" : "object-contain"
-							)}
-						>
-							{hasLoaded && <source src={src} type="video/mp4" />}
-						</video>
-					</ContentBadge>
-				</div>
-			)} */}
+			{!isGif && !isPreview && <FullVideoPlayer url={fullSrc} />}
 
 			{(isPreview || isGif) && (
 				<div ref={ref} className="w-full h-full">

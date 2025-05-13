@@ -6,6 +6,7 @@ import {
 	isSelfPost,
 	isVideoPost,
 	POST_TYPES,
+	RawRedditPost,
 	RedditPost,
 } from "../features/reddit/redditTypes";
 
@@ -19,7 +20,9 @@ import {
 // 	return POST_TYPES.unknown;
 // };
 
-export const getPostType = (post: RedditPost): keyof typeof POST_TYPES => {
+export const getPostType = (
+	post: RawRedditPost | RedditPost
+): keyof typeof POST_TYPES => {
 	const types: (keyof typeof POST_TYPES)[] = [];
 
 	if (isVideoPost(post)) types.push(POST_TYPES.video);
@@ -45,4 +48,11 @@ export const getCreatedTime = (time: number): string => {
 	if (diffH < 1) return Math.floor(diffM).toString() + "m";
 	if (diffH > 23) return Math.floor(diffD).toString() + "d";
 	return Math.floor(diffH).toString() + "h";
+};
+
+export const formatCounts = (num: number = 0): string => {
+	if (num < 1000) return num.toString();
+	if (num >= 1_000_000)
+		return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m";
+	return (num / 1000).toFixed(1).replace(/\.0$/, "") + "k";
 };

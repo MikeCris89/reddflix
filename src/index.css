@@ -24,6 +24,7 @@
 
 html {
 	scroll-behavior: smooth;
+	font-size: 12px;
 }
 
 a {
@@ -80,5 +81,11 @@ button:focus-visible {
 	}
 	button {
 		background-color: #f9f9f9;
+	}
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 16px;
 	}
 }

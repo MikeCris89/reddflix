@@ -1,5 +1,5 @@
 import Hls from "hls.js";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const FullVideoPlayer = ({ url }: { url: string }) => {
 	const videoRef = useRef<HTMLVideoElement>(null);
@@ -26,7 +26,7 @@ const FullVideoPlayer = ({ url }: { url: string }) => {
 			autoPlay
 			disablePictureInPicture
 			loop
-			className="w-full h-full object-contain"
+			className="max-h-full max-w-full h-full w-auto object-contain"
 		/>
 	);
 };

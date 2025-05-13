@@ -6,19 +6,23 @@ import clsx from "clsx";
 
 const Home = () => {
 	const { postId } = useParams();
-	const { data: newsData } = useFetchPostsBySubredditQuery("worldnews");
-	const { data: funnyData } = useFetchPostsBySubredditQuery("funny");
-	const { data: gifData } = useFetchPostsBySubredditQuery("gifs");
-	const { data: confessData } = useFetchPostsBySubredditQuery("confession");
-	const { data: artistData } = useFetchPostsBySubredditQuery("ARTIST");
+	// const { data: newsData } = useFetchPostsBySubredditQuery("worldnews");
+	const { data: funnyData, refetch } = useFetchPostsBySubredditQuery("funny", {
+		refetchOnMountOrArgChange: false,
+		refetchOnReconnect: false,
+		refetchOnFocus: false,
+	});
+	// const { data: gifData } = useFetchPostsBySubredditQuery("gifs");
+	// const { data: confessData } = useFetchPostsBySubredditQuery("confession");
+	// const { data: artistData } = useFetchPostsBySubredditQuery("ARTIST");
 
-	if (!newsData || !funnyData || !gifData || !confessData || !artistData)
-		return null;
-
-	console.log("news", newsData);
+	// if (!newsData || !funnyData || !gifData || !confessData || !artistData)
+	// 	return null;
+	if (!funnyData) return null;
+	// console.log("news", newsData);
 	console.log("funny", funnyData);
-	console.log("gifs", gifData);
-	console.log("arist", artistData);
+	// console.log("gifs", gifData);
+	// console.log("arist", artistData);
 
 	return (
 		<div
@@ -28,19 +32,20 @@ const Home = () => {
 			)}
 		>
 			{postId && <PostModal />}
-			<ScrollContainer
+			{/* <ScrollContainer
 				data={newsData.posts}
 				title="WorldNews"
 				category="worldnews"
-			/>
+			/> */}
+			<button onClick={refetch}>Refetch</button>
 			<ScrollContainer data={funnyData.posts} title="Funny" category="funny" />
-			<ScrollContainer data={gifData.posts} title="Gifs" category="gifs" />
+			{/* <ScrollContainer data={gifData.posts} title="Gifs" category="gifs" />
 			<ScrollContainer
 				data={confessData.posts}
 				title="Confessions"
 				category="confession"
 			/>
-			<ScrollContainer data={artistData.posts} title="Artists" />
+			<ScrollContainer data={artistData.posts} title="Artists" /> */}
 		</div>
 	);
 };

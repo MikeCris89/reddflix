@@ -23,6 +23,7 @@ export interface RedditComment {
 				};
 		  }
 		| "";
+	distinguished: "moderator" | "admin" | "special" | null;
 	parent_id: string;
 	permalink: string;
 	[key: string]: unknown;
@@ -33,6 +34,7 @@ export interface RefinedCommentBase {
 	author: string;
 	body: string;
 	body_html: string;
+	distinguished: "moderator" | "admin" | "special" | null;
 	score: number;
 	is_submitter: boolean;
 	created_utc: number;
@@ -57,11 +59,11 @@ export interface RedditListing<T> {
 }
 
 export type PostAndCommentsResponse = [
-	RedditListing<RedditPost>,
+	RedditListing<RawRedditPost>,
 	RedditListing<RedditComment>
 ];
 
-export interface RedditPost {
+export interface RawRedditPost {
 	id: string;
 	title: string;
 	subreddit: string;
@@ -86,6 +88,30 @@ export interface RedditPost {
 	stickied: boolean;
 	crosspost_parent_list?: RedditPost[];
 	[key: string]: unknown;
+}
+
+export interface RedditPost {
+	id: string;
+	title: string;
+	subreddit: string;
+	thumbnail?: string;
+	url?: string;
+	permalink: string;
+	author: string;
+	created_utc: number;
+	score: number;
+	num_comments: number;
+	post_hint?: string;
+	media?: RawRedditPost["media"];
+	media_metadata?: RawRedditPost["media_metadata"];
+	gallery_data?: RawRedditPost["gallery_data"];
+	secure_media?: RawRedditPost["secure_media"];
+	preview?: Preview;
+	is_video: boolean;
+	is_self: boolean;
+	selftext: string;
+	url_overridden_by_dest?: string;
+	type: keyof typeof POST_TYPES;
 }
 
 export interface GalleryData {
@@ -214,27 +240,35 @@ export type UnknownPost = RedditPost & {
 };
 
 // TYPE GUARDS
-export const isVideoPost = (post: RedditPost): post is VideoPost =>
+export const isVideoPost = (
+	post: RedditPost | RawRedditPost
+): post is VideoPost =>
 	post.media?.reddit_video?.is_gif === false ||
 	(post.url?.endsWith(".mp4") ?? false);
 
-export const isGifPost = (post: RedditPost): post is GifPost =>
+export const isGifPost = (post: RedditPost | RawRedditPost): post is GifPost =>
 	post.media?.reddit_video?.is_gif === true ||
 	(post.url?.endsWith(".gifv") ?? false);
 
-export const isImagePost = (post: RedditPost): post is ImagePost =>
+export const isImagePost = (
+	post: RedditPost | RawRedditPost
+): post is ImagePost =>
 	!isVideoPost(post) &&
 	!isGifPost(post) &&
 	(post.post_hint === POST_TYPES.image ||
 		/\.(gif|jpg|jpeg|png|webp)$/i.test(post.url ?? ""));
 
-export const isGalleryPost = (post: RedditPost): post is GalleryPost =>
-	!!post.gallery_data && !!post.media_metadata;
+export const isGalleryPost = (
+	post: RedditPost | RawRedditPost
+): post is GalleryPost => !!post.gallery_data && !!post.media_metadata;
 
-export const isSelfPost = (post: RedditPost): post is SelfPost =>
-	post.is_self === true;
+export const isSelfPost = (
+	post: RedditPost | RawRedditPost
+): post is SelfPost => post.is_self === true;
 
-export const isLinkPost = (post: RedditPost): post is LinkPost =>
+export const isLinkPost = (
+	post: RedditPost | RawRedditPost
+): post is LinkPost =>
 	!isVideoPost(post) &&
 	!isGifPost(post) &&
 	!isImagePost(post) &&
