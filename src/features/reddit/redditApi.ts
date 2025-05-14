@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
+	isValidRedditComment,
 	PostAndCommentsResponse,
 	RawRedditPost,
 	RedditComment,
@@ -8,6 +9,7 @@ import {
 	RedditPost,
 	RedditPostAndComments,
 	RedditPostsPage,
+	RedditThing,
 	RefinedCommentBase,
 } from "./redditTypes";
 import { getPostType } from "../../utils/helpers";
@@ -66,33 +68,6 @@ const refinePost = (data: RawRedditPost): RedditPost => {
 	};
 };
 
-// const refinePost = (data: RawRedditPost): RedditPost => {
-// 	const parent = data.crosspost_parent_list?.[0];
-
-// 	if (
-// 		!data.gallery_data &&
-// 		!data.media_metadata &&
-// 		parent?.gallery_data &&
-// 		parent?.media_metadata
-// 	) {
-// 		const withFallback = {
-// 			...data,
-// 			gallery_data: parent.gallery_data,
-// 			media_metadata: parent.media_metadata,
-// 		};
-
-// 		return {
-// 			...withFallback,
-// 			type: getPostType(withFallback),
-// 		};
-// 	}
-
-// 	return {
-// 		...data,
-// 		type: getPostType(data),
-// 	};
-// };
-
 const refineComments = (comment: RedditComment): RefinedCommentBase => ({
 	id: comment.id,
 	author: comment.author,
@@ -107,7 +82,7 @@ const refineComments = (comment: RedditComment): RefinedCommentBase => ({
 });
 
 const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
-	if (!comment || typeof comment !== "object" || comment.kind === "more") {
+	if (!comment || typeof comment !== "object") {
 		return PLACEHOLDER_COMMENT;
 	}
 
@@ -121,9 +96,9 @@ const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
 		"data" in comment.replies &&
 		Array.isArray(comment.replies.data.children)
 	) {
-		base.replies = comment.replies.data.children.map((child) =>
-			formatCommentTree(child.data)
-		);
+		base.replies = comment.replies.data.children
+			.filter((c: RedditThing<RedditComment>) => isValidRedditComment(c))
+			.map((child) => formatCommentTree(child.data));
 	}
 
 	return base;

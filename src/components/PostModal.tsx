@@ -45,6 +45,8 @@ const PostModal = () => {
 
 	if (!post) return <p>Post Not Found - {postId}</p>;
 
+	console.log("PostModal Render");
+
 	return (
 		<div className="fixed inset-0 z-40 bg-black/90 flex justify-center items-center p-2">
 			<div

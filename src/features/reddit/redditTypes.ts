@@ -58,6 +58,11 @@ export interface RedditListing<T> {
 	};
 }
 
+export interface RedditThing<T> {
+	kind: "t1" | "more" | string;
+	data: T;
+}
+
 export type PostAndCommentsResponse = [
 	RedditListing<RawRedditPost>,
 	RedditListing<RedditComment>
@@ -277,3 +282,18 @@ export const isLinkPost = (
 	!!post.url &&
 	!post.url.includes("reddit.com") &&
 	!post.url.includes("redd.it");
+
+export const isValidRedditComment = (
+	c: RedditThing<RedditComment>
+): boolean => {
+	if (!c || typeof c !== "object") return false;
+	if (c.kind === "more") return false;
+	const data = c.data;
+	if (!data) return false;
+	// If these are missing, it's a stub
+	return (
+		typeof data.id === "string" &&
+		typeof data.author === "string" &&
+		typeof data.body === "string"
+	);
+};

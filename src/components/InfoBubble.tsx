@@ -39,8 +39,10 @@ const InfoBubble = ({
 	return (
 		<div
 			className={clsx(
-				"rounded-3xl bg-[#242424] box-shadow-thin w-fit",
-				onClick ? "cursor-pointer hover:bg-gray-500" : "cursor-default",
+				"rounded-3xl bg-[#242424]  w-fit",
+				onClick
+					? "cursor-pointer hover:bg-gray-500 box-shadow-thin"
+					: "cursor-default",
 				size === "lg" ? "px-3 py-1" : "px-2 py-0.5"
 			)}
 			onClick={onClick}

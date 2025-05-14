@@ -6,6 +6,31 @@ import { BUBBLE_ICON } from "../../utils/types";
 import { useMemo, useState } from "react";
 import clsx from "clsx";
 
+const buildDescendantMap = (
+	comments: RedditCommentFormatted[] | undefined
+): Record<string, string[]> => {
+	const map: Record<string, string[]> = {};
+
+	const buildMap = (comm: RedditCommentFormatted[]): string[] => {
+		const allDesc: string[] = [];
+
+		comm.map((c) => {
+			const nested: string[] = [];
+			if (c.replies.length) {
+				c.replies.forEach((reply) => nested.push(reply.id));
+				nested.push(...buildMap(c.replies));
+			}
+			map[c.id] = nested;
+			allDesc.push(c.id, ...nested);
+		});
+		return allDesc;
+	};
+
+	if (comments) buildMap(comments);
+
+	return map;
+};
+
 const CommentCard = ({ c }: { c: RedditCommentFormatted }) => {
 	return (
 		<div className="bg-[#1a1a1a] rounded-md p-2 w-full">
@@ -33,6 +58,7 @@ const RecursiveComments = ({
 	toggleExpanded: (id: string) => void;
 	children?: React.ReactNode;
 }) => {
+	console.log("RecursiveComments Render");
 	return (
 		<div className="flex flex-col gap-2 justify-center items-center w-full">
 			{comments.length &&
@@ -68,29 +94,8 @@ const RecursiveComments = ({
 	);
 };
 
-const buildDescendantMap = (
-	comments: RedditCommentFormatted[] | undefined
-): Record<string, string[]> => {
-	const map: Record<string, string[]> = {};
-
-	const buildMap = (comm: RedditCommentFormatted[]): string[] => {
-		const allDesc: string[] = [];
-
-		comm.map((c) => {
-			const nested: string[] = [];
-			if (c.replies.length) {
-				c.replies.forEach((reply) => nested.push(reply.id));
-				nested.push(...buildMap(c.replies));
-			}
-			map[c.id] = nested;
-			allDesc.push(c.id, ...nested);
-		});
-		return allDesc;
-	};
-
-	if (comments) buildMap(comments);
-
-	return map;
+const CommentThread = (c: RedditCommentFormatted) => {
+	return <></>;
 };
 
 const Comments = () => {
@@ -137,7 +142,8 @@ const Comments = () => {
 		return <p>Error: {errMsg}</p>;
 	}
 	if (isLoading) return <p>Loading...</p>;
-	//console.log(comments);
+
+	console.log("Comments Render");
 
 	return (
 		<div className=" h-full w-full p-1">
