@@ -11,7 +11,7 @@ const PostModal = () => {
 	const navigate = useNavigate();
 	const { subreddit, category, postId } = useParams();
 	const [showComments, setShowComments] = useState(false);
-	const modalRef = useRef<HTMLDivElement | null>(null);
+	const modalRef = useRef<HTMLDivElement>(null);
 	const { isPortrait } = useDisplay();
 
 	const { data: post } = useFetchPostsBySubredditQuery(category, {
@@ -51,7 +51,10 @@ const PostModal = () => {
 		<div className="fixed inset-0 z-40 bg-black/90 flex justify-center items-center p-2">
 			<div
 				ref={modalRef}
-				className="flex flex-col h-full bg-[#121212] rounded-md p-3 box-shadow-thin overflow-hidden min-w-full lg:min-w-[900px]"
+				className={clsx(
+					"flex flex-col h-full bg-[#121212] rounded-md p-3 box-shadow-thin overflow-hidden min-w-full lg:min-w-[900px] ",
+					{ "w-full": showComments }
+				)}
 			>
 				{/* Header - r/ u/ close btn */}
 				<div className="flex justify-between items-center w-full">
@@ -79,11 +82,7 @@ const PostModal = () => {
 					</div>
 					{/* Right/Bottom: Comments */}
 					{showComments && (
-						<div
-							className={clsx(
-								"overflow-y-auto overflow-x-hidden w-full md:min-w-[300px] max-h-full my-4"
-							)}
-						>
+						<div className={clsx("flex-1 min-h-0 w-full")}>
 							<Comments />
 						</div>
 					)}

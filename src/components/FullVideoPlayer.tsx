@@ -26,7 +26,7 @@ const FullVideoPlayer = ({ url }: { url: string }) => {
 			autoPlay
 			disablePictureInPicture
 			loop
-			className="max-h-full max-w-full h-full w-auto object-contain"
+			className="max-h-full max-w-full h-full w-full object-contain"
 		/>
 	);
 };
