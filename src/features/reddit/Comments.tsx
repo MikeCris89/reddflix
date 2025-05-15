@@ -6,6 +6,7 @@ import { BUBBLE_ICON } from "../../utils/types";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { ArrowBigUpDashIcon, ArrowDown, ArrowUp } from "lucide-react";
+import { decodeHtml } from "../../utils/helpers";
 
 const getDescendants = (comment: RedditCommentFormatted): string[] => {
 	const desc: string[] = [];
@@ -29,9 +30,13 @@ const CommentCard = ({ c }: { c: RedditCommentFormatted }) => {
 		<div className="bg-[#1a1a1a] rounded-md p-2 w-full">
 			<p className="text-xs">
 				u/{c.author}
-				{c.is_submitter && <span className="text-green-400">OP</span>}
+				{c.is_submitter && <span className="text-green-400"> OP</span>}
 			</p>
-			<p className="text-sm font-semibold p-0.5">{c.body}</p>
+			{/* <p className="text-sm font-semibold p-0.5">{c.body}</p> */}
+			<div
+				className="prose prose-invert max-w-none text-sm md:text-base"
+				dangerouslySetInnerHTML={{ __html: decodeHtml(c.body_html) }}
+			/>
 			<div className="flex gap-3">
 				<InfoBubble icon={BUBBLE_ICON.score} text={c.score} size="sm" />
 				<InfoBubble icon={BUBBLE_ICON.chat} text={c.replies.length} size="sm" />
@@ -179,6 +184,8 @@ const Comments = () => {
 	const section = page * PAGE_SIZE;
 	const maxPages = Math.max(0, Math.floor(comments.length / PAGE_SIZE) - 1);
 
+	console.log(comments);
+
 	return (
 		<div
 			ref={commRef}
@@ -229,43 +236,49 @@ const PageButtons = ({
 	setPage: React.Dispatch<React.SetStateAction<number>>;
 	max: number;
 }) => {
-	const handleNext = () => {
-		setPage((prev) => Math.min(max, prev + 1));
+	const handlePage = () => {
+		setPage((prev) =>
+			dir === "next" ? Math.min(max, prev + 1) : Math.max(0, prev - 1)
+		);
 	};
-	const handlePrev = () => {
-		setPage((prev) => Math.max(0, prev - 1));
-	};
+
 	const handleTop = () => {
 		setPage(0);
 	};
 
 	const lastPage = page === max;
 
+	const textClass = "text-xs md:text-sm";
+
 	return (
-		<div className="grid grid-cols-3 p-4">
+		<div className="grid grid-cols-[1fr_2fr_1fr] p-4 ">
 			<div></div>
-			{dir === "next" ? (
+			{
 				<button
-					onClick={handleNext}
-					className={clsx("flex gap-2 p-4 w-full justify-center")}
-					disabled={lastPage}
+					onClick={handlePage}
+					className={clsx("flex gap-2 p-4 w-full justify-center items-center")}
+					disabled={dir === "next" && lastPage}
 				>
-					<ArrowDown />
-					<p>View More </p>
+					{dir === "next" ? (
+						<>
+							<ArrowDown size={16} />
+							<p className={textClass}>View More</p>
+						</>
+					) : (
+						<>
+							<ArrowUp size={16} />
+							<p className={textClass}>View Previous</p>
+						</>
+					)}
 				</button>
-			) : (
-				<button
-					onClick={handlePrev}
-					className="flex gap-2 p-4 w-full justify-center"
-				>
-					<ArrowUp />
-					<p>View Previous</p>
-				</button>
-			)}
+			}
 			{page > 1 && (
-				<button onClick={handleTop} className="flex gap-2 justify-self-end">
-					<ArrowBigUpDashIcon />
-					<p>Top</p>
+				<button
+					onClick={handleTop}
+					className="flex gap-2 justify-self-end items-center"
+				>
+					<ArrowBigUpDashIcon size={16} />
+					<p className={textClass}>Top</p>
 				</button>
 			)}
 		</div>

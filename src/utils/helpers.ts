@@ -56,3 +56,9 @@ export const formatCounts = (num: number = 0): string => {
 		return (num / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m";
 	return (num / 1000).toFixed(1).replace(/\.0$/, "") + "k";
 };
+
+export const decodeHtml = (html: string) => {
+	const txt = document.createElement("textarea");
+	txt.innerHTML = html;
+	return txt.value;
+};

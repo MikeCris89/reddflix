@@ -86,6 +86,7 @@ export interface RawRedditPost {
 	post_hint?: string;
 	url_overridden_by_dest?: string;
 	selftext: string;
+	selftext_html: string;
 	media?: Media | null;
 	secure_media?: Media | null;
 	gallery_data?: GalleryData;
@@ -115,6 +116,7 @@ export interface RedditPost {
 	is_video: boolean;
 	is_self: boolean;
 	selftext: string;
+	selftext_html: string;
 	url_overridden_by_dest?: string;
 	type: keyof typeof POST_TYPES;
 }

@@ -4,7 +4,7 @@ import PostCard from "../features/reddit/PostCard";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface Props {
-	data: RedditPost[];
+	data: RedditPost[] | undefined;
 	title: string;
 	direction?: "row" | "col";
 	category?: string;
@@ -46,6 +46,7 @@ const ScrollContainer = ({
 							<PostCard post={post} />
 						</div>
 					))}
+				{!data && <p>No Data</p>}
 			</div>
 		</div>
 	);

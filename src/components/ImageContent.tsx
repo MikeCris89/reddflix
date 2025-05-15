@@ -2,7 +2,6 @@ import { Image } from "lucide-react";
 import { ImagePost } from "../features/reddit/redditTypes";
 import { ContentMode, MODE } from "../utils/types";
 import ContentBadge from "./ContentBadge";
-import "react-medium-image-zoom/dist/styles.css";
 
 const ImageContent = ({
 	post,

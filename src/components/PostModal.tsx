@@ -69,9 +69,18 @@ const PostModal = () => {
 					<button onClick={() => navigate(-1)}>x</button>
 				</div>
 				{/* Main content: Post + Comments layout */}
-				<div className="flex flex-1 overflow-hidden flex-col md:flex-row gap-2">
+				<div
+					className={clsx(
+						"flex flex-1 overflow-hidden flex-col md:flex-row gap-2"
+					)}
+				>
 					{/* Left/Top: Post + Button */}
-					<div className="flex flex-col overflow-hidden flex-1 min-h-[40%] min-w-[40%] ">
+					<div
+						className={clsx(
+							"flex flex-col overflow-hidden flex-1 min-h-[40%] ",
+							{ "max-w-[40%]": !isPortrait && showComments }
+						)}
+					>
 						<Post post={post} />
 						<button
 							className="w-full"

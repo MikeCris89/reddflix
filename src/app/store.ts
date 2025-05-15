@@ -20,7 +20,10 @@ const persistConfig = {
 	version: 1,
 };
 
-const persistedReducer = persistReducer(persistConfig, redditApi.reducer);
+export const persistedReducer = persistReducer(
+	persistConfig,
+	redditApi.reducer
+);
 
 export const store = configureStore({
 	reducer: {
@@ -34,6 +37,11 @@ export const store = configureStore({
 			},
 		}).concat(redditApi.middleware),
 });
+
+// 👇 Dev-only access to Redux store
+if (import.meta.env.DEV) {
+	window.store = store;
+}
 
 export const persistor = persistStore(store);
 

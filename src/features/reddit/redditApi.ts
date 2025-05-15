@@ -63,6 +63,7 @@ const refinePost = (data: RawRedditPost): RedditPost => {
 		is_video: base.is_video,
 		is_self: base.is_self,
 		selftext: base.selftext,
+		selftext_html: base.selftext_html,
 		url_overridden_by_dest: base.url_overridden_by_dest,
 		type: getPostType(base),
 	};
@@ -114,13 +115,32 @@ export const redditApi = createApi({
 			transformResponse: (
 				response: RedditListing<RawRedditPost>
 			): RedditPostsPage => {
-				console.log("fetchPostsBySubreddit network response.");
+				console.log(`fetchPostsBySubreddit network response.`);
+				if (
+					!response ||
+					!response.data ||
+					!Array.isArray(response.data.children) ||
+					response.data.children.length === 0
+				) {
+					throw new Error("Invalid Reddit response");
+				}
 				return {
 					after: response.data.after,
 					posts: response.data.children
 						.filter((post) => post.data.stickied !== true)
 						.map((post) => refinePost(post.data)),
 				};
+			},
+			onQueryStarted(arg, { queryFulfilled }) {
+				console.log(`fetchPostsBySubreddit(${arg}) network request started.`);
+
+				queryFulfilled
+					.then((res) => {
+						console.log(`✅ fetchPostsBySubreddit(${arg}) Success:`, res);
+					})
+					.catch((err) => {
+						console.error(`❌ fetchPostsBySubreddit(${arg}) failed:`, err);
+					});
 			},
 		}),
 		searchPosts: builder.query({
@@ -130,10 +150,29 @@ export const redditApi = createApi({
 				response: RedditListing<RawRedditPost>
 			): RedditPostsPage => {
 				console.log("searchPosts endpoint network request.");
+				if (
+					!response ||
+					!response.data ||
+					!Array.isArray(response.data.children) ||
+					response.data.children.length === 0
+				) {
+					throw new Error("Invalid Reddit response");
+				}
 				return {
 					after: response.data.after,
 					posts: response.data.children.map((post) => refinePost(post.data)),
 				};
+			},
+			onQueryStarted(arg, { queryFulfilled }) {
+				console.log(`searchPosts(${arg}) network request started.`);
+
+				queryFulfilled
+					.then((res) => {
+						console.log(`✅ searchPosts(${arg}) Success:`, res);
+					})
+					.catch((err) => {
+						console.error(`❌ searchPosts(${arg}) failed:`, err);
+					});
 			},
 		}),
 
@@ -144,12 +183,31 @@ export const redditApi = createApi({
 				response: PostAndCommentsResponse
 			): RedditPostAndComments => {
 				console.log("fetchPostsAndComments network request.");
+				if (
+					!response ||
+					!Array.isArray(response) ||
+					!Array.isArray(response[0].data.children) ||
+					response[1].data.children.length === 0
+				) {
+					throw new Error("Invalid Reddit response");
+				}
 				return {
 					post: refinePost(response[0].data.children[0].data),
 					comments: response[1].data.children.map((comment) =>
 						formatCommentTree(comment.data)
 					),
 				};
+			},
+			onQueryStarted(arg, { queryFulfilled }) {
+				console.log(`fetchPostAndComments(${arg}) network request started.`);
+
+				queryFulfilled
+					.then((res) => {
+						console.log(`✅ fetchPostAndComments(${arg}) Success:`, res);
+					})
+					.catch((err) => {
+						console.error(`❌ fetchPostAndComments(${arg}) failed:`, err);
+					});
 			},
 		}),
 	}),
