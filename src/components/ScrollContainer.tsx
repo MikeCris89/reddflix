@@ -38,8 +38,8 @@ const ScrollContainer = ({
 							key={post.id}
 							className="h-full"
 							onClick={() =>
-								navigate(`${nav ? nav + "/" : ""}${post.id}`, {
-									state: { background: location },
+								navigate(`/${nav ? nav + "/" : ""}${post.id}`, {
+									state: { backgroundLocation: location },
 								})
 							}
 						>

@@ -205,9 +205,10 @@ const Comments = () => {
 
 					{comments
 						.slice(section, section + PAGE_SIZE)
-						.map((c: RedditCommentFormatted) => (
-							<CommentThread key={c.id} comment={c} />
-						))}
+						.map((c: RedditCommentFormatted) => {
+							if (c.distinguished) return null;
+							return <CommentThread key={c.id} comment={c} />;
+						})}
 
 					{comments.length > PAGE_SIZE && (
 						<PageButtons

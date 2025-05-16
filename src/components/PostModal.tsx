@@ -1,8 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Post from "../features/reddit/Post";
-import { getCreatedTime } from "../utils/helpers";
+import { decodeHtml, getCreatedTime } from "../utils/helpers";
 import clsx from "clsx";
 import Comments from "../features/reddit/Comments";
 import useDisplay from "../hooks/useDisplay";
@@ -11,7 +11,6 @@ const PostModal = () => {
 	const navigate = useNavigate();
 	const { subreddit, category, postId } = useParams();
 	const [showComments, setShowComments] = useState(false);
-	const modalRef = useRef<HTMLDivElement>(null);
 	const { isPortrait } = useDisplay();
 
 	const { data: post } = useFetchPostsBySubredditQuery(category, {
@@ -20,84 +19,56 @@ const PostModal = () => {
 		},
 	});
 
-	useEffect(() => {
-		// Pause preview videos when modal is open
-		const videos = document.querySelectorAll("video");
-		videos.forEach((vid) => {
-			// Skip videos inside the modal
-			if (!modalRef.current?.contains(vid)) {
-				vid.pause();
-			}
-		});
-	}, []);
-
-	useEffect(() => {
-		const clickEvent = (e: MouseEvent) => {
-			if (modalRef.current && !modalRef.current.contains(e.target as Node))
-				navigate(-1);
-		};
-		document.addEventListener("mousedown", clickEvent);
-
-		return () => {
-			document.removeEventListener("mousedown", clickEvent);
-		};
-	}, [navigate]);
-
 	if (!post) return <p>Post Not Found - {postId}</p>;
 
+	const selfText = decodeHtml(post.selftext_html);
+
 	console.log("PostModal Render");
+	console.log("SelfText", selfText);
 
 	return (
-		<div className="fixed inset-0 z-40 bg-black/90 flex justify-center items-center p-2">
+		<>
+			{/* Header - r/ u/ close btn */}
+			<div className="flex justify-between items-center w-full">
+				<div>
+					<p className="text-sm">r/{post.subreddit}</p>
+					<div className="flex justify-start items-center gap-1">
+						<p className="text-xs">u/{post.author}</p>
+						<p>&#8226;</p>
+						<p className="text-xs">{getCreatedTime(post.created_utc)}</p>
+					</div>
+				</div>
+				<button onClick={() => navigate(-1)}>x</button>
+			</div>
+			{/* Main content: Post + Comments layout */}
 			<div
-				ref={modalRef}
 				className={clsx(
-					"flex flex-col h-full bg-[#121212] rounded-md p-3 box-shadow-thin overflow-hidden min-w-full lg:min-w-[900px] ",
-					{ "w-full": showComments }
+					"flex flex-1 overflow-hidden flex-col md:flex-row gap-2"
 				)}
 			>
-				{/* Header - r/ u/ close btn */}
-				<div className="flex justify-between items-center w-full">
-					<div>
-						<p className="text-sm">r/{post.subreddit}</p>
-						<div className="flex justify-start items-center gap-1">
-							<p className="text-xs">u/{post.author}</p>
-							<p>&#8226;</p>
-							<p className="text-xs">{getCreatedTime(post.created_utc)}</p>
-						</div>
-					</div>
-					<button onClick={() => navigate(-1)}>x</button>
-				</div>
-				{/* Main content: Post + Comments layout */}
+				{/* Left/Top: Post + Button */}
 				<div
-					className={clsx(
-						"flex flex-1 overflow-hidden flex-col md:flex-row gap-2"
-					)}
+					className={clsx("flex flex-col overflow-hidden flex-1 min-h-[40%] ", {
+						"max-w-[40%]": !isPortrait && showComments,
+					})}
 				>
-					{/* Left/Top: Post + Button */}
-					<div
-						className={clsx(
-							"flex flex-col overflow-hidden flex-1 min-h-[40%] ",
-							{ "max-w-[40%]": !isPortrait && showComments }
-						)}
+					<Post post={post} />
+					<button
+						className="w-full"
+						onClick={() => setShowComments((prev) => !prev)}
 					>
-						<Post post={post} />
-						<button
-							className="w-full"
-							onClick={() => setShowComments((prev) => !prev)}
-						>
-							{showComments ? "Hide Comments" : "Show Comments"}
-						</button>
-					</div>
-					{/* Right/Bottom: Comments */}
-					{showComments && (
-						<div className={clsx("flex-1 min-h-0 w-full")}>
-							<Comments />
-						</div>
-					)}
+						{showComments ? "Hide Comments" : "Show Comments"}
+					</button>
 				</div>
+				<div className="">{post.selftext}</div>
+				{/* Right/Bottom: Comments */}
+				{showComments && (
+					<div className={clsx("flex-1 min-h-0 w-full")}>
+						<Comments />
+					</div>
+				)}
 			</div>
-		</div>
+		</>
 	);
 };
 

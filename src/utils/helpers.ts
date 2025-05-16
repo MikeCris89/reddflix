@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import {
 	isGalleryPost,
 	isGifPost,
@@ -60,5 +61,18 @@ export const formatCounts = (num: number = 0): string => {
 export const decodeHtml = (html: string) => {
 	const txt = document.createElement("textarea");
 	txt.innerHTML = html;
-	return txt.value;
+
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(txt.value, "text/html");
+	doc.querySelectorAll("a").forEach((a) => {
+		a.setAttribute("target", "_blank");
+		a.setAttribute("rel", "noopener noreferrer");
+	});
+
+	const dirty = doc.body.innerHTML;
+	const clean = DOMPurify.sanitize(dirty, {
+		ADD_ATTR: ["target"],
+	});
+
+	return clean;
 };

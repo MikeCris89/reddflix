@@ -12,7 +12,7 @@ declare global {
 }
 
 const Home = () => {
-	const { postId } = useParams();
+	//const { postId } = useParams();
 	// const { data: newsData } = useFetchPostsBySubredditQuery("worldnews");
 	const { data: funnyData, refetch: refetchFunny } =
 		useFetchPostsBySubredditQuery("funny", {
@@ -61,11 +61,11 @@ const Home = () => {
 	return (
 		<div
 			className={clsx(
-				"flex-1 w-full relative",
-				postId ? "overflow-hidden" : "overflow-y-auto"
+				"flex-1 w-full relative overflow-y-auto"
+				//postId ? "overflow-hidden" : "overflow-y-auto"
 			)}
 		>
-			{postId && <PostModal />}
+			{/* {postId && <PostModal />} */}
 			{/* <ScrollContainer
 				data={newsData.posts}
 				title="WorldNews"

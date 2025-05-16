@@ -1,8 +1,21 @@
-import { Outlet } from "react-router-dom";
+import {
+	Location,
+	Route,
+	Routes,
+	useLocation,
+	useRoutes,
+} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useEffect } from "react";
+import Modal from "./Modal";
+import { childRoutes } from "../utils/router";
 
 const Root = () => {
+	const location = useLocation();
+	const state = location.state as { backgroundLocation?: Location };
+	const backgroundLocation = state?.backgroundLocation;
+	const elements = useRoutes(childRoutes, backgroundLocation || location);
+
 	useEffect(() => {
 		// pause preview videos when not visible
 		const handleVisibilityChange = () => {
@@ -18,8 +31,14 @@ const Root = () => {
 
 	return (
 		<div className="h-full w-full flex flex-col justify-between overflow-hidden">
-			<Outlet />
 			<Navbar />
+
+			{backgroundLocation && (
+				<Routes>
+					<Route path="/:category/:postId" element={<Modal />} />
+				</Routes>
+			)}
+			{elements}
 		</div>
 	);
 };
