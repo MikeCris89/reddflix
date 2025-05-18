@@ -28,7 +28,7 @@ const ScrollContainer = ({
 			</h2>
 			<div
 				className={clsx(
-					"flex items-center gap-4 p-2 overflow-x-auto overflow-y-hidden h-[300px]",
+					"flex items-center gap-4 p-2 overflow-x-auto overflow-y-hidden ",
 					direction === "row" ? "flex-row" : "flex-col"
 				)}
 			>

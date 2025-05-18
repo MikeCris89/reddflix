@@ -20,14 +20,13 @@ const Modal = () => {
 
 	return (
 		<div
-			className="fixed inset-0 z-40 bg-black/40 flex justify-center items-center p-2"
+			className="fixed inset-0 z-40 bg-black/70 flex justify-center items-center p-2"
 			onClick={() => navigate(-1)}
 		>
 			<div
 				ref={modalRef}
 				className={clsx(
-					"flex flex-col h-full bg-[#121212] rounded-md p-3 box-shadow-thin overflow-hidden min-w-full lg:min-w-[900px] z-60"
-					//{ "w-full": showComments }
+					"flex flex-col h-full bg-[#121212] rounded-md p-3 box-shadow-thin overflow-hidden min-w-full lg:min-w-[700px] max-w-[full] md:max-w-[95%] max-h-[full] md:max-h-[90%] z-60"
 				)}
 				onClick={(e) => e.stopPropagation()}
 			>

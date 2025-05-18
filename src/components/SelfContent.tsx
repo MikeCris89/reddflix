@@ -5,19 +5,21 @@ import { ContentMode, MODE } from "../utils/types";
 import { decodeHtml } from "../utils/helpers";
 import HTML from "./HTML";
 
+const demo =
+	'<div class="md"><p>This is <strong>bold</strong>, <em>italic</em>, and <del>struck through</del>.</p><p>Spoiler: <span class="md-spoiler-text">Snape kills Dumbledore</span></p><p><a href="https://reddit.com/r/funny">Reddit Link</a></p><p>Code: <code>console.log("hi")</code></p><pre><code>function test() {return true;}</code></pre><blockquote><p>This is a quote block</p></blockquote><ul><li>List item 1</li><li>List item 2</li></ul><p>Here\'s a horizontal rule:</p><hr /><p>1st<sup>2</sup> = 1</p></div>';
+
 const SelfContent = ({ post, mode }: { post: SelfPost; mode: ContentMode }) => {
 	return (
 		<>
 			{mode === MODE.preview && (
-				<ContentBadge badge={<MessageCircle size={14} />}>
-					<div
-						className="prose prose-invert max-w-none text-base md:text-lg"
-						dangerouslySetInnerHTML={{ __html: decodeHtml(post.selftext_html) }}
-					/>
-				</ContentBadge>
+				<div className="h-full overflow-hidden">
+					<ContentBadge badge={<MessageCircle size={14} />}>
+						<HTML text={post.selftext_html} />
+					</ContentBadge>
+				</div>
 			)}
 			{mode === MODE.full && (
-				<div className="h-full overflow-y-auto max-w-[50%]">
+				<div className="h-full w-auto overflow-y-auto ">
 					<HTML text={post.selftext_html} />
 				</div>
 			)}

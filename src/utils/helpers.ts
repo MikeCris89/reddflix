@@ -74,5 +74,8 @@ export const decodeHtml = (html: string) => {
 		ADD_ATTR: ["target"],
 	});
 
-	return clean;
+	const match = clean.match(/^<div[^>]*>([\s\S]*)<\/div>$/);
+	const cleanBody = match ? match[1] : clean;
+
+	return cleanBody;
 };

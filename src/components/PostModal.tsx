@@ -1,17 +1,25 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
 import { useState } from "react";
 import Post from "../features/reddit/Post";
-import { decodeHtml, getCreatedTime } from "../utils/helpers";
+import { getCreatedTime } from "../utils/helpers";
 import clsx from "clsx";
 import Comments from "../features/reddit/Comments";
 import useDisplay from "../hooks/useDisplay";
+import { isSelfPost } from "../features/reddit/redditTypes";
 
 const PostModal = () => {
 	const navigate = useNavigate();
-	const { subreddit, category, postId } = useParams();
+	const { category, postId } = useParams();
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
+	const location = useLocation();
+	const state = location.state as { backgroundLocation?: Location };
+	const backgroundLocation = state?.backgroundLocation;
+
+	const toggleComments = () => {
+		setShowComments((prev) => !prev);
+	};
 
 	const { data: post } = useFetchPostsBySubredditQuery(category, {
 		selectFromResult: ({ data }) => {
@@ -21,15 +29,12 @@ const PostModal = () => {
 
 	if (!post) return <p>Post Not Found - {postId}</p>;
 
-	const selfText = decodeHtml(post.selftext_html);
-
 	console.log("PostModal Render");
-	console.log("SelfText", selfText);
 
 	return (
 		<>
 			{/* Header - r/ u/ close btn */}
-			<div className="flex justify-between items-center w-full">
+			<div className="flex justify-between items-center w-full p-1">
 				<div>
 					<p className="text-sm">r/{post.subreddit}</p>
 					<div className="flex justify-start items-center gap-1">
@@ -38,7 +43,11 @@ const PostModal = () => {
 						<p className="text-xs">{getCreatedTime(post.created_utc)}</p>
 					</div>
 				</div>
-				<button onClick={() => navigate(-1)}>x</button>
+				{backgroundLocation && <button onClick={() => navigate(-1)}>x</button>}
+			</div>
+			{/* Title */}
+			<div className="w-full pl-1">
+				<h2 className="text-lg font-semibold">{post.title}</h2>
 			</div>
 			{/* Main content: Post + Comments layout */}
 			<div
@@ -52,19 +61,19 @@ const PostModal = () => {
 						"max-w-[40%]": !isPortrait && showComments,
 					})}
 				>
-					<Post post={post} />
-					<button
-						className="w-full"
-						onClick={() => setShowComments((prev) => !prev)}
-					>
-						{showComments ? "Hide Comments" : "Show Comments"}
-					</button>
+					<Post post={post} toggleComments={toggleComments} />
 				</div>
-				<div className="">{post.selftext}</div>
+				{!isSelfPost(post) && <div className="">{post.selftext}</div>}
+
 				{/* Right/Bottom: Comments */}
-				{showComments && (
-					<div className={clsx("flex-1 min-h-0 w-full")}>
-						<Comments />
+				{showComments && post.num_comments > 0 && (
+					<div className={clsx("flex-1 min-h-0 w-full h-full")}>
+						<Comments hideComments={toggleComments} />
+					</div>
+				)}
+				{showComments && post.num_comments === 0 && (
+					<div className=" text-center flex-1 my-10 max-h-[75px]">
+						<p className="text-lg w-full text-center">No Comments</p>
 					</div>
 				)}
 			</div>

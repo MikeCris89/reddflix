@@ -5,15 +5,16 @@ import { RedditPost } from "./redditTypes";
 import clsx from "clsx";
 import InfoBubble from "../../components/InfoBubble";
 
-const Post = ({ post }: { post: RedditPost }) => {
+const Post = ({
+	post,
+	toggleComments,
+}: {
+	post: RedditPost;
+	toggleComments: () => void;
+}) => {
 	console.log("Post Render");
 	return (
 		<div className={clsx("flex flex-col flex-1 overflow-hidden")}>
-			{/* Title */}
-			<div className="w-full pl-1">
-				<h2 className="text-lg font-semibold">{post.title}</h2>
-			</div>
-
 			{/* Post */}
 			<div
 				className={clsx(
@@ -27,7 +28,11 @@ const Post = ({ post }: { post: RedditPost }) => {
 			<div className="flex justify-between items-center w-full gap-10 p-3">
 				<div className="flex gap-2">
 					<InfoBubble icon={BUBBLE_ICON.score} text={post.score} />
-					<InfoBubble icon={BUBBLE_ICON.chat} text={post.num_comments} />
+					<InfoBubble
+						icon={BUBBLE_ICON.chat}
+						text={post.num_comments}
+						onClick={toggleComments}
+					/>
 					<InfoBubble icon={BUBBLE_ICON.share} />
 				</div>
 				<a
