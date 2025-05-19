@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { redditApi } from "../features/reddit/redditApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import localForage from "localforage"; // for IndexedDB support
 import {
@@ -12,6 +11,8 @@ import {
 	PURGE,
 	REGISTER,
 } from "redux-persist";
+import { redditApi } from "../features/reddit/redditApi";
+import { localAppApi } from "../features/localApp/localAppApi";
 
 // RTK Query cache is stored under 'api.reducerPath'
 const persistConfig = {
@@ -19,6 +20,12 @@ const persistConfig = {
 	storage: localForage,
 	version: 1,
 };
+
+localForage.config({
+	name: "reddflix-persist",
+	storeName: "redux-cache",
+	description: "Redux persist storage for Reddit API cache",
+});
 
 export const persistedReducer = persistReducer(
 	persistConfig,
@@ -28,6 +35,7 @@ export const persistedReducer = persistReducer(
 export const store = configureStore({
 	reducer: {
 		[redditApi.reducerPath]: persistedReducer,
+		[localAppApi.reducerPath]: localAppApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
@@ -35,7 +43,7 @@ export const store = configureStore({
 				// These actions are used internally by redux-persist
 				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
 			},
-		}).concat(redditApi.middleware),
+		}).concat(redditApi.middleware, localAppApi.middleware),
 });
 
 // 👇 Dev-only access to Redux store

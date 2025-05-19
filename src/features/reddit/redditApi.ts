@@ -144,7 +144,8 @@ export const redditApi = createApi({
 			},
 		}),
 		searchPosts: builder.query({
-			query: (searchTerm) => `search.json?q=${encodeURIComponent(searchTerm)}`,
+			query: (searchTerm) =>
+				`search.json?q=${encodeURIComponent(searchTerm)}&sort=top`,
 			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
 				response: RedditListing<RawRedditPost>

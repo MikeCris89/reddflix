@@ -11,3 +11,14 @@ export const BUBBLE_ICON = {
 	share: "share",
 	link: "link",
 } as const;
+
+export type Categories = Record<string, Category>;
+
+export interface Category {
+	title: string;
+	keywords: string;
+	active: boolean;
+	ttl: number;
+}
+
+export type SeenPosts = Record<string, boolean>;
