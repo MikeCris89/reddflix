@@ -89,13 +89,13 @@ const Home = () => {
 				category="confession"
 			/>
 			<ScrollContainer data={artistData.posts} title="Artists" /> */}
-			<StickyTest />
 		</div>
 	);
 };
 
 export default Home;
 
+// Test Component for sticky icon on scrollable container
 function StickyTest() {
 	return (
 		<div className="h-screen p-4 overflow-auto bg-black text-white">

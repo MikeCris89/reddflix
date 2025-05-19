@@ -39,3 +39,11 @@ body,
 .comment-section {
 	scroll-padding-top: 80px;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+.hide-scrollbar {
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
+}
