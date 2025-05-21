@@ -1,10 +1,13 @@
-import { useParams } from "react-router-dom";
 import ScrollContainer from "../components/ScrollContainer";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
-import PostModal from "../components/PostModal";
 import clsx from "clsx";
 import { store } from "../app/store";
 import { MinusCircle } from "lucide-react";
+import {
+	useFetchCategoriesQuery,
+	useSetAllCategoriesMutation,
+} from "../features/localApp/localAppApi";
+import { defaultCategories } from "../utils/defaultCategories";
 
 declare global {
 	interface Window {
@@ -13,34 +16,25 @@ declare global {
 }
 
 const Home = () => {
-	//const { postId } = useParams();
-	// const { data: newsData } = useFetchPostsBySubredditQuery("worldnews");
-	const { data: funnyData, refetch: refetchFunny } =
-		useFetchPostsBySubredditQuery("funny", {
-			refetchOnMountOrArgChange: false,
-			refetchOnReconnect: false,
-			refetchOnFocus: false,
-		});
+	const { data: categories, isLoading, error } = useFetchCategoriesQuery();
+	const [setCategories] = useSetAllCategoriesMutation();
+	if (categories && categories.length === 0) {
+		setCategories(defaultCategories);
+	}
 
-	const { data: codeData, refetch: refetchCode } =
-		useFetchPostsBySubredditQuery("learnprogramming", {
-			refetchOnMountOrArgChange: false,
-			refetchOnReconnect: false,
-			refetchOnFocus: false,
-		});
-	// const { data: gifData } = useFetchPostsBySubredditQuery("gifs");
-	// const { data: confessData } = useFetchPostsBySubredditQuery("confession");
-	// const { data: artistData } = useFetchPostsBySubredditQuery("ARTIST");
+	// const { data: funnyData, refetch: refetchFunny } =
+	// 	useFetchPostsBySubredditQuery("funny", {
+	// 		refetchOnMountOrArgChange: false,
+	// 		refetchOnReconnect: false,
+	// 		refetchOnFocus: false,
+	// 	});
 
-	// if (!newsData || !funnyData || !gifData || !confessData || !artistData)
-	// 	return null;
-	console.log("code", codeData);
-	console.log("funny", funnyData);
-	//if (!funnyData || !codeData) return null;
-	// console.log("news", newsData);
-	//console.log("funny", funnyData);
-	// console.log("gifs", gifData);
-	// console.log("arist", artistData);
+	// const { data: codeData, refetch: refetchCode } =
+	// 	useFetchPostsBySubredditQuery("learnprogramming", {
+	// 		refetchOnMountOrArgChange: false,
+	// 		refetchOnReconnect: false,
+	// 		refetchOnFocus: false,
+	// 	});
 
 	const showCache = (storeName: string) => {
 		const store_ = window.store;
@@ -66,13 +60,19 @@ const Home = () => {
 				//postId ? "overflow-hidden" : "overflow-y-auto"
 			)}
 		>
+			{categories &&
+				!isLoading &&
+				!error &&
+				categories.map((cat) => {
+					return <ScrollContainer data={cat} />;
+				})}
 			{/* {postId && <PostModal />} */}
 			{/* <ScrollContainer
 				data={newsData.posts}
 				title="WorldNews"
 				category="worldnews"
 			/> */}
-			<button onClick={refetchFunny}>Refetch</button>
+			{/* <button onClick={refetchFunny}>Refetch</button>
 			<button onClick={() => showCache("funny")}>Check Cache</button>
 			<ScrollContainer data={funnyData?.posts} title="Funny" category="funny" />
 			<button onClick={refetchCode}>Refetch</button>
@@ -81,7 +81,7 @@ const Home = () => {
 				data={codeData?.posts}
 				title="Coding"
 				category="learnprogramming"
-			/>
+			/> */}
 			{/* <ScrollContainer data={gifData.posts} title="Gifs" category="gifs" />
 			<ScrollContainer
 				data={confessData.posts}

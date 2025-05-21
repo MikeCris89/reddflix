@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
 import { useRef } from "react";
+import { useLazySearchPostsQuery } from "../features/reddit/redditApi";
 
 interface Props {
 	data: RedditPost[] | undefined;
@@ -15,7 +16,6 @@ interface Props {
 }
 
 const ScrollContainer = ({
-	data,
 	title,
 	direction = "row",
 	category,
@@ -24,8 +24,12 @@ const ScrollContainer = ({
 	const navigate = useNavigate();
 	const { isMobile } = useDisplay();
 	const location = useLocation();
-	const nav = category || subreddit;
+
+	const [getCategoryPosts, { data, isLoading, error, isError, isFetching }] =
+		useLazySearchPostsQuery();
+
 	const scrollRef = useRef<HTMLDivElement>(null);
+	const nav = category || subreddit;
 
 	const postWidth = 280;
 
@@ -35,6 +39,7 @@ const ScrollContainer = ({
 			behavior: "smooth",
 		});
 	};
+
 	return (
 		<div className="flex flex-col p-1">
 			<h2 className="text-xl font-extrabold bg-red-600 text-black p-1 pl-2">
@@ -55,7 +60,7 @@ const ScrollContainer = ({
 					className="flex items-center gap-4 p-2 overflow-x-auto overflow-y-hidden hide-scrollbar"
 				>
 					{data &&
-						data.map((post) => (
+						data.posts.map((post) => (
 							<div
 								key={post.id}
 								className="h-full cursor-pointer"
@@ -68,7 +73,7 @@ const ScrollContainer = ({
 								<PostCard post={post} />
 							</div>
 						))}
-					{!data && <p>No Data</p>}
+					{isError && error && <p>Error getting data from Reddit.</p>}
 				</div>
 			</div>
 		</div>

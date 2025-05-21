@@ -1,5 +1,5 @@
-import { Category, SeenPosts } from "./../../utils/types";
-import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query";
+import { Category, RequestMonitor, SeenPosts } from "./../../utils/types";
+import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
 	deleteItem,
 	getAllFromStore,
@@ -10,8 +10,10 @@ import {
 export const localAppApi = createApi({
 	reducerPath: "localAppApi",
 	baseQuery: fakeBaseQuery(),
-	tagTypes: ["categories", "settings", "seenPosts"],
+	tagTypes: ["categories", "settings", "seenPosts", "requestMonitor"],
 	endpoints: (build) => ({
+		// ===== CATEGORIES =====
+		// =======================
 		fetchCategories: build.query<Category[], void>({
 			async queryFn() {
 				const data = await getAllFromStore<Category>("categories");
@@ -19,6 +21,43 @@ export const localAppApi = createApi({
 			},
 			providesTags: ["categories"],
 		}),
+		setCategory: build.mutation({
+			async queryFn(args: { title: string; value: Category }) {
+				const data = await setItem("categories", args.title, args.value);
+				return { data };
+			},
+			invalidatesTags: ["categories"],
+		}),
+		setAllCategories: build.mutation({
+			async queryFn(categories: Category[]) {
+				const data = await Promise.all(
+					categories.map((cat) => setItem("categories", cat.title, cat))
+				);
+				return { data };
+			},
+			invalidatesTags: ["categories"],
+		}),
+		setCategoryTTL: build.mutation({
+			async queryFn(title: string) {
+				const existing = await getItem<Category>("categories", title);
+				if (!existing) return { error: new Error("Category not found") };
+				const ttl = 1000 * 60 * 60 * 3;
+				const updated = { ...existing, ttl: Date.now() + ttl };
+				const data = await setItem("categories", title, updated);
+				return { data };
+			},
+			invalidatesTags: ["categories"],
+		}),
+		deleteCategory: build.mutation({
+			async queryFn(title: string) {
+				await deleteItem("categories", title);
+				await deleteItem("seenPosts", title);
+				return { data: true };
+			},
+			invalidatesTags: ["categories", "seenPosts"],
+		}),
+		// ====== SETTINGS ======
+		// =======================
 		fetchSettings: build.query({
 			async queryFn() {
 				const data = (await getAllFromStore("settings")) || [];
@@ -26,6 +65,8 @@ export const localAppApi = createApi({
 			},
 			providesTags: ["settings"],
 		}),
+		// ===== SEEN POSTS =====
+		// =======================
 		fetchSeenPosts: build.query<Record<string, SeenPosts>, string[]>({
 			async queryFn(categories: string[]) {
 				const cats = Array.isArray(categories) ? categories : [categories];
@@ -39,22 +80,6 @@ export const localAppApi = createApi({
 				return { data };
 			},
 			providesTags: ["seenPosts"],
-		}),
-		setCategory: build.mutation({
-			async queryFn(args: { title: string; value: Category }) {
-				const data = await setItem("categories", args.title, args.value);
-				return { data };
-			},
-			invalidatesTags: ["categories"],
-		}),
-		setActiveCategories: build.mutation({
-			async queryFn(categories: Category[]) {
-				const data = await Promise.all(
-					categories.map((cat) => setItem("categories", cat.title, cat))
-				);
-				return { data };
-			},
-			invalidatesTags: ["categories"],
 		}),
 		setSeenPost: build.mutation({
 			async queryFn(args: { category: string; postId: string }) {
@@ -87,25 +112,85 @@ export const localAppApi = createApi({
 				await setItem("seenPosts", args.category, updated);
 				return { data: true };
 			},
+			invalidatesTags: ["seenPosts"],
 		}),
-		setCategoryTTL: build.mutation({
-			async queryFn(title: string) {
-				const existing = await getItem<Category>("categories", title);
-				if (!existing) return { error: new Error("Category not found") };
-				const ttl = 1000 * 60 * 60 * 3;
-				const updated = { ...existing, ttl: Date.now() + ttl };
-				const data = await setItem("categories", title, updated);
+		// === REQUEST MONITOR ===
+		// =======================
+		fetchRequestMonitor: build.query({
+			async queryFn() {
+				const data = await getAllFromStore("requestMonitor");
 				return { data };
 			},
-			invalidatesTags: ["categories"],
+			providesTags: ["requestMonitor"],
 		}),
-		deleteCategory: build.mutation({
-			async queryFn(title: string) {
-				await deleteItem("categories", title);
-				await deleteItem("seenPosts", title); // Clean up
-				return { data: true };
+		fetchRequestLimit: build.query<
+			{
+				ok: boolean;
+				delayMs: number;
+				reason: "ban" | "rateLimit" | undefined;
 			},
-			invalidatesTags: ["categories", "seenPosts"],
+			void
+		>({
+			async queryFn() {
+				const bannedUntil = await getItem<number>(
+					"requestMonitor",
+					"bannedUntil"
+				);
+
+				if (bannedUntil && Date.now() < bannedUntil)
+					return {
+						data: {
+							ok: false,
+							delayMs: bannedUntil - Date.now(),
+							reason: "ban",
+						},
+					};
+				const recent =
+					(await getItem<number[]>("requestMonitor", "recent")) || [];
+				if (recent.length < 10)
+					return { data: { ok: true, delayMs: 0, reason: undefined } };
+				const delayMs = 63_000 - (Date.now() - recent[0]);
+				return { data: { ok: false, delayMs, reason: "rateLimit" } };
+			},
+			providesTags: ["requestMonitor"],
+		}),
+		setRequestTime: build.mutation<unknown, void>({
+			async queryFn() {
+				const store = "requestMonitor";
+				const key = "recent";
+				const now = Date.now();
+				const existing = await getItem<number[]>(store, key);
+				const recent = (existing || []).filter((t) => now - t < 63_000);
+				const data = await setItem(store, key, [...recent, now]);
+				return { data };
+			},
+			invalidatesTags: ["requestMonitor"],
+		}),
+		setBannedUntil: build.mutation<number, void>({
+			async queryFn() {
+				const store = "requestMonitor";
+				const key = "bannedUntil";
+				const currTime = Date.now();
+				const existing = await getItem<number>(store, key);
+				let delay = 1000 * 60 * 60 * 2;
+				// if resp is another 403 within 3 hours of previous, delay further to 6 hours.
+				if (existing && currTime - existing <= delay * 3) delay *= 3;
+				await setItem<number>(store, key, currTime + delay);
+				return { data: delay };
+			},
+			invalidatesTags: ["requestMonitor"],
 		}),
 	}),
 });
+
+export const {
+	useFetchCategoriesQuery,
+	useFetchSeenPostsQuery,
+	useFetchSettingsQuery,
+	useSetAllCategoriesMutation,
+	useSetCategoryMutation,
+	useSetCategoryTTLMutation,
+	useSetSeenPostMutation,
+	useClearSeenPostsForCategoryMutation,
+	useDeleteCategoryMutation,
+} = localAppApi;

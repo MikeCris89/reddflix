@@ -8,5 +8,7 @@ export const dbPromise = openDB("reddflix-db", 1, {
 			db.createObjectStore("categories");
 		if (!db.objectStoreNames.contains("seenPosts"))
 			db.createObjectStore("seenPosts");
+		if (!db.objectStoreNames.contains("requestMonitor"))
+			db.createObjectStore("requestMonitor");
 	},
 });

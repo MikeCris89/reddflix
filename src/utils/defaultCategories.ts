@@ -15,7 +15,7 @@ export const defaultCategories: Category[] = [
 	},
 	{
 		title: "Nature & Animals",
-		active: true,
+		active: false,
 		keywords: "nature wildlife animals cute dogs cats ocean forest birds",
 		ttl: 0,
 	},
@@ -39,13 +39,13 @@ export const defaultCategories: Category[] = [
 	},
 	{
 		title: "DIY & Crafts",
-		active: true,
+		active: false,
 		keywords: "diy crafts handmade woodworking home improvement projects",
 		ttl: 0,
 	},
 	{
 		title: "Art & Design",
-		active: true,
+		active: false,
 		keywords: "art design digitalart illustration drawing painting aesthetic",
 		ttl: 0,
 	},

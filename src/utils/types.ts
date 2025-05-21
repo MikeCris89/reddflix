@@ -22,3 +22,8 @@ export interface Category {
 }
 
 export type SeenPosts = Record<string, boolean>;
+
+export interface RequestMonitor {
+	recent: number[];
+	bannedUntil?: number;
+}

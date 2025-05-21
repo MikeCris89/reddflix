@@ -1,4 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+	BaseQueryFn,
+	createApi,
+	FetchArgs,
+	fetchBaseQuery,
+	FetchBaseQueryError,
+} from "@reduxjs/toolkit/query/react";
 import {
 	isValidRedditComment,
 	PostAndCommentsResponse,
@@ -13,6 +19,8 @@ import {
 	RefinedCommentBase,
 } from "./redditTypes";
 import { getPostType } from "../../utils/helpers";
+import { localAppApi } from "../localApp/localAppApi";
+import { RootState } from "../../app/store";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -105,9 +113,74 @@ const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
 	return base;
 };
 
+const customBaseQuery: BaseQueryFn<
+	string | FetchArgs,
+	unknown,
+	FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+	const state = api.getState() as RootState;
+	const requestLimit =
+		localAppApi.endpoints.fetchRequestLimit.select()(state)?.data;
+
+	// Check rate limiting and request ban delay
+	if (requestLimit && !requestLimit.ok) {
+		let msg = "Error communicating with Reddit.";
+		if (requestLimit.reason === "ban")
+			msg = `Reddit has temporarily blocked further requests. Retry at ${new Date(
+				Date.now() + requestLimit.delayMs
+			).toLocaleString()}`;
+		else {
+			const seconds = Math.ceil(requestLimit.delayMs / 1000);
+			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
+		}
+
+		throw Object.assign(new Error(msg), { delay: requestLimit.delayMs });
+	}
+
+	// add request to rate limit list
+	api.dispatch(localAppApi.endpoints.setRequestTime.initiate());
+
+	const rawBaseQuery = fetchBaseQuery({ baseUrl: "https://www.reddit.com/" });
+	const result = await rawBaseQuery(args, api, extraOptions);
+
+	// Set request ban for 403 errors and throw for other errors
+	if (result.error) {
+		let delay = 0;
+		if (result.error.status === 403) {
+			try {
+				const resp = await api
+					.dispatch(localAppApi.endpoints.setBannedUntil.initiate())
+					.unwrap();
+				delay = resp && resp > 0 ? resp : 1000 * 60 * 60;
+			} catch {
+				delay = 1000 * 60 * 60;
+			}
+			throw Object.assign(
+				new Error(
+					`Reddit has temporarily blocked further requests. Retry at ${new Date(
+						Date.now() + delay
+					).toLocaleString()}`
+				),
+				{
+					delay,
+				}
+			);
+		} else {
+			throw Object.assign(
+				new Error(`Error communicating with Reddit. Retrying in 30s`),
+				{
+					delay: 30_000,
+				}
+			);
+		}
+	}
+
+	return result;
+};
+
 export const redditApi = createApi({
 	reducerPath: "redditApi",
-	baseQuery: fetchBaseQuery({ baseUrl: "https://www.reddit.com/" }),
+	baseQuery: customBaseQuery,
 	endpoints: (builder) => ({
 		fetchPostsBySubreddit: builder.query({
 			query: (subreddit) => `r/${subreddit}.json`,
@@ -152,10 +225,8 @@ export const redditApi = createApi({
 			): RedditPostsPage => {
 				console.log("searchPosts endpoint network request.");
 				if (
-					!response ||
-					!response.data ||
-					!Array.isArray(response.data.children) ||
-					response.data.children.length === 0
+					!response?.data?.children ||
+					!Array.isArray(response.data.children)
 				) {
 					throw new Error("Invalid Reddit response");
 				}
@@ -164,7 +235,7 @@ export const redditApi = createApi({
 					posts: response.data.children.map((post) => refinePost(post.data)),
 				};
 			},
-			onQueryStarted(arg, { queryFulfilled }) {
+			onQueryStarted(arg, { queryFulfilled, dispatch }) {
 				console.log(`searchPosts(${arg}) network request started.`);
 
 				queryFulfilled
@@ -216,6 +287,8 @@ export const redditApi = createApi({
 
 export const {
 	useFetchPostsBySubredditQuery,
+	useLazyFetchPostsBySubredditQuery,
 	useSearchPostsQuery,
+	useLazySearchPostsQuery,
 	useFetchPostAndCommentsQuery,
 } = redditApi;
