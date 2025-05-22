@@ -10,6 +10,9 @@ import {
 	RawRedditPost,
 	RedditPost,
 } from "../features/reddit/redditTypes";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
+import { createElement } from "react";
 
 // export const getPostType = (post: RedditPost): keyof typeof POST_TYPES => {
 // 	if (isVideoPost(post)) return POST_TYPES.video;
@@ -59,23 +62,37 @@ export const formatCounts = (num: number = 0): string => {
 };
 
 export const decodeHtml = (html: string) => {
+	// Decode HTML entities (like &lt; &gt; etc.)
 	const txt = document.createElement("textarea");
 	txt.innerHTML = html;
 
+	// Sanitize decoded HTML
+	const clean = DOMPurify.sanitize(txt.value);
+
+	// Add safe link behavior
 	const parser = new DOMParser();
-	const doc = parser.parseFromString(txt.value, "text/html");
+	const doc = parser.parseFromString(clean, "text/html");
 	doc.querySelectorAll("a").forEach((a) => {
+		a.setAttribute("data-clickable", "true");
 		a.setAttribute("target", "_blank");
 		a.setAttribute("rel", "noopener noreferrer");
 	});
 
-	const dirty = doc.body.innerHTML;
-	const clean = DOMPurify.sanitize(dirty, {
-		ADD_ATTR: ["target"],
-	});
+	const safeHtml = doc.body.innerHTML;
 
-	const match = clean.match(/^<div[^>]*>([\s\S]*)<\/div>$/);
-	const cleanBody = match ? match[1] : clean;
+	// Remove outer wrapper div if present
+	const match = safeHtml.match(/^<div[^>]*>([\s\S]*)<\/div>$/);
+	return match ? match[1] : safeHtml;
+};
 
-	return cleanBody;
+export const getErrorMessage = (
+	error: FetchBaseQueryError | SerializedError
+): string => {
+	if ("status" in error) {
+		if (typeof error.data === "string") return error.data;
+		if (typeof error.data === "object") return JSON.stringify(error.data);
+		return "Unknown fetch error";
+	} else {
+		return error.message || "Unknown client error";
+	}
 };

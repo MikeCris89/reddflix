@@ -16,7 +16,17 @@ export type Categories = Record<string, Category>;
 
 export interface Category {
 	title: string;
-	keywords: string;
+	keywords?: string;
+	active: boolean;
+	subreddits?: string[];
+	ttl: number;
+}
+
+export type Subreddits = Record<string, Subreddit>;
+
+export interface Subreddit {
+	title: string;
+	name: string;
 	active: boolean;
 	ttl: number;
 }
@@ -27,3 +37,21 @@ export interface RequestMonitor {
 	recent: number[];
 	bannedUntil?: number;
 }
+
+export interface AppHandledError {
+	message: string;
+	delay: number;
+	status?: number;
+	reason?: "rateLimit" | "ban";
+}
+
+// ==== TYPEGUARDS ====
+// =======================
+
+export const isAppHandledError = (
+	error: unknown
+): error is Error & AppHandledError => {
+	return (
+		typeof error === "object" && error !== null && "isAppHandledError" in error
+	);
+};

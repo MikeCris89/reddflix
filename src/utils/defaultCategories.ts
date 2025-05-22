@@ -5,6 +5,7 @@ export const defaultCategories: Category[] = [
 		title: "Funny",
 		active: true,
 		keywords: "funny memes jokes humor hilarious standup comedy",
+		subreddits: ["funny", "memes", "comedyheaven"],
 		ttl: 0,
 	},
 	{
@@ -57,7 +58,7 @@ export const defaultCategories: Category[] = [
 	},
 	{
 		title: "Fitness & Motivation",
-		active: true,
+		active: false,
 		keywords:
 			"fitness motivation gym workout health wellness discipline progress",
 		ttl: 0,
@@ -66,6 +67,12 @@ export const defaultCategories: Category[] = [
 		title: "Programming",
 		keywords:
 			"programming code developer coding dev javascript python typescript rust c++ webdev backend frontend vscode typescript devhelp",
+		active: false,
+		ttl: 0,
+	},
+	{
+		title: "Inspiration",
+		subreddits: ["GetMotivated", "UpliftingNews", "quotes"],
 		active: true,
 		ttl: 0,
 	},

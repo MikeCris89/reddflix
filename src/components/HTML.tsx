@@ -26,23 +26,36 @@ const HTML = ({
 	useEffect(() => {
 		const container = ref.current;
 		if (!container) return;
-
+		console.log("Mounted:", text.slice(0, 100));
+		console.log("links found:", container.querySelectorAll("a").length);
 		// add spoiler class to spoiler tags
 		const spoilers = container.querySelectorAll(".md-spoiler-text");
+		const handleSpoiler = (e: Event) => {
+			(e.currentTarget as HTMLElement).classList.toggle("revealed");
+		};
 		spoilers.forEach((spoiler) => {
-			spoiler.addEventListener("click", () => {
-				spoiler.classList.toggle("revealed");
-			});
+			spoiler.addEventListener("click", handleSpoiler);
 		});
+
+		// stop propagation from a links
+		const handleClick = (e: MouseEvent) => {
+			const el = e.target as HTMLElement;
+			if (el.closest("[data-clickable]")) {
+				e.stopPropagation();
+			}
+		};
+
+		container.addEventListener("click", handleClick);
+
+		console.log(ref.current);
 
 		return () => {
 			spoilers.forEach((spoiler) => {
-				spoiler.removeEventListener("click", () => {
-					spoiler.classList.toggle("revealed");
-				});
+				spoiler.removeEventListener("click", handleSpoiler);
 			});
+			container.removeEventListener("click", handleClick);
 		};
-	}, [text]);
+	}, []);
 
 	return (
 		<>

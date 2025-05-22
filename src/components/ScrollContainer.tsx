@@ -1,37 +1,75 @@
 import clsx from "clsx";
-import { RedditPost } from "../features/reddit/redditTypes";
 import PostCard from "../features/reddit/PostCard";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
-import { useRef } from "react";
-import { useLazySearchPostsQuery } from "../features/reddit/redditApi";
+import { useEffect, useRef } from "react";
+import {
+	useFetchPostsBySubredditQuery,
+	useLazyFetchPostsBySubredditQuery,
+	useLazySearchPostsQuery,
+} from "../features/reddit/redditApi";
+import { Category, isAppHandledError, Subreddit } from "../utils/types";
 
 interface Props {
-	data: RedditPost[] | undefined;
-	title: string;
+	category?: Category;
 	direction?: "row" | "col";
-	category?: string;
-	subreddit?: string;
+	subreddit: Subreddit;
 }
 
-const ScrollContainer = ({
-	title,
-	direction = "row",
-	category,
-	subreddit,
-}: Props) => {
+const PostSkeleton = () => (
+	<div className="animate-pulse bg-zinc-800 rounded-md p-4 mb-4">
+		<div className="h-4 bg-zinc-700 rounded w-3/4 mb-2"></div>
+		<div className="h-4 bg-zinc-700 rounded w-1/2"></div>
+	</div>
+);
+
+const ScrollContainer = ({ category, direction = "row", subreddit }: Props) => {
 	const navigate = useNavigate();
 	const { isMobile } = useDisplay();
 	const location = useLocation();
 
-	const [getCategoryPosts, { data, isLoading, error, isError, isFetching }] =
-		useLazySearchPostsQuery();
+	const { data, isLoading, error, isError, refetch } =
+		useFetchPostsBySubredditQuery(subreddit.name, {
+			refetchOnMountOrArgChange: false,
+			refetchOnReconnect: false,
+			refetchOnFocus: false,
+		});
+
+	// const [
+	// 	getPostsBySubreddits,
+	// 	{ data, isLoading, error, isError, isFetching },
+	// ] = useLazyFetchPostsBySubredditQuery();
 
 	const scrollRef = useRef<HTMLDivElement>(null);
-	const nav = category || subreddit;
-
+	const nav = category?.title || subreddit.name;
 	const postWidth = 280;
+
+	useEffect(() => {
+		// getPostsBySubreddits(subreddit.name, {
+		// 	refetchOnMountOrArgChange: false,
+		// 	refetchOnReconnect: false,
+		// 	refetchOnFocus: false,
+		//   });
+		// });
+	}, []);
+
+	const showCache = (storeName: string) => {
+		const store_ = window.store;
+		if (!store_) {
+			console.warn(`Redux store ${storeName} not found on window`);
+			return;
+		}
+		const state = store_.getState();
+		const queries = state.redditApi?.queries;
+
+		for (const [key, value] of Object.entries(queries || {})) {
+			if (key.includes(`${storeName}`)) {
+				console.log(`Found ${storeName} query:`);
+				console.log(key, value);
+			}
+		}
+	};
 
 	const handleScroll = (dir: "left" | "right") => {
 		scrollRef.current?.scrollBy({
@@ -42,13 +80,17 @@ const ScrollContainer = ({
 
 	return (
 		<div className="flex flex-col p-1">
+			<div className="flex gap-2">
+				<button onClick={refetch}>Refetch</button>
+				<button onClick={() => showCache(subreddit.title)}>Check Cache</button>
+			</div>
 			<h2 className="text-xl font-extrabold bg-red-600 text-black p-1 pl-2">
-				{title}
+				{subreddit.title}
 			</h2>
 
 			<div className="relative">
 				{/* Scroll Buttons (Desktop only) */}
-				{direction === "row" && !isMobile && (
+				{direction === "row" && !isMobile && data && (
 					<>
 						<ScrollButton dir="left" onClick={handleScroll} />
 						<ScrollButton dir="right" onClick={handleScroll} />
@@ -59,21 +101,26 @@ const ScrollContainer = ({
 					ref={scrollRef}
 					className="flex items-center gap-4 p-2 overflow-x-auto overflow-y-hidden hide-scrollbar"
 				>
-					{data &&
-						data.posts.map((post) => (
-							<div
-								key={post.id}
-								className="h-full cursor-pointer"
-								onClick={() =>
-									navigate(`/${nav ? nav + "/" : ""}${post.id}`, {
-										state: { backgroundLocation: location },
-									})
-								}
-							>
-								<PostCard post={post} />
-							</div>
-						))}
-					{isError && error && <p>Error getting data from Reddit.</p>}
+					{isLoading &&
+						Array.from({ length: 5 }).map((_, i) => <PostSkeleton key={i} />)}
+					{data?.posts?.map((post) => (
+						<div
+							key={post.id}
+							className="h-full cursor-pointer"
+							onClick={() =>
+								navigate(`/${nav ? nav + "/" : ""}${post.id}`, {
+									state: { backgroundLocation: location },
+								})
+							}
+						>
+							<PostCard post={post} />
+						</div>
+					)) || []}
+					{isError && error && (
+						<p>
+							{isAppHandledError(error) ? error.message : "Error occurred."}
+						</p>
+					)}
 				</div>
 			</div>
 		</div>

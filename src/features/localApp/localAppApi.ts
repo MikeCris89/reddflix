@@ -1,4 +1,9 @@
-import { Category, RequestMonitor, SeenPosts } from "./../../utils/types";
+import {
+	Category,
+	RequestMonitor,
+	SeenPosts,
+	Subreddit,
+} from "./../../utils/types";
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
 	deleteItem,
@@ -10,7 +15,13 @@ import {
 export const localAppApi = createApi({
 	reducerPath: "localAppApi",
 	baseQuery: fakeBaseQuery(),
-	tagTypes: ["categories", "settings", "seenPosts", "requestMonitor"],
+	tagTypes: [
+		"categories",
+		"settings",
+		"seenPosts",
+		"requestMonitor",
+		"subreddits",
+	],
 	endpoints: (build) => ({
 		// ===== CATEGORIES =====
 		// =======================
@@ -55,6 +66,50 @@ export const localAppApi = createApi({
 				return { data: true };
 			},
 			invalidatesTags: ["categories", "seenPosts"],
+		}),
+		// ==== SUBREDDITS ====
+		// =======================
+		fetchSubreddits: build.query<Subreddit[], void>({
+			async queryFn() {
+				const data = await getAllFromStore<Subreddit>("subreddits");
+				return { data };
+			},
+			providesTags: ["subreddits"],
+		}),
+		setSubreddit: build.mutation({
+			async queryFn(args: { name: string; value: Subreddit }) {
+				const data = await setItem("subreddits", args.name, args.value);
+				return { data };
+			},
+			invalidatesTags: ["subreddits"],
+		}),
+		setAllSubreddits: build.mutation({
+			async queryFn(subs: Subreddit[]) {
+				const data = await Promise.all(
+					subs.map((sub) => setItem("subreddits", sub.title, sub))
+				);
+				return { data };
+			},
+			invalidatesTags: ["subreddits"],
+		}),
+		setSubredditTTL: build.mutation({
+			async queryFn(title: string) {
+				const existing = await getItem<Subreddit>("subreddits", title);
+				if (!existing) return { error: new Error("Subreddit not found") };
+				const ttl = 1000 * 60 * 60 * 3;
+				const updated = { ...existing, ttl: Date.now() + ttl };
+				const data = await setItem("subreddits", title, updated);
+				return { data };
+			},
+			invalidatesTags: ["subreddits"],
+		}),
+		deleteSubreddit: build.mutation({
+			async queryFn(title: string) {
+				await deleteItem("subreddits", title);
+				await deleteItem("seenPosts", title);
+				return { data: true };
+			},
+			invalidatesTags: ["subreddits", "seenPosts"],
 		}),
 		// ====== SETTINGS ======
 		// =======================
@@ -193,4 +248,9 @@ export const {
 	useSetSeenPostMutation,
 	useClearSeenPostsForCategoryMutation,
 	useDeleteCategoryMutation,
+	useFetchSubredditsQuery,
+	useLazyFetchSubredditsQuery,
+	useSetAllSubredditsMutation,
+	useSetSubredditMutation,
+	useSetSubredditTTLMutation,
 } = localAppApi;

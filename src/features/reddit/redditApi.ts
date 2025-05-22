@@ -134,7 +134,10 @@ const customBaseQuery: BaseQueryFn<
 			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
 		}
 
-		throw Object.assign(new Error(msg), { delay: requestLimit.delayMs });
+		throw Object.assign(new Error(msg), {
+			delay: requestLimit.delayMs,
+			isAppHandledError: true,
+		});
 	}
 
 	// add request to rate limit list
@@ -143,8 +146,11 @@ const customBaseQuery: BaseQueryFn<
 	const rawBaseQuery = fetchBaseQuery({ baseUrl: "https://www.reddit.com/" });
 	const result = await rawBaseQuery(args, api, extraOptions);
 
+	console.log("BaseQuery result:", result);
+
 	// Set request ban for 403 errors and throw for other errors
 	if (result.error) {
+		console.log("Error received:", result.error);
 		let delay = 0;
 		if (result.error.status === 403) {
 			try {
@@ -163,6 +169,7 @@ const customBaseQuery: BaseQueryFn<
 				),
 				{
 					delay,
+					isAppHandledError: true,
 				}
 			);
 		} else {
@@ -170,6 +177,7 @@ const customBaseQuery: BaseQueryFn<
 				new Error(`Error communicating with Reddit. Retrying in 30s`),
 				{
 					delay: 30_000,
+					isAppHandledError: true,
 				}
 			);
 		}

@@ -50,16 +50,11 @@ const CommentCard = ({
 }) => {
 	return (
 		<div
-			className={clsx(
-				"bg-[#1a1a1a] rounded p-2"
-				//isExpanded ? "box-shadow-cyan" : "box-shadow-thin",
-				//{ : isExpanded }
-				//isExpanded ? "bg-neutral-800 ring-1 ring-cyan-400" : "box-shadow-thin"
-			)}
+			className={clsx("bg-[#1a1a1a] rounded p-2")}
 			onClick={onClick}
 			ref={ref}
 		>
-			<p className="text-xs font-semibold pb-1 pl-2">
+			<div className="text-xs font-semibold pb-1 pl-2">
 				<div className="flex gap-1">
 					u/{c.author}
 					<p>&#8226;</p>
@@ -67,7 +62,7 @@ const CommentCard = ({
 					{c.is_submitter && <span className="text-green-400 pl-2"> OP</span>}
 					{oc && <span className="text-purple-400 pl-2"> OC</span>}
 				</div>
-			</p>
+			</div>
 			<HTML text={c.body_html} size="sm" />
 			<div className="flex gap-3 pt-1">
 				<InfoBubble icon={BUBBLE_ICON.score} text={c.score} size="sm" />

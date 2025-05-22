@@ -1,6 +1,6 @@
 import { openDB } from "idb";
 
-export const dbPromise = openDB("reddflix-db", 1, {
+export const dbPromise = openDB("reddflix-db", 2, {
 	upgrade(db) {
 		if (!db.objectStoreNames.contains("settings"))
 			db.createObjectStore("settings");
@@ -10,5 +10,7 @@ export const dbPromise = openDB("reddflix-db", 1, {
 			db.createObjectStore("seenPosts");
 		if (!db.objectStoreNames.contains("requestMonitor"))
 			db.createObjectStore("requestMonitor");
+		if (!db.objectStoreNames.contains("subreddits"))
+			db.createObjectStore("subreddits");
 	},
 });
