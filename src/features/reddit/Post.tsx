@@ -8,9 +8,11 @@ import InfoBubble from "../../components/InfoBubble";
 const Post = ({
 	post,
 	toggleComments,
+	titleAsPost,
 }: {
 	post: RedditPost;
 	toggleComments: () => void;
+	titleAsPost: boolean;
 }) => {
 	console.log("Post Render");
 	return (
@@ -21,7 +23,11 @@ const Post = ({
 					"flex justify-center items-center overflow-hidden px-1 py-2 bg-black rounded-md flex-1"
 				)}
 			>
-				<PostMedia post={post} mode={MODE.full} />
+				{titleAsPost ? (
+					<h1>{post.title}</h1>
+				) : (
+					<PostMedia post={post} mode={MODE.full} />
+				)}
 			</div>
 
 			{/* Info Buttons */}

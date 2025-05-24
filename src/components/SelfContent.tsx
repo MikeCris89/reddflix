@@ -2,7 +2,6 @@ import { MessageCircle } from "lucide-react";
 import { SelfPost } from "../features/reddit/redditTypes";
 import ContentBadge from "./ContentBadge";
 import { ContentMode, MODE } from "../utils/types";
-import { decodeHtml } from "../utils/helpers";
 import HTML from "./HTML";
 
 const demo =
@@ -12,14 +11,15 @@ const SelfContent = ({ post, mode }: { post: SelfPost; mode: ContentMode }) => {
 	return (
 		<>
 			{mode === MODE.preview && (
-				<div className="h-full overflow-hidden">
+				<div className="h-full overflow-hidden bg-black">
 					<ContentBadge badge={<MessageCircle size={14} />}>
 						<HTML text={post.selftext_html} />
 					</ContentBadge>
 				</div>
 			)}
 			{mode === MODE.full && (
-				<div className="h-full w-auto overflow-y-auto ">
+				<div className="h-full overflow-y-auto md:max-w-[400px]">
+					{console.log(post.selftext)}
 					<HTML text={post.selftext_html} />
 				</div>
 			)}

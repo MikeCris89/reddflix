@@ -29,6 +29,8 @@ const PostModal = () => {
 
 	if (!post) return <p>Post Not Found - {postId}</p>;
 
+	const titleAsPost = isSelfPost(post) && !post.selftext_html;
+
 	console.log("PostModal Render");
 
 	return (
@@ -46,9 +48,11 @@ const PostModal = () => {
 				{backgroundLocation && <button onClick={() => navigate(-1)}>x</button>}
 			</div>
 			{/* Title */}
-			<div className="w-full pl-1">
-				<h2 className="text-lg font-semibold">{post.title}</h2>
-			</div>
+			{!titleAsPost && (
+				<div className="w-full pl-1">
+					<h2 className="text-lg font-semibold">{post.title}</h2>
+				</div>
+			)}
 			{/* Main content: Post + Comments layout */}
 			<div
 				className={clsx(
@@ -61,7 +65,7 @@ const PostModal = () => {
 						"max-w-[40%]": !isPortrait && showComments,
 					})}
 				>
-					<Post post={post} toggleComments={toggleComments} />
+					<Post titleAsPost={titleAsPost} post={post} toggleComments={toggleComments} />
 				</div>
 				{!isSelfPost(post) && <div className="">{post.selftext}</div>}
 

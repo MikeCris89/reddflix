@@ -29,7 +29,7 @@ const Root = () => {
 		data: subreddits,
 		isError,
 		error,
-		isLoading: catLoading,
+		isLoading: subloading,
 	} = useFetchSubredditsQuery();
 	const [setAllSubreddits] = useSetAllSubredditsMutation();
 	const [setSubreddit] = useSetSubredditMutation();
@@ -73,9 +73,9 @@ const Root = () => {
 	}
 
 	return (
-		<div className="h-full w-full flex flex-col justify-between overflow-hidden">
+		<div className="h-full w-full flex flex-col justify-between overflow-hidden gap-1 p-1">
 			<Navbar />
-			{(isLoading || catLoading) && <Spinner />}
+			{(isLoading || subloading) && <Spinner />}
 			{subreddits && (
 				<ErrorBoundary>
 					{backgroundLocation && (
