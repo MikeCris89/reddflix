@@ -122,49 +122,50 @@ export const localAppApi = createApi({
 		}),
 		// ===== SEEN POSTS =====
 		// =======================
-		fetchSeenPosts: build.query<Record<string, SeenPosts>, string[]>({
-			async queryFn(categories: string[]) {
-				const cats = Array.isArray(categories) ? categories : [categories];
-				const resp = await Promise.all(
-					cats.map(async (c) => [
-						c,
-						(await getItem<SeenPosts>("seenPosts", c)) || {},
-					])
+		fetchAllSeenPosts: build.query<Record<string, string>, void>({
+			async queryFn() {
+				const resp = await getAllFromStore<SeenPosts>("seenPosts");
+				const formatted = resp.map((e) => [e.id, e.subreddit]);
+				const data = Object.fromEntries(formatted);
+				return { data };
+			},
+			providesTags: ["seenPosts"],
+		}),
+		fetchSeenPosts: build.query<Record<string, string>, string>({
+			async queryFn(sub: string) {
+				const resp = (await getAllFromStore<SeenPosts>("seenPosts")) || [];
+				const data = Object.fromEntries(
+					resp
+						.filter((el) => el.subreddit === sub)
+						.map((seen) => [seen.id, seen.subreddit])
 				);
-				const data = Object.fromEntries(resp);
 				return { data };
 			},
 			providesTags: ["seenPosts"],
 		}),
 		setSeenPost: build.mutation({
-			async queryFn(args: { category: string; postId: string }) {
-				const existing =
-					(await getItem<SeenPosts>("seenPosts", args.category)) || {};
-				const updated = { ...existing, [args.postId]: true };
-				const data = await setItem("seenPosts", args.category, updated);
+			async queryFn(args: { subreddit: string; postId: string }) {
+				const data = await setItem<SeenPosts>("seenPosts", args.postId, {
+					subreddit: args.subreddit,
+					id: args.postId,
+				});
 				return { data };
 			},
 		}),
-		clearSeenPostsForCategory: build.mutation({
-			async queryFn(args: { category: string; newPostIds: string[] }) {
-				const existing = await getItem<SeenPosts>("seenPosts", args.category);
+		clearSeenPostsForSubreddit: build.mutation({
+			async queryFn(subreddit: string) {
+				const existing = await getAllFromStore<SeenPosts>("seenPosts");
 
 				if (!existing) {
 					// Nothing to clear, just return
 					return { data: true };
 				}
 
-				// Retain only seen post IDs that still exist in new fetch
-				const retained = args.newPostIds.filter((id) => existing[id]);
+				// Filter by subreddit
+				const filtered = existing.filter((e) => e.subreddit === subreddit);
 
-				if (retained.length === 0) {
-					// All posts were outdated, delete the whole category key
-					await deleteItem("seenPosts", args.category);
-					return { data: true };
-				}
-
-				const updated = Object.fromEntries(retained.map((id) => [id, true]));
-				await setItem("seenPosts", args.category, updated);
+				//delete entries of subreddit
+				await Promise.all(filtered.map((e) => deleteItem("seenPosts", e.id)));
 				return { data: true };
 			},
 			invalidatesTags: ["seenPosts"],
@@ -246,7 +247,7 @@ export const {
 	useSetCategoryMutation,
 	useSetCategoryTTLMutation,
 	useSetSeenPostMutation,
-	useClearSeenPostsForCategoryMutation,
+	useClearSeenPostsForSubredditMutation,
 	useDeleteCategoryMutation,
 	useFetchSubredditsQuery,
 	useLazyFetchSubredditsQuery,

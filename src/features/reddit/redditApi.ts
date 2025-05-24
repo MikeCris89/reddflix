@@ -191,7 +191,7 @@ export const redditApi = createApi({
 	baseQuery: customBaseQuery,
 	endpoints: (builder) => ({
 		fetchPostsBySubreddit: builder.query({
-			query: (subreddit) => `r/${subreddit}.json`,
+			query: (subreddit) => `r/${subreddit}.json?limit=50`,
 			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
 				response: RedditListing<RawRedditPost>

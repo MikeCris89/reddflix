@@ -13,7 +13,7 @@ declare global {
 const Home = () => {
 	const { data: subreddits } = useFetchSubredditsQuery();
 
-	console.log(subreddits);
+	console.log("home rendered");
 
 	return (
 		<div className={clsx("flex-1 w-full relative overflow-y-auto")}>
@@ -21,10 +21,17 @@ const Home = () => {
 				subreddits
 					.filter((s) => s.active)
 					.map((sub, i) => {
-						if (sub.title !== "Funny") return null;
-						return (
-							<ScrollContainer key={`${sub.title}-${i}`} subreddit={sub} />
-						);
+						//if (i > 0) return null;
+						if (
+							sub.name === "funny" ||
+							sub.name === "Art" ||
+							sub.name === "popular"
+						)
+							//if (sub.name === "funny")
+							return (
+								<ScrollContainer key={`${sub.title}-${i}`} subreddit={sub} />
+							);
+						return null;
 					})}
 		</div>
 	);

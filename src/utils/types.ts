@@ -31,7 +31,10 @@ export interface Subreddit {
 	ttl: number;
 }
 
-export type SeenPosts = Record<string, boolean>;
+export type SeenPosts = {
+	id: string;
+	subreddit: string;
+};
 
 export interface RequestMonitor {
 	recent: number[];
