@@ -11,15 +11,14 @@ const SelfContent = ({ post, mode }: { post: SelfPost; mode: ContentMode }) => {
 	return (
 		<>
 			{mode === MODE.preview && (
-				<div className="h-full overflow-hidden bg-black">
+				<div className="h-full overflow-hidden bg-black rounded-md">
 					<ContentBadge badge={<MessageCircle size={14} />}>
 						<HTML text={post.selftext_html} />
 					</ContentBadge>
 				</div>
 			)}
 			{mode === MODE.full && (
-				<div className="h-full overflow-y-auto md:max-w-[400px]">
-					{console.log(post.selftext)}
+				<div className="h-full overflow-y-auto w-auto">
 					<HTML text={post.selftext_html} />
 				</div>
 			)}

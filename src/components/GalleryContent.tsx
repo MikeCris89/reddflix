@@ -23,17 +23,20 @@ const GalleryContent = ({
 	});
 
 	return (
-		<div className="relative w-full max-w-3xl mx-auto">
+		<>
 			{mode === MODE.full && (
-				<>
+				<div className="relative w-full max-h-full max-w-[900px] mx-auto rounded-md">
 					{/* Slider */}
-					<div ref={sliderRef} className="keen-slider">
+					<div ref={sliderRef} className="keen-slider rounded-md">
 						{images.map((src, idx) => (
-							<div key={idx} className="keen-slider__slide flex justify-center">
+							<div
+								key={idx}
+								className="keen-slider__slide flex justify-center rounded-md "
+							>
 								<img
 									src={src}
 									alt={`Gallery image ${idx + 1}`}
-									className="max-h-[500px] object-contain"
+									className="max-h-[600px] w-full object-contain rounded-md"
 								/>
 							</div>
 						))}
@@ -52,7 +55,7 @@ const GalleryContent = ({
 					>
 						▶
 					</button>
-				</>
+				</div>
 			)}
 			{mode === MODE.preview && (
 				<>
@@ -64,11 +67,16 @@ const GalleryContent = ({
 							</div>
 						}
 					>
-						<img src={images[0]} />
+						<img
+							src={images[0]}
+							className="w-full h-full object-cover rounded-md"
+							alt={`Gallery image`}
+							loading="lazy"
+						/>
 					</ContentBadge>
 				</>
 			)}
-		</div>
+		</>
 	);
 };
 

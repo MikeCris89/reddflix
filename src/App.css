@@ -10,6 +10,14 @@ body,
 .box-shadow-thin {
 	box-shadow: 0 0 1px #fff;
 }
+.box-shadow-thick {
+	box-shadow: 0 0 3px #fff;
+}
+
+.box-shadow-thick-cyan {
+	box-shadow: 0 2px 2px #a5f3fc;
+}
+
 .box-shadow-cyan {
 	box-shadow: 0 3px 8px -2px #a5f3fc;
 }

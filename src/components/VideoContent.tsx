@@ -69,7 +69,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 							loop
 							playsInline
 							className={clsx(
-								"w-full h-full",
+								"w-full h-full rounded-md",
 								isGif && !isPreview ? "object-contain" : "object-cover"
 							)}
 						>

@@ -1,38 +1,67 @@
 import { ExternalLink } from "lucide-react";
 import { BUBBLE_ICON, MODE } from "../../utils/types";
 import PostMedia from "./PostMedia";
-import { RedditPost } from "./redditTypes";
+import { isSelfPost, isTitleAsPost, RedditPost } from "./redditTypes";
 import clsx from "clsx";
 import InfoBubble from "../../components/InfoBubble";
+import HTML from "../../components/HTML";
+import { useEffect, useRef, useState } from "react";
+import redditLogo from "../../assets/reddit.svg";
+import useDisplay from "../../hooks/useDisplay";
 
 const Post = ({
 	post,
 	toggleComments,
-	titleAsPost,
 }: {
 	post: RedditPost;
 	toggleComments: () => void;
-	titleAsPost: boolean;
 }) => {
-	console.log("Post Render");
+	const [seeMore, setSeeMore] = useState(false);
+	const scrollRef = useRef<HTMLDivElement>(null);
+	const { isMobile } = useDisplay();
+
+	useEffect(() => {
+		if (!seeMore && scrollRef.current) {
+			scrollRef.current.scrollTop = 0;
+		}
+	}, [seeMore]);
 	return (
-		<div className={clsx("flex flex-col flex-1 overflow-hidden")}>
+		<div className={clsx("flex flex-col overflow-hidden gap-1 w-full h-full")}>
 			{/* Post */}
 			<div
 				className={clsx(
-					"flex justify-center items-center overflow-hidden px-1 py-2 bg-black rounded-md flex-1"
+					"flex justify-center items-center overflow-hidden px-1 py-2 bg-black rounded-md flex-1 min-w-full"
 				)}
 			>
-				{titleAsPost ? (
+				{isTitleAsPost(post) ? (
 					<h1>{post.title}</h1>
 				) : (
 					<PostMedia post={post} mode={MODE.full} />
 				)}
 			</div>
-
+			{!isSelfPost(post) && post.selftext_html && (
+				<div
+					className="cursor-pointer bg-[#1a1a1a] rounded-md p-1 w-full max-w-[900px]"
+					onClick={() => setSeeMore((prev) => !prev)}
+				>
+					<div
+						ref={scrollRef}
+						className={clsx("transition overflow-hidden ", {
+							//"line-clamp-3": !seeMore,
+							"line-clamp-3": !seeMore,
+							"max-h-[200px] overflow-y-auto": seeMore,
+						})}
+					>
+						<HTML text={post.selftext_html} size="sm" />
+					</div>
+					<p className="text-right text-sm text-blue-700">
+						...{seeMore ? "less" : "more"}
+					</p>
+				</div>
+			)}
 			{/* Info Buttons */}
-			<div className="flex justify-between items-center w-full gap-10 p-3">
-				<div className="flex gap-2">
+			<div className="flex justify-between items-center w-full  p-3">
+				<div className="flex gap-3">
 					<InfoBubble icon={BUBBLE_ICON.score} text={post.score} />
 					<InfoBubble
 						icon={BUBBLE_ICON.chat}
@@ -41,15 +70,18 @@ const Post = ({
 					/>
 					<InfoBubble icon={BUBBLE_ICON.share} />
 				</div>
-				<a
-					className="flex items-center gap-2"
-					href={`https://www.reddit.com${post.permalink}`}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					<ExternalLink size={20} />
-					<p className="text-xs">Reddit</p>
-				</a>
+				<div>
+					<a
+						className="flex items-center gap-1 hover:text-[#E50914]"
+						href={`https://www.reddit.com${post.permalink}`}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<ExternalLink size={isMobile ? 12 : 14} />
+						<p className="text-xs">reddit</p>
+						<img src={redditLogo} alt="logo" className="w-5 h-5" />
+					</a>
+				</div>
 			</div>
 		</div>
 	);

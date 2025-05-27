@@ -16,7 +16,11 @@ const Home = () => {
 	console.log("home rendered");
 
 	return (
-		<div className={clsx("flex-1 w-full relative overflow-y-auto")}>
+		<div
+			className={clsx(
+				"flex-1 flex flex-col gap-8 w-full relative overflow-y-auto p-1"
+			)}
+		>
 			{subreddits &&
 				subreddits
 					.filter((s) => s.active)
@@ -25,7 +29,8 @@ const Home = () => {
 						if (
 							sub.name === "funny" ||
 							sub.name === "Art" ||
-							sub.name === "popular"
+							sub.name === "popular" ||
+							sub.name == "webdev"
 						)
 							//if (sub.name === "funny")
 							return (

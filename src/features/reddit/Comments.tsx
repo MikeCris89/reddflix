@@ -17,6 +17,7 @@ import useDisplay from "../../hooks/useDisplay";
 import HTML from "../../components/HTML";
 import { getCreatedTime } from "../../utils/helpers";
 import { motion, AnimatePresence } from "framer-motion";
+import Spinner from "../../components/Spinner";
 
 const getDescendants = (comment: RedditCommentFormatted): string[] => {
 	const desc: string[] = [];
@@ -50,7 +51,7 @@ const CommentCard = ({
 }) => {
 	return (
 		<div
-			className={clsx("bg-[#1a1a1a] rounded p-2")}
+			className={clsx("bg-[#1a1a1a] rounded p-2 flex flex-col flex-nowrap")}
 			onClick={onClick}
 			ref={ref}
 		>
@@ -123,6 +124,7 @@ const RecursiveComments = ({
 							<AnimatePresence>
 								{isExpanded && comment.replies.length > 0 && (
 									<motion.div
+										layout
 										key={comment.id}
 										initial={{ height: 0, opacity: 0 }}
 										animate={{ height: "auto", opacity: 1 }}
@@ -314,7 +316,15 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 
 		return <p>Error: {errMsg}</p>;
 	}
-	if (isLoading) return <p>Loading...</p>;
+
+	if (isLoading)
+		return (
+			<div className="flex flex-col h-[300px] justify-center items-center">
+				<Spinner />
+				<p className="text-sm md:text-base">Loading Comments</p>
+			</div>
+		);
+
 	if (!comments || comments.length === 0)
 		return (
 			<div className=" h-full w-full p-1">
@@ -325,14 +335,14 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 	const section = page * PAGE_SIZE;
 	const maxPages = Math.max(0, Math.floor(comments.length / PAGE_SIZE) - 1);
 
-	// console.log(comments);
+	//console.log(comments.length);
 
 	return (
-		<div className="h-full min-h-0 flex flex-col">
+		<div className="h-full min-h-0 flex flex-col gap-1 p-1">
 			{(!isMobile || !isPortrait) && (
 				<button
 					onClick={hideComments}
-					className="flex items-center gap-2 w-fit justify-center py-1 px-3 mb-1"
+					className="flex items-center gap-2 w-fit justify-center py-1 px-3 mb-1 ring-1 ring-cyan-900"
 				>
 					<ArrowLeft size={16} />
 					<p className={btnTextClass}>Hide Comments</p>
@@ -430,7 +440,7 @@ const PageButtons = ({
 			{page > 1 ? (
 				<button
 					onClick={handleTop}
-					className="flex gap-2 justify-self-end items-center"
+					className="flex gap-2 py-1 px-3 w-fit justify-self-end items-center"
 				>
 					<ArrowBigUpDashIcon size={16} />
 					<p className={btnTextClass}>Top</p>

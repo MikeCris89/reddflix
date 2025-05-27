@@ -4,6 +4,7 @@ import ImageContent from "../../components/ImageContent";
 import LinkContent from "../../components/LinkContent";
 import SelfContent from "../../components/SelfContent";
 import VideoContent from "../../components/VideoContent";
+import { getPostType } from "../../utils/helpers";
 import { ContentMode } from "../../utils/types";
 import {
 	GalleryPost,
@@ -22,32 +23,39 @@ interface MediaProps {
 }
 
 const PostMedia = ({ post, mode }: MediaProps) => {
+	let type = post.type;
+	if (post.type === POST_TYPES.unknown) {
+		type = getPostType(post);
+	}
+
 	return (
 		<>
 			{/* VIDEOS */}
-			{post.type === POST_TYPES.video && (
+			{type === POST_TYPES.video && (
 				<VideoContent post={post as VideoPost} mode={mode} />
 			)}
 			{/* GIFs */}
-			{post.type === POST_TYPES.gif && (
+			{type === POST_TYPES.gif && (
 				<VideoContent post={post as GifPost} mode={mode} />
 			)}
 			{/* IMAGE */}
-			{post.type === POST_TYPES.image && (
+			{type === POST_TYPES.image && (
 				<ImageContent post={post as ImagePost} mode={mode} />
 			)}
 			{/* GALLERY */}
-			{post.type === POST_TYPES.gallery && (
+			{type === POST_TYPES.gallery && (
 				<GalleryContent post={post as GalleryPost} mode={mode} />
 			)}
 			{/* LINK */}
-			{post.type === POST_TYPES.link && <LinkContent post={post as LinkPost} />}
+			{type === POST_TYPES.link && (
+				<LinkContent post={post as LinkPost} mode={mode} />
+			)}
 			{/* SELF */}
-			{post.type === POST_TYPES.self && (
+			{type === POST_TYPES.self && (
 				<SelfContent post={post as SelfPost} mode={mode} />
 			)}
 			{/* UNKNOWN - for testing */}
-			{post.type === POST_TYPES.unknown && <h6>UNKNOWN - ID: {post.id}</h6>}
+			{type === POST_TYPES.unknown && <h6>UNKNOWN - ID: {post.id}</h6>}
 		</>
 	);
 };

@@ -5,7 +5,7 @@ const demo =
 	'<div class="md"><p>This is <strong>bold</strong>, <em>italic</em>, and <del>struck through</del>.</p><p>Spoiler: <span class="md-spoiler-text">Snape kills Dumbledore</span></p><p><a href="https://reddit.com/r/funny">Reddit Link</a></p><p>Code: <code>console.log("hi")</code></p><pre><code>function test() {return true;}</code></pre><blockquote><p>This is a quote block</p></blockquote><ul><li>List item 1</li><li>List item 2</li></ul><p>Here\'s a horizontal rule:</p><hr /><p>1st<sup>2</sup> = 1</p></div>';
 
 const class2 =
-	"prose prose-invert prose-a:text-blue-400 hover:prose-a:underline prose-code:before:content-none prose-code:after:content-none  prose-code:text-cyan-300 prose-code:font-mono prose-code:px-1  prose-pre:bg-neutral-900 prose-pre:text-white prose-pre:rounded prose-blockquote:border-l-4 prose-blockquote:border-neutral-700 prose-blockquote:pl-4 prose-blockquote:text-neutral-400";
+	"prose prose-invert w-full max-w-none break-words overflow-wrap-break-word prose-a:break-all prose-a:text-blue-300 prose-a:no-underline hover:prose-a:underline prose-code:before:content-none prose-code:after:content-none  prose-code:text-cyan-300 prose-code:font-mono prose-code:px-1  prose-pre:bg-neutral-900 prose-pre:text-white prose-pre:rounded prose-blockquote:border-l-4 prose-blockquote:border-neutral-700 prose-blockquote:pl-4 prose-blockquote:text-neutral-400";
 
 const HTML = ({
 	text,

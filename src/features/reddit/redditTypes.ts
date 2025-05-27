@@ -282,8 +282,7 @@ export const isLinkPost = (
 	!isGalleryPost(post) &&
 	!isSelfPost(post) &&
 	!!post.url &&
-	!post.url.includes("reddit.com") &&
-	!post.url.includes("redd.it");
+	post.post_hint === POST_TYPES.link;
 
 export const isValidRedditComment = (
 	c: RedditThing<RedditComment>
@@ -299,3 +298,6 @@ export const isValidRedditComment = (
 		typeof data.body === "string"
 	);
 };
+
+export const isTitleAsPost = (post: RedditPost): boolean =>
+	isSelfPost(post) && !post.selftext_html;

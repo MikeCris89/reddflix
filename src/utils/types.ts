@@ -1,3 +1,5 @@
+import { RedditPost } from "../features/reddit/redditTypes";
+
 export const MODE = {
 	preview: "preview",
 	full: "full",

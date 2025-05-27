@@ -14,11 +14,12 @@ const ImageContent = ({
 		<>
 			{mode === MODE.preview && (
 				<ContentBadge
-					badge={post.url?.endsWith(".gif") ? "GIFI" : <Image size={14} />}
+					badge={post.url?.endsWith(".gif") ? "GIF" : <Image size={14} />}
 				>
 					<img
 						src={post.url}
-						className="w-full h-full object-cover"
+						className="w-full h-full object-cover rounded-md"
+						alt="Reddit Image"
 						loading="lazy"
 					/>
 				</ContentBadge>
@@ -26,6 +27,7 @@ const ImageContent = ({
 			{mode === MODE.full && (
 				<img
 					src={post.url}
+					alt="Reddit Image"
 					className="w-auto max-w-full h-auto max-h-full object-contain rounded-md"
 				/>
 			)}

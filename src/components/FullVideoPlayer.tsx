@@ -51,7 +51,7 @@ const FullVideoPlayer = ({ url }: { url: string }) => {
 				autoPlay
 				disablePictureInPicture
 				loop
-				className="max-h-full max-w-full h-full w-full object-contain"
+				className="w-full h-full max-w-full max-h-full object-contain rounded-md"
 			/>
 		</>
 	);

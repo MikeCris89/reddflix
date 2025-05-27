@@ -30,7 +30,6 @@ const PostContainer = ({ subreddit }: { subreddit: Subreddit }) => {
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
 	const { allSortedPosts, unseenPosts } = useMemo(() => {
-		console.log("posts sorting");
 		if (!data || !seenPosts) return { allSortedPosts: [], unseenPosts: [] };
 		const unseen: RedditPost[] = [];
 		const seen: RedditPost[] = [];

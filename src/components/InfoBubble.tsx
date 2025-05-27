@@ -22,7 +22,7 @@ interface InfoProps {
 	icon?: BubbleIcon;
 	text?: string | number;
 	onClick?: () => void;
-	size?: "sm" | "lg";
+	size?: "sm" | "md" | "lg";
 }
 
 const InfoBubble = ({
@@ -35,15 +35,15 @@ const InfoBubble = ({
 	const IconComponent: LucideIcon | undefined = icon
 		? bubbleIcons[icon]
 		: undefined;
-	const iconSize = size === "lg" ? 20 : 14;
+	const iconSize = size === "lg" ? 18 : size === "md" ? 14 : 12;
 	return (
 		<div
 			className={clsx(
-				"rounded-3xl bg-[#242424]  w-fit",
+				"rounded-3xl   w-fit",
 				onClick
 					? "cursor-pointer hover:bg-gray-500 box-shadow-thin"
 					: "cursor-default",
-				size === "lg" ? "px-3 py-1" : "px-2 py-0.5"
+				size === "lg" ? "px-3 py-1 bg-[#242424]" : "px-2 py-0.5"
 			)}
 			onClick={onClick}
 		>

@@ -73,20 +73,26 @@ const Root = () => {
 	}
 
 	return (
-		<div className="h-full w-full flex flex-col justify-between overflow-hidden gap-1 p-1">
+		<div className="h-full w-full flex flex-col overflow-hidden gap-2 p-1">
 			<Navbar />
-			{(isLoading || subloading) && <Spinner />}
-			{subreddits && (
-				<ErrorBoundary>
-					{backgroundLocation && (
-						<Routes>
-							<Route path="/:category/:postId" element={<Modal />} />
-						</Routes>
-					)}
-					{elements}
-				</ErrorBoundary>
-			)}
-			{isError && <p>Something went wrong.</p>}
+			<main className="flex-1 overflow-hidden w-full flex justify-center">
+				{(isLoading || subloading) && (
+					<div className="h-full w-full flex justify-center items-center">
+						<Spinner size="lg" />
+					</div>
+				)}
+				{subreddits && (
+					<ErrorBoundary>
+						{backgroundLocation && (
+							<Routes>
+								<Route path="/:category/:postId" element={<Modal />} />
+							</Routes>
+						)}
+						{elements}
+					</ErrorBoundary>
+				)}
+				{isError && <p>Something went wrong.</p>}
+			</main>
 		</div>
 	);
 };
