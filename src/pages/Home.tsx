@@ -18,7 +18,7 @@ const Home = () => {
 	return (
 		<div
 			className={clsx(
-				"flex-1 flex flex-col gap-8 w-full relative overflow-y-auto p-1"
+				"flex-1 flex flex-col gap-8 w-full relative overflow-y-auto p-1 pb-10"
 			)}
 		>
 			{subreddits &&

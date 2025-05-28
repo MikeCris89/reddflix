@@ -1,15 +1,32 @@
 import { useEffect, useState } from "react";
 
-const useDisplay = () => {
+interface DisplayInfo {
+	width: number;
+	height: number;
+	isPortrait: boolean;
+	isLandscape: boolean;
+	isMobile: boolean;
+	isTablet: boolean;
+	isDesktop: boolean;
+}
+
+const useDisplay = (): DisplayInfo => {
 	const [isPortrait, setIsPortrait] = useState(
 		window.matchMedia("(orientation: portrait)").matches
 	);
-	const [width, setWidth] = useState(window.innerWidth);
+	const [dimensions, setDimensions] = useState({
+		width: window.innerWidth,
+		height: window.innerHeight,
+		portrait: window.matchMedia("(orientation: portrait)").matches,
+	});
 
 	useEffect(() => {
 		const handleResize = () => {
-			setWidth(window.innerWidth);
-			setIsPortrait(window.matchMedia("(orientation: portrait)").matches);
+			setDimensions({
+				width: window.innerWidth,
+				height: window.innerHeight,
+				portrait: window.matchMedia("(orientation: portrait)").matches,
+			});
 		};
 
 		window.addEventListener("resize", handleResize);
@@ -18,12 +35,17 @@ const useDisplay = () => {
 		};
 	}, []);
 
+	const { width, height, portrait } = dimensions;
+
+	const isMobile = width < 640 || height < 500;
+
 	return {
 		width,
-		isPortrait,
-		isLandscape: !isPortrait,
-		isMobile: width < 640,
-		isTablet: width >= 640 && width < 1024,
+		height,
+		isPortrait: portrait,
+		isLandscape: !portrait,
+		isMobile,
+		isTablet: !isMobile && width >= 640 && width < 1024,
 		isDesktop: width >= 1024,
 	};
 };

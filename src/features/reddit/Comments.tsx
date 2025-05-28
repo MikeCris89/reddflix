@@ -342,7 +342,7 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 			{(!isMobile || !isPortrait) && (
 				<button
 					onClick={hideComments}
-					className="flex items-center gap-2 w-fit justify-center py-1 px-3 mb-1 ring-1 ring-cyan-900"
+					className="flex items-center gap-2 w-fit justify-center py-[3px] px-2 mb-1 "
 				>
 					<ArrowLeft size={16} />
 					<p className={btnTextClass}>Hide Comments</p>
@@ -412,14 +412,14 @@ const PageButtons = ({
 	const lastPage = page === max;
 
 	return (
-		<div className="grid grid-cols-[1fr_2fr_1fr] p-3">
+		<div className="grid grid-cols-[1fr_2fr_1fr] pb-3">
 			<div></div>
 			{
 				<div className="w-full flex justify-center">
 					<button
 						onClick={handlePage}
 						className={clsx(
-							"flex gap-2 py-1 px-3 w-fit justify-center items-center bg-red-700"
+							"flex gap-2 py-[3px] px-2 w-fit justify-center items-center bg-[#E50914]"
 						)}
 						disabled={dir === "next" && lastPage}
 					>
@@ -440,7 +440,7 @@ const PageButtons = ({
 			{page > 1 ? (
 				<button
 					onClick={handleTop}
-					className="flex gap-2 py-1 px-3 w-fit justify-self-end items-center"
+					className="flex gap-2 py-[3px] px-2 w-fit justify-self-end items-center text-[#E50914]"
 				>
 					<ArrowBigUpDashIcon size={16} />
 					<p className={btnTextClass}>Top</p>

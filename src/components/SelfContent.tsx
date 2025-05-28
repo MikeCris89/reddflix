@@ -18,7 +18,7 @@ const SelfContent = ({ post, mode }: { post: SelfPost; mode: ContentMode }) => {
 				</div>
 			)}
 			{mode === MODE.full && (
-				<div className="h-full overflow-y-auto w-auto">
+				<div className="h-full flex justify-center items-center overflow-y-auto w-auto">
 					<HTML text={post.selftext_html} />
 				</div>
 			)}

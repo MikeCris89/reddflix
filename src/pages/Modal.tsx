@@ -7,6 +7,7 @@ import useDisplay from "../hooks/useDisplay";
 
 const Modal = () => {
 	const [layoutSize, setLayoutSize] = useState<"normal" | "wide">("normal");
+
 	const navigate = useNavigate();
 	const { isPortrait } = useDisplay();
 	const modalRef = useRef<HTMLDivElement>(null);
@@ -48,7 +49,7 @@ const Modal = () => {
 					exit={{ opacity: 0, scale: 0.95 }}
 					transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
 					className={clsx(
-						" bg-[#121212] rounded-md p-3  overflow-hidden h-full md:h-[90%]",
+						" bg-[#121212] rounded-md p-3  overflow-hidden h-full lg:h-[90%]",
 						{
 							"w-full": isPortrait || !backgroundLocation,
 							"w-[700px]":

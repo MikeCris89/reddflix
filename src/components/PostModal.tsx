@@ -1,12 +1,12 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Post from "../features/reddit/Post";
 import { getCreatedTime } from "../utils/helpers";
 import clsx from "clsx";
 import Comments from "../features/reddit/Comments";
 import useDisplay from "../hooks/useDisplay";
-import { isSelfPost, isTitleAsPost } from "../features/reddit/redditTypes";
+import { isTitleAsPost } from "../features/reddit/redditTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
 
@@ -79,7 +79,7 @@ const PostModal = ({
 			</div>
 			{/* Title */}
 			{!isTitleAsPost(post) && (
-				<h2 className="pl-1 text-lg font-semibold w-full max-w-[700px] justify-self-start">
+				<h2 className="pl-1 text-base font-semibold w-full max-w-[700px] justify-self-start">
 					{post.title}
 				</h2>
 			)}

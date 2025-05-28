@@ -7,7 +7,9 @@ import InfoBubble from "../../components/InfoBubble";
 import HTML from "../../components/HTML";
 import { useEffect, useRef, useState } from "react";
 import redditLogo from "../../assets/reddit.svg";
+import redditBlack from "../../assets/reddit-black.svg";
 import useDisplay from "../../hooks/useDisplay";
+import useHoverTouch from "../../hooks/useHoverTouch";
 
 const Post = ({
 	post,
@@ -19,6 +21,7 @@ const Post = ({
 	const [seeMore, setSeeMore] = useState(false);
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const { isMobile } = useDisplay();
+	const { isHovered, isClicked, eventHandlers } = useHoverTouch();
 
 	useEffect(() => {
 		if (!seeMore && scrollRef.current) {
@@ -72,14 +75,19 @@ const Post = ({
 				</div>
 				<div>
 					<a
-						className="flex items-center gap-1 hover:text-[#E50914]"
+						className="flex items-center gap-1 text-[#E50914] hover:text-blue-400"
 						href={`https://www.reddit.com${post.permalink}`}
 						target="_blank"
 						rel="noopener noreferrer"
+						{...eventHandlers}
 					>
 						<ExternalLink size={isMobile ? 12 : 14} />
-						<p className="text-xs">reddit</p>
-						<img src={redditLogo} alt="logo" className="w-5 h-5" />
+						<p className="text-sm">reddit</p>
+						<img
+							src={isHovered || isClicked ? redditBlack : redditLogo}
+							alt="logo"
+							className={clsx("w-6 h-6 bg-blue-400 rounded-full")}
+						/>
 					</a>
 				</div>
 			</div>

@@ -15,11 +15,15 @@ const LinkContent = ({ post, mode }: { post: LinkPost; mode: ContentMode }) => {
 	const Content = () => {
 		return (
 			<>
-				{previewImage && <img src={previewImage} alt={post.title} />}
+				{previewImage && (
+					<img src={previewImage} alt={post.title} className="rounded-md" />
+				)}
 				{
 					<p
 						className={clsx("break-words text-sky-400", {
-							"hover:text-blue-400 hover:underline": mode === MODE.full,
+							"text-xs": mode === MODE.preview,
+							"p-1 text-base group-hover:text-blue-400 group-hover:underline group-active:text-blue-400 group-active:underline":
+								mode === MODE.full,
 						})}
 					>
 						{linkUrl}
@@ -29,11 +33,17 @@ const LinkContent = ({ post, mode }: { post: LinkPost; mode: ContentMode }) => {
 		);
 	};
 
-	const wrapper = "w-full h-full flex flex-col justify-center";
+	const wrapper =
+		"w-full h-auto flex flex-col justify-center items-center group";
 
 	return (
-		<>
-			<ContentBadge badge={<ExternalLink size={14} />}>
+		<ContentBadge badge={<ExternalLink size={14} />}>
+			<div
+				className={clsx(
+					"w-full h-full flex justify-center items-center bg-black p-1 rounded-lg",
+					mode === MODE.full && "p-2"
+				)}
+			>
 				{mode === MODE.preview ? (
 					<div className={wrapper}>
 						<Content />
@@ -48,8 +58,8 @@ const LinkContent = ({ post, mode }: { post: LinkPost; mode: ContentMode }) => {
 						<Content />
 					</a>
 				)}
-			</ContentBadge>
-		</>
+			</div>
+		</ContentBadge>
 	);
 };
 
