@@ -34,13 +34,6 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		return 1;
 	}, [scrollWidth, postWidth]);
 
-	// const handleScroll1 = (dir: "left" | "right") => {
-	// 	scrollRef.current?.scrollBy({
-	// 		left: dir === "left" ? -postWidth * 4 : postWidth * 4,
-	// 		behavior: "smooth",
-	// 	});
-	// };
-
 	const handleScroll = (dir: "left" | "right") => {
 		const numPosts = postsPerPage;
 		const nextIndex =

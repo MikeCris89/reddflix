@@ -3,6 +3,10 @@ import clsx from "clsx";
 import { store } from "../app/store";
 import { MinusCircle } from "lucide-react";
 import { useFetchSubredditsQuery } from "../features/localApp/localAppApi";
+import {
+	useLazyFetchPostsBySubredditQuery,
+	useLazySearchPostsQuery,
+} from "../features/reddit/redditApi";
 
 declare global {
 	interface Window {
@@ -12,6 +16,8 @@ declare global {
 
 const Home = () => {
 	const { data: subreddits } = useFetchSubredditsQuery();
+	const [searchPost, { data: searchData }] = useLazySearchPostsQuery();
+	const [fetchMulti, { data: multiSubs }] = useLazyFetchPostsBySubredditQuery();
 
 	console.log("home rendered");
 
@@ -21,6 +27,18 @@ const Home = () => {
 				"flex-1 flex flex-col gap-8 w-full relative overflow-y-auto p-1 pb-10"
 			)}
 		>
+			<button
+				onClick={() => searchPost("funny memes news gaming react")}
+				className="w-fit"
+			>
+				Search post
+			</button>
+			<button
+				onClick={() => fetchMulti("funny+memes+gaming")}
+				className="w-fit"
+			>
+				Fetch Multi
+			</button>
 			{subreddits &&
 				subreddits
 					.filter((s) => s.active)

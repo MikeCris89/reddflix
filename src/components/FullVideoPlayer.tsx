@@ -13,7 +13,7 @@ const FullVideoPlayer = ({ url }: { url: string }) => {
 			const hls = new Hls();
 			hls.loadSource(url);
 			hls.attachMedia(video);
-			hls.on(Hls.Events.ERROR, (event, data) => {
+			hls.on(Hls.Events.ERROR, (_, data) => {
 				if (data.fatal) {
 					setIsPlayable(false);
 					hls.destroy();

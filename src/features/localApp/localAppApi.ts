@@ -4,13 +4,18 @@ import {
 	SeenPosts,
 	Subreddit,
 } from "./../../utils/types";
-import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+	createApi,
+	fakeBaseQuery,
+	FetchArgs,
+} from "@reduxjs/toolkit/query/react";
 import {
 	deleteItem,
 	getAllFromStore,
 	getItem,
 	setItem,
 } from "../../utils/dbHelpers";
+import { evaluateRateLimit } from "./requestMonitorUtils";
 
 export const localAppApi = createApi({
 	reducerPath: "localAppApi",
@@ -188,25 +193,36 @@ export const localAppApi = createApi({
 			void
 		>({
 			async queryFn() {
-				const bannedUntil = await getItem<number>(
-					"requestMonitor",
-					"bannedUntil"
-				);
-
-				if (bannedUntil && Date.now() < bannedUntil)
-					return {
-						data: {
-							ok: false,
-							delayMs: bannedUntil - Date.now(),
-							reason: "ban",
-						},
-					};
-				const recent =
-					(await getItem<number[]>("requestMonitor", "recent")) || [];
-				if (recent.length < 10)
-					return { data: { ok: true, delayMs: 0, reason: undefined } };
-				const delayMs = 63_000 - (Date.now() - recent[0]);
-				return { data: { ok: false, delayMs, reason: "rateLimit" } };
+				// const now = Date.now();
+				// const bannedUntil = await getItem<number>(
+				// 	"requestMonitor",
+				// 	"bannedUntil"
+				// );
+				// if (bannedUntil && now < bannedUntil)
+				// 	return {
+				// 		data: {
+				// 			ok: false,
+				// 			delayMs: bannedUntil - now,
+				// 			reason: "ban" as const,
+				// 		},
+				// 	};
+				// const recent =
+				// 	(await getItem<number[]>("requestMonitor", "recent")) || [];
+				// const filteredRecent = recent.filter((t) => now - t < 63_000);
+				// if (filteredRecent.length < 10)
+				// 	return { data: { ok: true, delayMs: 0, reason: undefined } };
+				// const pending =
+				// 	(await getItem<number[]>("requestMonitor", "pending")) || [];
+				// let delayMs = 0;
+				// // get delay time. if # of pending exceeds # of recent, calc delay from pending list.
+				// if (pending.length <= 10)
+				// 	delayMs = 63_000 - (now - filteredRecent[pending.length]);
+				// else {
+				// 	delayMs = 63_000 - (now - pending[pending.length - 10]);
+				// }
+				// return { data: { ok: false, delayMs, reason: "rateLimit" as const } };
+				const data = await evaluateRateLimit(Date.now());
+				return { data };
 			},
 			providesTags: ["requestMonitor"],
 		}),
@@ -217,7 +233,21 @@ export const localAppApi = createApi({
 				const now = Date.now();
 				const existing = await getItem<number[]>(store, key);
 				const recent = (existing || []).filter((t) => now - t < 63_000);
+				const pending = (await getItem<number[]>(store, "pending")) || [];
+				if (pending.length > 0) pending.shift();
 				const data = await setItem(store, key, [...recent, now]);
+				await setItem(store, "pending", [...pending]);
+				return { data };
+			},
+			invalidatesTags: ["requestMonitor"],
+		}),
+		setPendingRequest: build.mutation<unknown, void>({
+			async queryFn() {
+				const store = "requestMonitor";
+				const key = "pending";
+				const now = Date.now();
+				const pending = (await getItem<number[]>(store, key)) || [];
+				const data = await setItem(store, key, [...pending, now]);
 				return { data };
 			},
 			invalidatesTags: ["requestMonitor"],
@@ -233,6 +263,13 @@ export const localAppApi = createApi({
 				if (existing && currTime - existing <= delay * 3) delay *= 3;
 				await setItem<number>(store, key, currTime + delay);
 				return { data: delay };
+			},
+			invalidatesTags: ["requestMonitor"],
+		}),
+		clearPending: build.mutation({
+			async queryFn() {
+				const data = await deleteItem("requestMonitor", "pending");
+				return { data };
 			},
 			invalidatesTags: ["requestMonitor"],
 		}),
@@ -254,4 +291,5 @@ export const {
 	useSetAllSubredditsMutation,
 	useSetSubredditMutation,
 	useSetSubredditTTLMutation,
+	useClearPendingMutation,
 } = localAppApi;

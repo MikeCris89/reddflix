@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Post from "../features/reddit/Post";
 import { getCreatedTime } from "../utils/helpers";
 import clsx from "clsx";
@@ -28,15 +28,17 @@ const PostModal = ({
 			return { data: data?.posts.find((posts) => posts.id === postId) };
 		},
 	});
+
+	useEffect(() => {
+		if (backgroundLocation && setLayoutSize) {
+			setLayoutSize(showComments ? "wide" : "normal");
+		}
+	}, [showComments, backgroundLocation, setLayoutSize]);
+
 	if (!category || !postId) return <NoMatch />;
 
 	const toggleComments = () => {
-		setShowComments((prev) => {
-			const next = !prev;
-			if (backgroundLocation && setLayoutSize)
-				setLayoutSize(next ? "wide" : "normal");
-			return next;
-		});
+		setShowComments((prev) => !prev);
 	};
 
 	const postContainerClass = clsx("overflow-hidden ", {

@@ -11,6 +11,7 @@ import Modal from "./Modal";
 import { childRoutes } from "../utils/router";
 import { ErrorBoundary } from "./ErrorBoundary";
 import {
+	useClearPendingMutation,
 	useFetchSubredditsQuery,
 	useSetAllSubredditsMutation,
 	useSetSubredditMutation,
@@ -33,6 +34,12 @@ const Root = () => {
 	} = useFetchSubredditsQuery();
 	const [setAllSubreddits] = useSetAllSubredditsMutation();
 	const [setSubreddit] = useSetSubredditMutation();
+	const [clearPending] = useClearPendingMutation();
+
+	useEffect(() => {
+		//clear all pending requests in storage
+		clearPending("");
+	}, [clearPending]);
 
 	useEffect(() => {
 		// pause preview videos when not visible
@@ -49,7 +56,7 @@ const Root = () => {
 
 	useEffect(() => {
 		if (!subreddits) return;
-
+		// check subreddits in local storage
 		const subredditCheck = async () => {
 			if (subreddits.length === 0) {
 				await setAllSubreddits(defaultSubreddits);

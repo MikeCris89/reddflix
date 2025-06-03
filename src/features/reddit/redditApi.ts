@@ -125,19 +125,28 @@ const customBaseQuery: BaseQueryFn<
 	// Check rate limiting and request ban delay
 	if (requestLimit && !requestLimit.ok) {
 		let msg = "Error communicating with Reddit.";
-		if (requestLimit.reason === "ban")
-			msg = `Reddit has temporarily blocked further requests. Retry at ${new Date(
+
+		if (requestLimit.reason === "ban") {
+			msg = `Reddit has temporarily blocked further requests. Try again after ${new Date(
 				Date.now() + requestLimit.delayMs
 			).toLocaleString()}`;
-		else {
+
+			throw Object.assign(new Error(msg), {
+				delay: 0,
+				isAppHandledError: false,
+			});
+		} else {
 			const seconds = Math.ceil(requestLimit.delayMs / 1000);
 			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
-		}
 
-		throw Object.assign(new Error(msg), {
-			delay: requestLimit.delayMs,
-			isAppHandledError: true,
-		});
+			// add request to pending list
+			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate());
+
+			throw Object.assign(new Error(msg), {
+				delay: requestLimit.delayMs,
+				isAppHandledError: true,
+			});
+		}
 	}
 
 	// add request to rate limit list
@@ -163,7 +172,7 @@ const customBaseQuery: BaseQueryFn<
 			}
 			throw Object.assign(
 				new Error(
-					`Reddit has temporarily blocked further requests. Retry at ${new Date(
+					`Reddit has temporarily blocked further requests. Retrying at ${new Date(
 						Date.now() + delay
 					).toLocaleString()}`
 				),
@@ -173,13 +182,10 @@ const customBaseQuery: BaseQueryFn<
 				}
 			);
 		} else {
-			throw Object.assign(
-				new Error(`Error communicating with Reddit. Retrying in 30s`),
-				{
-					delay: 30_000,
-					isAppHandledError: true,
-				}
-			);
+			throw Object.assign(new Error(`Error communicating with Reddit.`), {
+				delay: 0,
+				isAppHandledError: false,
+			});
 		}
 	}
 
