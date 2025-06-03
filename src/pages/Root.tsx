@@ -12,12 +12,28 @@ import { childRoutes } from "../utils/router";
 import { ErrorBoundary } from "./ErrorBoundary";
 import {
 	useClearPendingMutation,
+	useFetchRequestLimitQuery,
+	useFetchRequestMonitorQuery,
 	useFetchSubredditsQuery,
 	useSetAllSubredditsMutation,
 	useSetSubredditMutation,
 } from "../features/localApp/localAppApi";
 import Spinner from "../components/Spinner";
 import { defaultSubreddits } from "../utils/defaultSubreddits";
+import { defaultMonitor, RequestMonitor } from "../utils/types";
+
+const RateLimitManager = () => {
+	// initial rtk query fetches to setup cache
+	const { data: reqMonitor } = useFetchRequestMonitorQuery();
+	const { data: rateLimit } = useFetchRequestLimitQuery(
+		reqMonitor as RequestMonitor,
+		{
+			skip: !reqMonitor,
+		}
+	);
+
+	return null;
+};
 
 const Root = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +48,13 @@ const Root = () => {
 		error,
 		isLoading: subloading,
 	} = useFetchSubredditsQuery();
+	// const { data: reqMonitor } = useFetchRequestMonitorQuery();
+	// const { data: rateLimit } = useFetchRequestLimitQuery(
+	// 	reqMonitor as RequestMonitor,
+	// 	{
+	// 		skip: !reqMonitor,
+	// 	}
+	// );
 	const [setAllSubreddits] = useSetAllSubredditsMutation();
 	const [setSubreddit] = useSetSubredditMutation();
 	const [clearPending] = useClearPendingMutation();
@@ -81,6 +104,7 @@ const Root = () => {
 
 	return (
 		<div className="h-full w-full flex flex-col overflow-hidden gap-2 p-1">
+			<RateLimitManager />
 			<Navbar />
 			<main className="flex-1 overflow-hidden w-full flex justify-center">
 				{(isLoading || subloading) && (

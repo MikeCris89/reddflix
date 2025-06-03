@@ -1,37 +1,59 @@
-import { getItem } from "../../utils/dbHelpers";
+import { RequestMonitor } from "../../utils/types";
+import { setPendingCache } from "./setPending";
 
 export interface RateLimit {
 	ok: boolean;
 	delayMs: number;
 	reason: "ban" | "rateLimit" | undefined;
+	pendingTimestamp?: number;
 }
 
-export const evaluateRateLimit = async (now: number) => {
-	const bannedUntil = await getItem<number>("requestMonitor", "bannedUntil");
+export const evaluateRateLimit = async (
+	now: number,
+	reqMonitor: RequestMonitor,
+	prunePending: (newPending: number[]) => Promise<void>
+) => {
+	//const store = "requestMonitor";
+	const { recent, pending: rawPending, bannedUntil } = reqMonitor;
+	//const bannedUntil = await getItem<number>(store, "bannedUntil");
 
+	// if temporary ban, block all requests for certain amount of time
 	if (bannedUntil && now < bannedUntil)
 		return {
 			ok: false,
 			delayMs: bannedUntil - now,
 			reason: "ban" as const,
 		};
+	const window = 63_000;
 
-	const recent = (await getItem<number[]>("requestMonitor", "recent")) || [];
+	//const recent = (await getItem<number[]>(store, "recent")) || [];
 
-	const filteredRecent = recent.filter((t) => now - t < 63_000);
+	const filteredRecent = recent.filter((t) => now - t < window);
 
-	if (filteredRecent.length < 10)
+	// if any requests in pending state, put this req in pending
+	//const rawPending = (await getItem<number[]>(store, "pending")) || [];
+	const pending = rawPending.filter((t) => t > now);
+	if (pending.length !== rawPending.length) {
+		await prunePending(pending);
+	}
+
+	// if num of reqs is less than 10 within window AND pending is empty, allow request to go through
+	if (filteredRecent.length < 10 && pending.length === 0)
 		return { ok: true, delayMs: 0, reason: undefined };
 
-	const pending = (await getItem<number[]>("requestMonitor", "pending")) || [];
+	const allRequests = [...filteredRecent, ...pending].sort((a, b) => a - b);
 
-	let delayMs = 0;
+	// calculate proper delay to ensure the 10 requests per window block
+	const N = allRequests.length;
+	const anchor = allRequests[N - 10];
 
-	// get delay time. if # of pending exceeds # of recent, calc delay from pending list.
-	if (pending.length < 10)
-		delayMs = 63_000 - (now - filteredRecent[pending.length]);
-	else {
-		delayMs = 63_000 - (now - pending[pending.length - 10]);
-	}
-	return { ok: false, delayMs, reason: "rateLimit" as const };
+	const T = anchor + 63_000;
+	const delayMs = T - now;
+
+	return {
+		ok: false,
+		delayMs,
+		reason: "rateLimit" as const,
+		pendingTimestamp: now + delayMs,
+	};
 };

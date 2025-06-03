@@ -21,6 +21,7 @@ import {
 import { getPostType } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
 import { RootState } from "../../app/store";
+import { defaultMonitor, RequestMonitor } from "../../utils/types";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -119,8 +120,13 @@ const customBaseQuery: BaseQueryFn<
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
 	const state = api.getState() as RootState;
-	const requestLimit =
-		localAppApi.endpoints.fetchRequestLimit.select()(state)?.data;
+	const reqMonitor =
+		localAppApi.endpoints.fetchRequestMonitor.select()(state)?.data;
+
+	const requestLimit = localAppApi.endpoints.fetchRequestLimit.select(
+		reqMonitor || { ...defaultMonitor }
+	)(state)?.data;
+	const now = Date.now();
 
 	// Check rate limiting and request ban delay
 	if (requestLimit && !requestLimit.ok) {
@@ -140,7 +146,11 @@ const customBaseQuery: BaseQueryFn<
 			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
 
 			// add request to pending list
-			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate());
+			api.dispatch(
+				localAppApi.endpoints.setPendingRequest.initiate(
+					now + requestLimit.delayMs
+				)
+			);
 
 			throw Object.assign(new Error(msg), {
 				delay: requestLimit.delayMs,
@@ -149,8 +159,10 @@ const customBaseQuery: BaseQueryFn<
 		}
 	}
 
+	const arg = args && typeof args === "number" ? args : 0;
+
 	// add request to rate limit list
-	api.dispatch(localAppApi.endpoints.setRequestTime.initiate());
+	api.dispatch(localAppApi.endpoints.setRequestTime.initiate(arg));
 
 	const rawBaseQuery = fetchBaseQuery({ baseUrl: "https://www.reddit.com/" });
 	const result = await rawBaseQuery(args, api, extraOptions);
