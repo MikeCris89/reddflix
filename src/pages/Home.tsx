@@ -1,7 +1,6 @@
 import ScrollContainer from "../components/ScrollContainer";
 import clsx from "clsx";
 import { store } from "../app/store";
-import { MinusCircle } from "lucide-react";
 import { useFetchSubredditsQuery } from "../features/localApp/localAppApi";
 // import { useLazySearchPostsQuery } from "../features/reddit/redditApi";
 
@@ -14,8 +13,6 @@ declare global {
 const Home = () => {
 	const { data: subreddits } = useFetchSubredditsQuery();
 	// const [searchPost, { data: searchData }] = useLazySearchPostsQuery();
-
-	console.log("home rendered", subreddits);
 
 	const sortedSubs = subreddits
 		?.slice()

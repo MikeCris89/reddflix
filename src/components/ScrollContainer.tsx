@@ -85,7 +85,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				>
 					<div
 						ref={scrollRef}
-						className="flex items-center space-x-5 md:space-x-7 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth scroll-px-5 md:scroll-px-10 lg:scroll-px-11 hide-scrollbar "
+						className="flex items-center gap-5 md:gap-7 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth scroll-px-5 md:scroll-px-10 lg:scroll-px-11 hide-scrollbar h-full w-full"
 					>
 						{/* Left Shadow  */}
 						<div className="absolute left-0 top-0 bottom-0 w-6 md:8 bg-gradient-to-r from-[#242424] to-transparent pointer-events-none z-10 rounded-b-md" />

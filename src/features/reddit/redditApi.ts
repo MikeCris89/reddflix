@@ -193,11 +193,11 @@ const customBaseQuery: BaseQueryFn<
 	const rawBaseQuery = fetchBaseQuery({ baseUrl: "https://www.reddit.com/" });
 	const result = await rawBaseQuery(args, api, extraOptions);
 
-	console.log("BaseQuery result:", result);
+	// console.log("BaseQuery result:", result);
 
 	// Set request ban for 403 errors and throw for other errors
 	if (result.error) {
-		console.log("Error received:", result.error);
+		// console.log("Error received:", result.error);
 		let delay = 0;
 		if (result.error.status === 403 || result.error.status === "FETCH_ERROR") {
 			try {
@@ -239,7 +239,6 @@ export const redditApi = createApi({
 			transformResponse: (
 				response: RedditListing<RawRedditPost>
 			): RedditPostsPage => {
-				console.log(`fetchPostsBySubreddit network response.`);
 				if (
 					!response ||
 					!response.data ||
@@ -274,7 +273,6 @@ export const redditApi = createApi({
 			transformResponse: (
 				response: RedditListing<RawRedditPost>
 			): RedditPostsPage => {
-				console.log("searchPosts endpoint network request.");
 				if (
 					!response?.data?.children ||
 					!Array.isArray(response.data.children)
@@ -305,7 +303,6 @@ export const redditApi = createApi({
 			transformResponse: (
 				response: PostAndCommentsResponse
 			): RedditPostAndComments => {
-				console.log("fetchPostsAndComments network request.");
 				if (
 					!response ||
 					!Array.isArray(response) ||

@@ -23,8 +23,7 @@ const HTML = ({
 	useEffect(() => {
 		const container = ref.current;
 		if (!container) return;
-		// console.log("Mounted:", text.slice(0, 100));
-		// console.log("links found:", container.querySelectorAll("a").length);
+
 		// add spoiler class to spoiler tags
 		const spoilers = container.querySelectorAll(".md-spoiler-text");
 		const handleSpoiler = (e: Event) => {
@@ -43,8 +42,6 @@ const HTML = ({
 		};
 
 		container.addEventListener("click", handleClick);
-
-		// console.log(ref.current);
 
 		return () => {
 			spoilers.forEach((spoiler) => {

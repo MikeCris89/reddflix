@@ -99,10 +99,6 @@ const Root = () => {
 		subredditCheck();
 	}, [subreddits, setAllSubreddits, setSubreddit]);
 
-	if (isError && error) {
-		console.log(error);
-	}
-
 	return (
 		<div className="h-full w-full flex flex-col overflow-hidden gap-2 p-1">
 			<Toaster position="top-right" richColors />

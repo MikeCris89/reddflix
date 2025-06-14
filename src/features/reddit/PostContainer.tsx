@@ -8,6 +8,7 @@ import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
 import useCountdown from "../../hooks/useCountdown";
+import Spinner from "../../components/Spinner";
 
 export const PostSkeleton = () => (
 	<div className="animate-pulse h-[400px] bg-zinc-800 w-80 md:w-90 rounded-xl ">
@@ -77,11 +78,11 @@ const PostContainer = ({
 	}, [pendingTime, refetch, removePending]);
 
 	useEffect(() => {
-		if (isError && error) {
-			console.log(`isError for sub ${subreddit.name}: `, isError);
-			console.log(`error: ${error}`);
-			console.log(`data: ${data}`);
-		}
+		// if (isError && error) {
+		// 	console.log(`isError for sub ${subreddit.name}: `, isError);
+		// 	console.log(`error: ${error}`);
+		// 	console.log(`data: ${data}`);
+		// }
 		if (
 			isError &&
 			error &&
@@ -89,7 +90,7 @@ const PostContainer = ({
 			error.data.pendingTimestamp > 0 &&
 			error.data.reason === "rateLimit"
 		) {
-			console.log(
+			console.warn(
 				"Pending request: ",
 				subreddit.name,
 				new Date(error.data.pendingTimestamp).toLocaleDateString()
@@ -97,10 +98,6 @@ const PostContainer = ({
 			setPendingTime(error.data.pendingTimestamp);
 		}
 	}, [isError, error, subreddit]);
-
-	if (subreddit.name === "gaming") {
-		console.log(allSortedPosts);
-	}
 
 	return (
 		<>
@@ -127,26 +124,31 @@ const PostContainer = ({
 			)) ||
 				[]}
 			{isError && error && (
-				<div className="flex flex-col gap-2 items-center justify-center w-full h-full">
-					{!isAppHandledError(error) && (
-						<p>{"Error occurred. Please try again later."}</p>
-					)}
-					{isAppHandledError(error) && error.data.reason === "ban" && (
-						<p>{error.data.message}</p>
-					)}
-					{isAppHandledError(error) &&
-						error.data.reason === "rateLimit" &&
-						remaining > 0 && (
-							<>
-								<p className="text-sm text-[#E50914]">
-									Reddit's Rate limit reached.
-								</p>
-								<p className="text-lg text-[#E50914]">
-									Retrying in {Math.ceil(remaining / 1000)}s
-								</p>
-							</>
+				<>
+					<div className="w-full h-[300px] flex justify-center items-center">
+						{!isAppHandledError(error) && (
+							<p>{"Error occurred. Please try again later."}</p>
 						)}
-				</div>
+						{isAppHandledError(error) && error.data.reason === "ban" && (
+							<p>{error.data.message}</p>
+						)}
+						{isAppHandledError(error) &&
+							error.data.reason === "rateLimit" &&
+							remaining > 0 && (
+								<div className="flex flex-col flex-1 w-full h-full justify-center items-center gap-2">
+									<p className="text-md text-[#E50914] font-semibold">
+										Reddit's Rate limit reached.
+									</p>
+									<p className="text-lg text-[#E50914] font-semibold">
+										Retrying in {Math.ceil(remaining / 1000)}s
+									</p>
+									<Spinner size="sm" />
+								</div>
+							)}
+					</div>
+					<div></div>
+					<div></div>
+				</>
 			)}
 		</>
 	);

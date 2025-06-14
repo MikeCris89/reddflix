@@ -324,9 +324,6 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 	}, [pendingTime, refetch, removePending]);
 
 	useEffect(() => {
-		if (isError && error) {
-			console.log(`error: ${error}`);
-		}
 		if (
 			isError &&
 			error &&
@@ -334,7 +331,7 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 			error.data.pendingTimestamp > 0 &&
 			error.data.reason === "rateLimit"
 		) {
-			console.log(
+			console.warn(
 				"Pending request: ",
 				new Date(error.data.pendingTimestamp).toLocaleDateString()
 			);
@@ -388,8 +385,6 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 
 	const section = page * PAGE_SIZE;
 	const maxPages = Math.max(0, Math.floor(comments.length / PAGE_SIZE) - 1);
-
-	//console.log(comments.length);
 
 	return (
 		<div className="h-full min-h-0 flex flex-col gap-1 p-1">
