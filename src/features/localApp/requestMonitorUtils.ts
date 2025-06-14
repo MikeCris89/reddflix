@@ -1,11 +1,9 @@
 import { RequestMonitor } from "../../utils/types";
-import { setPendingCache } from "./setPending";
 
 export interface RateLimit {
 	ok: boolean;
 	delayMs: number;
 	reason: "ban" | "rateLimit" | undefined;
-	pendingTimestamp?: number;
 }
 
 export const evaluateRateLimit = async (
@@ -13,6 +11,10 @@ export const evaluateRateLimit = async (
 	reqMonitor: RequestMonitor,
 	prunePending: (newPending: number[]) => Promise<void>
 ) => {
+	const dev = process.env.NODE_ENV === "development";
+	const window = dev ? 15_000 : 63_000;
+	const maxReq = dev ? 2 : 10;
+
 	//const store = "requestMonitor";
 	const { recent, pending: rawPending, bannedUntil } = reqMonitor;
 	//const bannedUntil = await getItem<number>(store, "bannedUntil");
@@ -24,7 +26,7 @@ export const evaluateRateLimit = async (
 			delayMs: bannedUntil - now,
 			reason: "ban" as const,
 		};
-	const window = 63_000;
+	// const window = 63_000;
 
 	//const recent = (await getItem<number[]>(store, "recent")) || [];
 
@@ -38,22 +40,21 @@ export const evaluateRateLimit = async (
 	}
 
 	// if num of reqs is less than 10 within window AND pending is empty, allow request to go through
-	if (filteredRecent.length < 10 && pending.length === 0)
+	if (filteredRecent.length < maxReq && pending.length === 0)
 		return { ok: true, delayMs: 0, reason: undefined };
 
 	const allRequests = [...filteredRecent, ...pending].sort((a, b) => a - b);
 
 	// calculate proper delay to ensure the 10 requests per window block
 	const N = allRequests.length;
-	const anchor = allRequests[N - 10];
+	const anchor = allRequests[N - maxReq];
 
-	const T = anchor + 63_000;
+	const T = anchor + window;
 	const delayMs = T - now;
 
 	return {
 		ok: false,
 		delayMs,
 		reason: "rateLimit" as const,
-		pendingTimestamp: now + delayMs,
 	};
 };

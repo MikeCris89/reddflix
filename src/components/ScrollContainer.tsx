@@ -45,26 +45,18 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 		postRefs.current[nextIndex]?.scrollIntoView({
 			behavior: "smooth",
-			inline: "start", // or "center" if you prefer
+			inline: "start", // or "center"
 			block: "nearest",
 		});
 	};
 
-	const refetchPosts = (refetch: () => void) => {
-		if (refetch) refetch();
-	};
-
-	const titleStyle1 =
-		"text-2xl md:text-3xl font-bold text-neutral-100 bg-gradient-to-r from-red-600 via-red-500 to-red-700 shadow-sm rounded-sm p-2 pl-2";
-
-	const titleStyle2 =
-		"flex items-center px-2 py-1 font-bold text-lg text-neutral-100 border-l-4 border-red-600 bg-[#1a1a1a] shadow-sm ";
+	// const refetchPosts = (refetch: () => void) => {
+	// 	if (refetch) refetch();
+	// };
 
 	const titleStyle3 = ` text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
 	} `;
-
-	const redShadow = "shadow-[0_0_6px_#e5091440]";
 
 	return (
 		<div className="flex flex-col bg-[#1a1a1a] rounded-md">
@@ -73,7 +65,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				<button onClick={() => showCache(subreddit.name)}>Check Cache</button>
 			</div> */}
 			{/* Title */}
-			<h2 className={titleStyle3}>r/{subreddit.title}</h2>
+			<h2 className={titleStyle3}>r/{subreddit.name}</h2>
 
 			<div className="relative">
 				{/* Scroll Buttons (Desktop only) */}
@@ -93,7 +85,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				>
 					<div
 						ref={scrollRef}
-						className="flex items-center space-x-5 md:space-x-7 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth md:scroll-px-10 lg:scroll-px-11 hide-scrollbar "
+						className="flex items-center space-x-5 md:space-x-7 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth scroll-px-5 md:scroll-px-10 lg:scroll-px-11 hide-scrollbar "
 					>
 						{/* Left Shadow  */}
 						<div className="absolute left-0 top-0 bottom-0 w-6 md:8 bg-gradient-to-r from-[#242424] to-transparent pointer-events-none z-10 rounded-b-md" />

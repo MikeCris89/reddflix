@@ -2,17 +2,33 @@ import { LucideSettings } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import useDisplay from "../hooks/useDisplay";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+import SubredditModal from "./SubredditModal";
 
-const nav1 =
-	"bg-black border-b border-b-cyan-600 shadow-md backdrop-blur-md  items-center";
 const nav2 =
 	"bg-[#121212] border-b border-[#2C2C2C] shadow-sm px-4  items-center";
 
 const Navbar = () => {
+	const [openModal, setOpenModal] = useState(false);
 	const navigate = useNavigate();
 	const { isMobile } = useDisplay();
+
+	useEffect(() => {
+		if (openModal) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
+
+		// Cleanup on unmount
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [openModal]);
+
 	return (
 		<nav className={nav2}>
+			{openModal && <SubredditModal onClose={() => setOpenModal(false)} />}
 			<div className="p-1  flex justify-between items-center max-w-[1200px] mx-auto">
 				<div
 					className={clsx(
@@ -25,7 +41,10 @@ const Navbar = () => {
 				</div>
 
 				<div className="flex justify-end gap-10 justify-self-end w-fit">
-					<div className="hover:bg-red-700 hover:text-black text-sm font-semibold p-1 rounded-md cursor-pointer">
+					<div
+						className="hover:bg-red-700 hover:text-black text-sm font-semibold p-1 rounded-md cursor-pointer"
+						onClick={() => setOpenModal(true)}
+					>
 						subreddits
 					</div>
 					{/* <button >Home</button> */}

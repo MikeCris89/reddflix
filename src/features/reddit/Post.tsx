@@ -10,6 +10,8 @@ import redditLogo from "../../assets/reddit.svg";
 import redditBlack from "../../assets/reddit-black.svg";
 import useDisplay from "../../hooks/useDisplay";
 import useHoverTouch from "../../hooks/useHoverTouch";
+import { handleNativeShare } from "../../utils/helpers";
+import { useLocation } from "react-router-dom";
 
 const Post = ({
 	post,
@@ -18,6 +20,7 @@ const Post = ({
 	post: RedditPost;
 	toggleComments: () => void;
 }) => {
+	const location = useLocation();
 	const [seeMore, setSeeMore] = useState(false);
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const { isMobile } = useDisplay();
@@ -71,7 +74,15 @@ const Post = ({
 						text={post.num_comments}
 						onClick={toggleComments}
 					/>
-					<InfoBubble icon={BUBBLE_ICON.share} />
+					<InfoBubble
+						icon={BUBBLE_ICON.share}
+						onClick={() =>
+							handleNativeShare(
+								`${window.location.origin}${location.pathname}`,
+								post.title
+							)
+						}
+					/>
 				</div>
 				<div>
 					<a

@@ -22,7 +22,7 @@ const GalleryContent = ({
 
 	const images = post.gallery_data.items.map((item) => {
 		const media = post.media_metadata[item.media_id];
-		const imageUrl = media?.s?.u?.replace(/&amp;/g, "&") || "";
+		const imageUrl = media?.s?.u?.replace(/&amp;/g, "&") || null;
 
 		return imageUrl;
 	});
@@ -42,21 +42,25 @@ const GalleryContent = ({
 						}
 					>
 						{/* Slider */}
+
 						<div ref={sliderRef} className="keen-slider rounded-md">
-							{images.map((src, idx) => {
-								return (
+							{images
+								.map((src) => (src ? src : null))
+								.filter(Boolean)
+								.map((src, idx) => (
 									<div
 										key={idx}
 										className="keen-slider__slide flex justify-center rounded-md "
 									>
-										<img
-											src={src}
-											alt={`Gallery image ${idx + 1}`}
-											className="max-h-[600px] w-full object-contain rounded-md"
-										/>
+										{src && (
+											<img
+												src={src}
+												alt={`Gallery image ${idx + 1}`}
+												className="max-h-[600px] w-full object-contain rounded-md"
+											/>
+										)}
 									</div>
-								);
-							})}
+								))}
 						</div>
 
 						{/* Arrows */}
@@ -89,12 +93,14 @@ const GalleryContent = ({
 							</div>
 						}
 					>
-						<img
-							src={images[0]}
-							className="w-full h-full object-cover rounded-md"
-							alt={`Gallery image`}
-							loading="lazy"
-						/>
+						{images[0] && (
+							<img
+								src={images[0]}
+								className="w-full h-full object-cover rounded-md"
+								alt={`Gallery image`}
+								loading="lazy"
+							/>
+						)}
 					</ContentBadge>
 				</>
 			)}

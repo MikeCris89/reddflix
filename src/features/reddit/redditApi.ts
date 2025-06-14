@@ -20,8 +20,7 @@ import {
 } from "./redditTypes";
 import { getPostType } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
-import { RootState } from "../../app/store";
-import { defaultMonitor, RequestMonitor } from "../../utils/types";
+import { defaultMonitor } from "../../utils/types";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -119,13 +118,29 @@ const customBaseQuery: BaseQueryFn<
 	unknown,
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-	const state = api.getState() as RootState;
-	const reqMonitor =
-		localAppApi.endpoints.fetchRequestMonitor.select()(state)?.data;
+	//const state = api.getState() as RootState;
+	// const reqMonitor =
+	// 	localAppApi.endpoints.fetchRequestMonitor.select()(state)?.data;
 
-	const requestLimit = localAppApi.endpoints.fetchRequestLimit.select(
-		reqMonitor || { ...defaultMonitor }
-	)(state)?.data;
+	const reqMonitor = await api
+		.dispatch(
+			localAppApi.endpoints.fetchRequestMonitor.initiate(undefined, {
+				forceRefetch: true,
+			})
+		)
+		.unwrap();
+
+	// const requestLimit = localAppApi.endpoints.fetchRequestLimit.select(
+	// 	reqMonitor || { ...defaultMonitor }
+	// )(state)?.data;
+	const requestLimit = await api
+		.dispatch(
+			localAppApi.endpoints.fetchRequestLimit.initiate(
+				reqMonitor || { ...defaultMonitor },
+				{ forceRefetch: true }
+			)
+		)
+		.unwrap();
 	const now = Date.now();
 
 	// Check rate limiting and request ban delay
@@ -137,25 +152,36 @@ const customBaseQuery: BaseQueryFn<
 				Date.now() + requestLimit.delayMs
 			).toLocaleString()}`;
 
-			throw Object.assign(new Error(msg), {
-				delay: 0,
-				isAppHandledError: false,
-			});
+			return {
+				error: {
+					status: 403,
+					data: {
+						message: msg,
+						pendingTimestamp: 0,
+						isAppHandledError: false,
+						reason: "ban",
+					},
+				},
+			};
 		} else {
 			const seconds = Math.ceil(requestLimit.delayMs / 1000);
 			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
-
+			const timestamp = now + requestLimit.delayMs;
 			// add request to pending list
-			api.dispatch(
-				localAppApi.endpoints.setPendingRequest.initiate(
-					now + requestLimit.delayMs
-				)
-			);
+			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate(timestamp));
 
-			throw Object.assign(new Error(msg), {
-				delay: requestLimit.delayMs,
-				isAppHandledError: true,
-			});
+			return {
+				error: {
+					status: 429,
+					data: {
+						message: msg,
+						//delay: requestLimit.delayMs,
+						pendingTimestamp: timestamp,
+						isAppHandledError: true,
+						reason: "rateLimit",
+					},
+				},
+			};
 		}
 	}
 
@@ -173,7 +199,7 @@ const customBaseQuery: BaseQueryFn<
 	if (result.error) {
 		console.log("Error received:", result.error);
 		let delay = 0;
-		if (result.error.status === 403) {
+		if (result.error.status === 403 || result.error.status === "FETCH_ERROR") {
 			try {
 				const resp = await api
 					.dispatch(localAppApi.endpoints.setBannedUntil.initiate())
@@ -182,22 +208,21 @@ const customBaseQuery: BaseQueryFn<
 			} catch {
 				delay = 1000 * 60 * 60;
 			}
-			throw Object.assign(
-				new Error(
-					`Reddit has temporarily blocked further requests. Retrying at ${new Date(
-						Date.now() + delay
-					).toLocaleString()}`
-				),
-				{
-					delay,
-					isAppHandledError: true,
-				}
-			);
+			return {
+				error: {
+					status: 403,
+					data: {
+						message: `Reddit has temporarily blocked further requests. Retry after ${new Date(
+							Date.now() + delay
+						).toLocaleString()}`,
+						pendingTimestamp: 0,
+						isAppHandledError: false,
+						reason: "ban",
+					},
+				},
+			};
 		} else {
-			throw Object.assign(new Error(`Error communicating with Reddit.`), {
-				delay: 0,
-				isAppHandledError: false,
-			});
+			throw Object.assign(new Error(`Error communicating with Reddit.`));
 		}
 	}
 
@@ -261,7 +286,7 @@ export const redditApi = createApi({
 					posts: response.data.children.map((post) => refinePost(post.data)),
 				};
 			},
-			onQueryStarted(arg, { queryFulfilled, dispatch }) {
+			onQueryStarted(arg, { queryFulfilled, dispatch: _dispatch }) {
 				console.log(`searchPosts(${arg}) network request started.`);
 
 				queryFulfilled

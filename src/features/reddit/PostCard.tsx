@@ -3,10 +3,9 @@ import InfoBubble from "../../components/InfoBubble";
 import { BUBBLE_ICON, MODE } from "../../utils/types";
 import PostMedia from "./PostMedia";
 import { isTitleAsPost, RedditPost } from "./redditTypes";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect } from "react";
 import { useSetSeenPostMutation } from "../localApp/localAppApi";
 import { useLocation, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import clsx from "clsx";
 import useDisplay from "../../hooks/useDisplay";
 
@@ -18,7 +17,6 @@ interface PostCardProps {
 
 const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 	const { post, sub, className } = props;
-	const [isTapped, setIsTapped] = useState(false);
 	const [setSeenPost] = useSetSeenPostMutation();
 	const { isMobile, isPortrait } = useDisplay();
 	const navigate = useNavigate();
@@ -35,9 +33,6 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		}
 	}, [inView, setSeenPost, post, sub]);
 
-	const cardStyle1 =
-		"h-[400px] w-72 md:w-80 rounded-lg flex-shrink-0 overflow-hidden bg-[#242424] p-1 flex flex-col justify-between hover:scale-[1.01] hover:shadow-md transition-transform duration-150";
-
 	const cardStyle2 = ` ${
 		isMobile && !isPortrait ? "h-[300px] p-2" : "h-[400px] p-3"
 	} w-72 md:w-80 flex-shrink-0 overflow-hidden flex flex-col justify-between  bg-[#212121] rounded-xl text-neutral-100
@@ -45,9 +40,6 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		active:scale-[0.97] active:shadow-[0_6px_20px_rgba(0,0,0,0.5)]
 		transition-all duration-200 ease-in-out`;
 	//shadow-lg shadow-black hover:shadow-xl hover:shadow-black
-
-	const cardStyle3 =
-		"h-[400px] w-80 md:w-90 flex-shrink-0 overflow-hidden flex flex-col justify-between hover:scale-[1.01] rounded-xl p-3 shadow-sm hover:shadow-md transition-shadow text-neutral-100  bg-[#1e1e1e] border border-[#262626]";
 
 	return (
 		<div
@@ -57,13 +49,13 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 				isMobile ? "snap-center pt-3 pb-5" : "snap-start pt-5 pb-7"
 			)}
 			onClick={() => {
-				setTimeout(
-					() =>
-						navigate(`/${sub}/${post.id}`, {
-							state: { backgroundLocation: location },
-						}),
-					100
-				);
+				// setTimeout(
+				// 	() =>
+				navigate(`/${sub}/${post.id}`, {
+					state: { backgroundLocation: location },
+				});
+				// 	50
+				// );
 			}}
 		>
 			<div ref={ref} className={cardStyle2}>

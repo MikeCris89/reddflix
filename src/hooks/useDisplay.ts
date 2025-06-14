@@ -11,9 +11,6 @@ interface DisplayInfo {
 }
 
 const useDisplay = (): DisplayInfo => {
-	const [isPortrait, setIsPortrait] = useState(
-		window.matchMedia("(orientation: portrait)").matches
-	);
 	const [dimensions, setDimensions] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight,

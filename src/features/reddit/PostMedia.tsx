@@ -1,5 +1,5 @@
+import EmbedContent from "../../components/EmbedContent";
 import GalleryContent from "../../components/GalleryContent";
-import GifContent from "../../components/GifContent";
 import ImageContent from "../../components/ImageContent";
 import LinkContent from "../../components/LinkContent";
 import SelfContent from "../../components/SelfContent";
@@ -7,6 +7,7 @@ import VideoContent from "../../components/VideoContent";
 import { getPostType } from "../../utils/helpers";
 import { ContentMode } from "../../utils/types";
 import {
+	EmbedPost,
 	GalleryPost,
 	GifPost,
 	ImagePost,
@@ -33,6 +34,10 @@ const PostMedia = ({ post, mode }: MediaProps) => {
 			{/* VIDEOS */}
 			{type === POST_TYPES.video && (
 				<VideoContent post={post as VideoPost} mode={mode} />
+			)}
+			{/* OEMBED */}
+			{type === POST_TYPES.embed && (
+				<EmbedContent post={post as EmbedPost} mode={mode} />
 			)}
 			{/* GIFs */}
 			{type === POST_TYPES.gif && (

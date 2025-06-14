@@ -1,5 +1,6 @@
 import DOMPurify from "dompurify";
 import {
+	isEmbedPost,
 	isGalleryPost,
 	isGifPost,
 	isImagePost,
@@ -12,17 +13,7 @@ import {
 } from "../features/reddit/redditTypes";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
-import { createElement } from "react";
-
-// export const getPostType = (post: RedditPost): keyof typeof POST_TYPES => {
-// 	if (isVideoPost(post)) return POST_TYPES.video;
-// 	if (isGifPost(post)) return POST_TYPES.gif;
-// 	if (isImagePost(post)) return POST_TYPES.image;
-// 	if (isGalleryPost(post)) return POST_TYPES.gallery;
-// 	if (isSelfPost(post)) return POST_TYPES.self;
-// 	if (isLinkPost(post)) return POST_TYPES.link;
-// 	return POST_TYPES.unknown;
-// };
+import { toast } from "sonner";
 
 export const getPostType = (
 	post: RawRedditPost | RedditPost
@@ -30,6 +21,7 @@ export const getPostType = (
 	const types: (keyof typeof POST_TYPES)[] = [];
 
 	if (isVideoPost(post)) types.push(POST_TYPES.video);
+	if (isEmbedPost(post)) types.push(POST_TYPES.embed);
 	if (isGifPost(post)) types.push(POST_TYPES.gif);
 	if (isImagePost(post)) types.push(POST_TYPES.image);
 	if (isGalleryPost(post)) types.push(POST_TYPES.gallery);
@@ -111,5 +103,25 @@ export const showCache = (storeName: string) => {
 			console.log(`Found ${storeName} query:`);
 			console.log(key, value);
 		}
+	}
+};
+
+export const handleNativeShare = async (
+	url: string,
+	text: string = "Check out this post from ReddFlix!"
+) => {
+	if (navigator.share) {
+		try {
+			await navigator.share({
+				title: "ReddFlix",
+				text,
+				url,
+			});
+		} catch (err) {
+			console.warn("Share cancelled or failed", err);
+		}
+	} else {
+		navigator.clipboard.writeText(url);
+		toast.success("Link copied!");
 	}
 };

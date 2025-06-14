@@ -1,5 +1,3 @@
-import { RedditPost } from "../features/reddit/redditTypes";
-
 export const MODE = {
 	preview: "preview",
 	full: "full",
@@ -52,9 +50,11 @@ export const defaultMonitor: RequestMonitor = {
 
 export interface AppHandledError {
 	message: string;
-	delay: number;
+	//delay: number;
+	pendingTimestamp: number;
 	status?: number;
 	reason?: "rateLimit" | "ban";
+	isAppHandledError: boolean;
 }
 
 // ==== TYPEGUARDS ====
@@ -62,8 +62,13 @@ export interface AppHandledError {
 
 export const isAppHandledError = (
 	error: unknown
-): error is Error & AppHandledError => {
+): error is { data: AppHandledError } => {
 	return (
-		typeof error === "object" && error !== null && "isAppHandledError" in error
+		typeof error === "object" &&
+		error !== null &&
+		"data" in error &&
+		typeof error.data === "object" &&
+		error.data != null &&
+		"isAppHandledError" in error.data
 	);
 };

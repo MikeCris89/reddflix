@@ -88,7 +88,7 @@ export interface RawRedditPost {
 	selftext: string;
 	selftext_html: string;
 	media?: Media | null;
-	secure_media?: Media | null;
+	secure_media?: (Media & SecureMedia) | null;
 	gallery_data?: GalleryData;
 	media_metadata?: MediaMetadata;
 	stickied: boolean;
@@ -112,6 +112,7 @@ export interface RedditPost {
 	media_metadata?: RawRedditPost["media_metadata"];
 	gallery_data?: RawRedditPost["gallery_data"];
 	secure_media?: RawRedditPost["secure_media"];
+	over_18?: boolean;
 	preview?: Preview;
 	is_video: boolean;
 	is_self: boolean;
@@ -179,6 +180,7 @@ export interface Gildings {
 
 export interface Media {
 	reddit_video?: RedditVideo;
+	// oembed?: { provider_name?: string; thumbnail_url?: string };
 }
 
 export interface RedditVideo {
@@ -198,6 +200,7 @@ export interface RedditVideo {
 export const POST_TYPES = {
 	gif: "gif",
 	video: "video",
+	embed: "embed",
 	image: "image",
 	gallery: "gallery",
 	link: "link",
@@ -207,10 +210,28 @@ export const POST_TYPES = {
 
 export type PostType = keyof typeof POST_TYPES;
 
+//for embed videos
+export type OEmbedMedia = {
+	provider_name: string; // e.g. "YouTube", "Vimeo", etc.
+	thumbnail_url: string;
+	title: string;
+};
+
+export type SecureMedia = {
+	oembed: OEmbedMedia;
+};
+
 export type VideoPost = RedditPost & {
 	type: typeof POST_TYPES.video;
 	media?: { reddit_video: RedditVideo & { is_gif: false } };
 	url?: string; // fallback for external .mp4
+};
+
+export type EmbedPost = RedditPost & {
+	type: typeof POST_TYPES.embed;
+	secure_media?: SecureMedia;
+	thumbnail?: string; // fallback thumbnail
+	url?: string; // external video link (e.g. YouTube)
 };
 
 export type GifPost = RedditPost & {
@@ -253,6 +274,13 @@ export const isVideoPost = (
 	post.media?.reddit_video?.is_gif === false ||
 	(post.url?.endsWith(".mp4") ?? false);
 
+export const isEmbedPost = (
+	post: RedditPost | RawRedditPost
+): post is EmbedPost =>
+	post.post_hint === "rich:video" &&
+	typeof post.secure_media?.oembed?.thumbnail_url === "string" &&
+	typeof post.url === "string";
+
 export const isGifPost = (post: RedditPost | RawRedditPost): post is GifPost =>
 	post.media?.reddit_video?.is_gif === true ||
 	(post.url?.endsWith(".gifv") ?? false);
@@ -277,12 +305,13 @@ export const isLinkPost = (
 	post: RedditPost | RawRedditPost
 ): post is LinkPost =>
 	!isVideoPost(post) &&
+	!isEmbedPost(post) &&
 	!isGifPost(post) &&
 	!isImagePost(post) &&
 	!isGalleryPost(post) &&
 	!isSelfPost(post) &&
-	!!post.url &&
-	post.post_hint === POST_TYPES.link;
+	typeof post.url === "string" &&
+	post.url.length > 0;
 
 export const isValidRedditComment = (
 	c: RedditThing<RedditComment>

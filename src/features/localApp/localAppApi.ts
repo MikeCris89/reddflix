@@ -5,11 +5,7 @@ import {
 	SeenPosts,
 	Subreddit,
 } from "./../../utils/types";
-import {
-	createApi,
-	fakeBaseQuery,
-	FetchArgs,
-} from "@reduxjs/toolkit/query/react";
+import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
 	deleteItem,
 	getAllFromStore,
@@ -92,27 +88,31 @@ export const localAppApi = createApi({
 		setAllSubreddits: build.mutation({
 			async queryFn(subs: Subreddit[]) {
 				const data = await Promise.all(
-					subs.map((sub) => setItem("subreddits", sub.title, sub))
+					subs.map(async (sub) => {
+						await deleteItem("subreddits", sub.name);
+						if (!sub.active) await deleteItem("seenPosts", sub.name);
+						return await setItem("subreddits", sub.name, sub);
+					})
 				);
 				return { data };
 			},
 			invalidatesTags: ["subreddits"],
 		}),
 		setSubredditTTL: build.mutation({
-			async queryFn(title: string) {
-				const existing = await getItem<Subreddit>("subreddits", title);
+			async queryFn(name: string) {
+				const existing = await getItem<Subreddit>("subreddits", name);
 				if (!existing) return { error: new Error("Subreddit not found") };
 				const ttl = 1000 * 60 * 60 * 3;
 				const updated = { ...existing, ttl: Date.now() + ttl };
-				const data = await setItem("subreddits", title, updated);
+				const data = await setItem("subreddits", name, updated);
 				return { data };
 			},
 			invalidatesTags: ["subreddits"],
 		}),
 		deleteSubreddit: build.mutation({
-			async queryFn(title: string) {
-				await deleteItem("subreddits", title);
-				await deleteItem("seenPosts", title);
+			async queryFn(name: string) {
+				await deleteItem("subreddits", name);
+				await deleteItem("seenPosts", name);
 				return { data: true };
 			},
 			invalidatesTags: ["subreddits", "seenPosts"],
@@ -306,6 +306,7 @@ export const {
 	useSetSubredditTTLMutation,
 	useFetchRequestMonitorQuery,
 	useFetchRequestLimitQuery,
+	useRemovePendingRequestMutation,
 	useSetPendingArrayMutation,
 	useSetPendingRequestMutation,
 	useClearPendingMutation,

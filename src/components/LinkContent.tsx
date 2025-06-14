@@ -14,22 +14,25 @@ const LinkContent = ({ post, mode }: { post: LinkPost; mode: ContentMode }) => {
 
 	const Content = () => {
 		return (
-			<>
+			<div className="w-full h-full">
 				{previewImage && (
 					<img src={previewImage} alt={post.title} className="rounded-md" />
 				)}
 				{
 					<p
-						className={clsx("break-words text-sky-400", {
-							"text-xs": mode === MODE.preview,
-							"p-1 text-base group-hover:text-blue-400 group-hover:underline group-active:text-blue-400 group-active:underline":
-								mode === MODE.full,
-						})}
+						className={clsx(
+							"truncate whitespace-nowrap overflow-hidden text-sky-400",
+							{
+								"text-xs": mode === MODE.preview,
+								"p-1 text-base group-hover:text-blue-400 group-hover:underline group-active:text-blue-400 group-active:underline":
+									mode === MODE.full,
+							}
+						)}
 					>
 						{linkUrl}
 					</p>
 				}
-			</>
+			</div>
 		);
 	};
 
