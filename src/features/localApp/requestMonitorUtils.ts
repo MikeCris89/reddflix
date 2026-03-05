@@ -14,38 +14,38 @@ export const evaluateRateLimit = async (
 	const dev = process.env.NODE_ENV === "development";
 	const window = dev ? 15_000 : 63_000;
 	const maxReq = dev ? 2 : 10;
+	const minGap = dev ? 1_000 : 2_000;
 
-	//const store = "requestMonitor";
-	const { recent, pending: rawPending, bannedUntil } = reqMonitor;
-	//const bannedUntil = await getItem<number>(store, "bannedUntil");
-
-	// if temporary ban, block all requests for certain amount of time
-	if (bannedUntil && now < bannedUntil)
-		return {
-			ok: false,
-			delayMs: bannedUntil - now,
-			reason: "ban" as const,
-		};
-	// const window = 63_000;
-
-	//const recent = (await getItem<number[]>(store, "recent")) || [];
+	const { recent, pending: rawPending } = reqMonitor;
 
 	const filteredRecent = recent.filter((t) => now - t < window);
 
 	// if any requests in pending state, put this req in pending
-	//const rawPending = (await getItem<number[]>(store, "pending")) || [];
 	const pending = rawPending.filter((t) => t > now);
 	if (pending.length !== rawPending.length) {
 		await prunePending(pending);
 	}
 
-	// if num of reqs is less than 10 within window AND pending is empty, allow request to go through
-	if (filteredRecent.length < maxReq && pending.length === 0)
+	// if num of reqs is less than maxReq within window AND pending is empty, check gap
+	if (filteredRecent.length < maxReq && pending.length === 0) {
+		// enforce minimum gap between requests to avoid looking like a scraper
+		if (filteredRecent.length > 0) {
+			const mostRecent = Math.max(...filteredRecent);
+			const timeSinceLast = now - mostRecent;
+			if (timeSinceLast < minGap) {
+				return {
+					ok: false,
+					delayMs: minGap - timeSinceLast,
+					reason: "rateLimit" as const,
+				};
+			}
+		}
 		return { ok: true, delayMs: 0, reason: undefined };
+	}
 
 	const allRequests = [...filteredRecent, ...pending].sort((a, b) => a - b);
 
-	// calculate proper delay to ensure the 10 requests per window block
+	// calculate proper delay to ensure the maxReq requests per window block
 	const N = allRequests.length;
 	const anchor = allRequests[N - maxReq];
 

@@ -39,13 +39,11 @@ export type SeenPosts = {
 export interface RequestMonitor {
 	recent: number[];
 	pending: number[];
-	bannedUntil?: number;
 }
 
 export const defaultMonitor: RequestMonitor = {
 	recent: [],
 	pending: [],
-	bannedUntil: undefined,
 };
 
 export interface AppHandledError {

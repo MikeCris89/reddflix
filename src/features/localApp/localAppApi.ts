@@ -184,7 +184,6 @@ export const localAppApi = createApi({
 				const data: RequestMonitor = { ...defaultMonitor };
 				data.recent = (await getItem<number[]>(store, "recent")) || [];
 				data.pending = (await getItem<number[]>(store, "pending")) || [];
-				data.bannedUntil = await getItem<number>(store, "bannedUntil");
 				return { data };
 			},
 			providesTags: ["requestMonitor"],
@@ -262,20 +261,6 @@ export const localAppApi = createApi({
 				const key = "pending";
 				const data = await setItem(store, key, arr);
 				return { data };
-			},
-			invalidatesTags: ["requestMonitor"],
-		}),
-		setBannedUntil: build.mutation<number, void>({
-			async queryFn() {
-				const store = "requestMonitor";
-				const key = "bannedUntil";
-				const currTime = Date.now();
-				const existing = await getItem<number>(store, key);
-				let delay = 1000 * 60 * 60 * 2;
-				// if resp is another 403 within 3 hours of previous, delay further to 6 hours.
-				if (existing && currTime - existing <= delay * 3) delay *= 3;
-				await setItem<number>(store, key, currTime + delay);
-				return { data: delay };
 			},
 			invalidatesTags: ["requestMonitor"],
 		}),

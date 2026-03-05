@@ -34,7 +34,6 @@ describe("evaluateRateLimit with proper delays", () => {
 			const reqMonitor = {
 				recent: recentArr,
 				pending: pendingArr,
-				bannedUntil: undefined,
 			};
 			const time = now + 5_000 * i;
 			const rateLimit = await evaluateRateLimit(time, reqMonitor, mockPrune);
@@ -70,5 +69,30 @@ describe("evaluateRateLimit with proper delays", () => {
 		const arrs = await mockBaseQuery(25);
 
 		expect(isRateSafe(arrs)).toBe(true);
+	});
+
+	it("enforces minimum gap between consecutive requests", async () => {
+		const mockPrune = jest.fn(async (_arr: number[]) => {});
+		const recent = [now - 500]; // last request was 500ms ago (within 2s prod minGap)
+		const result = await evaluateRateLimit(
+			now,
+			{ recent, pending: [] },
+			mockPrune
+		);
+		expect(result.ok).toBe(false);
+		expect(result.reason).toBe("rateLimit");
+		expect(result.delayMs).toBeGreaterThan(0);
+		expect(result.delayMs).toBeLessThanOrEqual(2_000); // prod minGap is 2s
+	});
+
+	it("allows request when gap is sufficient", async () => {
+		const mockPrune = jest.fn(async (_arr: number[]) => {});
+		const recent = [now - 2_000]; // last request was 2s ago (beyond 1s dev minGap)
+		const result = await evaluateRateLimit(
+			now,
+			{ recent, pending: [] },
+			mockPrune
+		);
+		expect(result.ok).toBe(true);
 	});
 });

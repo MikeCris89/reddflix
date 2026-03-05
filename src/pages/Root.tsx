@@ -46,7 +46,6 @@ const Root = () => {
 	const {
 		data: subreddits,
 		isError,
-		error,
 		isLoading: subloading,
 	} = useFetchSubredditsQuery();
 	// const { data: reqMonitor } = useFetchRequestMonitorQuery();

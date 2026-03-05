@@ -195,35 +195,50 @@ const customBaseQuery: BaseQueryFn<
 
 	// console.log("BaseQuery result:", result);
 
-	// Set request ban for 403 errors and throw for other errors
+	// Handle errors from Reddit
 	if (result.error) {
-		// console.log("Error received:", result.error);
-		let delay = 0;
-		if (result.error.status === 403 || result.error.status === "FETCH_ERROR") {
-			try {
-				const resp = await api
-					.dispatch(localAppApi.endpoints.setBannedUntil.initiate())
-					.unwrap();
-				delay = resp && resp > 0 ? resp : 1000 * 60 * 60;
-			} catch {
-				delay = 1000 * 60 * 60;
-			}
+		if (result.error.status === "FETCH_ERROR") {
+			// Network error (timeout, CORS, offline) — no penalty, just surface the error
 			return {
 				error: {
-					status: 403,
+					status: 0,
 					data: {
-						message: `Reddit has temporarily blocked further requests. Retry after ${new Date(
-							Date.now() + delay
-						).toLocaleString()}`,
+						message: "Unable to reach Reddit. Check your connection and try again.",
 						pendingTimestamp: 0,
 						isAppHandledError: false,
-						reason: "ban",
+						reason: undefined,
 					},
 				},
 			};
-		} else {
-			throw Object.assign(new Error(`Error communicating with Reddit.`));
 		}
+		if (result.error.status === 403) {
+			// Reddit returned 403 — back off for 5 minutes (treated like a rate limit with countdown)
+			const delay = 1000 * 60 * 5;
+			const timestamp = now + delay;
+			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate(timestamp));
+			return {
+				error: {
+					status: 429,
+					data: {
+						message: `Reddit is temporarily unavailable. Retrying in ~5 minutes.`,
+						pendingTimestamp: timestamp,
+						isAppHandledError: true,
+						reason: "rateLimit",
+					},
+				},
+			};
+		}
+		return {
+			error: {
+				status: 500,
+				data: {
+					message: "Error communicating with Reddit.",
+					pendingTimestamp: 0,
+					isAppHandledError: false,
+					reason: undefined,
+				},
+			},
+		};
 	}
 
 	return result;
