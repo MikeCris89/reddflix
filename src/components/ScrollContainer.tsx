@@ -41,15 +41,12 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 	// Refresh state — button enabled when cooldown has elapsed
 	const refetchFnRef = useRef<(() => void) | null>(null);
+	const hasAutoRefreshed = useRef(false);
 	const remainingMs = useMinuteCountdown(
 		subreddit.lastUpdated,
 		REFRESH_COOLDOWN_MS,
 	);
 	const canRefresh = remainingMs <= 0;
-
-	const onRefetchReady = useCallback((refetch: () => void) => {
-		refetchFnRef.current = refetch;
-	}, []);
 
 	const handleRefresh = useCallback(() => {
 		// Clear the cached posts so skeleton shows during reload
@@ -64,6 +61,18 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		scrollRef.current?.scrollTo({ left: 0 });
 		refetchFnRef.current?.();
 	}, [subreddit.name]);
+
+	const onRefetchReady = useCallback(
+		(refetch: () => void) => {
+			refetchFnRef.current = refetch;
+			// On first mount, auto-refresh if cooldown has already elapsed
+			if (!hasAutoRefreshed.current && canRefresh) {
+				hasAutoRefreshed.current = true;
+				handleRefresh();
+			}
+		},
+		[canRefresh, handleRefresh],
+	);
 
 	const handleScroll = (dir: "left" | "right") => {
 		const numPosts = postsPerPage;
