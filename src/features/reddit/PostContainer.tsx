@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { isAppHandledError, Subreddit } from "../../utils/types";
 import {
 	useFetchSeenPostsQuery,
+	usePruneSeenPostsForSubredditMutation,
 	useRemovePendingRequestMutation,
+	useSetSubredditLastUpdatedMutation,
 } from "../localApp/localAppApi";
 import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
@@ -17,9 +19,6 @@ export const PostSkeleton = () => (
 			<div className="h-[300px] bg-zinc-600 rounded-md" />
 			<div className="h-4 bg-zinc-700 rounded w-1/2" />
 		</div>
-		{/* <div className="h-[100%] flex justify-center items-center bg-zinc-700 rounded-xl">
-			<div className="h-[75%] w-[90%]  bg-zinc-600 rounded-xl"></div>
-		</div> */}
 	</div>
 );
 
@@ -33,16 +32,23 @@ export const SkeletonContainer = () =>
 const PostContainer = ({
 	subreddit,
 	postRefs,
+	onRefetchReady,
 }: {
 	subreddit: Subreddit;
 	postRefs: React.RefObject<(HTMLDivElement | null)[]>;
+	onRefetchReady: (refetch: () => void) => void;
 }) => {
 	const [pendingTime, setPendingTime] = useState<number>(0);
 	const remaining = useCountdown(pendingTime);
 	const [removePending] = useRemovePendingRequestMutation();
-	const { data, isLoading, error, isError, refetch } =
+	const [setSubredditLastUpdated] = useSetSubredditLastUpdatedMutation();
+	const [pruneSeenPosts] = usePruneSeenPostsForSubredditMutation();
+	// Tracks whether a real network fetch was in-flight (vs cache rehydration)
+	const wasFetchingRef = useRef(false);
+	const fetchCountRef = useRef(0);
+
+	const { data, isLoading, isFetching, error, isError, refetch } =
 		useFetchPostsBySubredditQuery(subreddit.name, {
-			//skip: !inView,
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
 			refetchOnFocus: false,
@@ -50,19 +56,43 @@ const PostContainer = ({
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
-	const { allSortedPosts, unseenPosts: _unseenPosts } = useMemo(() => {
-		if (!data || !seenPosts) return { allSortedPosts: [], unseenPosts: [] };
+	const allSortedPosts = useMemo(() => {
+		if (!data || !seenPosts) return [];
 		const unseen: RedditPost[] = [];
 		const seen: RedditPost[] = [];
 		data.posts.forEach((post) => {
 			if (seenPosts[post.id]) seen.push(post);
 			else unseen.push(post);
 		});
-		return {
-			allSortedPosts: [...unseen, ...seen],
-			unseenPosts: unseen,
-		};
+		const byDateDesc = (a: RedditPost, b: RedditPost) =>
+			b.created_utc - a.created_utc;
+		return [...unseen.sort(byDateDesc), ...seen.sort(byDateDesc)];
 	}, [data, seenPosts]);
+
+	// Only update lastUpdated when a real network fetch completes (not cache rehydration).
+	// We detect this by tracking isFetching transitions: true→false means a request finished.
+	useEffect(() => {
+		if (isFetching) {
+			wasFetchingRef.current = true;
+			return;
+		}
+		if (!wasFetchingRef.current || !data) return;
+		wasFetchingRef.current = false;
+		fetchCountRef.current += 1;
+		setSubredditLastUpdated(subreddit.name);
+		if (fetchCountRef.current > 1) {
+			pruneSeenPosts({
+				subreddit: subreddit.name,
+				keepIds: data.posts.map((p) => p.id),
+			});
+		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isFetching, data]);
+
+	// Pass refetch fn up to ScrollContainer for the refresh button
+	useEffect(() => {
+		onRefetchReady(refetch);
+	}, [refetch, onRefetchReady]);
 
 	useEffect(() => {
 		if (!pendingTime || pendingTime < Date.now()) return;
@@ -78,11 +108,6 @@ const PostContainer = ({
 	}, [pendingTime, refetch, removePending]);
 
 	useEffect(() => {
-		// if (isError && error) {
-		// 	console.log(`isError for sub ${subreddit.name}: `, isError);
-		// 	console.log(`error: ${error}`);
-		// 	console.log(`data: ${data}`);
-		// }
 		if (
 			isError &&
 			error &&
@@ -113,10 +138,6 @@ const PostContainer = ({
 							key={post.id}
 							post={post}
 							sub={subreddit.name}
-							// className={clsx(
-							// 	i === 0 && "pl-2 lg:pl-4",
-							// 	i === allSortedPosts.length - 1 && "pr-2 lg:pr-4"
-							// )}
 						/>
 					))}
 					<div></div>

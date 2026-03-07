@@ -29,6 +29,7 @@ export interface Subreddit {
 	name: string;
 	active: boolean;
 	ttl: number;
+	lastUpdated?: number;
 }
 
 export type SeenPosts = {

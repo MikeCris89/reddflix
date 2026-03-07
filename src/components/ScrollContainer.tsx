@@ -1,13 +1,18 @@
 import clsx from "clsx";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 import { Subreddit } from "../utils/types";
 import { useInView } from "react-intersection-observer";
 import PostContainer, {
 	SkeletonContainer,
 } from "../features/reddit/PostContainer";
+import useMinuteCountdown from "../hooks/useMinuteCountdown";
+import { dispatch } from "../app/store";
+import { redditApi } from "../features/reddit/redditApi";
+
+const REFRESH_COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes
 
 interface Props {
 	direction?: "row" | "col";
@@ -34,6 +39,32 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		return 1;
 	}, [scrollWidth, postWidth]);
 
+	// Refresh state — button enabled when cooldown has elapsed
+	const refetchFnRef = useRef<(() => void) | null>(null);
+	const remainingMs = useMinuteCountdown(
+		subreddit.lastUpdated,
+		REFRESH_COOLDOWN_MS,
+	);
+	const canRefresh = remainingMs <= 0;
+
+	const onRefetchReady = useCallback((refetch: () => void) => {
+		refetchFnRef.current = refetch;
+	}, []);
+
+	const handleRefresh = useCallback(() => {
+		// Clear the cached posts so skeleton shows during reload
+		dispatch(
+			redditApi.util.updateQueryData(
+				"fetchPostsBySubreddit",
+				subreddit.name,
+				() => ({ after: null, posts: [] }),
+			),
+		);
+		setIndex(0);
+		scrollRef.current?.scrollTo({ left: 0 });
+		refetchFnRef.current?.();
+	}, [subreddit.name]);
+
 	const handleScroll = (dir: "left" | "right") => {
 		const numPosts = postsPerPage;
 		const nextIndex =
@@ -45,14 +76,12 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 		postRefs.current[nextIndex]?.scrollIntoView({
 			behavior: "smooth",
-			inline: "start", // or "center"
+			inline: "start",
 			block: "nearest",
 		});
 	};
 
-	// const refetchPosts = (refetch: () => void) => {
-	// 	if (refetch) refetch();
-	// };
+	const minutesLeft = Math.ceil(remainingMs / 60_000);
 
 	const titleStyle3 = ` text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
@@ -60,12 +89,33 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 	return (
 		<div className="flex flex-col bg-[#1a1a1a] rounded-md">
-			{/* <div className="flex gap-2">
-				<button onClick={refetchPosts}>Refetch</button>
-				<button onClick={() => showCache(subreddit.name)}>Check Cache</button>
-			</div> */}
-			{/* Title */}
-			<h2 className={titleStyle3}>r/{subreddit.name}</h2>
+			{/* Title + Refresh Button */}
+			<div
+				className={clsx(
+					"flex items-end justify-start pr-3 gap-5 ",
+					titleStyle3,
+				)}
+			>
+				<h2>r/{subreddit.name}</h2>
+				<button
+					onClick={handleRefresh}
+					disabled={!canRefresh}
+					className={clsx(
+						"flex items-center gap-1 text-xs font-medium px-2 py-1 rounded transition",
+						canRefresh
+							? "text-white hover:text-[#E50914] cursor-pointer"
+							: "text-zinc-500 cursor-not-allowed",
+					)}
+					title={
+						canRefresh
+							? "Refresh posts"
+							: `Refresh available in ${minutesLeft}m`
+					}
+				>
+					<RefreshCw size={13} />
+					<span>{canRefresh ? "Refresh" : `${minutesLeft}m`}</span>
+				</button>
+			</div>
 
 			<div className="relative">
 				{/* Scroll Buttons (Desktop only) */}
@@ -80,7 +130,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 					ref={ref}
 					className={clsx(
 						"min-h-[400px] px-1 rounded-b-md relative",
-						isMobile && !isPortrait && "min-h-[300px]"
+						isMobile && !isPortrait && "min-h-[300px]",
 					)}
 				>
 					<div
@@ -95,7 +145,11 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 						{!inView && <SkeletonContainer />}
 						{inView && (
-							<PostContainer subreddit={subreddit} postRefs={postRefs} />
+							<PostContainer
+								subreddit={subreddit}
+								postRefs={postRefs}
+								onRefetchReady={onRefetchReady}
+							/>
 						)}
 					</div>
 				</div>
@@ -119,12 +173,12 @@ const ScrollButton = ({
 			onClick={() => onClick(dir)}
 			className={clsx(
 				"absolute top-1/2 -translate-y-1/2 z-20 h-full rounded-1 bg-neutral-900/10 hover:bg-neutral-900/60 transition p-2 flex items-center hover:cursor-pointer group",
-				position
+				position,
 			)}
 		>
 			<div
 				className={clsx(
-					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]"
+					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]",
 				)}
 			>
 				<Icon size={20} className="text-neutral-100" />

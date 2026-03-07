@@ -109,6 +109,18 @@ export const localAppApi = createApi({
 			},
 			invalidatesTags: ["subreddits"],
 		}),
+		setSubredditLastUpdated: build.mutation({
+			async queryFn(name: string) {
+				const existing = await getItem<Subreddit>("subreddits", name);
+				if (!existing) return { error: new Error("Subreddit not found") };
+				const data = await setItem("subreddits", name, {
+					...existing,
+					lastUpdated: Date.now(),
+				});
+				return { data };
+			},
+			invalidatesTags: ["subreddits"],
+		}),
 		deleteSubreddit: build.mutation({
 			async queryFn(name: string) {
 				await deleteItem("subreddits", name);
@@ -172,6 +184,21 @@ export const localAppApi = createApi({
 
 				//delete entries of subreddit
 				await Promise.all(filtered.map((e) => deleteItem("seenPosts", e.id)));
+				return { data: true };
+			},
+			invalidatesTags: ["seenPosts"],
+		}),
+		// Remove seen posts for a subreddit that are NOT in the given set of IDs.
+		// Used after a refetch to keep seen state for posts that are still in the new batch.
+		pruneSeenPostsForSubreddit: build.mutation({
+			async queryFn(args: { subreddit: string; keepIds: string[] }) {
+				const existing = await getAllFromStore<SeenPosts>("seenPosts");
+				if (!existing) return { data: true };
+				const keepSet = new Set(args.keepIds);
+				const toDelete = existing.filter(
+					(e) => e.subreddit === args.subreddit && !keepSet.has(e.id)
+				);
+				await Promise.all(toDelete.map((e) => deleteItem("seenPosts", e.id)));
 				return { data: true };
 			},
 			invalidatesTags: ["seenPosts"],
@@ -283,12 +310,14 @@ export const {
 	useSetCategoryTTLMutation,
 	useSetSeenPostMutation,
 	useClearSeenPostsForSubredditMutation,
+	usePruneSeenPostsForSubredditMutation,
 	useDeleteCategoryMutation,
 	useFetchSubredditsQuery,
 	useLazyFetchSubredditsQuery,
 	useSetAllSubredditsMutation,
 	useSetSubredditMutation,
 	useSetSubredditTTLMutation,
+	useSetSubredditLastUpdatedMutation,
 	useFetchRequestMonitorQuery,
 	useFetchRequestLimitQuery,
 	useRemovePendingRequestMutation,
