@@ -9,8 +9,6 @@ import PostContainer, {
 	SkeletonContainer,
 } from "../features/reddit/PostContainer";
 import useMinuteCountdown from "../hooks/useMinuteCountdown";
-import { dispatch } from "../app/store";
-import { redditApi } from "../features/reddit/redditApi";
 
 const REFRESH_COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes
 
@@ -47,16 +45,10 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		REFRESH_COOLDOWN_MS,
 	);
 	const canRefresh = remainingMs <= 0;
+	// Capture canRefresh at mount time — auto-refresh is one-shot, doesn't need live value
+	const mountCanRefresh = useRef(canRefresh && !!subreddit.lastUpdated);
 
 	const handleRefresh = useCallback(() => {
-		// Clear the cached posts so skeleton shows during reload
-		dispatch(
-			redditApi.util.updateQueryData(
-				"fetchPostsBySubreddit",
-				subreddit.name,
-				() => ({ after: null, posts: [] }),
-			),
-		);
 		setIndex(0);
 		scrollRef.current?.scrollTo({ left: 0 });
 		refetchFnRef.current?.();
@@ -65,13 +57,14 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 	const onRefetchReady = useCallback(
 		(refetch: () => void) => {
 			refetchFnRef.current = refetch;
-			// On first mount, auto-refresh if cooldown has already elapsed
-			if (!hasAutoRefreshed.current && canRefresh) {
+			// On first mount, auto-refresh if cooldown had already elapsed when component mounted.
+			// Uses a ref so this callback stays stable across minute-tick re-renders.
+			if (!hasAutoRefreshed.current && mountCanRefresh.current) {
 				hasAutoRefreshed.current = true;
 				handleRefresh();
 			}
 		},
-		[canRefresh, handleRefresh],
+		[handleRefresh],
 	);
 
 	const handleScroll = (dir: "left" | "right") => {

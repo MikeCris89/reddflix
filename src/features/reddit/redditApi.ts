@@ -113,50 +113,76 @@ const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
 	return base;
 };
 
+// Serialize rate limit checks so concurrent requests can't all read stale state
+// before any write completes (classic read-modify-write race condition).
+let rateLimitQueue = Promise.resolve();
+
 const customBaseQuery: BaseQueryFn<
 	string | FetchArgs,
 	unknown,
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-	//const state = api.getState() as RootState;
-	// const reqMonitor =
-	// 	localAppApi.endpoints.fetchRequestMonitor.select()(state)?.data;
+	type RLResult = {
+		ok: boolean;
+		delayMs: number;
+		reason: "ban" | "rateLimit" | undefined;
+		pendingTs: number;
+	};
+	let rlResult!: RLResult;
 
-	const reqMonitor = await api
-		.dispatch(
-			localAppApi.endpoints.fetchRequestMonitor.initiate(undefined, {
-				forceRefetch: true,
-			})
-		)
-		.unwrap();
-
-	// const requestLimit = localAppApi.endpoints.fetchRequestLimit.select(
-	// 	reqMonitor || { ...defaultMonitor }
-	// )(state)?.data;
-	const requestLimit = await api
-		.dispatch(
-			localAppApi.endpoints.fetchRequestLimit.initiate(
-				reqMonitor || { ...defaultMonitor },
-				{ forceRefetch: true }
+	// Perform the check + write atomically within the queue
+	const checkAndRecord = async () => {
+		const reqMonitor = await api
+			.dispatch(
+				localAppApi.endpoints.fetchRequestMonitor.initiate(undefined, {
+					forceRefetch: true,
+				})
 			)
-		)
-		.unwrap();
-	const now = Date.now();
+			.unwrap();
+
+		const now = Date.now();
+		const limit = await api
+			.dispatch(
+				localAppApi.endpoints.fetchRequestLimit.initiate(
+					reqMonitor || { ...defaultMonitor },
+					{ forceRefetch: true }
+				)
+			)
+			.unwrap();
+
+		let pendingTs = 0;
+		if (limit.ok) {
+			// Write timestamp immediately so the next queued request sees it
+			await api
+				.dispatch(localAppApi.endpoints.setRequestTime.initiate(0))
+				.unwrap();
+		} else if (limit.reason !== "ban") {
+			pendingTs = now + limit.delayMs;
+			await api
+				.dispatch(
+					localAppApi.endpoints.setPendingRequest.initiate(pendingTs)
+				)
+				.unwrap();
+		}
+
+		rlResult = { ...limit, pendingTs };
+	};
+
+	// Chain onto the queue — each request waits for the previous to fully finish
+	const myTurn = rateLimitQueue.then(checkAndRecord);
+	rateLimitQueue = myTurn.catch(() => {}); // Keep queue alive on error
+	await myTurn;
 
 	// Check rate limiting and request ban delay
-	if (requestLimit && !requestLimit.ok) {
-		let msg = "Error communicating with Reddit.";
-
-		if (requestLimit.reason === "ban") {
-			msg = `Reddit has temporarily blocked further requests. Try again after ${new Date(
-				Date.now() + requestLimit.delayMs
-			).toLocaleString()}`;
-
+	if (!rlResult.ok) {
+		if (rlResult.reason === "ban") {
 			return {
 				error: {
 					status: 403,
 					data: {
-						message: msg,
+						message: `Reddit has temporarily blocked further requests. Try again after ${new Date(
+							Date.now() + rlResult.delayMs
+						).toLocaleString()}`,
 						pendingTimestamp: 0,
 						isAppHandledError: false,
 						reason: "ban",
@@ -164,19 +190,13 @@ const customBaseQuery: BaseQueryFn<
 				},
 			};
 		} else {
-			const seconds = Math.ceil(requestLimit.delayMs / 1000);
-			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
-			const timestamp = now + requestLimit.delayMs;
-			// add request to pending list
-			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate(timestamp));
-
+			const seconds = Math.ceil(rlResult.delayMs / 1000);
 			return {
 				error: {
 					status: 429,
 					data: {
-						message: msg,
-						//delay: requestLimit.delayMs,
-						pendingTimestamp: timestamp,
+						message: `You've reached Reddit's rate limit. Retrying in ~${seconds}s`,
+						pendingTimestamp: rlResult.pendingTs,
 						isAppHandledError: true,
 						reason: "rateLimit",
 					},
@@ -184,11 +204,6 @@ const customBaseQuery: BaseQueryFn<
 			};
 		}
 	}
-
-	const arg = args && typeof args === "number" ? args : 0;
-
-	// add request to rate limit list
-	api.dispatch(localAppApi.endpoints.setRequestTime.initiate(arg));
 
 	const rawBaseQuery = fetchBaseQuery({ baseUrl: "https://www.reddit.com/" });
 	const result = await rawBaseQuery(args, api, extraOptions);
@@ -214,7 +229,7 @@ const customBaseQuery: BaseQueryFn<
 		if (result.error.status === 403) {
 			// Reddit returned 403 — back off for 5 minutes (treated like a rate limit with countdown)
 			const delay = 1000 * 60 * 5;
-			const timestamp = now + delay;
+			const timestamp = Date.now() + delay;
 			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate(timestamp));
 			return {
 				error: {

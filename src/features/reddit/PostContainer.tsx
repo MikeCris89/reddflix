@@ -122,12 +122,14 @@ const PostContainer = ({
 			);
 			setPendingTime(error.data.pendingTimestamp);
 		}
-	}, [isError, error, subreddit]);
+	}, [isError, error, subreddit.name]);
+
+	const isRefreshing = isFetching && fetchCountRef.current > 0;
 
 	return (
 		<>
-			{isLoading && <SkeletonContainer />}
-			{(!isLoading && (
+			{(isLoading || isRefreshing) && <SkeletonContainer />}
+			{(!isLoading && !isRefreshing && (
 				<>
 					<div></div>
 					{allSortedPosts.map((post, i) => (

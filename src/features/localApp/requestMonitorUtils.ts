@@ -43,18 +43,22 @@ export const evaluateRateLimit = async (
 		return { ok: true, delayMs: 0, reason: undefined };
 	}
 
-	const allRequests = [...filteredRecent, ...pending].sort((a, b) => a - b);
+	// Rolling window is full — delay until the oldest request falls outside the window
+	if (filteredRecent.length >= maxReq) {
+		const sorted = [...filteredRecent].sort((a, b) => a - b);
+		const anchor = sorted[sorted.length - maxReq];
+		return {
+			ok: false,
+			delayMs: Math.max(1, anchor + window - now),
+			reason: "rateLimit" as const,
+		};
+	}
 
-	// calculate proper delay to ensure the maxReq requests per window block
-	const N = allRequests.length;
-	const anchor = allRequests[N - maxReq];
-
-	const T = anchor + window;
-	const delayMs = T - now;
-
+	// A request is already queued (pending.length > 0) — wait for the earliest one to clear
+	const earliest = Math.min(...pending);
 	return {
 		ok: false,
-		delayMs,
+		delayMs: Math.max(1, earliest - now),
 		reason: "rateLimit" as const,
 	};
 };
