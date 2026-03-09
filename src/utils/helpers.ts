@@ -16,7 +16,7 @@ import { SerializedError } from "@reduxjs/toolkit";
 import { toast } from "sonner";
 
 export const getPostType = (
-	post: RawRedditPost | RedditPost
+	post: RawRedditPost | RedditPost,
 ): keyof typeof POST_TYPES => {
 	const types: (keyof typeof POST_TYPES)[] = [];
 
@@ -78,7 +78,7 @@ export const decodeHtml = (html: string) => {
 };
 
 export const getErrorMessage = (
-	error: FetchBaseQueryError | SerializedError
+	error: FetchBaseQueryError | SerializedError,
 ): string => {
 	if ("status" in error) {
 		if (typeof error.data === "string") return error.data;
@@ -108,7 +108,7 @@ export const showCache = (storeName: string) => {
 
 export const handleNativeShare = async (
 	url: string,
-	text: string = "Check out this post from ReddFlix!"
+	text: string = "Check out this post from ReddFlix!",
 ) => {
 	if (navigator.share) {
 		try {
@@ -124,4 +124,13 @@ export const handleNativeShare = async (
 		navigator.clipboard.writeText(url);
 		toast.success("Link copied!");
 	}
+};
+
+export const getMinutesLeft = (
+	cooldownMs: number,
+	initTime?: number | null,
+) => {
+	return initTime
+		? Math.max(0, Math.ceil((initTime + cooldownMs - Date.now()) / 60000))
+		: 0;
 };
