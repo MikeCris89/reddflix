@@ -65,7 +65,7 @@ export interface RedditThing<T> {
 
 export type PostAndCommentsResponse = [
 	RedditListing<RawRedditPost>,
-	RedditListing<RedditComment>
+	RedditListing<RedditComment>,
 ];
 
 export interface RawRedditPost {
@@ -120,6 +120,7 @@ export interface RedditPost {
 	selftext_html: string;
 	url_overridden_by_dest?: string;
 	type: keyof typeof POST_TYPES;
+	sample?: boolean;
 }
 
 export interface GalleryData {
@@ -269,13 +270,13 @@ export type UnknownPost = RedditPost & {
 
 // TYPE GUARDS
 export const isVideoPost = (
-	post: RedditPost | RawRedditPost
+	post: RedditPost | RawRedditPost,
 ): post is VideoPost =>
 	post.media?.reddit_video?.is_gif === false ||
 	(post.url?.endsWith(".mp4") ?? false);
 
 export const isEmbedPost = (
-	post: RedditPost | RawRedditPost
+	post: RedditPost | RawRedditPost,
 ): post is EmbedPost =>
 	post.post_hint === "rich:video" &&
 	typeof post.secure_media?.oembed?.thumbnail_url === "string" &&
@@ -286,7 +287,7 @@ export const isGifPost = (post: RedditPost | RawRedditPost): post is GifPost =>
 	(post.url?.endsWith(".gifv") ?? false);
 
 export const isImagePost = (
-	post: RedditPost | RawRedditPost
+	post: RedditPost | RawRedditPost,
 ): post is ImagePost =>
 	!isVideoPost(post) &&
 	!isGifPost(post) &&
@@ -294,15 +295,15 @@ export const isImagePost = (
 		/\.(gif|jpg|jpeg|png|webp)$/i.test(post.url ?? ""));
 
 export const isGalleryPost = (
-	post: RedditPost | RawRedditPost
+	post: RedditPost | RawRedditPost,
 ): post is GalleryPost => !!post.gallery_data && !!post.media_metadata;
 
 export const isSelfPost = (
-	post: RedditPost | RawRedditPost
+	post: RedditPost | RawRedditPost,
 ): post is SelfPost => post.is_self === true;
 
 export const isLinkPost = (
-	post: RedditPost | RawRedditPost
+	post: RedditPost | RawRedditPost,
 ): post is LinkPost =>
 	!isVideoPost(post) &&
 	!isEmbedPost(post) &&
@@ -314,7 +315,7 @@ export const isLinkPost = (
 	post.url.length > 0;
 
 export const isValidRedditComment = (
-	c: RedditThing<RedditComment>
+	c: RedditThing<RedditComment>,
 ): boolean => {
 	if (!c || typeof c !== "object") return false;
 	if (c.kind === "more") return false;

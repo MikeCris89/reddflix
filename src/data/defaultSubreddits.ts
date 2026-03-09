@@ -1,4 +1,4 @@
-import { Subreddit } from "./types";
+import { Subreddit } from "../utils/types";
 
 // export const defaultSubreddits: Subreddit[] = [
 // 	{ title: "Funny", name: "funny", active: true, ttl: 0 },

@@ -19,7 +19,7 @@ import {
 	useSetSubredditMutation,
 } from "../features/localApp/localAppApi";
 import Spinner from "../components/Spinner";
-import { defaultSubreddits } from "../utils/defaultSubreddits";
+import { defaultSubreddits } from "../data/defaultSubreddits";
 import { RequestMonitor } from "../utils/types";
 import { Toaster } from "sonner";
 
@@ -30,7 +30,7 @@ const RateLimitManager = () => {
 		reqMonitor as RequestMonitor,
 		{
 			skip: !reqMonitor,
-		}
+		},
 	);
 
 	return null;
@@ -86,11 +86,11 @@ const Root = () => {
 				await setAllSubreddits(defaultSubreddits);
 			} else {
 				const subCheck = defaultSubreddits.filter(
-					(def) => !subreddits.some((sub) => def.name === sub.name)
+					(def) => !subreddits.some((sub) => def.name === sub.name),
 				);
 				if (subCheck.length > 0) {
 					await Promise.all(
-						subCheck.map((s) => setSubreddit({ name: s.name, value: s }))
+						subCheck.map((s) => setSubreddit({ name: s.name, value: s })),
 					);
 				}
 			}
