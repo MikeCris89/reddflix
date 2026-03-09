@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import useCountdown from "../hooks/useCountdown";
 import Spinner from "./Spinner";
 
@@ -42,6 +42,11 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 	const remaining = useCountdown(pendingTime);
 
 	const handleRefresh = () => trigger(subreddit.name, false);
+
+	const handleDataUpdated = () => {
+		setIndex(0);
+		scrollRef.current?.scrollTo({ left: 0, behavior: "smooth" });
+	};
 
 	// Cooldown between requests
 	const COOLDOWN_MS = 10 * 60 * 1000;

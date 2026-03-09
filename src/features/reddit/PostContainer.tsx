@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { isAppHandledError, Subreddit } from "../../utils/types";
 import {
 	useFetchSeenPostsQuery,
@@ -33,13 +33,16 @@ const PostContainer = ({
 	postRefs,
 	onRateLimit,
 	onErrorMessage,
+	onDataUpdated,
 }: {
 	subreddit: Subreddit;
 	postRefs: React.RefObject<(HTMLDivElement | null)[]>;
 	onRateLimit?: (pendingTime: number) => void;
 	onErrorMessage?: (msg: string | null) => void;
+	onDataUpdated?: () => void;
 }) => {
 	const [pendingTime, setPendingTime] = useState<number>(0);
+	const isFirstLoad = useRef(true);
 	const [removePending] = useRemovePendingRequestMutation();
 	const { data, isLoading, error, isError, refetch } =
 		useFetchPostsBySubredditQuery(subreddit.name, {
@@ -111,6 +114,13 @@ const PostContainer = ({
 			onErrorMessage?.("Reddit's rate limit reached.");
 		}
 	}, [isError, error, onErrorMessage]);
+
+	useEffect(() => {
+		if (data) {
+			if (!isFirstLoad.current) onDataUpdated?.();
+			else isFirstLoad.current = false;
+		}
+	}, [data, onDataUpdated]);
 
 	return (
 		<>
