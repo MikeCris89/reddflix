@@ -11,9 +11,8 @@ import PostContainer, {
 	SkeletonContainer,
 } from "../features/reddit/PostContainer";
 import { useLazyFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
-import { useMinuteClock } from "../hooks/useMinuteClock";
 import MinutesLeft from "./MinutesLeft";
-import { getMinutesLeft } from "../utils/helpers";
+import { getMinutesLeft, relativeTime } from "../utils/helpers";
 
 interface Props {
 	direction?: "row" | "col";
@@ -111,6 +110,11 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 						{postError || errorMessage}
 					</span>
 				)}
+				{remaining <= 0 && subreddit.lastUpdated && (
+					<span className="text-zinc-500 text-xs">
+						{relativeTime(subreddit.lastUpdated / 1000)} ago
+					</span>
+				)}
 			</div>
 
 			<div className="relative">
@@ -141,12 +145,12 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 						{!inView && <SkeletonContainer />}
 						{inView && (
-									<PostContainer
-							subreddit={subreddit}
-							postRefs={postRefs}
-							onRateLimit={setPendingTime}
-							onErrorMessage={setPostError}
-						/>
+							<PostContainer
+								subreddit={subreddit}
+								postRefs={postRefs}
+								onRateLimit={setPendingTime}
+								onErrorMessage={setPostError}
+							/>
 						)}
 					</div>
 				</div>

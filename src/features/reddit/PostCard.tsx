@@ -8,22 +8,13 @@ import { useSetSeenPostMutation } from "../localApp/localAppApi";
 import { useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import useDisplay from "../../hooks/useDisplay";
+import { relativeTime } from "../../utils/helpers";
 
 interface PostCardProps {
 	post: RedditPost;
 	sub: string;
 	isSeen?: boolean;
 	className?: string;
-}
-
-function relativeTime(utcSeconds: number): string {
-	const diff = Date.now() / 1000 - utcSeconds;
-	if (diff < 3600) return `${Math.max(1, Math.floor(diff / 60))}m`;
-	if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
-	if (diff < 604800) return `${Math.floor(diff / 86400)}d`;
-	if (diff < 2592000) return `${Math.floor(diff / 604800)}w`;
-	if (diff < 31536000) return `${Math.floor(diff / 2592000)}mo`;
-	return `${Math.floor(diff / 31536000)}y`;
 }
 
 const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
@@ -56,7 +47,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 			ref={postRef}
 			className={clsx(
 				"h-full cursor-pointer  " + " " + className,
-				isMobile ? "snap-center pt-3 pb-5" : "snap-start pt-5 pb-7"
+				isMobile ? "snap-center pt-3 pb-5" : "snap-start pt-5 pb-7",
 			)}
 			onClick={() => {
 				navigate(`/${sub}/${post.id}`, {
@@ -84,7 +75,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 						<div
 							className={clsx(
 								"flex justify-between items-start gap-2",
-								!isMobile && "px-2 pt-1"
+								!isMobile && "px-2 pt-1",
 							)}
 						>
 							<p className="text-sm font-semibold line-clamp-2 break-words leading-tight min-w-0 flex-1 shadow-neutral-600">
@@ -97,7 +88,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 						<div
 							className={clsx(
 								"flex-1 max-h-[300px]",
-								isMobile && "max-h-[80%]"
+								isMobile && "max-h-[80%]",
 							)}
 						>
 							<PostMedia post={post} mode={MODE.preview} />
@@ -107,9 +98,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 				{isTitleAsPost(post) && (
 					<>
 						<div></div>
-						<p className="font-bold text-xl pb-1 line-clamp-10">
-							{post.title}
-						</p>
+						<p className="font-bold text-xl pb-1 line-clamp-10">{post.title}</p>
 					</>
 				)}
 				<div className="flex gap-2">
