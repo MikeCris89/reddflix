@@ -281,10 +281,10 @@ export const localAppApi = createApi({
 				const store = "requestMonitor";
 				const key = "bannedUntil";
 				const currTime = Date.now();
-				const existing = await getItem<number>(store, key);
+				// const existing = await getItem<number>(store, key);
 				let delay = BAN_DURATION_MS; // 25 minutes
 				// if another 403 occurs within 3x the ban window, escalate to 75 minutes
-				if (existing && currTime - existing <= delay * 3) delay *= 3;
+				// if (existing && currTime - existing <= delay * 3) delay *= 3;
 				await setItem<number>(store, key, currTime + delay);
 				return { data: delay };
 			},

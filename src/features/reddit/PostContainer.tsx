@@ -33,12 +33,14 @@ const PostContainer = ({
 	postRefs,
 	onRateLimit,
 	onErrorMessage,
+	onBanExpiry,
 	onDataUpdated,
 }: {
 	subreddit: Subreddit;
 	postRefs: React.RefObject<(HTMLDivElement | null)[]>;
 	onRateLimit?: (pendingTime: number) => void;
 	onErrorMessage?: (msg: string | null) => void;
+	onBanExpiry?: (timestamp: number) => void;
 	onDataUpdated?: () => void;
 }) => {
 	const [pendingTime, setPendingTime] = useState<number>(0);
@@ -104,16 +106,18 @@ const PostContainer = ({
 	useEffect(() => {
 		if (!isError || !error) {
 			onErrorMessage?.(null);
+			onBanExpiry?.(0);
 			return;
 		}
 		if (!isAppHandledError(error)) {
 			onErrorMessage?.("Error loading posts");
 		} else if (error.data.reason === "ban") {
 			onErrorMessage?.(error.data.message);
+			onBanExpiry?.(error.data.pendingTimestamp);
 		} else if (error.data.reason === "rateLimit") {
 			onErrorMessage?.("Reddit's rate limit reached.");
 		}
-	}, [isError, error, onErrorMessage]);
+	}, [isError, error, onErrorMessage, onBanExpiry]);
 
 	useEffect(() => {
 		if (data) {

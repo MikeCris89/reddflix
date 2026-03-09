@@ -18,7 +18,7 @@ import {
 	RedditThing,
 	RefinedCommentBase,
 } from "./redditTypes";
-import { getPostType } from "../../utils/helpers";
+import { getPostType, refinePost } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
 import { BAN_DURATION_MS, defaultMonitor } from "../../utils/types";
 
@@ -36,52 +36,52 @@ const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	replies: [],
 };
 
-function decodeHtml(str: string): string {
-	const txt = document.createElement("textarea");
-	txt.innerHTML = str;
-	return txt.value;
-}
+// function decodeHtml(str: string): string {
+// 	const txt = document.createElement("textarea");
+// 	txt.innerHTML = str;
+// 	return txt.value;
+// }
 
-const refinePost = (data: RawRedditPost): RedditPost => {
-	const parent = data.crosspost_parent_list?.[0];
+// const refinePost = (data: RawRedditPost): RedditPost => {
+// 	const parent = data.crosspost_parent_list?.[0];
 
-	const base: RawRedditPost =
-		!data.gallery_data &&
-		!data.media_metadata &&
-		parent?.gallery_data &&
-		parent?.media_metadata
-			? {
-					...data,
-					gallery_data: parent.gallery_data,
-					media_metadata: parent.media_metadata,
-				}
-			: data;
+// 	const base: RawRedditPost =
+// 		!data.gallery_data &&
+// 		!data.media_metadata &&
+// 		parent?.gallery_data &&
+// 		parent?.media_metadata
+// 			? {
+// 					...data,
+// 					gallery_data: parent.gallery_data,
+// 					media_metadata: parent.media_metadata,
+// 				}
+// 			: data;
 
-	return {
-		id: base.id,
-		title: decodeHtml(base.title),
-		subreddit: base.subreddit,
-		thumbnail: base.thumbnail,
-		url: base.url,
-		permalink: base.permalink,
-		author: base.author,
-		created_utc: base.created_utc,
-		score: base.score,
-		num_comments: base.num_comments,
-		post_hint: base.post_hint,
-		media: base.media,
-		media_metadata: base.media_metadata,
-		gallery_data: base.gallery_data,
-		secure_media: base.secure_media,
-		preview: base.preview,
-		is_video: base.is_video,
-		is_self: base.is_self,
-		selftext: base.selftext,
-		selftext_html: base.selftext_html,
-		url_overridden_by_dest: base.url_overridden_by_dest,
-		type: getPostType(base),
-	};
-};
+// 	return {
+// 		id: base.id,
+// 		title: decodeHtml(base.title),
+// 		subreddit: base.subreddit,
+// 		thumbnail: base.thumbnail,
+// 		url: base.url,
+// 		permalink: base.permalink,
+// 		author: base.author,
+// 		created_utc: base.created_utc,
+// 		score: base.score,
+// 		num_comments: base.num_comments,
+// 		post_hint: base.post_hint,
+// 		media: base.media,
+// 		media_metadata: base.media_metadata,
+// 		gallery_data: base.gallery_data,
+// 		secure_media: base.secure_media,
+// 		preview: base.preview,
+// 		is_video: base.is_video,
+// 		is_self: base.is_self,
+// 		selftext: base.selftext,
+// 		selftext_html: base.selftext_html,
+// 		url_overridden_by_dest: base.url_overridden_by_dest,
+// 		type: getPostType(base),
+// 	};
+// };
 
 const refineComments = (comment: RedditComment): RefinedCommentBase => ({
 	id: comment.id,
@@ -135,7 +135,7 @@ const customBaseQuery: BaseQueryFn<
 				status: 403,
 				data: {
 					message: `Reddit has temporarily blocked requests. Try again after ${new Date(inMemoryBannedUntil).toLocaleString()}`,
-					pendingTimestamp: 0,
+					pendingTimestamp: inMemoryBannedUntil,
 					isAppHandledError: false,
 					reason: "ban",
 				},
@@ -159,7 +159,7 @@ const customBaseQuery: BaseQueryFn<
 				status: 403,
 				data: {
 					message: `Reddit has temporarily blocked requests. Try again after ${new Date(inMemoryBannedUntil).toLocaleString()}`,
-					pendingTimestamp: 0,
+					pendingTimestamp: inMemoryBannedUntil,
 					isAppHandledError: false,
 					reason: "ban",
 				},
@@ -181,7 +181,7 @@ const customBaseQuery: BaseQueryFn<
 
 		if (requestLimit.reason === "ban") {
 			msg = `Reddit has temporarily blocked further requests. Try again after ${new Date(
-				Date.now() + requestLimit.delayMs,
+				inMemoryBannedUntil,
 			).toLocaleString()}`;
 
 			return {
@@ -189,7 +189,7 @@ const customBaseQuery: BaseQueryFn<
 					status: 403,
 					data: {
 						message: msg,
-						pendingTimestamp: 0,
+						pendingTimestamp: inMemoryBannedUntil,
 						isAppHandledError: false,
 						reason: "ban",
 					},
@@ -229,12 +229,8 @@ const customBaseQuery: BaseQueryFn<
 	// console.log("BaseQuery result:", result);
 
 	// Set request ban for 403 errors and throw for other errors
-	if (true || result.error) {
-		if (
-			true ||
-			result.error.status === 403 ||
-			result.error.status === "FETCH_ERROR"
-		) {
+	if (result.error) {
+		if (result.error.status === 403 || result.error.status === "FETCH_ERROR") {
 			// Set in-memory ban immediately to block any concurrent requests
 			inMemoryBannedUntil = now + BAN_DURATION_MS;
 			let delay = BAN_DURATION_MS;
@@ -254,9 +250,9 @@ const customBaseQuery: BaseQueryFn<
 					status: 403,
 					data: {
 						message: `Reddit has temporarily blocked further requests. Retry after ${new Date(
-							now + delay,
+							inMemoryBannedUntil,
 						).toLocaleString()}`,
-						pendingTimestamp: 0,
+						pendingTimestamp: inMemoryBannedUntil,
 						isAppHandledError: false,
 						reason: "ban",
 					},

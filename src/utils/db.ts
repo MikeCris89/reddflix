@@ -22,3 +22,9 @@ export const dbPromise = async () => {
 
 	return dbInstance;
 };
+
+export const clearAllDbStores = async () => {
+	const db = await dbPromise();
+	const stores = ["settings", "categories", "seenPosts", "requestMonitor", "subreddits"] as const;
+	await Promise.all(stores.map((store) => db.clear(store)));
+};

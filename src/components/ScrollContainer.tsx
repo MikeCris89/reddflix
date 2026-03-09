@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import useCountdown from "../hooks/useCountdown";
 import Spinner from "./Spinner";
 
@@ -39,21 +39,24 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 	const [pendingTime, setPendingTime] = useState(0);
 	const [postError, setPostError] = useState<string | null>(null);
+	const [banExpiry, setBanExpiry] = useState(0);
 	const remaining = useCountdown(pendingTime);
+	const banRemaining = useCountdown(banExpiry);
 
 	const handleRefresh = () => trigger(subreddit.name, false);
 
-	const handleDataUpdated = () => {
+	const scrollRef = useRef<HTMLDivElement>(null);
+
+	const handleDataUpdated = useCallback(() => {
 		setIndex(0);
 		scrollRef.current?.scrollTo({ left: 0, behavior: "smooth" });
-	};
+	}, []);
 
 	// Cooldown between requests
 	const COOLDOWN_MS = 10 * 60 * 1000;
 	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
 	const inCooldown = mLeft > 0;
 
-	const scrollRef = useRef<HTMLDivElement>(null);
 	const scrollWidth = scrollRef.current?.clientWidth;
 	const postWidth = isMobile ? 288 + 10 : 320 + 14;
 
@@ -75,7 +78,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 		postRefs.current[nextIndex]?.scrollIntoView({
 			behavior: "smooth",
-			inline: "start", // or "center"
+			inline: "start",
 			block: "nearest",
 		});
 	};
@@ -83,6 +86,25 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 	const titleStyle3 = ` text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
 	} `;
+
+	// const activeError = postError || errorMessage;
+
+	const rateLimitEl = remaining > 0 && (
+		<span className="flex items-center gap-1 text-[#E50914] text-xs">
+			<Spinner size="sm" />
+			Retrying in {Math.ceil(remaining / 1000)}s
+		</span>
+	);
+
+	const banEl = remaining <= 0 && banRemaining > 0 && (
+		<span className="flex items-center gap-1 text-blue-400 text-xs">
+			Temp banned · {Math.ceil(banRemaining / 60000)}m left
+		</span>
+	);
+
+	// const errorEl = remaining <= 0 && banRemaining <= 0 && activeError && (
+	// 	<span className="text-[#E50914] text-xs">{activeError}</span>
+	// );
 
 	return (
 		<div className="flex flex-col bg-[#1a1a1a] rounded-md">
@@ -93,7 +115,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				<span>r/{subreddit.name}</span>
 				<button
 					onClick={handleRefresh}
-					disabled={isRefreshing || inCooldown}
+					disabled={isRefreshing || inCooldown || !!banEl}
 					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
 					title="Refresh"
 				>
@@ -102,25 +124,22 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 						cooldownMs={COOLDOWN_MS}
 						initTime={subreddit.lastUpdated}
 					/>
-					{/* {inCooldown ? `${minutesLeft}m` : "Refresh"} */}
 				</button>
-				{remaining > 0 && (
-					<span className="flex items-center gap-1 text-[#E50914] text-xs">
-						<Spinner size="sm" />
-						Retrying in {Math.ceil(remaining / 1000)}s
-					</span>
-				)}
-				{remaining <= 0 && (postError || errorMessage) && (
-					<span className="text-[#E50914] text-xs truncate max-w-[200px]">
-						{postError || errorMessage}
-					</span>
-				)}
 				{remaining <= 0 && subreddit.lastUpdated && (
 					<span className="text-zinc-500 text-xs">
 						{relativeTime(subreddit.lastUpdated / 1000)} ago
 					</span>
 				)}
+				{/* Desktop: errors inline after lastUpdated */}
+				{!isMobile && (rateLimitEl || banEl)}
 			</div>
+
+			{/* Mobile-only error row */}
+			{isMobile && (rateLimitEl || banEl) && (
+				<div className="flex items-center gap-3 px-3 pb-1 bg-[#212121]">
+					{rateLimitEl || banEl}
+				</div>
+			)}
 
 			<div className="relative">
 				{/* Scroll Buttons (Desktop only) */}
@@ -155,7 +174,8 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 								postRefs={postRefs}
 								onRateLimit={setPendingTime}
 								onErrorMessage={setPostError}
-					onDataUpdated={handleDataUpdated}
+								onBanExpiry={setBanExpiry}
+								onDataUpdated={handleDataUpdated}
 							/>
 						)}
 					</div>

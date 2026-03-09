@@ -25,7 +25,7 @@ export interface Category {
 export type Subreddits = Record<string, Subreddit>;
 
 export interface Subreddit {
-	title: string;
+	// title: string;
 	name: string;
 	active: boolean;
 	ttl: number;
