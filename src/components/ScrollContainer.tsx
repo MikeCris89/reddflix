@@ -9,6 +9,7 @@ import PostContainer, {
 	SkeletonContainer,
 } from "../features/reddit/PostContainer";
 import { useLazyFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
+import { useMinuteClock } from "../hooks/useMinuteClock";
 
 interface Props {
 	direction?: "row" | "col";
@@ -34,6 +35,13 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		: null;
 
 	const handleRefresh = () => trigger(subreddit.name, false);
+
+	const COOLDOWN_MS = 10 * 60 * 1000;
+	useMinuteClock();
+	const minutesLeft = subreddit.lastUpdated
+		? Math.max(0, Math.ceil((subreddit.lastUpdated + COOLDOWN_MS - Date.now()) / 60000))
+		: 0;
+	const inCooldown = minutesLeft > 0;
 
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const scrollWidth = scrollRef.current?.clientWidth;
@@ -75,11 +83,12 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				<span>r/{subreddit.name}</span>
 				<button
 					onClick={handleRefresh}
-					disabled={isRefreshing}
+					disabled={isRefreshing || inCooldown}
 					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
 					title="Refresh"
 				>
-					<RefreshCw size={12} className={isRefreshing ? "animate-spin" : ""} /> Refresh
+					<RefreshCw size={12} className={isRefreshing ? "animate-spin" : ""} />
+					{inCooldown ? `${minutesLeft}m` : "Refresh"}
 				</button>
 				{errorMessage && (
 					<span className="text-[#E50914] text-xs truncate max-w-[200px]">{errorMessage}</span>

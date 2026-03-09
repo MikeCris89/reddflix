@@ -36,6 +36,12 @@ const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	replies: [],
 };
 
+function decodeHtml(str: string): string {
+	const txt = document.createElement("textarea");
+	txt.innerHTML = str;
+	return txt.value;
+}
+
 const refinePost = (data: RawRedditPost): RedditPost => {
 	const parent = data.crosspost_parent_list?.[0];
 
@@ -53,7 +59,7 @@ const refinePost = (data: RawRedditPost): RedditPost => {
 
 	return {
 		id: base.id,
-		title: base.title,
+		title: decodeHtml(base.title),
 		subreddit: base.subreddit,
 		thumbnail: base.thumbnail,
 		url: base.url,

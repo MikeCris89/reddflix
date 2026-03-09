@@ -58,8 +58,10 @@ const PostContainer = ({
 			if (seenPosts[post.id]) seen.push(post);
 			else unseen.push(post);
 		});
+		const byNewest = (a: RedditPost, b: RedditPost) =>
+			b.created_utc - a.created_utc;
 		return {
-			allSortedPosts: [...unseen, ...seen],
+			allSortedPosts: [...unseen.sort(byNewest), ...seen.sort(byNewest)],
 			unseenPosts: unseen,
 		};
 	}, [data, seenPosts]);
@@ -93,7 +95,7 @@ const PostContainer = ({
 			console.warn(
 				"Pending request: ",
 				subreddit.name,
-				new Date(error.data.pendingTimestamp).toLocaleDateString()
+				new Date(error.data.pendingTimestamp).toLocaleDateString(),
 			);
 			setPendingTime(error.data.pendingTimestamp);
 		}
@@ -113,6 +115,7 @@ const PostContainer = ({
 							key={post.id}
 							post={post}
 							sub={subreddit.name}
+							isSeen={seenPosts && !!seenPosts[post.id]}
 							// className={clsx(
 							// 	i === 0 && "pl-2 lg:pl-4",
 							// 	i === allSortedPosts.length - 1 && "pr-2 lg:pr-4"
