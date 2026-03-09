@@ -1,5 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
+import { useFetchSeenPostsQuery } from "../features/localApp/localAppApi";
 import { useEffect, useState } from "react";
 import Post from "../features/reddit/Post";
 import { getCreatedTime } from "../utils/helpers";
@@ -17,6 +18,7 @@ const PostModal = ({
 }) => {
 	const navigate = useNavigate();
 	const { category, postId } = useParams();
+
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
 	const location = useLocation();
@@ -28,6 +30,11 @@ const PostModal = ({
 			return { data: data?.posts.find((posts) => posts.id === postId) };
 		},
 	});
+
+	const { data: seenPosts } = useFetchSeenPostsQuery(post?.subreddit ?? "", {
+		skip: !post?.subreddit,
+	});
+	const isSeen = !!(postId && seenPosts?.[postId]);
 
 	useEffect(() => {
 		if (backgroundLocation && setLayoutSize) {
@@ -75,6 +82,11 @@ const PostModal = ({
 						<p className="text-xs">u/{post.author}</p>
 						<p>&#8226;</p>
 						<p className="text-xs">{getCreatedTime(post.created_utc)}</p>
+					{isSeen && (
+						<span className="text-[10px] font-medium text-green-400 leading-none">
+							seen
+						</span>
+					)}
 					</div>
 				</div>
 				{backgroundLocation && <button onClick={() => navigate(-1)}>x</button>}
