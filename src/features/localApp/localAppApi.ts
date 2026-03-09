@@ -44,7 +44,7 @@ export const localAppApi = createApi({
 		setAllCategories: build.mutation({
 			async queryFn(categories: Category[]) {
 				const data = await Promise.all(
-					categories.map((cat) => setItem("categories", cat.title, cat))
+					categories.map((cat) => setItem("categories", cat.title, cat)),
 				);
 				return { data };
 			},
@@ -92,7 +92,7 @@ export const localAppApi = createApi({
 						await deleteItem("subreddits", sub.name);
 						if (!sub.active) await deleteItem("seenPosts", sub.name);
 						return await setItem("subreddits", sub.name, sub);
-					})
+					}),
 				);
 				return { data };
 			},
@@ -104,6 +104,16 @@ export const localAppApi = createApi({
 				if (!existing) return { error: new Error("Subreddit not found") };
 				const ttl = 1000 * 60 * 60 * 3;
 				const updated = { ...existing, ttl: Date.now() + ttl };
+				const data = await setItem("subreddits", name, updated);
+				return { data };
+			},
+			invalidatesTags: ["subreddits"],
+		}),
+		setSubredditLastUpdated: build.mutation({
+			async queryFn(name: string) {
+				const existing = await getItem<Subreddit>("subreddits", name);
+				if (!existing) return { error: new Error("Subreddit not found") };
+				const updated = { ...existing, lastUpdated: Date.now() };
 				const data = await setItem("subreddits", name, updated);
 				return { data };
 			},
@@ -143,7 +153,7 @@ export const localAppApi = createApi({
 				const data = Object.fromEntries(
 					resp
 						.filter((el) => el.subreddit === sub)
-						.map((seen) => [seen.id, seen.subreddit])
+						.map((seen) => [seen.id, seen.subreddit]),
 				);
 				return { data };
 			},
@@ -200,13 +210,13 @@ export const localAppApi = createApi({
 			async queryFn(reqMonitor, api) {
 				const prunePending = async (newPending: number[]) => {
 					await api.dispatch(
-						localAppApi.endpoints.setPendingArray.initiate(newPending)
+						localAppApi.endpoints.setPendingArray.initiate(newPending),
 					);
 				};
 				const data = await evaluateRateLimit(
 					Date.now(),
 					reqMonitor,
-					prunePending
+					prunePending,
 				);
 				return { data };
 			},
@@ -304,6 +314,8 @@ export const {
 	useSetAllSubredditsMutation,
 	useSetSubredditMutation,
 	useSetSubredditTTLMutation,
+	useSetSubredditLastUpdatedMutation,
+
 	useFetchRequestMonitorQuery,
 	useFetchRequestLimitQuery,
 	useRemovePendingRequestMutation,

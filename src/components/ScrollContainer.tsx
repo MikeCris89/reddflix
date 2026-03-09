@@ -1,13 +1,14 @@
 import clsx from "clsx";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
 import { useMemo, useRef, useState } from "react";
 
-import { Subreddit } from "../utils/types";
+import { isAppHandledError, Subreddit } from "../utils/types";
 import { useInView } from "react-intersection-observer";
 import PostContainer, {
 	SkeletonContainer,
 } from "../features/reddit/PostContainer";
+import { useLazyFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
 
 interface Props {
 	direction?: "row" | "col";
@@ -22,6 +23,17 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		triggerOnce: true,
 		threshold: 0.7,
 	});
+
+	const [trigger, refreshResult] = useLazyFetchPostsBySubredditQuery();
+	const isRefreshing = refreshResult.isFetching;
+
+	const errorMessage = refreshResult.isError
+		? isAppHandledError(refreshResult.error)
+			? refreshResult.error.data.message
+			: "Error loading posts"
+		: null;
+
+	const handleRefresh = () => trigger(subreddit.name, false);
 
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const scrollWidth = scrollRef.current?.clientWidth;
@@ -50,22 +62,29 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		});
 	};
 
-	// const refetchPosts = (refetch: () => void) => {
-	// 	if (refetch) refetch();
-	// };
-
 	const titleStyle3 = ` text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
 	} `;
 
 	return (
 		<div className="flex flex-col bg-[#1a1a1a] rounded-md">
-			{/* <div className="flex gap-2">
-				<button onClick={refetchPosts}>Refetch</button>
-				<button onClick={() => showCache(subreddit.name)}>Check Cache</button>
-			</div> */}
 			{/* Title */}
-			<h2 className={titleStyle3}>r/{subreddit.name}</h2>
+			<div
+				className={`flex items-center justify-start gap-[20px] pr-2 ${titleStyle3}`}
+			>
+				<span>r/{subreddit.name}</span>
+				<button
+					onClick={handleRefresh}
+					disabled={isRefreshing}
+					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
+					title="Refresh"
+				>
+					<RefreshCw size={12} className={isRefreshing ? "animate-spin" : ""} /> Refresh
+				</button>
+				{errorMessage && (
+					<span className="text-[#E50914] text-xs truncate max-w-[200px]">{errorMessage}</span>
+				)}
+			</div>
 
 			<div className="relative">
 				{/* Scroll Buttons (Desktop only) */}
@@ -80,7 +99,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 					ref={ref}
 					className={clsx(
 						"min-h-[400px] px-1 rounded-b-md relative",
-						isMobile && !isPortrait && "min-h-[300px]"
+						isMobile && !isPortrait && "min-h-[300px]",
 					)}
 				>
 					<div
@@ -119,12 +138,12 @@ const ScrollButton = ({
 			onClick={() => onClick(dir)}
 			className={clsx(
 				"absolute top-1/2 -translate-y-1/2 z-20 h-full rounded-1 bg-neutral-900/10 hover:bg-neutral-900/60 transition p-2 flex items-center hover:cursor-pointer group",
-				position
+				position,
 			)}
 		>
 			<div
 				className={clsx(
-					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]"
+					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]",
 				)}
 			>
 				<Icon size={20} className="text-neutral-100" />

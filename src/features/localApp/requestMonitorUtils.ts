@@ -9,9 +9,9 @@ export interface RateLimit {
 export const evaluateRateLimit = async (
 	now: number,
 	reqMonitor: RequestMonitor,
-	prunePending: (newPending: number[]) => Promise<void>
+	prunePending: (newPending: number[]) => Promise<void>,
 ) => {
-	const dev = process.env.NODE_ENV === "development";
+	const dev = import.meta.env.MODE === "development";
 	const window = dev ? 15_000 : 63_000;
 	const maxReq = dev ? 2 : 10;
 

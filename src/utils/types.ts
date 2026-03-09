@@ -29,6 +29,7 @@ export interface Subreddit {
 	name: string;
 	active: boolean;
 	ttl: number;
+	lastUpdated?: number;
 }
 
 export type SeenPosts = {
@@ -61,7 +62,7 @@ export interface AppHandledError {
 // =======================
 
 export const isAppHandledError = (
-	error: unknown
+	error: unknown,
 ): error is { data: AppHandledError } => {
 	return (
 		typeof error === "object" &&

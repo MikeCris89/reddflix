@@ -48,7 +48,7 @@ const refinePost = (data: RawRedditPost): RedditPost => {
 					...data,
 					gallery_data: parent.gallery_data,
 					media_metadata: parent.media_metadata,
-			  }
+				}
 			: data;
 
 	return {
@@ -126,7 +126,7 @@ const customBaseQuery: BaseQueryFn<
 		.dispatch(
 			localAppApi.endpoints.fetchRequestMonitor.initiate(undefined, {
 				forceRefetch: true,
-			})
+			}),
 		)
 		.unwrap();
 
@@ -137,8 +137,8 @@ const customBaseQuery: BaseQueryFn<
 		.dispatch(
 			localAppApi.endpoints.fetchRequestLimit.initiate(
 				reqMonitor || { ...defaultMonitor },
-				{ forceRefetch: true }
-			)
+				{ forceRefetch: true },
+			),
 		)
 		.unwrap();
 	const now = Date.now();
@@ -149,7 +149,7 @@ const customBaseQuery: BaseQueryFn<
 
 		if (requestLimit.reason === "ban") {
 			msg = `Reddit has temporarily blocked further requests. Try again after ${new Date(
-				Date.now() + requestLimit.delayMs
+				Date.now() + requestLimit.delayMs,
 			).toLocaleString()}`;
 
 			return {
@@ -187,6 +187,7 @@ const customBaseQuery: BaseQueryFn<
 
 	const arg = args && typeof args === "number" ? args : 0;
 
+	console.log(`📡 network request started.`);
 	// add request to rate limit list
 	api.dispatch(localAppApi.endpoints.setRequestTime.initiate(arg));
 
@@ -213,7 +214,7 @@ const customBaseQuery: BaseQueryFn<
 					status: 403,
 					data: {
 						message: `Reddit has temporarily blocked further requests. Retry after ${new Date(
-							Date.now() + delay
+							Date.now() + delay,
 						).toLocaleString()}`,
 						pendingTimestamp: 0,
 						isAppHandledError: false,
@@ -237,7 +238,7 @@ export const redditApi = createApi({
 			query: (subreddit) => `r/${subreddit}.json?limit=50`,
 			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
-				response: RedditListing<RawRedditPost>
+				response: RedditListing<RawRedditPost>,
 			): RedditPostsPage => {
 				if (
 					!response ||
@@ -254,12 +255,15 @@ export const redditApi = createApi({
 						.map((post) => refinePost(post.data)),
 				};
 			},
-			onQueryStarted(arg, { queryFulfilled }) {
-				console.log(`fetchPostsBySubreddit(${arg}) network request started.`);
+			onQueryStarted(arg, { queryFulfilled, dispatch }) {
+				console.log(`fetchPostsBySubreddit(${arg}) fetch request started.`);
 
 				queryFulfilled
 					.then((res) => {
 						console.log(`✅ fetchPostsBySubreddit(${arg}) Success:`, res);
+						dispatch(
+							localAppApi.endpoints.setSubredditLastUpdated.initiate(arg),
+						);
 					})
 					.catch((err) => {
 						console.error(`❌ fetchPostsBySubreddit(${arg}) failed:`, err);
@@ -271,7 +275,7 @@ export const redditApi = createApi({
 				`search.json?q=${encodeURIComponent(searchTerm)}&sort=top`,
 			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
-				response: RedditListing<RawRedditPost>
+				response: RedditListing<RawRedditPost>,
 			): RedditPostsPage => {
 				if (
 					!response?.data?.children ||
@@ -301,7 +305,7 @@ export const redditApi = createApi({
 			query: (postId) => `comments/${postId}.json`,
 			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
-				response: PostAndCommentsResponse
+				response: PostAndCommentsResponse,
 			): RedditPostAndComments => {
 				if (
 					!response ||
@@ -314,12 +318,12 @@ export const redditApi = createApi({
 				return {
 					post: refinePost(response[0].data.children[0].data),
 					comments: response[1].data.children.map((comment) =>
-						formatCommentTree(comment.data)
+						formatCommentTree(comment.data),
 					),
 				};
 			},
 			onQueryStarted(arg, { queryFulfilled }) {
-				console.log(`fetchPostAndComments(${arg}) network request started.`);
+				console.log(`fetchPostAndComments(${arg}) fetch request started.`);
 
 				queryFulfilled
 					.then((res) => {
