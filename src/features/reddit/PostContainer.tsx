@@ -7,8 +7,6 @@ import {
 import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
-import useCountdown from "../../hooks/useCountdown";
-import Spinner from "../../components/Spinner";
 
 export const PostSkeleton = () => (
 	<div className="animate-pulse h-[400px] bg-zinc-800 w-80 md:w-90 rounded-xl ">
@@ -33,12 +31,15 @@ export const SkeletonContainer = () =>
 const PostContainer = ({
 	subreddit,
 	postRefs,
+	onRateLimit,
+	onErrorMessage,
 }: {
 	subreddit: Subreddit;
 	postRefs: React.RefObject<(HTMLDivElement | null)[]>;
+	onRateLimit?: (pendingTime: number) => void;
+	onErrorMessage?: (msg: string | null) => void;
 }) => {
 	const [pendingTime, setPendingTime] = useState<number>(0);
-	const remaining = useCountdown(pendingTime);
 	const [removePending] = useRemovePendingRequestMutation();
 	const { data, isLoading, error, isError, refetch } =
 		useFetchPostsBySubredditQuery(subreddit.name, {
@@ -80,11 +81,6 @@ const PostContainer = ({
 	}, [pendingTime, refetch, removePending]);
 
 	useEffect(() => {
-		// if (isError && error) {
-		// 	console.log(`isError for sub ${subreddit.name}: `, isError);
-		// 	console.log(`error: ${error}`);
-		// 	console.log(`data: ${data}`);
-		// }
 		if (
 			isError &&
 			error &&
@@ -98,8 +94,23 @@ const PostContainer = ({
 				new Date(error.data.pendingTimestamp).toLocaleDateString(),
 			);
 			setPendingTime(error.data.pendingTimestamp);
+			onRateLimit?.(error.data.pendingTimestamp);
 		}
-	}, [isError, error, subreddit]);
+	}, [isError, error, subreddit, onRateLimit]);
+
+	useEffect(() => {
+		if (!isError || !error) {
+			onErrorMessage?.(null);
+			return;
+		}
+		if (!isAppHandledError(error)) {
+			onErrorMessage?.("Error loading posts");
+		} else if (error.data.reason === "ban") {
+			onErrorMessage?.(error.data.message);
+		} else if (error.data.reason === "rateLimit") {
+			onErrorMessage?.("Reddit's rate limit reached.");
+		}
+	}, [isError, error, onErrorMessage]);
 
 	return (
 		<>
@@ -126,33 +137,7 @@ const PostContainer = ({
 				</>
 			)) ||
 				[]}
-			{isError && error && (
-				<>
-					<div className="w-full h-[300px] flex justify-center items-center">
-						{!isAppHandledError(error) && (
-							<p>{"Error occurred. Please try again later."}</p>
-						)}
-						{isAppHandledError(error) && error.data.reason === "ban" && (
-							<p>{error.data.message}</p>
-						)}
-						{isAppHandledError(error) &&
-							error.data.reason === "rateLimit" &&
-							remaining > 0 && (
-								<div className="flex flex-col flex-1 w-full h-full justify-center items-center gap-2">
-									<p className="text-md text-[#E50914] font-semibold">
-										Reddit's Rate limit reached.
-									</p>
-									<p className="text-lg text-[#E50914] font-semibold">
-										Retrying in {Math.ceil(remaining / 1000)}s
-									</p>
-									<Spinner size="sm" />
-								</div>
-							)}
-					</div>
-					<div></div>
-					<div></div>
-				</>
-			)}
+	
 		</>
 	);
 };

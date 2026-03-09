@@ -2,6 +2,8 @@ import clsx from "clsx";
 import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
 import { useMemo, useRef, useState } from "react";
+import useCountdown from "../hooks/useCountdown";
+import Spinner from "./Spinner";
 
 import { isAppHandledError, Subreddit } from "../utils/types";
 import { useInView } from "react-intersection-observer";
@@ -35,6 +37,10 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 			? refreshResult.error.data.message
 			: "Error loading posts"
 		: null;
+
+	const [pendingTime, setPendingTime] = useState(0);
+	const [postError, setPostError] = useState<string | null>(null);
+	const remaining = useCountdown(pendingTime);
 
 	const handleRefresh = () => trigger(subreddit.name, false);
 
@@ -94,9 +100,15 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 					/>
 					{/* {inCooldown ? `${minutesLeft}m` : "Refresh"} */}
 				</button>
-				{errorMessage && (
+				{remaining > 0 && (
+					<span className="flex items-center gap-1 text-[#E50914] text-xs">
+						<Spinner size="sm" />
+						Retrying in {Math.ceil(remaining / 1000)}s
+					</span>
+				)}
+				{remaining <= 0 && (postError || errorMessage) && (
 					<span className="text-[#E50914] text-xs truncate max-w-[200px]">
-						{errorMessage}
+						{postError || errorMessage}
 					</span>
 				)}
 			</div>
@@ -129,7 +141,12 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 						{!inView && <SkeletonContainer />}
 						{inView && (
-							<PostContainer subreddit={subreddit} postRefs={postRefs} />
+									<PostContainer
+							subreddit={subreddit}
+							postRefs={postRefs}
+							onRateLimit={setPendingTime}
+							onErrorMessage={setPostError}
+						/>
 						)}
 					</div>
 				</div>
