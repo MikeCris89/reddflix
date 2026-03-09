@@ -20,7 +20,7 @@ import {
 } from "./redditTypes";
 import { getPostType } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
-import { defaultMonitor } from "../../utils/types";
+import { BAN_DURATION_MS, defaultMonitor } from "../../utils/types";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -119,14 +119,29 @@ const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
 	return base;
 };
 
+let inMemoryBannedUntil = 0;
+
 const customBaseQuery: BaseQueryFn<
 	string | FetchArgs,
 	unknown,
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-	//const state = api.getState() as RootState;
-	// const reqMonitor =
-	// 	localAppApi.endpoints.fetchRequestMonitor.select()(state)?.data;
+	const now = Date.now();
+
+	// Synchronous check — blocks concurrent requests the moment a ban is set
+	if (now < inMemoryBannedUntil) {
+		return {
+			error: {
+				status: 403,
+				data: {
+					message: `Reddit has temporarily blocked requests. Try again after ${new Date(inMemoryBannedUntil).toLocaleString()}`,
+					pendingTimestamp: 0,
+					isAppHandledError: false,
+					reason: "ban",
+				},
+			},
+		};
+	}
 
 	const reqMonitor = await api
 		.dispatch(
@@ -136,9 +151,22 @@ const customBaseQuery: BaseQueryFn<
 		)
 		.unwrap();
 
-	// const requestLimit = localAppApi.endpoints.fetchRequestLimit.select(
-	// 	reqMonitor || { ...defaultMonitor }
-	// )(state)?.data;
+	// Hydrate in-memory ban from DB (catches bans persisted across page reloads)
+	if (reqMonitor?.bannedUntil && reqMonitor.bannedUntil > now) {
+		inMemoryBannedUntil = reqMonitor.bannedUntil;
+		return {
+			error: {
+				status: 403,
+				data: {
+					message: `Reddit has temporarily blocked requests. Try again after ${new Date(inMemoryBannedUntil).toLocaleString()}`,
+					pendingTimestamp: 0,
+					isAppHandledError: false,
+					reason: "ban",
+				},
+			},
+		};
+	}
+
 	const requestLimit = await api
 		.dispatch(
 			localAppApi.endpoints.fetchRequestLimit.initiate(
@@ -147,8 +175,6 @@ const customBaseQuery: BaseQueryFn<
 			),
 		)
 		.unwrap();
-	const now = Date.now();
-
 	// Check rate limiting and request ban delay
 	if (requestLimit && !requestLimit.ok) {
 		let msg = "Error communicating with Reddit.";
@@ -203,24 +229,32 @@ const customBaseQuery: BaseQueryFn<
 	// console.log("BaseQuery result:", result);
 
 	// Set request ban for 403 errors and throw for other errors
-	if (result.error) {
-		// console.log("Error received:", result.error);
-		let delay = 0;
-		if (result.error.status === 403 || result.error.status === "FETCH_ERROR") {
+	if (true || result.error) {
+		if (
+			true ||
+			result.error.status === 403 ||
+			result.error.status === "FETCH_ERROR"
+		) {
+			// Set in-memory ban immediately to block any concurrent requests
+			inMemoryBannedUntil = now + BAN_DURATION_MS;
+			let delay = BAN_DURATION_MS;
 			try {
 				const resp = await api
 					.dispatch(localAppApi.endpoints.setBannedUntil.initiate())
 					.unwrap();
-				delay = resp && resp > 0 ? resp : 1000 * 60 * 60;
+				if (resp && resp > 0) {
+					delay = resp;
+					inMemoryBannedUntil = now + delay;
+				}
 			} catch {
-				delay = 1000 * 60 * 60;
+				// fallback to BAN_DURATION_MS already set above
 			}
 			return {
 				error: {
 					status: 403,
 					data: {
 						message: `Reddit has temporarily blocked further requests. Retry after ${new Date(
-							Date.now() + delay,
+							now + delay,
 						).toLocaleString()}`,
 						pendingTimestamp: 0,
 						isAppHandledError: false,

@@ -43,6 +43,8 @@ export interface RequestMonitor {
 	bannedUntil?: number;
 }
 
+export const BAN_DURATION_MS = 1000 * 60 * 25; // 25 minutes
+
 export const defaultMonitor: RequestMonitor = {
 	recent: [],
 	pending: [],
