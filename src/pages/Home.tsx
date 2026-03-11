@@ -2,7 +2,6 @@ import ScrollContainer from "../components/ScrollContainer";
 import clsx from "clsx";
 import { store } from "../app/store";
 import { useFetchSubredditsQuery } from "../features/localApp/localAppApi";
-import { useRef } from "react";
 
 declare global {
 	interface Window {
