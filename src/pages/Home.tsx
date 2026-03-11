@@ -17,9 +17,6 @@ const Home = () => {
 		?.slice()
 		.sort((a, b) => a.name.localeCompare(b.name));
 
-	const renderCount = useRef(0);
-	console.log("HomePage render", ++renderCount.current);
-
 	return (
 		<div
 			className={clsx(

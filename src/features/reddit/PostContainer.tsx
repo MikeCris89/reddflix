@@ -26,8 +26,6 @@ export const SkeletonContainer = () =>
 		</div>
 	));
 
-const EMPTY_DATA = { posts: [], after: null };
-
 const PostContainer = ({
 	subreddit,
 	postRefs,
@@ -58,10 +56,6 @@ const PostContainer = ({
 
 	const fallbackPosts = getFallbackPosts(subreddit.name);
 
-	// const resolvedData = useMemo(() => data, []);
-
-	// const renderCount = useRef(0);
-
 	const resolvedData = useMemo(() => {
 		return (
 			data ??
@@ -70,14 +64,6 @@ const PostContainer = ({
 				: null)
 		);
 	}, [data, isError, isLoading, fallbackPosts]);
-
-	console.log(
-		"PostContainer render",
-		isLoading,
-		isError,
-		resolvedData,
-		fallbackPosts,
-	);
 
 	const { allSortedPosts, unseenPosts: _unseenPosts } = useMemo(() => {
 		if (!resolvedData || !seenPosts)
@@ -141,7 +127,7 @@ const PostContainer = ({
 		} else if (error.data.reason === "rateLimit") {
 			onErrorMessage?.("Reddit's rate limit reached.");
 		}
-	}, [isError, error]);
+	}, [isError, error, onErrorMessage, onBanExpiry]);
 
 	useEffect(() => {
 		if (data) {
@@ -165,10 +151,6 @@ const PostContainer = ({
 							post={post}
 							sub={subreddit.name}
 							isSeen={seenPosts && !!seenPosts[post.id]}
-							// className={clsx(
-							// 	i === 0 && "pl-2 lg:pl-4",
-							// 	i === allSortedPosts.length - 1 && "pr-2 lg:pr-4"
-							// )}
 						/>
 					))}
 					<div></div>
