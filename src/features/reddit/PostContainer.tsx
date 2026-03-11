@@ -7,6 +7,7 @@ import {
 import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
+import { getFallbackPosts } from "../../utils/helpers";
 
 export const PostSkeleton = () => (
 	<div className="animate-pulse h-[400px] bg-zinc-800 w-80 md:w-90 rounded-xl ">
@@ -15,9 +16,6 @@ export const PostSkeleton = () => (
 			<div className="h-[300px] bg-zinc-600 rounded-md" />
 			<div className="h-4 bg-zinc-700 rounded w-1/2" />
 		</div>
-		{/* <div className="h-[100%] flex justify-center items-center bg-zinc-700 rounded-xl">
-			<div className="h-[75%] w-[90%]  bg-zinc-600 rounded-xl"></div>
-		</div> */}
 	</div>
 );
 
@@ -27,6 +25,8 @@ export const SkeletonContainer = () =>
 			<PostSkeleton />
 		</div>
 	));
+
+const EMPTY_DATA = { posts: [], after: null };
 
 const PostContainer = ({
 	subreddit,
@@ -56,11 +56,35 @@ const PostContainer = ({
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
+	const fallbackPosts = getFallbackPosts(subreddit.name);
+
+	// const resolvedData = useMemo(() => data, []);
+
+	// const renderCount = useRef(0);
+
+	const resolvedData = useMemo(() => {
+		return (
+			data ??
+			(isError && !isLoading && fallbackPosts
+				? { posts: fallbackPosts as unknown as RedditPost[], after: null }
+				: null)
+		);
+	}, [data, isError, isLoading, fallbackPosts]);
+
+	console.log(
+		"PostContainer render",
+		isLoading,
+		isError,
+		resolvedData,
+		fallbackPosts,
+	);
+
 	const { allSortedPosts, unseenPosts: _unseenPosts } = useMemo(() => {
-		if (!data || !seenPosts) return { allSortedPosts: [], unseenPosts: [] };
+		if (!resolvedData || !seenPosts)
+			return { allSortedPosts: [], unseenPosts: [] };
 		const unseen: RedditPost[] = [];
 		const seen: RedditPost[] = [];
-		data.posts.forEach((post) => {
+		resolvedData.posts.forEach((post) => {
 			if (seenPosts[post.id]) seen.push(post);
 			else unseen.push(post);
 		});
@@ -70,7 +94,7 @@ const PostContainer = ({
 			allSortedPosts: [...unseen.sort(byNewest), ...seen.sort(byNewest)],
 			unseenPosts: unseen,
 		};
-	}, [data, seenPosts]);
+	}, [resolvedData, seenPosts]);
 
 	useEffect(() => {
 		if (!pendingTime || pendingTime < Date.now()) return;
@@ -117,14 +141,14 @@ const PostContainer = ({
 		} else if (error.data.reason === "rateLimit") {
 			onErrorMessage?.("Reddit's rate limit reached.");
 		}
-	}, [isError, error, onErrorMessage, onBanExpiry]);
+	}, [isError, error]);
 
 	useEffect(() => {
 		if (data) {
 			if (!isFirstLoad.current) onDataUpdated?.();
 			else isFirstLoad.current = false;
 		}
-	}, [data, onDataUpdated]);
+	}, [data]);
 
 	return (
 		<>
@@ -151,7 +175,6 @@ const PostContainer = ({
 				</>
 			)) ||
 				[]}
-	
 		</>
 	);
 };

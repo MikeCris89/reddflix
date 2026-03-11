@@ -10,10 +10,12 @@ import {
 	POST_TYPES,
 	RawRedditPost,
 	RedditPost,
+	RedditPostsPage,
 } from "../features/reddit/redditTypes";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { toast } from "sonner";
+import defaultPosts from "../data/defaultPosts.json";
 
 export const getPostType = (
 	post: RawRedditPost | RedditPost,
@@ -191,3 +193,9 @@ export const refinePost = (data: RawRedditPost): RedditPost => {
 		type: getPostType(base),
 	};
 };
+
+export function getFallbackPosts(subreddit: string): RedditPost[] {
+	return (
+		(defaultPosts as unknown as Record<string, RedditPost[]>)[subreddit] ?? []
+	);
+}

@@ -14,6 +14,8 @@ import {
 import { redditApi } from "../features/reddit/redditApi";
 import { localAppApi } from "../features/localApp/localAppApi";
 
+import fallbackPostsReducer from "../features/reddit/fallbackPostsSlice";
+
 // RTK Query cache is stored under 'api.reducerPath'
 const persistConfig = {
 	key: redditApi.reducerPath,
@@ -29,13 +31,14 @@ localForage.config({
 
 export const persistedReducer = persistReducer(
 	persistConfig,
-	redditApi.reducer
+	redditApi.reducer,
 );
 
 export const store = configureStore({
 	reducer: {
 		[redditApi.reducerPath]: persistedReducer,
 		[localAppApi.reducerPath]: localAppApi.reducer,
+		fallbackPosts: fallbackPostsReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

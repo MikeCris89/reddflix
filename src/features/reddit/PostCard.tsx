@@ -29,6 +29,8 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		delay: 200,
 	});
 
+	const isSample = post.sample === true;
+
 	useEffect(() => {
 		if (inView) {
 			setSeenPost({ subreddit: sub, postId: post.id });
@@ -57,12 +59,15 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		>
 			<div ref={ref} className={cardStyle2 + " relative"}>
 				{/* Top-right badges — "seen" for all, + time for isTitleAsPost */}
-				<div className="absolute top-2 right-2 flex flex-col items-end gap-0.5">
-					{isSeen && (
-						<span className="text-[10px] font-medium text-green-400 leading-none">
-							seen
+				<div className="w-full flex flex-col items-end gap-0.5">
+					<div className={clsx("flex w-full justify-between items-center")}>
+						<span className="text-[10px] font-medium text-zinc-400 leading-none">
+							{isSample && "sample"}
 						</span>
-					)}
+						<span className="text-[10px] font-medium text-green-400 leading-none ">
+							{isSeen && "seen"}
+						</span>
+					</div>
 					{isTitleAsPost(post) && (
 						<span className="text-[10px] text-zinc-500 leading-none">
 							{relativeTime(post.created_utc)}

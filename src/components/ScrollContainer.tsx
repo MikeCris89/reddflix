@@ -1,18 +1,15 @@
 import clsx from "clsx";
-import { ArrowLeft, ArrowRight, RefreshCw } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
 import { useCallback, useMemo, useRef, useState } from "react";
-import useCountdown from "../hooks/useCountdown";
-import Spinner from "./Spinner";
 
-import { isAppHandledError, Subreddit } from "../utils/types";
+import { Subreddit } from "../utils/types";
 import { useInView } from "react-intersection-observer";
 import PostContainer, {
 	SkeletonContainer,
 } from "../features/reddit/PostContainer";
 import { useLazyFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
-import MinutesLeft from "./MinutesLeft";
-import { getMinutesLeft, relativeTime } from "../utils/helpers";
+import ScrollHeader from "./ScrollHeader";
 
 interface Props {
 	direction?: "row" | "col";
@@ -31,17 +28,11 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 	const [trigger, refreshResult] = useLazyFetchPostsBySubredditQuery();
 	const isRefreshing = refreshResult.isFetching;
 
-	const errorMessage = refreshResult.isError
-		? isAppHandledError(refreshResult.error)
-			? refreshResult.error.data.message
-			: "Error loading posts"
-		: null;
-
 	const [pendingTime, setPendingTime] = useState(0);
-	const [postError, setPostError] = useState<string | null>(null);
 	const [banExpiry, setBanExpiry] = useState(0);
-	const remaining = useCountdown(pendingTime);
-	const banRemaining = useCountdown(banExpiry);
+	const handleBanExpiry = useCallback((timestamp: number) => {
+		setBanExpiry((prev) => (prev === timestamp ? prev : timestamp));
+	}, []);
 
 	const handleRefresh = () => trigger(subreddit.name, false);
 
@@ -51,11 +42,6 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		setIndex(0);
 		scrollRef.current?.scrollTo({ left: 0, behavior: "smooth" });
 	}, []);
-
-	// Cooldown between requests
-	const COOLDOWN_MS = 10 * 60 * 1000;
-	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
-	const inCooldown = mLeft > 0;
 
 	const scrollWidth = scrollRef.current?.clientWidth;
 	const postWidth = isMobile ? 288 + 10 : 320 + 14;
@@ -83,63 +69,15 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		});
 	};
 
-	const titleStyle3 = ` text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
-		isMobile ? "text-base" : "text-lg"
-	} `;
-
-	// const activeError = postError || errorMessage;
-
-	const rateLimitEl = remaining > 0 && (
-		<span className="flex items-center gap-1 text-[#E50914] text-xs">
-			<Spinner size="sm" />
-			Retrying in {Math.ceil(remaining / 1000)}s
-		</span>
-	);
-
-	const banEl = remaining <= 0 && banRemaining > 0 && (
-		<span className="flex items-center gap-1 text-blue-400 text-xs">
-			Temp banned · {Math.ceil(banRemaining / 60000)}m left
-		</span>
-	);
-
-	// const errorEl = remaining <= 0 && banRemaining <= 0 && activeError && (
-	// 	<span className="text-[#E50914] text-xs">{activeError}</span>
-	// );
-
 	return (
 		<div className="flex flex-col bg-[#1a1a1a] rounded-md">
-			{/* Title */}
-			<div
-				className={`flex items-center justify-start gap-[20px] pr-2 ${titleStyle3}`}
-			>
-				<span>r/{subreddit.name}</span>
-				<button
-					onClick={handleRefresh}
-					disabled={isRefreshing || inCooldown || !!banEl}
-					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
-					title="Refresh"
-				>
-					<RefreshCw size={12} className={isRefreshing ? "animate-spin" : ""} />
-					<MinutesLeft
-						cooldownMs={COOLDOWN_MS}
-						initTime={subreddit.lastUpdated}
-					/>
-				</button>
-				{remaining <= 0 && subreddit.lastUpdated && (
-					<span className="text-zinc-500 text-xs">
-						{relativeTime(subreddit.lastUpdated / 1000)} ago
-					</span>
-				)}
-				{/* Desktop: errors inline after lastUpdated */}
-				{!isMobile && (rateLimitEl || banEl)}
-			</div>
-
-			{/* Mobile-only error row */}
-			{isMobile && (rateLimitEl || banEl) && (
-				<div className="flex items-center gap-3 px-3 pb-1 bg-[#212121]">
-					{rateLimitEl || banEl}
-				</div>
-			)}
+			<ScrollHeader
+				subreddit={subreddit}
+				pendingTime={pendingTime}
+				banExpiry={banExpiry}
+				isRefreshing={isRefreshing}
+				onRefresh={handleRefresh}
+			/>
 
 			<div className="relative">
 				{/* Scroll Buttons (Desktop only) */}
@@ -173,8 +111,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 								subreddit={subreddit}
 								postRefs={postRefs}
 								onRateLimit={setPendingTime}
-								onErrorMessage={setPostError}
-								onBanExpiry={setBanExpiry}
+								onBanExpiry={handleBanExpiry}
 								onDataUpdated={handleDataUpdated}
 							/>
 						)}

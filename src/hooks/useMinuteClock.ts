@@ -10,7 +10,7 @@ function subscribe(listener: () => void) {
 		intervalId = setInterval(() => {
 			currentMinute = Math.floor(Date.now() / 60000);
 			listeners.forEach((l) => l());
-		}, 60000);
+		}, 30000);
 	}
 	return () => {
 		listeners = listeners.filter((l) => l !== listener);

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useCountdown = (timestamp: number) => {
 	const [remaining, setRemaining] = useState(() =>
-		timestamp > 0 ? timestamp - Date.now() : 0
+		timestamp > 0 ? timestamp - Date.now() : 0,
 	);
 
 	useEffect(() => {

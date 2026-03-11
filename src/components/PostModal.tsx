@@ -10,6 +10,8 @@ import useDisplay from "../hooks/useDisplay";
 import { isTitleAsPost } from "../features/reddit/redditTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
+import { useSelector } from "react-redux";
+import { selectFallbackPosts } from "../features/reddit/fallbackPostsSlice";
 
 const PostModal = ({
 	setLayoutSize,
@@ -25,16 +27,23 @@ const PostModal = ({
 	const state = location.state as { backgroundLocation?: Location };
 	const backgroundLocation = state?.backgroundLocation;
 
-	const { data: post } = useFetchPostsBySubredditQuery(category, {
-		selectFromResult: ({ data }) => {
-			return { data: data?.posts.find((posts) => posts.id === postId) };
+	const { data, isLoading } = useFetchPostsBySubredditQuery(category, {
+		selectFromResult: ({ data, isLoading }) => {
+			return {
+				data: data?.posts.find((posts) => posts.id === postId),
+				isLoading,
+			};
 		},
 	});
 
-	const { data: seenPosts } = useFetchSeenPostsQuery(post?.subreddit ?? "", {
-		skip: !post?.subreddit,
+	const { data: seenPosts } = useFetchSeenPostsQuery(data?.subreddit ?? "", {
+		skip: !data?.subreddit,
 	});
 	const isSeen = !!(postId && seenPosts?.[postId]);
+
+	const fallbackPosts = useSelector(selectFallbackPosts(category ?? ""));
+	const post =
+		data ?? (!isLoading ? fallbackPosts.find((p) => p.id === postId) : null);
 
 	useEffect(() => {
 		if (backgroundLocation && setLayoutSize) {
@@ -42,7 +51,9 @@ const PostModal = ({
 		}
 	}, [showComments, backgroundLocation, setLayoutSize]);
 
-	if (!category || !postId) return <NoMatch />;
+	if (!category || !postId) {
+		return <NoMatch />;
+	}
 
 	const toggleComments = () => {
 		setShowComments((prev) => !prev);
@@ -61,7 +72,9 @@ const PostModal = ({
 		"min-h-[40%]": isPortrait && showComments && backgroundLocation,
 	});
 
-	if (!post) return <p>Post Not Found - {postId}</p>;
+	if (!post) {
+		return <p>Post Not Found - {postId}</p>;
+	}
 
 	return (
 		<div
@@ -82,11 +95,11 @@ const PostModal = ({
 						<p className="text-xs">u/{post.author}</p>
 						<p>&#8226;</p>
 						<p className="text-xs">{getCreatedTime(post.created_utc)}</p>
-					{isSeen && (
-						<span className="text-[10px] font-medium text-green-400 leading-none">
-							seen
-						</span>
-					)}
+						{isSeen && (
+							<span className="text-[10px] font-medium text-green-400 leading-none">
+								seen
+							</span>
+						)}
 					</div>
 				</div>
 				{backgroundLocation && <button onClick={() => navigate(-1)}>x</button>}

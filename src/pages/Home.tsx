@@ -2,7 +2,7 @@ import ScrollContainer from "../components/ScrollContainer";
 import clsx from "clsx";
 import { store } from "../app/store";
 import { useFetchSubredditsQuery } from "../features/localApp/localAppApi";
-// import { useLazySearchPostsQuery } from "../features/reddit/redditApi";
+import { useRef } from "react";
 
 declare global {
 	interface Window {
@@ -12,41 +12,25 @@ declare global {
 
 const Home = () => {
 	const { data: subreddits } = useFetchSubredditsQuery();
-	// const [searchPost, { data: searchData }] = useLazySearchPostsQuery();
 
 	const sortedSubs = subreddits
 		?.slice()
 		.sort((a, b) => a.name.localeCompare(b.name));
+
+	const renderCount = useRef(0);
+	console.log("HomePage render", ++renderCount.current);
+
 	return (
 		<div
 			className={clsx(
-				"flex-1 flex flex-col gap-8 w-full relative overflow-y-auto p-1 pb-10"
+				"flex-1 flex flex-col gap-8 w-full relative overflow-y-auto p-1 pb-10",
 			)}
 		>
-			{/* <button
-				onClick={() => searchPost("funny memes news gaming react")}
-				className="w-fit"
-			>
-				Search post
-			</button> */}
-
 			{sortedSubs &&
 				sortedSubs
 					.filter((s) => s.active)
 					.map((sub, i) => {
-						//if (i > 0) return null;
-						if (
-							true
-							// sub.name === "funny" ||
-							// sub.name === "Art" ||
-							// sub.name === "popular" ||
-							// sub.name == "webdev"
-						)
-							//if (sub.name === "funny")
-							return (
-								<ScrollContainer key={`${sub.title}-${i}`} subreddit={sub} />
-							);
-						return null;
+						return <ScrollContainer key={`${sub.name}-${i}`} subreddit={sub} />;
 					})}
 		</div>
 	);
