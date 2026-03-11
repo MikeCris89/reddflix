@@ -229,12 +229,8 @@ const customBaseQuery: BaseQueryFn<
 	// console.log("BaseQuery result:", result);
 
 	// Set request ban for 403 errors and throw for other errors
-	if (true || result.error) {
-		if (
-			true ||
-			result.error.status === 403 ||
-			result.error.status === "FETCH_ERROR"
-		) {
+	if (result.error) {
+		if (result.error.status === 403 || result.error.status === "FETCH_ERROR") {
 			// Set in-memory ban immediately to block any concurrent requests
 			inMemoryBannedUntil = now + BAN_DURATION_MS;
 			let delay = BAN_DURATION_MS;
