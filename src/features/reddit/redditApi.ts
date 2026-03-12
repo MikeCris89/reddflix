@@ -72,6 +72,7 @@ const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
 };
 
 let inMemoryBannedUntil = 0;
+let inMemoryPending: number[] = [];
 
 const customBaseQuery: BaseQueryFn<
 	string | FetchArgs,
@@ -119,12 +120,21 @@ const customBaseQuery: BaseQueryFn<
 		};
 	}
 
+	const mergedMonitor = {
+		...reqMonitor,
+		pending: [
+			...new Set([
+				...reqMonitor.pending,
+				...inMemoryPending.filter((t) => t > now),
+			]),
+		],
+	};
+
 	const requestLimit = await api
 		.dispatch(
-			localAppApi.endpoints.fetchRequestLimit.initiate(
-				reqMonitor || { ...defaultMonitor },
-				{ forceRefetch: true },
-			),
+			localAppApi.endpoints.fetchRequestLimit.initiate(mergedMonitor, {
+				forceRefetch: true,
+			}),
 		)
 		.unwrap();
 	// Check rate limiting and request ban delay
@@ -132,9 +142,7 @@ const customBaseQuery: BaseQueryFn<
 		let msg = "Error communicating with Reddit.";
 
 		if (requestLimit.reason === "ban") {
-			msg = `Reddit has temporarily blocked further requests. Try again after ${new Date(
-				inMemoryBannedUntil,
-			).toLocaleString()}`;
+			msg = `Reddit has temporarily blocked further requests.`;
 
 			return {
 				error: {
@@ -150,7 +158,11 @@ const customBaseQuery: BaseQueryFn<
 		} else {
 			const seconds = Math.ceil(requestLimit.delayMs / 1000);
 			msg = `You've reach Reddit's rate limit. Retrying in ~${seconds}s`;
-			const timestamp = now + requestLimit.delayMs;
+			const timestamp = now + requestLimit.delayMs + 2000;
+
+			// update in-memory immediately so next concurrent request sees it
+			inMemoryPending = [...inMemoryPending.filter((t) => t > now), timestamp];
+
 			// add request to pending list
 			api.dispatch(localAppApi.endpoints.setPendingRequest.initiate(timestamp));
 

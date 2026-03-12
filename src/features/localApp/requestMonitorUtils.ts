@@ -15,9 +15,7 @@ export const evaluateRateLimit = async (
 	const window = dev ? 15_000 : 63_000;
 	const maxReq = dev ? 2 : 10;
 
-	//const store = "requestMonitor";
 	const { recent, pending: rawPending, bannedUntil } = reqMonitor;
-	//const bannedUntil = await getItem<number>(store, "bannedUntil");
 
 	// if temporary ban, block all requests for certain amount of time
 	if (bannedUntil && now < bannedUntil)
@@ -26,14 +24,10 @@ export const evaluateRateLimit = async (
 			delayMs: bannedUntil - now,
 			reason: "ban" as const,
 		};
-	// const window = 63_000;
-
-	//const recent = (await getItem<number[]>(store, "recent")) || [];
 
 	const filteredRecent = recent.filter((t) => now - t < window);
 
 	// if any requests in pending state, put this req in pending
-	//const rawPending = (await getItem<number[]>(store, "pending")) || [];
 	const pending = rawPending.filter((t) => t > now);
 	if (pending.length !== rawPending.length) {
 		await prunePending(pending);
