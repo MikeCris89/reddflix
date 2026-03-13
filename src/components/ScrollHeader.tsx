@@ -35,12 +35,12 @@ const ScrollHeader = ({
 	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
 	const inCooldown = mLeft > 0;
 
-	const titleStyle3 = `text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
+	const titleStyle3 = `text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#FF4500] bg-[#1A1D1F] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
 	}`;
 
 	const rateLimitEl = remaining > 0 && (
-		<span className="flex items-center gap-1 text-[#E50914] text-xs">
+		<span className="flex items-center gap-1 text-[#FF4500] text-xs">
 			<Spinner size="sm" />
 			Retrying in {Math.ceil(remaining / 1000)}s
 		</span>
@@ -78,7 +78,7 @@ const ScrollHeader = ({
 				{!isMobile && (rateLimitEl || banEl)}
 			</div>
 			{isMobile && (rateLimitEl || banEl) && (
-				<div className="flex items-center gap-3 px-3 pb-1 bg-[#212121]">
+				<div className="flex items-center gap-3 px-3 pb-1 bg-[#1A1D1F]">
 					{rateLimitEl || banEl}
 				</div>
 			)}

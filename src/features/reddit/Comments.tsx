@@ -354,10 +354,10 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 							error.data.reason === "rateLimit" &&
 							remaining > 0 && (
 								<>
-									<p className="text-sm text-[#E50914]">
+									<p className="text-sm text-[#FF4500]">
 										Reddit's Rate limit reached.
 									</p>
-									<p className="text-lg text-[#E50914]">
+									<p className="text-lg text-[#FF4500]">
 										Retrying in {Math.ceil(remaining / 1000)}s
 									</p>
 								</>
@@ -468,7 +468,7 @@ const PageButtons = ({
 					<button
 						onClick={handlePage}
 						className={clsx(
-							"flex gap-2 py-[3px] px-2 w-fit justify-center items-center bg-[#E50914]"
+							"flex gap-2 py-[3px] px-2 w-fit justify-center items-center bg-[#FF4500]"
 						)}
 						disabled={dir === "next" && lastPage}
 					>
@@ -489,7 +489,7 @@ const PageButtons = ({
 			{page > 1 ? (
 				<button
 					onClick={handleTop}
-					className="flex gap-2 py-[3px] px-2 w-fit justify-self-end items-center text-[#E50914]"
+					className="flex gap-2 py-[3px] px-2 w-fit justify-self-end items-center text-[#FF4500]"
 				>
 					<ArrowBigUpDashIcon size={16} />
 					<p className={btnTextClass}>Top</p>

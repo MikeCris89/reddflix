@@ -86,7 +86,7 @@ const Post = ({
 				</div>
 				<div>
 					<a
-						className="flex items-center gap-1 text-[#E50914] hover:text-blue-400"
+						className="flex items-center gap-1 text-[#FF4500] hover:text-blue-400"
 						href={`https://www.reddit.com${post.permalink}`}
 						target="_blank"
 						rel="noopener noreferrer"

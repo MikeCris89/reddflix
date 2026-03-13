@@ -39,7 +39,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 
 	const cardStyle2 = ` ${
 		isMobile && !isPortrait ? "h-[300px] p-2" : "h-[400px] p-3"
-	} w-72 md:w-80 flex-shrink-0 overflow-hidden flex flex-col justify-between bg-[#212121] rounded-xl text-neutral-100
+	} w-72 md:w-80 flex-shrink-0 overflow-hidden flex flex-col justify-between bg-[#1A1D1F] rounded-xl text-neutral-100
 		shadow-[0_10px_24px_rgba(0,0,0,0.5)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.7)] hover:scale-[1.02]
 		active:scale-[0.97] active:shadow-[0_6px_20px_rgba(0,0,0,0.5)]
 		transition-all duration-200 ease-in-out`;

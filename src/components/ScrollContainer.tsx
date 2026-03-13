@@ -142,7 +142,7 @@ const ScrollButton = ({
 		>
 			<div
 				className={clsx(
-					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]",
+					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#FF4500] transition p-2 rounded-full shadow-md ring-1 ring-[#FF450070]",
 				)}
 			>
 				<Icon size={20} className="text-neutral-100" />

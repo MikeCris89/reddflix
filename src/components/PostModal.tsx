@@ -88,7 +88,7 @@ const PostModal = ({
 			{/* Header - r/ u/ close btn */}
 			<div className="flex justify-between items-center p-1">
 				<div>
-					<p className="text-sm text-[#E50914] font-semibold">
+					<p className="text-sm text-[#FF4500] font-semibold">
 						r/{post.subreddit}
 					</p>
 					<div className="flex justify-start items-center gap-1">

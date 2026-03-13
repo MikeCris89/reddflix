@@ -32,7 +32,7 @@ const Navbar = () => {
 			<div className="p-1  flex justify-between items-center max-w-[1200px] mx-auto">
 				<div
 					className={clsx(
-						"cursor-pointer hover:bg-[#E50914] hover:text-[#121212] text-2xl text-[#E50914] font-extrabold rounded-lg p-1 w-fit",
+						"cursor-pointer hover:bg-[#FF4500] hover:text-[#121212] text-2xl text-[#FF4500] font-extrabold rounded-lg p-1 w-fit",
 						isMobile && "text-lg"
 					)}
 					onClick={() => navigate("/")}
@@ -49,7 +49,7 @@ const Navbar = () => {
 					</div>
 					{/* <button >Home</button> */}
 					<div
-						className="cursor-pointer  hover:bg-[#E50914] hover:text-[#121212] p-1 rounded-full"
+						className="cursor-pointer  hover:bg-[#FF4500] hover:text-[#121212] p-1 rounded-full"
 						onClick={() => navigate("/settings")}
 					>
 						<LucideSettings size={isMobile ? 18 : 22} />

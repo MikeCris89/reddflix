@@ -73,7 +73,7 @@ const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 								{sub.active && (
 									<CheckCircle2Icon
 										className={clsx(
-											"h-5 w-5 text-[#E50914]",
+											"h-5 w-5 text-[#FF4500]",
 											sub.active ? "" : "text-gray-500"
 										)}
 									/>
