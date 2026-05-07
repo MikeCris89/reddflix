@@ -14,6 +14,7 @@ import {
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { toast } from "sonner";
+import manifest from "../data/fallback/posts/_manifest.json";
 import defaultPosts from "../data/defaultPosts.json";
 
 export const getPostType = (
@@ -193,8 +194,12 @@ export const refinePost = (data: RawRedditPost): RedditPost => {
 	};
 };
 
-export function getFallbackPosts(subreddit: string): RedditPost[] {
-	return (
-		(defaultPosts as unknown as Record<string, RedditPost[]>)[subreddit] ?? []
-	);
-}
+export const hasFallback = (sub: string): boolean => {
+	return (manifest as string[]).includes(sub);
+};
+
+export const getFallbackPosts = async (sub: string): Promise<RedditPost[]> => {
+	if (!hasFallback(sub)) return [];
+	const module = await import(`../data/fallback/posts/${sub}.json`);
+	return module.default as RedditPost[];
+};

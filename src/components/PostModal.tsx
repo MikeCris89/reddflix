@@ -3,11 +3,11 @@ import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
 import { useFetchSeenPostsQuery } from "../features/localApp/localAppApi";
 import { useEffect, useState } from "react";
 import Post from "../features/reddit/Post";
-import { getCreatedTime } from "../utils/helpers";
+import { getCreatedTime, getFallbackPosts } from "../utils/helpers";
 import clsx from "clsx";
 import Comments from "../features/reddit/Comments";
 import useDisplay from "../hooks/useDisplay";
-import { isTitleAsPost } from "../features/reddit/redditTypes";
+import { isTitleAsPost, RedditPost } from "../features/reddit/redditTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
 import { useSelector } from "react-redux";
@@ -20,7 +20,7 @@ const PostModal = ({
 }) => {
 	const navigate = useNavigate();
 	const { category, postId } = useParams();
-
+	const [post, setPost] = useState<RedditPost | null>(null);
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
 	const location = useLocation();
@@ -41,9 +41,17 @@ const PostModal = ({
 	});
 	const isSeen = !!(postId && seenPosts?.[postId]);
 
-	const fallbackPosts = useSelector(selectFallbackPosts(category ?? ""));
-	const post =
-		data ?? (!isLoading ? fallbackPosts.find((p) => p.id === postId) : null);
+	useEffect(() => {
+		if (!category) return;
+		getFallbackPosts(category).then((posts) =>
+			setPost(posts.find((el) => el.id === postId) ?? null),
+		);
+	}, []);
+
+	// const fallbackPosts = useSelector(selectFallbackPosts(category ?? ""));
+
+	// const post =
+	// 	data ?? (!isLoading ? fallbackPosts?.find((p) => p.id === postId) : null);
 
 	useEffect(() => {
 		if (backgroundLocation && setLayoutSize) {

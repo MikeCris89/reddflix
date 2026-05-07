@@ -42,6 +42,7 @@ const PostContainer = ({
 	onDataUpdated?: () => void;
 }) => {
 	const [pendingTime, setPendingTime] = useState<number>(0);
+	const [fallbackPosts, setFallbackPosts] = useState<RedditPost[] | null>(null);
 	const isFirstLoad = useRef(true);
 	const [removePending] = useRemovePendingRequestMutation();
 	const { data, isLoading, error, isError, refetch } =
@@ -54,15 +55,16 @@ const PostContainer = ({
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
-	const fallbackPosts = getFallbackPosts(subreddit.name);
+	useEffect(() => {
+		getFallbackPosts(subreddit.name).then(setFallbackPosts);
+	}, [subreddit]);
 
 	const resolvedData = useMemo(() => {
-		return (
-			data ??
-			(isError && !isLoading && fallbackPosts
-				? { posts: fallbackPosts as unknown as RedditPost[], after: null }
-				: null)
-		);
+		if (data) return data;
+		if (isError && !isLoading && fallbackPosts && fallbackPosts.length > 0) {
+			return { posts: fallbackPosts, after: null };
+		}
+		return null;
 	}, [data, isError, isLoading, fallbackPosts]);
 
 	const { allSortedPosts, unseenPosts: _unseenPosts } = useMemo(() => {

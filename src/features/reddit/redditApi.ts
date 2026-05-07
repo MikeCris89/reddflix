@@ -19,7 +19,7 @@ import {
 } from "./redditTypes";
 import { refinePost } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
-import { BAN_DURATION_MS, defaultMonitor } from "../../utils/types";
+import { BAN_DURATION_MS } from "../../utils/types";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",

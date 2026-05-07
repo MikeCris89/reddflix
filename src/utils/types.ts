@@ -43,7 +43,9 @@ export interface RequestMonitor {
 	bannedUntil?: number;
 }
 
-export const BAN_DURATION_MS = import.meta.env.DEV ? 1000 * 60 : 1000 * 60 * 25; // 25 minutes
+export const BAN_DURATION_MS = import.meta.env.DEV
+	? 1000 * 60 * 30
+	: 1000 * 60 * 25; // 25 minutes
 
 export const defaultMonitor: RequestMonitor = {
 	recent: [],
