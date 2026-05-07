@@ -1,0 +1,917 @@
+[
+  {
+    "id": "1t6eupy",
+    "title": "I've been working with a Vibe Coder and this has been my experience",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/",
+    "author": "WJMazepas",
+    "created_utc": 1778169730,
+    "score": 72,
+    "num_comments": 65,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "In the last two months, i joined a big US company as a backend developer. A company i had previously worked on a year ago  \n\n\nIn my team, there are some mobile developers, our lead and another backend developer that has started one week before me. \n\n  \nI started noticing that this other backend uses Claude. A lot of Claude.   \nHe will start working in a feature, generate a conference document about the implementation using Claude, then asks Claude to do the code and makes us revise the whole thing. \n\n  \nWe were working together in a integration for a new notification system, which had a setup that required to commit to 3 different repos. I did my part in one repo, saw what he did in his part in another and he wanted to stick with a solution that for every new notification, would require us to do another commit to this 3 repos. Which all of them would then require 2 approvals each. One repo would even need approvals from another team \n\n  \nI sent a message saying for us to follow another pattern, that would make us only need to create one commit in one repo for every new notification. He then got my message, sent to Claude and then pasted Claude response that was against my solution.   \nI got pissed, but then after a while i convinced his Claude session to follow my method and he agreed with the change. \n\n  \nWe changed to the new method, got approved, merged and success. He then started working in a new notification a few days later, and in the daily he mentioned that it would take a while because it required to do commits to the 3 repos...  \nI questioned in the daily itself, and then later in the messages he stated that he would tell Claude to change this so it wouldnt suggest that older solution anymore. \n\n  \n  \nAnd this summarized my experience. I have to baby him, because his Claude always suggests solutions that have to change a lot of stuff, or that arent following company standards. And when i try to discuss anything with him, i have to think like i was discussing with a bot.   \n  \nBut his biggest saving is that he knows how to play the corporate game better than me.   \nHe always generate those huge Confluence documents that no one reads, but people like to have it and that shows to others that he is hard at work.   \nWe are also offshore developers, english is not our native language, so he can say that he just formats those texts with AI to help him with his english \n\nAnd in the meetings, he does boast what he is doing while also increasing the difficult of the tasks so it looks like he is doing a lot\n\n\n\nI tried talking to my boss about it, but he said that since i worked there longer than the other developer, he do expect me to help in those architectural decisions and fully believes that the other developer is making a good work. My boss is also quite a Claude entusiast so there is that   \nAlso, for now our tasks are dependent on the other, hopefully in the near future we can each one work in a independent task and i will be much happier\n\n  \nSo yeah, i saw that vibe coding do increase the required effort in simply reviewing other people and AI work. \n\n  \n\n\n  \n",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;In the last two months, i joined a big US company as a backend developer. A company i had previously worked on a year ago  &lt;/p&gt;\n\n&lt;p&gt;In my team, there are some mobile developers, our lead and another backend developer that has started one week before me. &lt;/p&gt;\n\n&lt;p&gt;I started noticing that this other backend uses Claude. A lot of Claude.&lt;br/&gt;\nHe will start working in a feature, generate a conference document about the implementation using Claude, then asks Claude to do the code and makes us revise the whole thing. &lt;/p&gt;\n\n&lt;p&gt;We were working together in a integration for a new notification system, which had a setup that required to commit to 3 different repos. I did my part in one repo, saw what he did in his part in another and he wanted to stick with a solution that for every new notification, would require us to do another commit to this 3 repos. Which all of them would then require 2 approvals each. One repo would even need approvals from another team &lt;/p&gt;\n\n&lt;p&gt;I sent a message saying for us to follow another pattern, that would make us only need to create one commit in one repo for every new notification. He then got my message, sent to Claude and then pasted Claude response that was against my solution.&lt;br/&gt;\nI got pissed, but then after a while i convinced his Claude session to follow my method and he agreed with the change. &lt;/p&gt;\n\n&lt;p&gt;We changed to the new method, got approved, merged and success. He then started working in a new notification a few days later, and in the daily he mentioned that it would take a while because it required to do commits to the 3 repos...&lt;br/&gt;\nI questioned in the daily itself, and then later in the messages he stated that he would tell Claude to change this so it wouldnt suggest that older solution anymore. &lt;/p&gt;\n\n&lt;p&gt;And this summarized my experience. I have to baby him, because his Claude always suggests solutions that have to change a lot of stuff, or that arent following company standards. And when i try to discuss anything with him, i have to think like i was discussing with a bot.   &lt;/p&gt;\n\n&lt;p&gt;But his biggest saving is that he knows how to play the corporate game better than me.&lt;br/&gt;\nHe always generate those huge Confluence documents that no one reads, but people like to have it and that shows to others that he is hard at work.&lt;br/&gt;\nWe are also offshore developers, english is not our native language, so he can say that he just formats those texts with AI to help him with his english &lt;/p&gt;\n\n&lt;p&gt;And in the meetings, he does boast what he is doing while also increasing the difficult of the tasks so it looks like he is doing a lot&lt;/p&gt;\n\n&lt;p&gt;I tried talking to my boss about it, but he said that since i worked there longer than the other developer, he do expect me to help in those architectural decisions and fully believes that the other developer is making a good work. My boss is also quite a Claude entusiast so there is that&lt;br/&gt;\nAlso, for now our tasks are dependent on the other, hopefully in the near future we can each one work in a independent task and i will be much happier&lt;/p&gt;\n\n&lt;p&gt;So yeah, i saw that vibe coding do increase the required effort in simply reviewing other people and AI work. &lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t64pbi",
+    "title": "I make websites for a creative agency and I absolutely can’t stand the websites that we do",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t64pbi/i_make_websites_for_a_creative_agency_and_i/",
+    "permalink": "/r/webdev/comments/1t64pbi/i_make_websites_for_a_creative_agency_and_i/",
+    "author": "BigGaryGilmour",
+    "created_utc": 1778143675,
+    "score": 181,
+    "num_comments": 67,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Won’t get into too details as I’ll dox myself. But I’ve been working for a creative agency for 3 years now and holy hell the websites we put out are ridiculous. We charge like 30k for a website and to justify that, designers load it with fancy sections that we claim are “CMS Manageable” but if you even attempt to move a section, the site looks awful because it wasn’t designed to move around and blend into other sections because the designers think they are designing brochures instead of websites.\n\nEvery section has fancy svg’s everywhere that make the dev process 4x long, typography is not consistent, padding/margins on designs are not consistent, everything **must** be animated, even hover states on links within markdown.\n\nEverything has to have a pre loader, a page transition, animations animations animations. It’s absolutely terrible and I feel bad for the clients who are paying for this rubbish.\n\nI wish I could go back to building good genuine websites that give a great user experience and are reliable, simple and easy to use. But every time I look for a job and look for the websites they build, it’s all the same.\n\nI don’t know, I just needed to rant somewhere.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Won’t get into too details as I’ll dox myself. But I’ve been working for a creative agency for 3 years now and holy hell the websites we put out are ridiculous. We charge like 30k for a website and to justify that, designers load it with fancy sections that we claim are “CMS Manageable” but if you even attempt to move a section, the site looks awful because it wasn’t designed to move around and blend into other sections because the designers think they are designing brochures instead of websites.&lt;/p&gt;\n\n&lt;p&gt;Every section has fancy svg’s everywhere that make the dev process 4x long, typography is not consistent, padding/margins on designs are not consistent, everything &lt;strong&gt;must&lt;/strong&gt; be animated, even hover states on links within markdown.&lt;/p&gt;\n\n&lt;p&gt;Everything has to have a pre loader, a page transition, animations animations animations. It’s absolutely terrible and I feel bad for the clients who are paying for this rubbish.&lt;/p&gt;\n\n&lt;p&gt;I wish I could go back to building good genuine websites that give a great user experience and are reliable, simple and easy to use. But every time I look for a job and look for the websites they build, it’s all the same.&lt;/p&gt;\n\n&lt;p&gt;I don’t know, I just needed to rant somewhere.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t5gdyf",
+    "title": "Get a Degree in Software Engineering they Said…",
+    "subreddit": "webdev",
+    "thumbnail": "https://preview.redd.it/mfcs8gh5djzg1.png?width=140&amp;height=91&amp;auto=webp&amp;s=5dc0c885272b2f67319a16c83fc31b823ba83294",
+    "url": "https://i.redd.it/mfcs8gh5djzg1.png",
+    "permalink": "/r/webdev/comments/1t5gdyf/get_a_degree_in_software_engineering_they_said/",
+    "author": "KoenigOne",
+    "created_utc": 1778081629,
+    "score": 1483,
+    "num_comments": 383,
+    "post_hint": "image",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://preview.redd.it/mfcs8gh5djzg1.png?auto=webp&amp;s=708fe262b0c471ae68eefba398c8dc35f0656029",
+            "width": 1106,
+            "height": 726
+          },
+          "resolutions": [
+            {
+              "url": "https://preview.redd.it/mfcs8gh5djzg1.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=d342b7a4e4014dcf827026199fda8fa39a5111d8",
+              "width": 108,
+              "height": 70
+            },
+            {
+              "url": "https://preview.redd.it/mfcs8gh5djzg1.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=473392996cde30e238fb2f71e54405bc32894998",
+              "width": 216,
+              "height": 141
+            },
+            {
+              "url": "https://preview.redd.it/mfcs8gh5djzg1.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=23adb8384f9f4cc88639bb8cc660c466fcd7e52f",
+              "width": 320,
+              "height": 210
+            },
+            {
+              "url": "https://preview.redd.it/mfcs8gh5djzg1.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=c0670cc8d1453c2f4cd63d711541267c50bf0b3a",
+              "width": 640,
+              "height": 420
+            },
+            {
+              "url": "https://preview.redd.it/mfcs8gh5djzg1.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=11da69cfb3a871cfd8fc338b07a010195ecb09a7",
+              "width": 960,
+              "height": 630
+            },
+            {
+              "url": "https://preview.redd.it/mfcs8gh5djzg1.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=6334aa71c545ad21e5255674facb3b89eec9f974",
+              "width": 1080,
+              "height": 708
+            }
+          ],
+          "variants": {},
+          "id": "mfcs8gh5djzg1"
+        }
+      ],
+      "enabled": true
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "What is my life even",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;What is my life even&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://i.redd.it/mfcs8gh5djzg1.png",
+    "type": "image",
+    "sample": true
+  },
+  {
+    "id": "1t63edn",
+    "title": "Rubik N×N Solver  3×3, 4×4, 5×5, 6×6 and 7×7",
+    "subreddit": "webdev",
+    "thumbnail": "https://preview.redd.it/6zys4v1s3ozg1.gif?frame=1&amp;width=140&amp;height=55&amp;auto=webp&amp;s=a3d5e4b5e2f988dd62c2e0edea467e46f2d135d3",
+    "url": "https://i.redd.it/6zys4v1s3ozg1.gif",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/",
+    "author": "anish2good",
+    "created_utc": 1778138934,
+    "score": 34,
+    "num_comments": 10,
+    "post_hint": "image",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?format=png8&amp;s=9ec52e036041d02f310181908800222eb2769480",
+            "width": 1338,
+            "height": 535
+          },
+          "resolutions": [
+            {
+              "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=108&amp;crop=smart&amp;format=png8&amp;s=24f5d11403b80b4c0f44c7c13d8231bfc7e6b92c",
+              "width": 108,
+              "height": 43
+            },
+            {
+              "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=216&amp;crop=smart&amp;format=png8&amp;s=df39a54476990e9db896ef0486e45c62565569f2",
+              "width": 216,
+              "height": 86
+            },
+            {
+              "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=320&amp;crop=smart&amp;format=png8&amp;s=e8f67a7c60c59ce38a904c4db8809e9545461d0a",
+              "width": 320,
+              "height": 127
+            },
+            {
+              "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=640&amp;crop=smart&amp;format=png8&amp;s=c82bc70a6eeefb1499c0d29497f4311a463880b7",
+              "width": 640,
+              "height": 255
+            },
+            {
+              "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=960&amp;crop=smart&amp;format=png8&amp;s=90c2893c4e27fbe965a2593bd0be97ad2ea2d716",
+              "width": 960,
+              "height": 383
+            },
+            {
+              "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=1080&amp;crop=smart&amp;format=png8&amp;s=db1f23c0eabc19f3ac3e091ef5610e98aab0db8c",
+              "width": 1080,
+              "height": 431
+            }
+          ],
+          "variants": {
+            "gif": {
+              "source": {
+                "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?s=7012c4390ff8364fd2e29b9feb16ce636f9197f8",
+                "width": 1338,
+                "height": 535
+              },
+              "resolutions": [
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=108&amp;crop=smart&amp;s=d6cba2f2558c880c25a6a9a27d8700d29492e2ac",
+                  "width": 108,
+                  "height": 43
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=216&amp;crop=smart&amp;s=c2a760044864579e3d50a44326cacf3fc73b6d38",
+                  "width": 216,
+                  "height": 86
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=320&amp;crop=smart&amp;s=ea507575e13239732ced7100b02c1c8c8fc945c9",
+                  "width": 320,
+                  "height": 127
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=640&amp;crop=smart&amp;s=4609874f6139af27e3b854b3d047f3c0d06c4fc1",
+                  "width": 640,
+                  "height": 255
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=960&amp;crop=smart&amp;s=15930d62f55313dd0454ca5e838f53631adfd4df",
+                  "width": 960,
+                  "height": 383
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=1080&amp;crop=smart&amp;s=1749be44b805aaf7264487bed8458ff0c9fcb9aa",
+                  "width": 1080,
+                  "height": 431
+                }
+              ]
+            },
+            "mp4": {
+              "source": {
+                "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?format=mp4&amp;s=f91a738629d4a5b5151d129cdcf380123c0a9e29",
+                "width": 1338,
+                "height": 535
+              },
+              "resolutions": [
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=108&amp;format=mp4&amp;s=bfc75e76e5bd1e579552fd5f91ed217c785562e7",
+                  "width": 108,
+                  "height": 43
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=216&amp;format=mp4&amp;s=e048389a88a3133ebb9b887a36cbcb64c52b5caa",
+                  "width": 216,
+                  "height": 86
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=320&amp;format=mp4&amp;s=a10d767b90c506c6a2e2b2c8f1e81a84d5544791",
+                  "width": 320,
+                  "height": 127
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=640&amp;format=mp4&amp;s=f796c13da0f6e6a5165d889ab5e0419c6accf008",
+                  "width": 640,
+                  "height": 255
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=960&amp;format=mp4&amp;s=65868901e59c481cab0f346123197fbc8e39b2a2",
+                  "width": 960,
+                  "height": 383
+                },
+                {
+                  "url": "https://preview.redd.it/6zys4v1s3ozg1.gif?width=1080&amp;format=mp4&amp;s=391f00273a84c980ef65ddeefea7d4ea07ebaf60",
+                  "width": 1080,
+                  "height": 431
+                }
+              ]
+            }
+          },
+          "id": "6zys4v1s3ozg1"
+        }
+      ],
+      "enabled": true
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "A threejs + Java + Java Script based Rubik's cube solver demo is available here [https://8gwifi.org/math/rubik-nxn-solver.jsp](https://8gwifi.org/math/rubik-nxn-solver.jsp)",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;A threejs + Java + Java Script based Rubik&amp;#39;s cube solver demo is available here &lt;a href=\"https://8gwifi.org/math/rubik-nxn-solver.jsp\"&gt;https://8gwifi.org/math/rubik-nxn-solver.jsp&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://i.redd.it/6zys4v1s3ozg1.gif",
+    "type": "image",
+    "sample": true
+  },
+  {
+    "id": "1t6f97y",
+    "title": "Self-hosting a blog taught me more webdev than any course",
+    "subreddit": "webdev",
+    "thumbnail": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=140&amp;height=86&amp;auto=webp&amp;s=255bca5f516357c61fc286b2edb4a9bd112fcf7a",
+    "url": "https://starikov.co/host-a-website/",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/",
+    "author": "iGotYourPistola",
+    "created_utc": 1778170559,
+    "score": 5,
+    "num_comments": 5,
+    "post_hint": "link",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?auto=webp&amp;s=699faae51f51dbe9e1f225d18a122ceda11c5ba4",
+            "width": 1200,
+            "height": 740
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=cbc041404212a88465ca452ffa6b36d83668ae15",
+              "width": 108,
+              "height": 66
+            },
+            {
+              "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=a0d7be6b88e93fbb5c58441be8d46fba809164ea",
+              "width": 216,
+              "height": 133
+            },
+            {
+              "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=4536b4f4b06b6883dffe7a823b19400dba3b751a",
+              "width": 320,
+              "height": 197
+            },
+            {
+              "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6083348c10bde10bfc408407871a82e5d0838a74",
+              "width": 640,
+              "height": 394
+            },
+            {
+              "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=b5d71e58c4004f9752b8de2f6baf7b20a06f5867",
+              "width": 960,
+              "height": 592
+            },
+            {
+              "url": "https://external-preview.redd.it/Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=aaef895107a79ad6379762d13d4315f1514bd68a",
+              "width": 1080,
+              "height": 666
+            }
+          ],
+          "variants": {},
+          "id": "Vn3SxoOPbhLFxeGMFnvMFmkr3V4zVYD8TbZJLihzK_s"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "I started hosting personal sites in 2014 because the WordPress theme I was using didn't have a contact form. Twelve years later, that same site (now on Ghost on a small VPS) is still the best webdev curriculum I've ever had.\n\nFive things hosting forces you to learn that no tutorial does:\n\n* Frontend -- eventually you redesign the nav at midnight, and the build pipeline becomes yours\n* Web design -- the stakes are zero, so you actually iterate\n* Reliability and observability -- if it goes down, you find out from a friend texting you\n* Security -- TLS and admin auth stop being optional once your site has a real URL\n* Accessibility -- alt text and contrast are cheap, and skipping them is rude\n\nWrote up the case (and the honest counter-case for going managed) on the blog: https://starikov.co/host-a-website/\n\nWhat's the project that taught you the most webdev?",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I started hosting personal sites in 2014 because the WordPress theme I was using didn&amp;#39;t have a contact form. Twelve years later, that same site (now on Ghost on a small VPS) is still the best webdev curriculum I&amp;#39;ve ever had.&lt;/p&gt;\n\n&lt;p&gt;Five things hosting forces you to learn that no tutorial does:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Frontend -- eventually you redesign the nav at midnight, and the build pipeline becomes yours&lt;/li&gt;\n&lt;li&gt;Web design -- the stakes are zero, so you actually iterate&lt;/li&gt;\n&lt;li&gt;Reliability and observability -- if it goes down, you find out from a friend texting you&lt;/li&gt;\n&lt;li&gt;Security -- TLS and admin auth stop being optional once your site has a real URL&lt;/li&gt;\n&lt;li&gt;Accessibility -- alt text and contrast are cheap, and skipping them is rude&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;Wrote up the case (and the honest counter-case for going managed) on the blog: &lt;a href=\"https://starikov.co/host-a-website/\"&gt;https://starikov.co/host-a-website/&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;What&amp;#39;s the project that taught you the most webdev?&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://starikov.co/host-a-website/",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t6f2qj",
+    "title": "Any idea what vscode theme this is?",
+    "subreddit": "webdev",
+    "thumbnail": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=140&amp;height=50&amp;auto=webp&amp;s=1a1a008dd83534ba53bf2038f8cc025689bee096",
+    "url": "https://i.imgur.com/CZYhm7q.png",
+    "permalink": "/r/webdev/comments/1t6f2qj/any_idea_what_vscode_theme_this_is/",
+    "author": "qua-z",
+    "created_utc": 1778170186,
+    "score": 5,
+    "num_comments": 3,
+    "post_hint": "image",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?auto=webp&amp;s=2976adde3219b7fd401645c815d55e1389bfe245",
+            "width": 2720,
+            "height": 974
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=32179a3ae1a3e693c1e5a835d08d512c42553a1d",
+              "width": 108,
+              "height": 38
+            },
+            {
+              "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=4bd3bc1623be36ff1dce48059991088c7c07aba4",
+              "width": 216,
+              "height": 77
+            },
+            {
+              "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=27efcdbd60809a75d097257d4700276bda43a530",
+              "width": 320,
+              "height": 114
+            },
+            {
+              "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=f2c5ab6d61859c03b4ef3e00083d4f5076cd096a",
+              "width": 640,
+              "height": 229
+            },
+            {
+              "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=692abe5bdf46b5040090a6f49d7011c43a6bf682",
+              "width": 960,
+              "height": 343
+            },
+            {
+              "url": "https://external-preview.redd.it/Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=8c9eb6331044d6f653ec9dff12e8c488b33f5c06",
+              "width": 1080,
+              "height": 386
+            }
+          ],
+          "variants": {},
+          "id": "Uu94QvcI0wLa9_3EceBCn39SdYUanW_yFIWyqIXSSQw"
+        }
+      ],
+      "enabled": true
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "",
+    "selftext_html": null,
+    "url_overridden_by_dest": "https://i.imgur.com/CZYhm7q.png",
+    "type": "image",
+    "sample": true
+  },
+  {
+    "id": "1t5pu8u",
+    "title": "Maybe Web Developers Can Learn Something From Old Console Games | by Luca Müller | May, 2026",
+    "subreddit": "webdev",
+    "thumbnail": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=140&amp;height=73&amp;auto=webp&amp;s=baa0578c1cd8ea970d2b5c3f62b5c9b8b8211f34",
+    "url": "https://medium.com/p/c47fa1e5dd0a",
+    "permalink": "/r/webdev/comments/1t5pu8u/maybe_web_developers_can_learn_something_from_old/",
+    "author": "RobertNegoita2",
+    "created_utc": 1778101448,
+    "score": 134,
+    "num_comments": 34,
+    "post_hint": "link",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?auto=webp&amp;s=e8b9b795bc7a48f8cb5630b8d3a569f89abac1d4",
+            "width": 1200,
+            "height": 633
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=9025c39e88dbeeaf791cfb76fd81c3cf2331bd1c",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=ffdb101e6a6e0551cac32a1958e6e5ed7d6a544a",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=47ac41177db4c68da9dd5df9d28818cd9245142e",
+              "width": 320,
+              "height": 168
+            },
+            {
+              "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=dc42b14bc39cea5544d4ea97fa8ed8d3c0d2f170",
+              "width": 640,
+              "height": 337
+            },
+            {
+              "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=f6ccba96a3d8750f886b008cd20abdf8fada696f",
+              "width": 960,
+              "height": 506
+            },
+            {
+              "url": "https://external-preview.redd.it/zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=64968918197f3444912ee11d0d1022b3ca145c13",
+              "width": 1080,
+              "height": 569
+            }
+          ],
+          "variants": {},
+          "id": "zFM2HVy20fJ3XG-NfSZRD2jN3kFAHv1D2Q0Nx3FLmAg"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "I was so baffled when I heard that the PlayStation 2 had only 32 MB RAM, and that got me wondering, so I opened a Medium account and wrote that article.\n\nWe're lucky as web developers to have so few constraints on resources.\n\nDid you ever have a situation where you had such constraints? I'd be curious to hear your story.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I was so baffled when I heard that the PlayStation 2 had only 32 MB RAM, and that got me wondering, so I opened a Medium account and wrote that article.&lt;/p&gt;\n\n&lt;p&gt;We&amp;#39;re lucky as web developers to have so few constraints on resources.&lt;/p&gt;\n\n&lt;p&gt;Did you ever have a situation where you had such constraints? I&amp;#39;d be curious to hear your story.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://medium.com/p/c47fa1e5dd0a",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t6b866",
+    "title": "Massive .de DNSSEC Failure Took Large Parts of Germany’s Web Offline",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6b866/massive_de_dnssec_failure_took_large_parts_of/",
+    "permalink": "/r/webdev/comments/1t6b866/massive_de_dnssec_failure_took_large_parts_of/",
+    "author": "raptorhunter22",
+    "created_utc": 1778162000,
+    "score": 5,
+    "num_comments": 0,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?auto=webp&amp;s=b35183065bf71379bd318b37d1a46088ac48432e",
+            "width": 1280,
+            "height": 720
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=b1b2a09e2fafd659610a4c27ed2d2a54c09df13e",
+              "width": 108,
+              "height": 60
+            },
+            {
+              "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=59d24858f5477da30ef1ddb45d3dcf8fb3388818",
+              "width": 216,
+              "height": 121
+            },
+            {
+              "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=b2477893f3ed73621820c49cc85b749b34fe1893",
+              "width": 320,
+              "height": 180
+            },
+            {
+              "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=439242e07ca0aca49486c98796ad7f1e2770c468",
+              "width": 640,
+              "height": 360
+            },
+            {
+              "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=8753db788079f2be603c2560190e97f9494cecf8",
+              "width": 960,
+              "height": 540
+            },
+            {
+              "url": "https://external-preview.redd.it/Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=860392cc823a1fdf330c7adbba58a3d4e4e07a18",
+              "width": 1080,
+              "height": 607
+            }
+          ],
+          "variants": {},
+          "id": "Yjx6blEvgDdOGeV6KH5JD9i6WTHeulnNk8hzgEsCGHI"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "DENIC accidentally published broken DNSSEC data for .de, causing validating resolvers to return SERVFAIL for huge numbers of German domains. A rare real-world example of how a DNSSEC trust-chain failure at the registry level can disrupt an entire TLD.\n\nMore info and technical breakdown: https://thecybersecguru.com/news/denic-de-dnssec-outage-may-2026/",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;DENIC accidentally published broken DNSSEC data for .de, causing validating resolvers to return SERVFAIL for huge numbers of German domains. A rare real-world example of how a DNSSEC trust-chain failure at the registry level can disrupt an entire TLD.&lt;/p&gt;\n\n&lt;p&gt;More info and technical breakdown: &lt;a href=\"https://thecybersecguru.com/news/denic-de-dnssec-outage-may-2026/\"&gt;https://thecybersecguru.com/news/denic-de-dnssec-outage-may-2026/&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t66eyp",
+    "title": "Warning: Scammers posing as PacSun using uspacsun.com looking to hire devs",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t66eyp/warning_scammers_posing_as_pacsun_using/",
+    "permalink": "/r/webdev/comments/1t66eyp/warning_scammers_posing_as_pacsun_using/",
+    "author": "exitof99",
+    "created_utc": 1778149455,
+    "score": 10,
+    "num_comments": 7,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "I wonder if these are the same scammers as the Shave Lounge scammers. This is fresh, the domain is a day old if that.\n\nIf you got this offer, do not reply. If it's like the previous scam, they will try to get you to log in to \"Google\" using a phishing SSO modal.\n\nDon't engage.\n\nReported the registrar Hostinger as phishing.\n\n    \n    Name: Laura Scott\n    Email: laura.scott@uspacsun.com\n    Website: http://www.pacsun.com\n    IP Address: 209.92.184.32\n\n    Hi,\n    Im reaching out from PacSun, a leading US fashion retail brand known for its strong connection with youth culture, streetwear, and lifestyle trends.\n    You can explore our brand here: pacsun.com\n    As we continue expanding our presence in the United States, we are looking for a strategic partner-an advertising agency with deep local market understanding and a proven track record in building impactful campaigns.\n    Given your experience in the United States market, we believe there is strong potential to combine your local expertise with our brand to drive meaningful growth and long-term results.\n    Please feel free to reply via email so we can discuss the strategy, budget, and timeline in more detail.\n    Best regards,",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I wonder if these are the same scammers as the Shave Lounge scammers. This is fresh, the domain is a day old if that.&lt;/p&gt;\n\n&lt;p&gt;If you got this offer, do not reply. If it&amp;#39;s like the previous scam, they will try to get you to log in to &amp;quot;Google&amp;quot; using a phishing SSO modal.&lt;/p&gt;\n\n&lt;p&gt;Don&amp;#39;t engage.&lt;/p&gt;\n\n&lt;p&gt;Reported the registrar Hostinger as phishing.&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;Name: Laura Scott\nEmail: laura.scott@uspacsun.com\nWebsite: http://www.pacsun.com\nIP Address: 209.92.184.32\n\nHi,\nIm reaching out from PacSun, a leading US fashion retail brand known for its strong connection with youth culture, streetwear, and lifestyle trends.\nYou can explore our brand here: pacsun.com\nAs we continue expanding our presence in the United States, we are looking for a strategic partner-an advertising agency with deep local market understanding and a proven track record in building impactful campaigns.\nGiven your experience in the United States market, we believe there is strong potential to combine your local expertise with our brand to drive meaningful growth and long-term results.\nPlease feel free to reply via email so we can discuss the strategy, budget, and timeline in more detail.\nBest regards,\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6dw2c",
+    "title": "Critical vm2 Sandbox Escape Bugs Let Attackers Break Out of Node.js Sandboxes",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6dw2c/critical_vm2_sandbox_escape_bugs_let_attackers/",
+    "permalink": "/r/webdev/comments/1t6dw2c/critical_vm2_sandbox_escape_bugs_let_attackers/",
+    "author": "raptorhunter22",
+    "created_utc": 1778167711,
+    "score": 3,
+    "num_comments": 2,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?auto=webp&amp;s=39ee4689b4bb19dca010a3ee298ce6f5b0a5e53e",
+            "width": 1280,
+            "height": 720
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=6e962c4ac9b14ed875643d8c6eb13cdd01f381ad",
+              "width": 108,
+              "height": 60
+            },
+            {
+              "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=d0c1d10b4433d40cd24d22911106887912b36b38",
+              "width": 216,
+              "height": 121
+            },
+            {
+              "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=ba1c30a6af7826b86ded43af66fcbdc22d450d42",
+              "width": 320,
+              "height": 180
+            },
+            {
+              "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=f4ffea992bbb5a24830bcdb0db06a5f74bbb8fd9",
+              "width": 640,
+              "height": 360
+            },
+            {
+              "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=ac5e2512fedc050f73080fe1d0ca3c624baf3da2",
+              "width": 960,
+              "height": 540
+            },
+            {
+              "url": "https://external-preview.redd.it/D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=f255d90fa8946ab19e7fc878bde407e86e38b388",
+              "width": 1080,
+              "height": 607
+            }
+          ],
+          "variants": {},
+          "id": "D-d4MIaNMAw2FcSfzq0lPVP2_eeJbr52mAH8AMM8cnA"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "If your app runs untrusted JavaScript through vm2, this is worth paying attention to. Multiple critical sandbox escape vulnerabilities were disclosed this week, including CVE-2026-26956, where attackers can escape the vm2 sandbox and achieve host-level RCE through Node.js 25 + WebAssembly exception handling.\n\nMore info and in-depth analysis: https://thecybersecguru.com/news/vm2-sandbox-escape-vulnerability-cve-2026-26956/",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;If your app runs untrusted JavaScript through vm2, this is worth paying attention to. Multiple critical sandbox escape vulnerabilities were disclosed this week, including CVE-2026-26956, where attackers can escape the vm2 sandbox and achieve host-level RCE through Node.js 25 + WebAssembly exception handling.&lt;/p&gt;\n\n&lt;p&gt;More info and in-depth analysis: &lt;a href=\"https://thecybersecguru.com/news/vm2-sandbox-escape-vulnerability-cve-2026-26956/\"&gt;https://thecybersecguru.com/news/vm2-sandbox-escape-vulnerability-cve-2026-26956/&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t64xnt",
+    "title": "Built on Twilio Whatsapp, Stripe webhooks, and Claude API in production, weird stuff nobody documents properly",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/",
+    "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/",
+    "author": "Excellent_Poetry_718",
+    "created_utc": 1778144489,
+    "score": 6,
+    "num_comments": 6,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Been building production systems across a few different APIs over the past couple of years. Here's the stuff that only shows up when real users touch it.\n\nTwilio Whatsapp, message status webhooks are unreliable in certain Indian telecom networks. Messages show as delivered on Twilio's end, user never receives them. Not a code problem. Carrier level issue that took two weeks to diagnose and a 3 year old Stack Overflow thread to solve.\n\nSame API, phone number formatting will silently break your user records. Numbers with country code, without country code, with spaces, with plus signs, Twilio normalises some and not others depending on which endpoint you're calling. Had duplicate records for the same user for months before we caught it.\n\nStripe webhooks, test mode and production mode behave differently in ways that matter. Specifically around failed payment retries and subscription state changes. We had a billing flow that worked perfectly in test for weeks. In production a customer downgrading their plan triggered three separate billing events simultaneously. Took days to untangle.\n\nClaude API, context window management under long running tasks is something the docs gloss over. Agent works fine in testing. In production a financial reporting task with three years of transaction history silently degraded halfway through because the context was bloated. No error, just progressively worse output. Hard to catch without proper output validation.\n\nThe pattern across all of these is the same, the happy path is well documented. The edge cases are in forum threads from three years ago or you find them yourself in production.\n\nAlways build a logging layer before you need it. Never after.\n\nAnyone else hitting undocumented edge cases on these APIs? Would genuinely love to compare notes.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Been building production systems across a few different APIs over the past couple of years. Here&amp;#39;s the stuff that only shows up when real users touch it.&lt;/p&gt;\n\n&lt;p&gt;Twilio Whatsapp, message status webhooks are unreliable in certain Indian telecom networks. Messages show as delivered on Twilio&amp;#39;s end, user never receives them. Not a code problem. Carrier level issue that took two weeks to diagnose and a 3 year old Stack Overflow thread to solve.&lt;/p&gt;\n\n&lt;p&gt;Same API, phone number formatting will silently break your user records. Numbers with country code, without country code, with spaces, with plus signs, Twilio normalises some and not others depending on which endpoint you&amp;#39;re calling. Had duplicate records for the same user for months before we caught it.&lt;/p&gt;\n\n&lt;p&gt;Stripe webhooks, test mode and production mode behave differently in ways that matter. Specifically around failed payment retries and subscription state changes. We had a billing flow that worked perfectly in test for weeks. In production a customer downgrading their plan triggered three separate billing events simultaneously. Took days to untangle.&lt;/p&gt;\n\n&lt;p&gt;Claude API, context window management under long running tasks is something the docs gloss over. Agent works fine in testing. In production a financial reporting task with three years of transaction history silently degraded halfway through because the context was bloated. No error, just progressively worse output. Hard to catch without proper output validation.&lt;/p&gt;\n\n&lt;p&gt;The pattern across all of these is the same, the happy path is well documented. The edge cases are in forum threads from three years ago or you find them yourself in production.&lt;/p&gt;\n\n&lt;p&gt;Always build a logging layer before you need it. Never after.&lt;/p&gt;\n\n&lt;p&gt;Anyone else hitting undocumented edge cases on these APIs? Would genuinely love to compare notes.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6ij1k",
+    "title": "How to deploy a bunch of images and animation as a website",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/",
+    "author": "Kindly_Jump_7642",
+    "created_utc": 1778177364,
+    "score": 1,
+    "num_comments": 3,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "I am looking for something where I can deploy my drawings and animation for other people to see. What are some of the possible options?? I know about GitHub Pages but I guess it doesn't allow images to uploaded directly. What are some of the free alternatives?? \n\nI am not sure whether Wordpress allows someone to post animations or not, otherwise I would have no need to look for this.\n\nIf you know any, please let me know \n\n  \nThanks and have a nice day.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I am looking for something where I can deploy my drawings and animation for other people to see. What are some of the possible options?? I know about GitHub Pages but I guess it doesn&amp;#39;t allow images to uploaded directly. What are some of the free alternatives?? &lt;/p&gt;\n\n&lt;p&gt;I am not sure whether Wordpress allows someone to post animations or not, otherwise I would have no need to look for this.&lt;/p&gt;\n\n&lt;p&gt;If you know any, please let me know &lt;/p&gt;\n\n&lt;p&gt;Thanks and have a nice day.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6id56",
+    "title": "The right path for Gitlab hosting, web hosting, and full stack hosting?",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/",
+    "author": "_-Julian-",
+    "created_utc": 1778177024,
+    "score": 1,
+    "num_comments": 2,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hello! I recently have been looking into what solutions I should be using to host my website. Im going to have 1 site for my own blog, and in the future I will be hosting a site for my own company (both of these sites will be static)\n\nFrom my research so far, my method to hosting (and updating) my website is hosting a gitlab environment on digital ocean(or Hetzner) with some kind of Linux distro. Which if you have any suggestions on which Linux distro I should pick to research for, please let me know. Im self hosting gitlab for my own reasons.\n\nAfter I host the gitlab environment, I use Cloudflare to pull any of the commits I make to gitlab to update the page as fast as possible. Is this a normal process some people use? Any concerns I should have?\n\nOne last question I have - if I wanted to host a full stack website in the future, do you usually do so by using Cloudflare for the front end and using digital ocean to, of course host the backend? Im new to this so im still trying grasp what this looks like. Thank you!",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hello! I recently have been looking into what solutions I should be using to host my website. Im going to have 1 site for my own blog, and in the future I will be hosting a site for my own company (both of these sites will be static)&lt;/p&gt;\n\n&lt;p&gt;From my research so far, my method to hosting (and updating) my website is hosting a gitlab environment on digital ocean(or Hetzner) with some kind of Linux distro. Which if you have any suggestions on which Linux distro I should pick to research for, please let me know. Im self hosting gitlab for my own reasons.&lt;/p&gt;\n\n&lt;p&gt;After I host the gitlab environment, I use Cloudflare to pull any of the commits I make to gitlab to update the page as fast as possible. Is this a normal process some people use? Any concerns I should have?&lt;/p&gt;\n\n&lt;p&gt;One last question I have - if I wanted to host a full stack website in the future, do you usually do so by using Cloudflare for the front end and using digital ocean to, of course host the backend? Im new to this so im still trying grasp what this looks like. Thank you!&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6i9vf",
+    "title": "Built a self-hosted Postman alternative in Laravel",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6i9vf/built_a_selfhosted_postman_alternative_in_laravel/",
+    "permalink": "/r/webdev/comments/1t6i9vf/built_a_selfhosted_postman_alternative_in_laravel/",
+    "author": "udittC",
+    "created_utc": 1778176840,
+    "score": 1,
+    "num_comments": 0,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?auto=webp&amp;s=b4e18dfeb61a1de94afd3068992a66504d3569ef",
+            "width": 1200,
+            "height": 630
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=bac5406d520b71053ee669f025c37cd2a9e42b71",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=e22c1b5dd776c34e48c0e3f26cc956f8cd79e5ff",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=b0657b34eb1af7a8f79572e34ea0976111ff1dbe",
+              "width": 320,
+              "height": 168
+            },
+            {
+              "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=cca169c3e800ab5f9cba96e1799bdb503d1a086b",
+              "width": 640,
+              "height": 336
+            },
+            {
+              "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=15e7251111c31f96c8d8a8da26483f0bd897ab0d",
+              "width": 960,
+              "height": 504
+            },
+            {
+              "url": "https://external-preview.redd.it/_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=8b6ff2411040a9f477851f8c4f54e830379ef876",
+              "width": 1080,
+              "height": 567
+            }
+          ],
+          "variants": {},
+          "id": "_A1RwMCaizzHMOhWwKuBE7HAI4e0kXkAjf_V6N2MImo"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hey everyone,\n\nI've been using Postman for years, didn't want to pay monthly subscription. So I built Freeman a web-based REST API client that runs on your own server for me and my team. Thought to share with you all as well.\n\nIt's a standard Laravel app, SQLite by default, no Node.js, no build step.\n\nSupports collections, variables, tabs, file uploads, Bearer/Basic/API key auth, and can import your existing Postman collections.\n\nIt's completely free and MIT licensed. I'm also working on a Pro version with environment switching and real-time team collaboration but the free version covers the full testing workflow.\n\nWould love any feedback, bug reports, or just to know if this solves a problem you've had too.\n\n[Website](https://turingcomplete.in/product/freeman)  \n[Github](https://github.com/u-did-it/freeman)",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;ve been using Postman for years, didn&amp;#39;t want to pay monthly subscription. So I built Freeman a web-based REST API client that runs on your own server for me and my team. Thought to share with you all as well.&lt;/p&gt;\n\n&lt;p&gt;It&amp;#39;s a standard Laravel app, SQLite by default, no Node.js, no build step.&lt;/p&gt;\n\n&lt;p&gt;Supports collections, variables, tabs, file uploads, Bearer/Basic/API key auth, and can import your existing Postman collections.&lt;/p&gt;\n\n&lt;p&gt;It&amp;#39;s completely free and MIT licensed. I&amp;#39;m also working on a Pro version with environment switching and real-time team collaboration but the free version covers the full testing workflow.&lt;/p&gt;\n\n&lt;p&gt;Would love any feedback, bug reports, or just to know if this solves a problem you&amp;#39;ve had too.&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://turingcomplete.in/product/freeman\"&gt;Website&lt;/a&gt;&lt;br/&gt;\n&lt;a href=\"https://github.com/u-did-it/freeman\"&gt;Github&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6hup6",
+    "title": "PostHog is detecting massive percentage of our users to be from Boardman, Oregon. Any idea what is this?",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/",
+    "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/",
+    "author": "iAhMedZz",
+    "created_utc": 1778175971,
+    "score": 0,
+    "num_comments": 4,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hi there, we have an subscription-based web app with about 20k users. I was integrating geolocation services and I noticed about 3k of these users are coming from this city. The rest of the users' distribution is normal.\n\n  \nBoardman, is a city with a total population of \\~5,000 people, and we weren't targeting Oregon with ads anyways, and there is a very few number of users from Oregon outside of this city. \n\nIt's unusal traffic from this location. I'm curious why do we have lots of users from this city. Lots of these users have Asian and Spanish names. \n\n  \nMy suspicion goes into 3 places:\n\n1- PostHog is approximating the location of California users to this city, but then again, PostHog correctly identified proper users from California.\n\n2- PostHog is defaulting to this location when it fails to identify the location of a user.\n\n3- This is probably a location preferred by free VPNs. \n\n  \nI'm leaning into the final reason, but wanted to hear your insights, and maybe if you had similar observations before.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hi there, we have an subscription-based web app with about 20k users. I was integrating geolocation services and I noticed about 3k of these users are coming from this city. The rest of the users&amp;#39; distribution is normal.&lt;/p&gt;\n\n&lt;p&gt;Boardman, is a city with a total population of ~5,000 people, and we weren&amp;#39;t targeting Oregon with ads anyways, and there is a very few number of users from Oregon outside of this city. &lt;/p&gt;\n\n&lt;p&gt;It&amp;#39;s unusal traffic from this location. I&amp;#39;m curious why do we have lots of users from this city. Lots of these users have Asian and Spanish names. &lt;/p&gt;\n\n&lt;p&gt;My suspicion goes into 3 places:&lt;/p&gt;\n\n&lt;p&gt;1- PostHog is approximating the location of California users to this city, but then again, PostHog correctly identified proper users from California.&lt;/p&gt;\n\n&lt;p&gt;2- PostHog is defaulting to this location when it fails to identify the location of a user.&lt;/p&gt;\n\n&lt;p&gt;3- This is probably a location preferred by free VPNs. &lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;m leaning into the final reason, but wanted to hear your insights, and maybe if you had similar observations before.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t5chhj",
+    "title": "I’m curious if “I’m curious” is the new em dash AI tell",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t5chhj/im_curious_if_im_curious_is_the_new_em_dash_ai/",
+    "permalink": "/r/webdev/comments/1t5chhj/im_curious_if_im_curious_is_the_new_em_dash_ai/",
+    "author": "AFDStudios",
+    "created_utc": 1778073030,
+    "score": 157,
+    "num_comments": 116,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "It seems like every post the last few months here is a thinly veiled product push or humble brag with an “I’m curious” prompt in it. I feel like that’s gotta be an AI artifact. \n\nNo point, just mildly irritated. ",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;It seems like every post the last few months here is a thinly veiled product push or humble brag with an “I’m curious” prompt in it. I feel like that’s gotta be an AI artifact. &lt;/p&gt;\n\n&lt;p&gt;No point, just mildly irritated. &lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6fso3",
+    "title": "I built a library that allows converting JSON into Video (OpenSource)",
+    "subreddit": "webdev",
+    "thumbnail": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=140&amp;height=73&amp;auto=webp&amp;s=91cec5b5fdae10903d4e19b2afb663ec6e088713",
+    "url": "https://videoflow.dev",
+    "permalink": "/r/webdev/comments/1t6fso3/i_built_a_library_that_allows_converting_json/",
+    "author": "ybouane",
+    "created_utc": 1778171705,
+    "score": 1,
+    "num_comments": 0,
+    "post_hint": "link",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?auto=webp&amp;s=01121f8bcae39ad19e98242316a17ca9be686b29",
+            "width": 1200,
+            "height": 628
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=22441aded21b0467498a048a17426a72ed085cb0",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=154c5fc2eee861614770d0f1e756760909573118",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=907464cfc33b7f92fa99c73a0210016fa1e678e0",
+              "width": 320,
+              "height": 167
+            },
+            {
+              "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=df1b952a51fdcef3c3dd3d2905d2083c52c8c8f4",
+              "width": 640,
+              "height": 334
+            },
+            {
+              "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=597a6efa817affd5e12c422dee5b3c0da6b05601",
+              "width": 960,
+              "height": 502
+            },
+            {
+              "url": "https://external-preview.redd.it/PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=2dbc36223dff2ae7f990bb4595ee41022ea4aded",
+              "width": 1080,
+              "height": 565
+            }
+          ],
+          "variants": {},
+          "id": "PpbHoKyMKfKNxMnaAnRHPt2tCfiS76fjyamwyTOahFU"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "Hey everyone, I just launched **VideoFlow** (my 11th project of 2026).\n\nIt’s an open-source toolkit for creating videos from code. The easiest comparison is probably **Remotion**, but VideoFlow takes a different approach: instead of treating the video primarily as a React component tree, the video is represented as portable JSON.\n\nThe idea is that a video can be data:\n\n* scenes\n* layers\n* timing\n* transitions\n* effects\n* keyframes\n* render settings\n\nThat JSON can then be rendered in different places:\n\n* in the browser\n* on a server\n* inside a React preview/player\n* inside a visual editor\n\nI built it because I think more videos are going to be generated rather than manually edited: personalized marketing clips, product demos, AI-generated explainers, social templates, reports, etc.\n\nCurrent features:\n\n* Apache-2.0 open source\n* TypeScript builder API\n* portable VideoJSON\n* 27 transitions\n* 42 GLSL effects\n* layer groups\n* browser/server/live-preview render paths\n* React video editor component\n\nI’d love feedback on the positioning especially.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey everyone, I just launched &lt;strong&gt;VideoFlow&lt;/strong&gt; (my 11th project of 2026).&lt;/p&gt;\n\n&lt;p&gt;It’s an open-source toolkit for creating videos from code. The easiest comparison is probably &lt;strong&gt;Remotion&lt;/strong&gt;, but VideoFlow takes a different approach: instead of treating the video primarily as a React component tree, the video is represented as portable JSON.&lt;/p&gt;\n\n&lt;p&gt;The idea is that a video can be data:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;scenes&lt;/li&gt;\n&lt;li&gt;layers&lt;/li&gt;\n&lt;li&gt;timing&lt;/li&gt;\n&lt;li&gt;transitions&lt;/li&gt;\n&lt;li&gt;effects&lt;/li&gt;\n&lt;li&gt;keyframes&lt;/li&gt;\n&lt;li&gt;render settings&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;That JSON can then be rendered in different places:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;in the browser&lt;/li&gt;\n&lt;li&gt;on a server&lt;/li&gt;\n&lt;li&gt;inside a React preview/player&lt;/li&gt;\n&lt;li&gt;inside a visual editor&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;I built it because I think more videos are going to be generated rather than manually edited: personalized marketing clips, product demos, AI-generated explainers, social templates, reports, etc.&lt;/p&gt;\n\n&lt;p&gt;Current features:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Apache-2.0 open source&lt;/li&gt;\n&lt;li&gt;TypeScript builder API&lt;/li&gt;\n&lt;li&gt;portable VideoJSON&lt;/li&gt;\n&lt;li&gt;27 transitions&lt;/li&gt;\n&lt;li&gt;42 GLSL effects&lt;/li&gt;\n&lt;li&gt;layer groups&lt;/li&gt;\n&lt;li&gt;browser/server/live-preview render paths&lt;/li&gt;\n&lt;li&gt;React video editor component&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;I’d love feedback on the positioning especially.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://videoflow.dev",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t6fnzt",
+    "title": "Built an open-source API engine that unifies REST, SSE, and WebSockets",
+    "subreddit": "webdev",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/webdev/comments/1t6fnzt/built_an_opensource_api_engine_that_unifies_rest/",
+    "permalink": "/r/webdev/comments/1t6fnzt/built_an_opensource_api_engine_that_unifies_rest/",
+    "author": "sandeshnaroju",
+    "created_utc": 1778171425,
+    "score": 1,
+    "num_comments": 0,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?auto=webp&amp;s=b6dcb77d7175221628faa8fdaabf1d25def91a54",
+            "width": 1200,
+            "height": 600
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=161d97a8a6f1b8568edaf33098fc9400ade1e0cc",
+              "width": 108,
+              "height": 54
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=87d21a0f55d00df6199d84da0b567efdc8adbdcf",
+              "width": 216,
+              "height": 108
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=506ffb2851782362b4fe94dcbe39bfcf4585d40a",
+              "width": 320,
+              "height": 160
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=672a764f28c8be752058b71cf7cdce2637ed24d5",
+              "width": 640,
+              "height": 320
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=0ed935512db3390f5565a975f8403da4d1cc5d15",
+              "width": 960,
+              "height": 480
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=c141e51546597e799126985846017b92191c52cb",
+              "width": 1080,
+              "height": 540
+            }
+          ],
+          "variants": {},
+          "id": "yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Built an open-source API engine that unifies REST, SSE, and WebSockets into a single client interface.\n\nGitHub: [API Engine GitHub Repo](https://github.com/sandeshnaroju/api-engine?utm_source=chatgpt.com)\n\nI built this after getting tired of managing different communication layers separately in frontend applications.\n\nMost projects end up mixing:\n\n* fetch/axios for REST\n* EventSource wrappers for SSE\n* custom WebSocket handling\n* duplicated connection logic\n* inconsistent APIs across transports\n\nAPIEngine solves this using a YAML-driven manifest that generates a consistent API communication layer.\n\nExample:\n\n    version: \"1.0\"\n    baseUrl: \"https://api.example.com\"\n    \n    endpoints:\n      get_post:\n        protocol: \"REST\"\n        path: \"/posts/:id\"\n        method: \"GET\"\n    \n      live_logs:\n        protocol: \"SSE\"\n        path: \"/logs\"\n    \n      realtime_chat:\n        protocol: \"WS\"\n        path: \"wss://example.com/chat\"\n\nUsage:\n\n    import manifest from './api.yml';\n    \n    const api = await APIEngine.init(manifest);\n    \n    // REST\n    await api.call('get_post', {\n      params: { id: 1 }\n    });\n    \n    // SSE\n    const stream = api.watch('live_logs');\n    \n    const unsubscribe = stream.subscribe((log) =&gt; {\n      console.log(\"New Server Log:\", log.message);\n    });\n    \n    // WebSocket\n    const socket = api.watch('realtime_chat');\n    \n    socket.subscribe((msg) =&gt; {\n      console.log(\"Incoming Message:\", msg.text);\n    });\n    \n    // 2. Send a message back\n    socket.send({ \n      message: \"Hi\", \n    });\n\nFeatures:\n\n* Unified REST, SSE, and WebSocket handling\n* YAML-based API configuration\n* Smart URL + path param resolution\n* Auto WebSocket reconnect support\n* Browser-first architecture\n* React/Vue/Vanilla JS compatible\n* Dynamic manifest loading\n\nWould love feedback on it, If you find the project useful, a GitHub star would really help visibility and future development 🙌",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Built an open-source API engine that unifies REST, SSE, and WebSockets into a single client interface.&lt;/p&gt;\n\n&lt;p&gt;GitHub: &lt;a href=\"https://github.com/sandeshnaroju/api-engine?utm_source=chatgpt.com\"&gt;API Engine GitHub Repo&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;I built this after getting tired of managing different communication layers separately in frontend applications.&lt;/p&gt;\n\n&lt;p&gt;Most projects end up mixing:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;fetch/axios for REST&lt;/li&gt;\n&lt;li&gt;EventSource wrappers for SSE&lt;/li&gt;\n&lt;li&gt;custom WebSocket handling&lt;/li&gt;\n&lt;li&gt;duplicated connection logic&lt;/li&gt;\n&lt;li&gt;inconsistent APIs across transports&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;APIEngine solves this using a YAML-driven manifest that generates a consistent API communication layer.&lt;/p&gt;\n\n&lt;p&gt;Example:&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;version: &amp;quot;1.0&amp;quot;\nbaseUrl: &amp;quot;https://api.example.com&amp;quot;\n\nendpoints:\n  get_post:\n    protocol: &amp;quot;REST&amp;quot;\n    path: &amp;quot;/posts/:id&amp;quot;\n    method: &amp;quot;GET&amp;quot;\n\n  live_logs:\n    protocol: &amp;quot;SSE&amp;quot;\n    path: &amp;quot;/logs&amp;quot;\n\n  realtime_chat:\n    protocol: &amp;quot;WS&amp;quot;\n    path: &amp;quot;wss://example.com/chat&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;Usage:&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;import manifest from &amp;#39;./api.yml&amp;#39;;\n\nconst api = await APIEngine.init(manifest);\n\n// REST\nawait api.call(&amp;#39;get_post&amp;#39;, {\n  params: { id: 1 }\n});\n\n// SSE\nconst stream = api.watch(&amp;#39;live_logs&amp;#39;);\n\nconst unsubscribe = stream.subscribe((log) =&amp;gt; {\n  console.log(&amp;quot;New Server Log:&amp;quot;, log.message);\n});\n\n// WebSocket\nconst socket = api.watch(&amp;#39;realtime_chat&amp;#39;);\n\nsocket.subscribe((msg) =&amp;gt; {\n  console.log(&amp;quot;Incoming Message:&amp;quot;, msg.text);\n});\n\n// 2. Send a message back\nsocket.send({ \n  message: &amp;quot;Hi&amp;quot;, \n});\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;Features:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Unified REST, SSE, and WebSocket handling&lt;/li&gt;\n&lt;li&gt;YAML-based API configuration&lt;/li&gt;\n&lt;li&gt;Smart URL + path param resolution&lt;/li&gt;\n&lt;li&gt;Auto WebSocket reconnect support&lt;/li&gt;\n&lt;li&gt;Browser-first architecture&lt;/li&gt;\n&lt;li&gt;React/Vue/Vanilla JS compatible&lt;/li&gt;\n&lt;li&gt;Dynamic manifest loading&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;Would love feedback on it, If you find the project useful, a GitHub star would really help visibility and future development 🙌&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  }
+]

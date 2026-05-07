@@ -6,7 +6,7 @@
  * Run with: npx tsx scripts/generateFallbackPosts.ts
  */
 
-import { writeFileSync } from "fs";
+import { writeFileSync, mkdirSync } from "fs";
 import { resolve } from "path";
 
 import { defaultSubreddits } from "../src/data/defaultSubreddits";
@@ -102,13 +102,15 @@ function refinePost(data: RawRedditPost): RedditPost {
 
 // ── Fetch helpers ─────────────────────────────────────────────────────────────
 
-const DELAY_MS = 7_000;
+const DELAY_MS = 10_000;
 const LIMIT = 20;
 
 async function fetchHotPosts(subreddit: string): Promise<RedditPost[]> {
 	const url = `https://www.reddit.com/r/${subreddit}/hot.json?limit=${LIMIT}`;
 	const res = await fetch(url, {
-		headers: { "User-Agent": "reddflix-fallback-generator/1.0" },
+		headers: {
+			"User-Agent": "reddflix-fallback-generator/1.0 (portfolio project)",
+		},
 	});
 
 	if (!res.ok) {
@@ -129,16 +131,17 @@ function sleep(ms: number) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
-	const result: Record<string, RedditPost[]> = {};
-	// const subreddits = defaultSubreddits.map((s) => s.name);
 	const subreddits = defaultSubreddits
 		.map((s) => s.name)
-		.sort((a, b) => a.localeCompare(b))
-		.slice(0, 5);
+		.sort((a, b) => a.localeCompare(b));
 
 	console.log(
-		`Fetching ${subreddits.length} subreddits (7s delay between each)...\n`,
+		`Fetching ${subreddits.length} subreddits (${DELAY_MS / 1000}s delay between each)...\n`,
 	);
+
+	const outDir = resolve(import.meta.dirname, "../src/data/fallback/posts");
+	mkdirSync(outDir, { recursive: true });
+	const manifest: string[] = [];
 
 	for (let i = 0; i < subreddits.length; i++) {
 		const name = subreddits[i];
@@ -146,11 +149,25 @@ async function main() {
 
 		try {
 			const posts = await fetchHotPosts(name);
-			result[name] = posts;
+			writeFileSync(
+				resolve(outDir, `${name}.json`),
+				JSON.stringify(posts, null, 2),
+			);
+			if (posts.length > 0) manifest.push(name);
 			console.log(`✓ ${posts.length} posts`);
 		} catch (err) {
-			console.error(`✗ failed (${(err as Error).message})`);
-			result[name] = [];
+			const msg = (err as Error).message;
+			console.error(`✗ failed (${msg})`);
+			if (msg.includes("HTTP 403") || msg.includes("HTTP 429")) {
+				writeFileSync(
+					resolve(outDir, "_manifest.json"),
+					JSON.stringify(manifest, null, 2),
+				);
+				console.error(
+					`\nFatal rate-limit/auth error — wrote partial manifest and exiting.`,
+				);
+				process.exit(1);
+			}
 		}
 
 		if (i < subreddits.length - 1) {
@@ -159,9 +176,13 @@ async function main() {
 		}
 	}
 
-	const outPath = resolve(import.meta.dirname, "../src/data/defaultPosts.json");
-	writeFileSync(outPath, JSON.stringify(result, null, 2));
-	console.log(`\nSaved to ${outPath}`);
+	writeFileSync(
+		resolve(outDir, "_manifest.json"),
+		JSON.stringify(manifest, null, 2),
+	);
+	console.log(
+		`\nWrote ${subreddits.length} subreddit files + manifest to ${outDir}`,
+	);
 }
 
 main().catch((err) => {

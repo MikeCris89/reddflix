@@ -30,15 +30,23 @@ const Navbar = () => {
 		<nav className={nav2}>
 			{openModal && <SubredditModal onClose={() => setOpenModal(false)} />}
 			<div className="p-1  flex justify-between items-center max-w-[1200px] mx-auto">
+				{/* LOGO */}
 				<div
 					className={clsx(
 						"cursor-pointer hover:bg-[#E50914] hover:text-[#121212] text-2xl text-[#E50914] font-extrabold rounded-lg p-1 w-fit",
-						isMobile && "text-lg"
+						isMobile && "text-lg",
 					)}
 					onClick={() => navigate("/")}
 				>
 					<h2 className="">reddflix</h2>
 				</div>
+				{/* <img
+					src="/reddflix_logo.svg"
+					alt="reddflix-logo"
+					width={150}
+					onClick={() => navigate("/")}
+					className="cursor-pointer"
+				/> */}
 
 				<div className="flex justify-end gap-10 justify-self-end w-fit">
 					<div

@@ -1,0 +1,790 @@
+[
+  {
+    "id": "1t6cej2",
+    "title": "Remix changed the direction yet again, this time it is not even a react framework anymore",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/",
+    "author": "simple_explorer1",
+    "created_utc": 1778164570,
+    "score": 67,
+    "num_comments": 46,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?auto=webp&amp;s=89d2ff41016a0fbd94144795e04576c1d8c32e17",
+            "width": 2400,
+            "height": 1256
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=21108fa533edb0328415441fe13a1637eb4eeb9b",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=74ec2b9d9ca3a30069ecb82319996c964e9417e9",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=5d7fb3b78379742396ad868fbed1771ce5e57381",
+              "width": 320,
+              "height": 167
+            },
+            {
+              "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=6365cb09847015909522f7b7e806deb8c5961a05",
+              "width": 640,
+              "height": 334
+            },
+            {
+              "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=c82a224383740a6e40e3a5b64559894b8a4cbcc4",
+              "width": 960,
+              "height": 502
+            },
+            {
+              "url": "https://external-preview.redd.it/PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=dca00093f72ba580826938a8e9490e8548b2dd65",
+              "width": 1080,
+              "height": 565
+            }
+          ],
+          "variants": {},
+          "id": "PSsy17tNEHvYyGqeffdvp2yez7-PW4Ncn2PyqLaWU8Q"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "So Remix went from being an alternative to Next.js in React ecosystem, to merging Remix.js into React router 7 (after shopify aquisition) and now it is not even react framework anymore.\n\nSource: [https://remix.run/blog/remix-3-beta-preview](https://remix.run/blog/remix-3-beta-preview)\n\nHonestly with this much instability and constant change of completely incompatible directions, why would anyone want to use Remix and what assurance they have that in next 6 months they are not going to change remix direction yet again.\n\nThe whole remix framework is so unstable with their vision, that it is why people have javascript libraries fatigue. Even in 2026 frameworks as mainstream as Remix can't make their mind on their identity and are volatile. I feel bad for companies and teams who built massive products on Remix initially simply because they didn't want to use Next.js\n\nI am a fan of CSR SPA and not spending money on servers just to do SSRs that CSR apps can do *(not saying this is what everyone should do, just my preference given I don't want a server and don't have a usecase in any team I have worked so far)* but, say what you want about Next.js, despite volatility in their major version upgrades and backwards incompatibility often, they atleast stayed put with their SSR identity. Remix on the other hand has become completely unrecognisable and completely screwed their userbase in backwards incompatible way.\n\nCurious to know the thoughts of the community.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;So Remix went from being an alternative to Next.js in React ecosystem, to merging Remix.js into React router 7 (after shopify aquisition) and now it is not even react framework anymore.&lt;/p&gt;\n\n&lt;p&gt;Source: &lt;a href=\"https://remix.run/blog/remix-3-beta-preview\"&gt;https://remix.run/blog/remix-3-beta-preview&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;Honestly with this much instability and constant change of completely incompatible directions, why would anyone want to use Remix and what assurance they have that in next 6 months they are not going to change remix direction yet again.&lt;/p&gt;\n\n&lt;p&gt;The whole remix framework is so unstable with their vision, that it is why people have javascript libraries fatigue. Even in 2026 frameworks as mainstream as Remix can&amp;#39;t make their mind on their identity and are volatile. I feel bad for companies and teams who built massive products on Remix initially simply because they didn&amp;#39;t want to use Next.js&lt;/p&gt;\n\n&lt;p&gt;I am a fan of CSR SPA and not spending money on servers just to do SSRs that CSR apps can do &lt;em&gt;(not saying this is what everyone should do, just my preference given I don&amp;#39;t want a server and don&amp;#39;t have a usecase in any team I have worked so far)&lt;/em&gt; but, say what you want about Next.js, despite volatility in their major version upgrades and backwards incompatibility often, they atleast stayed put with their SSR identity. Remix on the other hand has become completely unrecognisable and completely screwed their userbase in backwards incompatible way.&lt;/p&gt;\n\n&lt;p&gt;Curious to know the thoughts of the community.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6cdy5",
+    "title": "I rewrote my React drag-and-drop table library to handle 2D virtualization at 60fps",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t6cdy5/i_rewrote_my_react_draganddrop_table_library_to/",
+    "permalink": "/r/reactjs/comments/1t6cdy5/i_rewrote_my_react_draganddrop_table_library_to/",
+    "author": "Character_Bus48",
+    "created_utc": 1778164536,
+    "score": 7,
+    "num_comments": 0,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hey r/reactjs,\n\nI just released v2.0 of react-table-dnd. I originally built this because trying to drag both rows and columns inside a fully virtualized grid is usually a nightmare—most libraries either cause massive layout thrashing or the drop zones completely break when virtual columns unmount.\n\nTo fix this, I had to bypass React's render cycle almost entirely for the drag engine:\n\n* O(1) updates: I ripped out React Context and moved to a vanilla store with useSyncExternalStore.\n* Native cloning: Swapped React.cloneElement for native cloneNode(true).\n* Direct DOM mutations: Drag movements happen outside React via style.transform in a requestAnimationFrame loop.\n* O(1) Map caching: This tracks the DOM geometry.\n\nI put together a docs site with interactive demos, specifically showing off the 2D virtualized grid:\n\n* Docs &amp; Demos: [https://samiodeh1337.github.io/react-table-dnd/](https://samiodeh1337.github.io/react-table-dnd/)\n* Repo: [https://github.com/samiodeh1337/react-table-dnd](https://github.com/samiodeh1337/react-table-dnd)\n\nWhat's Next (Future Plans)\n\n* **Fully Headless API:** Moving toward a completely headless architecture. Since the drag logic and state are already decoupled from the UI, the goal is to provide raw hooks and primitives so you can bring your own markup.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey &lt;a href=\"/r/reactjs\"&gt;r/reactjs&lt;/a&gt;,&lt;/p&gt;\n\n&lt;p&gt;I just released v2.0 of react-table-dnd. I originally built this because trying to drag both rows and columns inside a fully virtualized grid is usually a nightmare—most libraries either cause massive layout thrashing or the drop zones completely break when virtual columns unmount.&lt;/p&gt;\n\n&lt;p&gt;To fix this, I had to bypass React&amp;#39;s render cycle almost entirely for the drag engine:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;O(1) updates: I ripped out React Context and moved to a vanilla store with useSyncExternalStore.&lt;/li&gt;\n&lt;li&gt;Native cloning: Swapped React.cloneElement for native cloneNode(true).&lt;/li&gt;\n&lt;li&gt;Direct DOM mutations: Drag movements happen outside React via style.transform in a requestAnimationFrame loop.&lt;/li&gt;\n&lt;li&gt;O(1) Map caching: This tracks the DOM geometry.&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;I put together a docs site with interactive demos, specifically showing off the 2D virtualized grid:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Docs &amp;amp; Demos: &lt;a href=\"https://samiodeh1337.github.io/react-table-dnd/\"&gt;https://samiodeh1337.github.io/react-table-dnd/&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;Repo: &lt;a href=\"https://github.com/samiodeh1337/react-table-dnd\"&gt;https://github.com/samiodeh1337/react-table-dnd&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;What&amp;#39;s Next (Future Plans)&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Fully Headless API:&lt;/strong&gt; Moving toward a completely headless architecture. Since the drag logic and state are already decoupled from the UI, the goal is to provide raw hooks and primitives so you can bring your own markup.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6hzp3",
+    "title": "I built an open source productivity workspace using Next.js 16, React 19, and Supabase.",
+    "subreddit": "reactjs",
+    "thumbnail": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=140&amp;height=80&amp;auto=webp&amp;s=e94f7b8984f6fed095986ecc7245b36eab95769b",
+    "url": "https://chronoa.vercel.app/",
+    "permalink": "/r/reactjs/comments/1t6hzp3/i_built_an_open_source_productivity_workspace/",
+    "author": "XeCipher",
+    "created_utc": 1778176251,
+    "score": 0,
+    "num_comments": 0,
+    "post_hint": "link",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?auto=webp&amp;s=e7a6c54a4f0f40f93b872de705e90ff6d62d1976",
+            "width": 1659,
+            "height": 948
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=15d9431eb64d9b299c4f13105415581a79c7857d",
+              "width": 108,
+              "height": 61
+            },
+            {
+              "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=763dd6325c430a7ba0ce3a0833077bc3246b3ca9",
+              "width": 216,
+              "height": 123
+            },
+            {
+              "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=863d9dd3645f46be7abf01c2a9c8336d09fea8a4",
+              "width": 320,
+              "height": 182
+            },
+            {
+              "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=0e8ead12a54fb39b765f1ff53a32274d5ac238b1",
+              "width": 640,
+              "height": 365
+            },
+            {
+              "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=60f2f63268370cede2f2339566b0fa3bfe8a946a",
+              "width": 960,
+              "height": 548
+            },
+            {
+              "url": "https://external-preview.redd.it/KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=8095724197703b45241b5283adfdfb223ec1077e",
+              "width": 1080,
+              "height": 617
+            }
+          ],
+          "variants": {},
+          "id": "KvFduOaxICcg4DH-tNQn1OGt6XPJHotzjp9UwKYDdl4"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "I recently open sourced Chronoa. It is a fully synced workspace featuring task management, global timers, a markdown editor, and ICS calendar integration.\n\nI wanted to focus heavily on performance and aesthetics. State syncs instantly across your phone and laptop using Supabase Realtime channels. The frontend is built with Next.js App Router and Tailwind CSS 4, while the backend utilizes Python and Flask for background cron jobs.\n\nLive App: [https://chronoa.vercel.app/](https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fchronoa.vercel.app%2F)  \nSource Code: [https://github.com/XeCipher/Chronoa](https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fgithub.com%2FXeCipher%2FChronoa)\n\nCheck out the code, and please star the repo if you find it helpful for your own learning or workflow.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I recently open sourced Chronoa. It is a fully synced workspace featuring task management, global timers, a markdown editor, and ICS calendar integration.&lt;/p&gt;\n\n&lt;p&gt;I wanted to focus heavily on performance and aesthetics. State syncs instantly across your phone and laptop using Supabase Realtime channels. The frontend is built with Next.js App Router and Tailwind CSS 4, while the backend utilizes Python and Flask for background cron jobs.&lt;/p&gt;\n\n&lt;p&gt;Live App: &lt;a href=\"https://www.google.com/url?sa=E&amp;amp;q=https%3A%2F%2Fchronoa.vercel.app%2F\"&gt;https://chronoa.vercel.app/&lt;/a&gt;&lt;br/&gt;\nSource Code: &lt;a href=\"https://www.google.com/url?sa=E&amp;amp;q=https%3A%2F%2Fgithub.com%2FXeCipher%2FChronoa\"&gt;https://github.com/XeCipher/Chronoa&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;Check out the code, and please star the repo if you find it helpful for your own learning or workflow.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://chronoa.vercel.app/",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t6h3lj",
+    "title": "Server-Driven UI in ReactJS",
+    "subreddit": "reactjs",
+    "thumbnail": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=140&amp;height=93&amp;auto=webp&amp;s=b10a3179f64678087582c18e507cb6c78e45b2b0",
+    "url": "https://neciudan.dev/implementing-server-driven-ui",
+    "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/",
+    "author": "creasta29",
+    "created_utc": 1778174441,
+    "score": 1,
+    "num_comments": 0,
+    "post_hint": "link",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?auto=webp&amp;s=c6cbfbd7e51116129b5e384c69f73a87f5d4f86e",
+            "width": 1200,
+            "height": 800
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=43a68c78e4685e6de2f838128ef173cbd6dc9794",
+              "width": 108,
+              "height": 72
+            },
+            {
+              "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=9663193e9347bb1e71cd236bc9316e0533a114b8",
+              "width": 216,
+              "height": 144
+            },
+            {
+              "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=a09411a666b68ffe4ceacd67c965ca8a45584629",
+              "width": 320,
+              "height": 213
+            },
+            {
+              "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=cf7dfd2df4a306f89cde86a5b9d9be44cfd02910",
+              "width": 640,
+              "height": 426
+            },
+            {
+              "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=3a337a4d0a0aa29ea4ada8b25a79f1930ff18b3e",
+              "width": 960,
+              "height": 640
+            },
+            {
+              "url": "https://external-preview.redd.it/0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=d6fb2935b38205063711e2a4c784fc3c16b5c851",
+              "width": 1080,
+              "height": 720
+            }
+          ],
+          "variants": {},
+          "id": "0RGG1E3m5CCP_2CDK3jEB5aFkr-Kl5ykchWehPvpbEM"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "I shared this before, i built it a couple of times in different frameworks but here is how it looks like in React",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I shared this before, i built it a couple of times in different frameworks but here is how it looks like in React&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://neciudan.dev/implementing-server-driven-ui",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t62dss",
+    "title": "I built an open-source calendar component inspired by macOS Calendar",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/",
+    "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/",
+    "author": "Cultural_Mission_482",
+    "created_utc": 1778135428,
+    "score": 6,
+    "num_comments": 3,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?auto=webp&amp;s=c17216cf991f4637e0765cf3e20a0e3c9a61f336",
+            "width": 1200,
+            "height": 600
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=181af2ca1d0b4dde22ec0fa800a4fe439e221f2a",
+              "width": 108,
+              "height": 54
+            },
+            {
+              "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=c3bd15f8a7130a050926bb947e0f1d6fa54fb1da",
+              "width": 216,
+              "height": 108
+            },
+            {
+              "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=0844e4d16582f0a7ef011e7e641993781a301c79",
+              "width": 320,
+              "height": 160
+            },
+            {
+              "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=916121160634c778bd0cbdb8dbd904ba6e858023",
+              "width": 640,
+              "height": 320
+            },
+            {
+              "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=0ed62ea6c657f91dee63a6f7bd946e9b1934fa79",
+              "width": 960,
+              "height": 480
+            },
+            {
+              "url": "https://external-preview.redd.it/5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=752b24fbb77f8fdb5525d8ffc16fd7e422855de9",
+              "width": 1080,
+              "height": 540
+            }
+          ],
+          "variants": {},
+          "id": "5cOI9QIWpsPOVAZkTgt8UMJAs5GQeWn-mZ09jGIJ4RI"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hi guys 👋\n\nI’d like to share **DayFlow**, an open-source full-calendar component for modern web apps that I’ve been building over the past year.\n\nAs a heavy macOS Calendar user, I was looking for a clean, modern calendar UI on GitHub — something flexible, extensible, and not locked into a specific design system. I couldn’t quite find what I wanted, so I decided to build one.\n\n**What DayFlow focuses on**:\n\n* Clean, modern UI inspired by macOS Calendar\n* Framework support: **React**, Svelte, Vue, and Angular\n* Modular architecture (views, events, panels are customizable)\n* Designed for extensibility and custom event rendering\n* Actively improving i18n support\n\nThe project is fully open source and still evolving. I’d really appreciate:\n\n* **Feedback on API &amp; architecture**\n* **Feature suggestions**\n* **Bug reports**\n* **PRs** if you're interested in contributing\n\nGitHub: [https://github.com/dayflow-js/calendar](https://github.com/dayflow-js/calendar)\n\nDemo: [https://calendar.dayflow.studio](https://calendar.dayflow.studio)",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hi guys 👋&lt;/p&gt;\n\n&lt;p&gt;I’d like to share &lt;strong&gt;DayFlow&lt;/strong&gt;, an open-source full-calendar component for modern web apps that I’ve been building over the past year.&lt;/p&gt;\n\n&lt;p&gt;As a heavy macOS Calendar user, I was looking for a clean, modern calendar UI on GitHub — something flexible, extensible, and not locked into a specific design system. I couldn’t quite find what I wanted, so I decided to build one.&lt;/p&gt;\n\n&lt;p&gt;&lt;strong&gt;What DayFlow focuses on&lt;/strong&gt;:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Clean, modern UI inspired by macOS Calendar&lt;/li&gt;\n&lt;li&gt;Framework support: &lt;strong&gt;React&lt;/strong&gt;, Svelte, Vue, and Angular&lt;/li&gt;\n&lt;li&gt;Modular architecture (views, events, panels are customizable)&lt;/li&gt;\n&lt;li&gt;Designed for extensibility and custom event rendering&lt;/li&gt;\n&lt;li&gt;Actively improving i18n support&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;The project is fully open source and still evolving. I’d really appreciate:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Feedback on API &amp;amp; architecture&lt;/strong&gt;&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Feature suggestions&lt;/strong&gt;&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Bug reports&lt;/strong&gt;&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;PRs&lt;/strong&gt; if you&amp;#39;re interested in contributing&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;GitHub: &lt;a href=\"https://github.com/dayflow-js/calendar\"&gt;https://github.com/dayflow-js/calendar&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;Demo: &lt;a href=\"https://calendar.dayflow.studio\"&gt;https://calendar.dayflow.studio&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t5q6fy",
+    "title": "I extracted the \"frecency\" pattern from Firefox/VS Code into a reusable library — your UI adapts to each user automatically",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/",
+    "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/",
+    "author": "Potential-Still-3545",
+    "created_utc": 1778102186,
+    "score": 36,
+    "num_comments": 9,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Every complex app has the same problem: 50 options in the sidebar, each user only uses 8-10. The rest is noise. Firefox solved this for the URL bar years ago using \"frecency\" (frequency + recency). VS Code does the same for the command palette. But nobody's packaged it as a reusable primitive. \n\nSo I did. 4.5KB, zero deps, framework-agnostic: \n\nmorph.track('sidebar', 'tasks')  // on interaction\n\nmorph.rank('sidebar')            // on page load — sorted by usage.\n\nItems used often and recently score high. Items ignored fade naturally. All data stays in localStorage. No AI, no server, no \"customize layout\" button needed. \n\nLive demo: [https://morph-black.vercel.app/](https://morph-black.vercel.app/) \n\nWould you actually use this? Curious if people see this as useful or overkill for most apps.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Every complex app has the same problem: 50 options in the sidebar, each user only uses 8-10. The rest is noise. Firefox solved this for the URL bar years ago using &amp;quot;frecency&amp;quot; (frequency + recency). VS Code does the same for the command palette. But nobody&amp;#39;s packaged it as a reusable primitive. &lt;/p&gt;\n\n&lt;p&gt;So I did. 4.5KB, zero deps, framework-agnostic: &lt;/p&gt;\n\n&lt;p&gt;morph.track(&amp;#39;sidebar&amp;#39;, &amp;#39;tasks&amp;#39;)  // on interaction&lt;/p&gt;\n\n&lt;p&gt;morph.rank(&amp;#39;sidebar&amp;#39;)            // on page load — sorted by usage.&lt;/p&gt;\n\n&lt;p&gt;Items used often and recently score high. Items ignored fade naturally. All data stays in localStorage. No AI, no server, no &amp;quot;customize layout&amp;quot; button needed. &lt;/p&gt;\n\n&lt;p&gt;Live demo: &lt;a href=\"https://morph-black.vercel.app/\"&gt;https://morph-black.vercel.app/&lt;/a&gt; &lt;/p&gt;\n\n&lt;p&gt;Would you actually use this? Curious if people see this as useful or overkill for most apps.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t6ezhx",
+    "title": "I built a protocol-agnostic API client for REST, SSE, and WebSockets",
+    "subreddit": "reactjs",
+    "thumbnail": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=140&amp;height=70&amp;auto=webp&amp;s=9d2b5fb64fb10186e5fb0aa99cb0d7978e106383",
+    "url": "https://github.com/sandeshnaroju/api-engine",
+    "permalink": "/r/reactjs/comments/1t6ezhx/i_built_a_protocolagnostic_api_client_for_rest/",
+    "author": "sandeshnaroju",
+    "created_utc": 1778170005,
+    "score": 0,
+    "num_comments": 0,
+    "post_hint": "link",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?auto=webp&amp;s=b6dcb77d7175221628faa8fdaabf1d25def91a54",
+            "width": 1200,
+            "height": 600
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=161d97a8a6f1b8568edaf33098fc9400ade1e0cc",
+              "width": 108,
+              "height": 54
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=87d21a0f55d00df6199d84da0b567efdc8adbdcf",
+              "width": 216,
+              "height": 108
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=506ffb2851782362b4fe94dcbe39bfcf4585d40a",
+              "width": 320,
+              "height": 160
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=672a764f28c8be752058b71cf7cdce2637ed24d5",
+              "width": 640,
+              "height": 320
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=0ed935512db3390f5565a975f8403da4d1cc5d15",
+              "width": 960,
+              "height": 480
+            },
+            {
+              "url": "https://external-preview.redd.it/yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=c141e51546597e799126985846017b92191c52cb",
+              "width": 1080,
+              "height": 540
+            }
+          ],
+          "variants": {},
+          "id": "yey-n01p3kW6vxsdkWfsUpjtFJ1PMDai9Y9Ldj-OeoM"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": false,
+    "selftext": "Built an open-source API engine that unifies REST, SSE, and WebSockets into a single client interface.\n\nGitHub: [API Engine GitHub Repo](https://github.com/sandeshnaroju/api-engine?utm_source=chatgpt.com)\n\nI built this after getting tired of managing different communication layers separately in frontend applications.\n\nMost projects end up mixing:\n\n* fetch/axios for REST\n* EventSource wrappers for SSE\n* custom WebSocket handling\n* duplicated connection logic\n* inconsistent APIs across transports\n\nAPIEngine solves this using a YAML-driven manifest that generates a consistent API communication layer.\n\nExample:\n\n    version: \"1.0\"\n    baseUrl: \"https://api.example.com\"\n    \n    endpoints:\n      get_post:\n        protocol: \"REST\"\n        path: \"/posts/:id\"\n        method: \"GET\"\n    \n      live_logs:\n        protocol: \"SSE\"\n        path: \"/logs\"\n    \n      realtime_chat:\n        protocol: \"WS\"\n        path: \"wss://example.com/chat\"\n\nUsage:\n\n    import manifest from './api.yml';\n    \n    const api = await APIEngine.init(manifest);\n    \n    // REST\n    await api.call('get_post', {\n      params: { id: 1 }\n    });\n    \n    // SSE\n    const stream = api.watch('live_logs');\n    \n    const unsubscribe = stream.subscribe((log) =&gt; {\n      console.log(\"New Server Log:\", log.message);\n    });\n    \n    // WebSocket\n    const socket = api.watch('realtime_chat');\n    \n    socket.subscribe((msg) =&gt; {\n      console.log(\"Incoming Message:\", msg.text);\n    });\n    \n    // 2. Send a message back\n    socket.send({ \n      message: \"Hi\", \n    });\n    \n\nFeatures:\n\n* Unified REST, SSE, and WebSocket handling\n* YAML-based API configuration\n* Smart URL + path param resolution\n* Auto WebSocket reconnect support\n* Browser-first architecture\n* React/Vue/Vanilla JS compatible\n* Dynamic manifest loading\n\nWould love feedback on it, If you find the project useful, a GitHub star would really help visibility and future development 🙌",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Built an open-source API engine that unifies REST, SSE, and WebSockets into a single client interface.&lt;/p&gt;\n\n&lt;p&gt;GitHub: &lt;a href=\"https://github.com/sandeshnaroju/api-engine?utm_source=chatgpt.com\"&gt;API Engine GitHub Repo&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;I built this after getting tired of managing different communication layers separately in frontend applications.&lt;/p&gt;\n\n&lt;p&gt;Most projects end up mixing:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;fetch/axios for REST&lt;/li&gt;\n&lt;li&gt;EventSource wrappers for SSE&lt;/li&gt;\n&lt;li&gt;custom WebSocket handling&lt;/li&gt;\n&lt;li&gt;duplicated connection logic&lt;/li&gt;\n&lt;li&gt;inconsistent APIs across transports&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;APIEngine solves this using a YAML-driven manifest that generates a consistent API communication layer.&lt;/p&gt;\n\n&lt;p&gt;Example:&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;version: &amp;quot;1.0&amp;quot;\nbaseUrl: &amp;quot;https://api.example.com&amp;quot;\n\nendpoints:\n  get_post:\n    protocol: &amp;quot;REST&amp;quot;\n    path: &amp;quot;/posts/:id&amp;quot;\n    method: &amp;quot;GET&amp;quot;\n\n  live_logs:\n    protocol: &amp;quot;SSE&amp;quot;\n    path: &amp;quot;/logs&amp;quot;\n\n  realtime_chat:\n    protocol: &amp;quot;WS&amp;quot;\n    path: &amp;quot;wss://example.com/chat&amp;quot;\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;Usage:&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;import manifest from &amp;#39;./api.yml&amp;#39;;\n\nconst api = await APIEngine.init(manifest);\n\n// REST\nawait api.call(&amp;#39;get_post&amp;#39;, {\n  params: { id: 1 }\n});\n\n// SSE\nconst stream = api.watch(&amp;#39;live_logs&amp;#39;);\n\nconst unsubscribe = stream.subscribe((log) =&amp;gt; {\n  console.log(&amp;quot;New Server Log:&amp;quot;, log.message);\n});\n\n// WebSocket\nconst socket = api.watch(&amp;#39;realtime_chat&amp;#39;);\n\nsocket.subscribe((msg) =&amp;gt; {\n  console.log(&amp;quot;Incoming Message:&amp;quot;, msg.text);\n});\n\n// 2. Send a message back\nsocket.send({ \n  message: &amp;quot;Hi&amp;quot;, \n});\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;Features:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Unified REST, SSE, and WebSocket handling&lt;/li&gt;\n&lt;li&gt;YAML-based API configuration&lt;/li&gt;\n&lt;li&gt;Smart URL + path param resolution&lt;/li&gt;\n&lt;li&gt;Auto WebSocket reconnect support&lt;/li&gt;\n&lt;li&gt;Browser-first architecture&lt;/li&gt;\n&lt;li&gt;React/Vue/Vanilla JS compatible&lt;/li&gt;\n&lt;li&gt;Dynamic manifest loading&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;Would love feedback on it, If you find the project useful, a GitHub star would really help visibility and future development 🙌&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://github.com/sandeshnaroju/api-engine",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t69mvl",
+    "title": "Untangling dialogs in React Router",
+    "subreddit": "reactjs",
+    "thumbnail": "default",
+    "url": "https://programmingarehard.com/2026/05/06/react-router-dialogs.html/",
+    "permalink": "/r/reactjs/comments/1t69mvl/untangling_dialogs_in_react_router/",
+    "author": "dadamssg",
+    "created_utc": 1778158288,
+    "score": 1,
+    "num_comments": 3,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": false,
+    "selftext": "I have been struggling with determining how to best implement dialogs in React Router apps for years:\n\n* useState to control their open state\n* Forms vs fetchers for data submissions\n* resource routes to form data(&lt;select&gt; options)\n* useEffect for listening for the action data to close the dialog\n* useEffect for listing for a toast message\n\nThere's a lot to consider. However, tons of these problems go away if you move dialogs into their own dedicated routes. This doesn't come without its own set of challenges though.\n\n\n\nI've written up a guide on how to implement dialogs and keep your sanity. Hope it helps! 🤘",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I have been struggling with determining how to best implement dialogs in React Router apps for years:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;useState to control their open state&lt;/li&gt;\n&lt;li&gt;Forms vs fetchers for data submissions&lt;/li&gt;\n&lt;li&gt;resource routes to form data(&amp;lt;select&amp;gt; options)&lt;/li&gt;\n&lt;li&gt;useEffect for listening for the action data to close the dialog&lt;/li&gt;\n&lt;li&gt;useEffect for listing for a toast message&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;There&amp;#39;s a lot to consider. However, tons of these problems go away if you move dialogs into their own dedicated routes. This doesn&amp;#39;t come without its own set of challenges though.&lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;ve written up a guide on how to implement dialogs and keep your sanity. Hope it helps! 🤘&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://programmingarehard.com/2026/05/06/react-router-dialogs.html/",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t6880l",
+    "title": "Build once deploy many React Vite",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/",
+    "author": "Darex97",
+    "created_utc": 1778154708,
+    "score": 1,
+    "num_comments": 21,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hi everyone,\n\nI’m trying to achieve a true “build once, deploy many” setup for a React app built with Vite.\n\nI currently have around 50 production environments/tenants and I want to avoid rebuilding the frontend separately for each one. The goal is to create a single Docker image/static frontend build and deploy the exact same artifact everywhere, while still being able to inject environment-specific values at runtime.\n\nI already know that Vite replaces `import.meta.env` during build time, so I’m looking for production-proven approaches that allow runtime injection instead of build-time replacement.\n\nI’d love to hear how people usually solve this in real-world setups, especially in multi-tenant SaaS systems or apps with many deployments.\n\nWhat approaches are considered the cleanest and most maintainable today?  \nHow are people handling runtime environment values with static React builds?  \nAre there any common pitfalls, scaling issues, caching/CDN problems, or deployment concerns I should be aware of?",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hi everyone,&lt;/p&gt;\n\n&lt;p&gt;I’m trying to achieve a true “build once, deploy many” setup for a React app built with Vite.&lt;/p&gt;\n\n&lt;p&gt;I currently have around 50 production environments/tenants and I want to avoid rebuilding the frontend separately for each one. The goal is to create a single Docker image/static frontend build and deploy the exact same artifact everywhere, while still being able to inject environment-specific values at runtime.&lt;/p&gt;\n\n&lt;p&gt;I already know that Vite replaces &lt;code&gt;import.meta.env&lt;/code&gt; during build time, so I’m looking for production-proven approaches that allow runtime injection instead of build-time replacement.&lt;/p&gt;\n\n&lt;p&gt;I’d love to hear how people usually solve this in real-world setups, especially in multi-tenant SaaS systems or apps with many deployments.&lt;/p&gt;\n\n&lt;p&gt;What approaches are considered the cleanest and most maintainable today?&lt;br/&gt;\nHow are people handling runtime environment values with static React builds?&lt;br/&gt;\nAre there any common pitfalls, scaling issues, caching/CDN problems, or deployment concerns I should be aware of?&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t54wi2",
+    "title": "Next.js / SPA Reality Check",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/",
+    "author": "Meow_man1213",
+    "created_utc": 1778049271,
+    "score": 170,
+    "num_comments": 57,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Can we normalize just building a standard React SPA with Vite again without feeling guilty that we aren't using Next.js?\n\nThe App Router and React Server Components are incredibly powerful, but the amount of gaslighting in the frontend ecosystem right now is insane. Not every internal dashboard, simple CRUD app, or personal portfolio needs server side rendering, edge functions, and a complex caching layer that requires a PhD to invalidate.\n\nSometimes you just want to spin up Vite, fetch some data on the client, and deploy a static bundle to a CDN for practically zero dollars. It feels like we are completely over engineering 90% of our web apps just to chase the newest Vercel paradigm.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Can we normalize just building a standard React SPA with Vite again without feeling guilty that we aren&amp;#39;t using Next.js?&lt;/p&gt;\n\n&lt;p&gt;The App Router and React Server Components are incredibly powerful, but the amount of gaslighting in the frontend ecosystem right now is insane. Not every internal dashboard, simple CRUD app, or personal portfolio needs server side rendering, edge functions, and a complex caching layer that requires a PhD to invalidate.&lt;/p&gt;\n\n&lt;p&gt;Sometimes you just want to spin up Vite, fetch some data on the client, and deploy a static bundle to a CDN for practically zero dollars. It feels like we are completely over engineering 90% of our web apps just to chase the newest Vercel paradigm.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t61873",
+    "title": "Open source pixel art component library for React - feedback welcome!",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t61873/open_source_pixel_art_component_library_for_react/",
+    "permalink": "/r/reactjs/comments/1t61873/open_source_pixel_art_component_library_for_react/",
+    "author": "SlipOk9236",
+    "created_utc": 1778131636,
+    "score": 0,
+    "num_comments": 0,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?auto=webp&amp;s=8462727a48d69f7807ff147b016c625122ba8b4b",
+            "width": 1200,
+            "height": 600
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=118c41eee9605831640b3e9c5c87d060635af0c3",
+              "width": 108,
+              "height": 54
+            },
+            {
+              "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=c028fe2854128612a271cb756744ebddbdb56940",
+              "width": 216,
+              "height": 108
+            },
+            {
+              "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=48e13bfe51066ce245abfa928236089a1b5c4d56",
+              "width": 320,
+              "height": 160
+            },
+            {
+              "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=0ad55fed7598c5d62a64a6729bfddcf5da60f567",
+              "width": 640,
+              "height": 320
+            },
+            {
+              "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=6a068d5996e8dfc69305d67e2f46bc3ce77484d7",
+              "width": 960,
+              "height": 480
+            },
+            {
+              "url": "https://external-preview.redd.it/0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=efbddf2ebd67f200405705693a7d5a8120fa2d30",
+              "width": 1080,
+              "height": 540
+            }
+          ],
+          "variants": {},
+          "id": "0KsTMoXVKJvBYFZ4IV7YX0mvoQE60ZaMwLQg3ZaWwkc"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hey r/reactjs! 👾\n\nI've been working on **pixelartui-react** \\- an open-source component library that brings pixel art aesthetics to React applications.\n\n# What it is\n\nA collection of 11+ React components (Button, Modal, Select, TextInput, Pagination, Switch, etc.) all styled with authentic pixel art design. Perfect for retro-styled games, creative portfolios, or any project where you want to stand out from the typical Material UI look.\n\n# Quick example\n\n    npm install pixelartui-react\n    \n    import { Button, Modal, TextInput } from 'pixelartui-react';\n    \n    // That's it - you've got pixel perfect retro components\n\n# Why I built it\n\nI was building a web-based retro game and realized I was spending more time crafting pixel-perfect borders and shadows than actually building game logic. So I extracted it into a reusable library that anyone can use.\n\n# Features\n\n* ⚡ Built for React 19\n* 📦 TypeScript support\n* 🎨 Customizable theming\n* 🌐 MIT licensed\n* 🎮 Perfect for game UIs, creative projects, and portfolios\n\n# Current state\n\n* Version 0.4.45 on npm\n* 4 GitHub stars (early days!)\n* \\~10 weekly downloads\n* Active development\n\n# What's next\n\n* Deploying Storybook for interactive component demos\n* Adding more components (Tabs, Tooltips, Dropdowns)\n* Building a theme customizer tool\n* Growing the community\n\n# Links\n\n* **GitHub**: [https://github.com/Pixelartui/pixelartui-react](https://github.com/Pixelartui/pixelartui-react)\n* **npm**: [https://www.npmjs.com/package/pixelartui-react](https://www.npmjs.com/package/pixelartui-react)\n* **Storybook**: [https://pixelartui.github.io/storybook/](https://pixelartui.github.io/storybook/)\n\n# Looking for\n\n* Feedback on the API and component design\n* Contributors who want to help build more components\n* Anyone who wants to try it in their projects\n* Stars if you find it interesting! ⭐\n\nI'd love to hear your thoughts, suggestions, or questions. Have you built any retro-styled React apps? What components would you like to see added?\n\nThanks for checking it out!",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey &lt;a href=\"/r/reactjs\"&gt;r/reactjs&lt;/a&gt;! 👾&lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;ve been working on &lt;strong&gt;pixelartui-react&lt;/strong&gt; - an open-source component library that brings pixel art aesthetics to React applications.&lt;/p&gt;\n\n&lt;h1&gt;What it is&lt;/h1&gt;\n\n&lt;p&gt;A collection of 11+ React components (Button, Modal, Select, TextInput, Pagination, Switch, etc.) all styled with authentic pixel art design. Perfect for retro-styled games, creative portfolios, or any project where you want to stand out from the typical Material UI look.&lt;/p&gt;\n\n&lt;h1&gt;Quick example&lt;/h1&gt;\n\n&lt;pre&gt;&lt;code&gt;npm install pixelartui-react\n\nimport { Button, Modal, TextInput } from &amp;#39;pixelartui-react&amp;#39;;\n\n// That&amp;#39;s it - you&amp;#39;ve got pixel perfect retro components\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;h1&gt;Why I built it&lt;/h1&gt;\n\n&lt;p&gt;I was building a web-based retro game and realized I was spending more time crafting pixel-perfect borders and shadows than actually building game logic. So I extracted it into a reusable library that anyone can use.&lt;/p&gt;\n\n&lt;h1&gt;Features&lt;/h1&gt;\n\n&lt;ul&gt;\n&lt;li&gt;⚡ Built for React 19&lt;/li&gt;\n&lt;li&gt;📦 TypeScript support&lt;/li&gt;\n&lt;li&gt;🎨 Customizable theming&lt;/li&gt;\n&lt;li&gt;🌐 MIT licensed&lt;/li&gt;\n&lt;li&gt;🎮 Perfect for game UIs, creative projects, and portfolios&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;h1&gt;Current state&lt;/h1&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Version 0.4.45 on npm&lt;/li&gt;\n&lt;li&gt;4 GitHub stars (early days!)&lt;/li&gt;\n&lt;li&gt;~10 weekly downloads&lt;/li&gt;\n&lt;li&gt;Active development&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;h1&gt;What&amp;#39;s next&lt;/h1&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Deploying Storybook for interactive component demos&lt;/li&gt;\n&lt;li&gt;Adding more components (Tabs, Tooltips, Dropdowns)&lt;/li&gt;\n&lt;li&gt;Building a theme customizer tool&lt;/li&gt;\n&lt;li&gt;Growing the community&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;h1&gt;Links&lt;/h1&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;GitHub&lt;/strong&gt;: &lt;a href=\"https://github.com/Pixelartui/pixelartui-react\"&gt;https://github.com/Pixelartui/pixelartui-react&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;npm&lt;/strong&gt;: &lt;a href=\"https://www.npmjs.com/package/pixelartui-react\"&gt;https://www.npmjs.com/package/pixelartui-react&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Storybook&lt;/strong&gt;: &lt;a href=\"https://pixelartui.github.io/storybook/\"&gt;https://pixelartui.github.io/storybook/&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;h1&gt;Looking for&lt;/h1&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Feedback on the API and component design&lt;/li&gt;\n&lt;li&gt;Contributors who want to help build more components&lt;/li&gt;\n&lt;li&gt;Anyone who wants to try it in their projects&lt;/li&gt;\n&lt;li&gt;Stars if you find it interesting! ⭐&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;I&amp;#39;d love to hear your thoughts, suggestions, or questions. Have you built any retro-styled React apps? What components would you like to see added?&lt;/p&gt;\n\n&lt;p&gt;Thanks for checking it out!&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t5c6fa",
+    "title": "ReactJS learned, Next step: Next.js or React Native?",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/",
+    "author": "Different_Bite76",
+    "created_utc": 1778072352,
+    "score": 8,
+    "num_comments": 30,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hi everyone,  \nI’ve learned ReactJS and feel comfortable with it. I’m wondering what I should focus on next:\n\n* **Next.js** for web development\n* **React Native** for mobile apps\n\nWhich one do you recommend for someone in 2026, and why?",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hi everyone,&lt;br/&gt;\nI’ve learned ReactJS and feel comfortable with it. I’m wondering what I should focus on next:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Next.js&lt;/strong&gt; for web development&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;React Native&lt;/strong&gt; for mobile apps&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;Which one do you recommend for someone in 2026, and why?&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t53uxb",
+    "title": "We open-sourced our approach to modal state management. Curious what you think.",
+    "subreddit": "reactjs",
+    "thumbnail": "default",
+    "url": "https://overlay-kit.slash.page/en",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/",
+    "author": "Warm-Preparation7106",
+    "created_utc": 1778045768,
+    "score": 30,
+    "num_comments": 20,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": false,
+    "selftext": "I've seen this question pop up every few months here: \"What's the right way to handle modals in React?\"\n\nThe answers are always all over the place. useState per modal, Context, Redux, nice-modal, custom hooks... there's no consensus.\n\nWe ran into the same problems at work:\n\n* useState + isOpen for every single modal\n* Prop drilling open/close through multiple layers\n* No way to await a user's confirmation result\n* Can't trigger a modal from outside a component tree\n\nWe ended up building a small library around a simple idea: what if you just call a function and pass it a component?\n\n    overlay.open(({ close }) =&gt; (\n      &lt;Dialog onClose={close}&gt;\n        &lt;p&gt;Are you sure?&lt;/p&gt;\n      &lt;/Dialog&gt;\n    ))\n        \n    // or await the result\n    const confirmed = await overlay.openAsync&lt;boolean&gt;(({ close }) =&gt; (\n      &lt;ConfirmDialog\n        onConfirm={() =&gt; close(true)}\n        onCancel={() =&gt; close(false)}\n      /&gt;\n    ))\n        \n    if (confirmed) {\n      await deleteItem(id)\n    }\n\nIt works with whatever UI library you already use (shadcn, Radix, Chakra, Mantine, etc). No registration step, renders inside your React tree so Context is preserved.\n\n[https://github.com/toss/overlay-kit](https://github.com/toss/overlay-kit) (\\~3KB, MIT)\n\nBeen using this in production for a while. Would appreciate honest feedback, especially if you see problems with this approach.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;I&amp;#39;ve seen this question pop up every few months here: &amp;quot;What&amp;#39;s the right way to handle modals in React?&amp;quot;&lt;/p&gt;\n\n&lt;p&gt;The answers are always all over the place. useState per modal, Context, Redux, nice-modal, custom hooks... there&amp;#39;s no consensus.&lt;/p&gt;\n\n&lt;p&gt;We ran into the same problems at work:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;useState + isOpen for every single modal&lt;/li&gt;\n&lt;li&gt;Prop drilling open/close through multiple layers&lt;/li&gt;\n&lt;li&gt;No way to await a user&amp;#39;s confirmation result&lt;/li&gt;\n&lt;li&gt;Can&amp;#39;t trigger a modal from outside a component tree&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;We ended up building a small library around a simple idea: what if you just call a function and pass it a component?&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;overlay.open(({ close }) =&amp;gt; (\n  &amp;lt;Dialog onClose={close}&amp;gt;\n    &amp;lt;p&amp;gt;Are you sure?&amp;lt;/p&amp;gt;\n  &amp;lt;/Dialog&amp;gt;\n))\n\n// or await the result\nconst confirmed = await overlay.openAsync&amp;lt;boolean&amp;gt;(({ close }) =&amp;gt; (\n  &amp;lt;ConfirmDialog\n    onConfirm={() =&amp;gt; close(true)}\n    onCancel={() =&amp;gt; close(false)}\n  /&amp;gt;\n))\n\nif (confirmed) {\n  await deleteItem(id)\n}\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;It works with whatever UI library you already use (shadcn, Radix, Chakra, Mantine, etc). No registration step, renders inside your React tree so Context is preserved.&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://github.com/toss/overlay-kit\"&gt;https://github.com/toss/overlay-kit&lt;/a&gt; (~3KB, MIT)&lt;/p&gt;\n\n&lt;p&gt;Been using this in production for a while. Would appreciate honest feedback, especially if you see problems with this approach.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "url_overridden_by_dest": "https://overlay-kit.slash.page/en",
+    "type": "link",
+    "sample": true
+  },
+  {
+    "id": "1t5himm",
+    "title": "I built a React UI system for game dev that stops you from fighting CSS for HUDs and overlays",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t5himm/i_built_a_react_ui_system_for_game_dev_that_stops/",
+    "permalink": "/r/reactjs/comments/1t5himm/i_built_a_react_ui_system_for_game_dev_that_stops/",
+    "author": "Eastern_Process_4839",
+    "created_utc": 1778084016,
+    "score": 5,
+    "num_comments": 2,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hey everyone,\n\nI’ve been working with React and React Three Fiber for browser-based game-style projects, and I kept running into the same problem:\n\nBuilding HUDs, overlays, and UI layouts with CSS gets messy fast.\n\nThings like:\n- anchoring elements to corners of the screen  \n- handling different aspect ratios  \n- dealing with mobile safe areas and notches  \n- constantly tweaking flexbox / media queries for layout  \n\nIt never really feels like how UI works in a game engine.\n\nSo I built a small library called **AnchorDOM**.\n\nIt lets you design your UI at a fixed resolution (like 1920x1080), and it automatically handles scaling and anchoring across all screen sizes.\n\nExample:\n\n&lt;Panel resolution={{ width: 1920, height: 1080 }}&gt;\n  &lt;Label text=\"Score: 9999\" anchor=\"TOP_LEFT\" x={50} y={50} /&gt;\n  &lt;Button label=\"ATTACK\" anchor=\"BOTTOM_RIGHT\" x={-50} y={-50} /&gt;\n&lt;/Panel&gt;\n\nWhat it does:\n- resolution-independent scaling  \n- 9-point anchoring system (like game engines)  \n- relative positioning between components  \n- safe-area support for mobile devices  \n\nIt’s mainly aimed at:\n- React Three Fiber projects  \n- browser-based games  \n- UI-heavy WebGL or canvas-based apps  \n\nRepo / npm:\nhttps://www.npmjs.com/package/anchordom\n\nI’m still early in development, so I’d really appreciate feedback—especially from anyone building game UI or working with R3F.\n\nThanks for taking a look 🙏",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt;\n\n&lt;p&gt;I’ve been working with React and React Three Fiber for browser-based game-style projects, and I kept running into the same problem:&lt;/p&gt;\n\n&lt;p&gt;Building HUDs, overlays, and UI layouts with CSS gets messy fast.&lt;/p&gt;\n\n&lt;p&gt;Things like:\n- anchoring elements to corners of the screen&lt;br/&gt;\n- handling different aspect ratios&lt;br/&gt;\n- dealing with mobile safe areas and notches&lt;br/&gt;\n- constantly tweaking flexbox / media queries for layout  &lt;/p&gt;\n\n&lt;p&gt;It never really feels like how UI works in a game engine.&lt;/p&gt;\n\n&lt;p&gt;So I built a small library called &lt;strong&gt;AnchorDOM&lt;/strong&gt;.&lt;/p&gt;\n\n&lt;p&gt;It lets you design your UI at a fixed resolution (like 1920x1080), and it automatically handles scaling and anchoring across all screen sizes.&lt;/p&gt;\n\n&lt;p&gt;Example:&lt;/p&gt;\n\n&lt;p&gt;&amp;lt;Panel resolution={{ width: 1920, height: 1080 }}&amp;gt;\n  &amp;lt;Label text=&amp;quot;Score: 9999&amp;quot; anchor=&amp;quot;TOP_LEFT&amp;quot; x={50} y={50} /&amp;gt;\n  &amp;lt;Button label=&amp;quot;ATTACK&amp;quot; anchor=&amp;quot;BOTTOM_RIGHT&amp;quot; x={-50} y={-50} /&amp;gt;\n&amp;lt;/Panel&amp;gt;&lt;/p&gt;\n\n&lt;p&gt;What it does:\n- resolution-independent scaling&lt;br/&gt;\n- 9-point anchoring system (like game engines)&lt;br/&gt;\n- relative positioning between components&lt;br/&gt;\n- safe-area support for mobile devices  &lt;/p&gt;\n\n&lt;p&gt;It’s mainly aimed at:\n- React Three Fiber projects&lt;br/&gt;\n- browser-based games&lt;br/&gt;\n- UI-heavy WebGL or canvas-based apps  &lt;/p&gt;\n\n&lt;p&gt;Repo / npm:\n&lt;a href=\"https://www.npmjs.com/package/anchordom\"&gt;https://www.npmjs.com/package/anchordom&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;I’m still early in development, so I’d really appreciate feedback—especially from anyone building game UI or working with R3F.&lt;/p&gt;\n\n&lt;p&gt;Thanks for taking a look 🙏&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t5ntfx",
+    "title": "We built a Next.js app to detect CS2 market manipulation before price spikes happen. Here's our architecture (better-auth, pg-boss, SES)",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t5ntfx/we_built_a_nextjs_app_to_detect_cs2_market/",
+    "permalink": "/r/reactjs/comments/1t5ntfx/we_built_a_nextjs_app_to_detect_cs2_market/",
+    "author": "Keveran",
+    "created_utc": 1778097093,
+    "score": 1,
+    "num_comments": 1,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?auto=webp&amp;s=0b6636444a105417b0b5253a727340b12e5b4085",
+            "width": 1200,
+            "height": 630
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?width=108&amp;crop=smart&amp;auto=webp&amp;s=4227ce44cf0fe16b44820405ebcd8a836632d50c",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?width=216&amp;crop=smart&amp;auto=webp&amp;s=302cefc8dd729d278063e7817cc6623f97f42501",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?width=320&amp;crop=smart&amp;auto=webp&amp;s=657cbef5d8667911870802865a9ede1d42f3688b",
+              "width": 320,
+              "height": 168
+            },
+            {
+              "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?width=640&amp;crop=smart&amp;auto=webp&amp;s=23f6f9706f6127f2723e1a623d94af7b33ce5eac",
+              "width": 640,
+              "height": 336
+            },
+            {
+              "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?width=960&amp;crop=smart&amp;auto=webp&amp;s=b3bf7c7033f0f2a45261367aeb205ba2f3d41886",
+              "width": 960,
+              "height": 504
+            },
+            {
+              "url": "https://external-preview.redd.it/K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A.jpeg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=78e5ba0a33a93583dabdc868499854719c48ed53",
+              "width": 1080,
+              "height": 567
+            }
+          ],
+          "variants": {},
+          "id": "K5qXXTdV1J20QMD1bbnnbTkTFEPSTwKBjrDm9C6pc9A"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hey everyone,\n\nA few friends and I are huge CS2 players and data nerds. If you’ve ever traded on the Steam Community Market, you know it’s prone to coordinated pumps and dumps. We wanted to see if we could build a tool to catch these market anomalies (accumulation phases) before the massive price spikes actually happen.\n\nWe built [CSPump](https://cs-pump.com) to scan the Steam Market and CSFloat for unnatural volume and listing behavior. I wanted to share a bit about our stack, the architectural choices we made to handle the background processing, and see if any other devs here play CS.\n\nThe Tech Stack\n\nUI / Styling: Next.js, TailwindCSS, shadcn/ui\n\nAuthentication: better-auth (with a custom Steam plugin)\n\nDatabase &amp; Queues: PostgreSQL with pg-boss\n\nEmails: AWS SES\n\nPayments: Stripe\n\nObservability: Pino.js + Loki transport + Grafana\n\nThe Technical Challenges\n\n### 1. Steam Authentication with better-auth\nSteam still relies on an ancient OpenID 2.0 implementation, which makes modern authentication a bit of a headache. We decided to use better-auth, but since there wasn't an out-of-the-box solution for Steam, we had to write a custom Steam plugin for it. Getting the redirects, session state, and initial inventory sync to fire correctly without leaving the user hanging on a loading screen was an interesting challenge.\n\n### 2. Background Workers &amp; Queueing (Without Redis) \nOur app doesn't rely on users staring at heavy real-time dashboards. Instead, users configure watchlists, and our backend crunches the data. When an anomaly triggers, it dispatches an email alert. Instead of spinning up Redis for job queues, we opted for pg-boss, which uses PostgreSQL for background jobs. It allowed us to keep our infrastructure simple while effectively managing the massive amount of scheduled market scans and queuing up AWS SES email dispatches.\n\n### 3. Observability &amp; Logging\nBecause the core value of the app relies on background workers executing flawlessly, we needed solid visibility into our queues. We set up Pino.js with a Loki transport, feeding logs directly into Grafana dashboards. This lets us monitor worker health, track Steam API rate limits, and see when our anomaly engine triggers in real-time without constantly querying the database directly.\n\nDid it actually work?\n\nSurprisingly, yes. The algorithms have caught some pretty crazy spikes early, and the SES email dispatches have been landing right on time. For example, our system caught:\n\nFAMAS | Survivor Z (FN): Flagged the accumulation phase right before it pumped 82%.\n\nSticker | BIG (Holo) | 2020 RMR: Caught it before a 47% spike in two days.\n\nUSP-S | Pathfinder (FN): Flagged before a 46% increase.\n\nWhat’s next?\n\nRight now, we are looking into how to handle marketing emails. We use React Email for templates, but we don't know the best approach for going about promotions, new features etc. Is it best to create a new template for this and then send it out manually or should we set up a dedicated marketing system? Also curious if anyone else here has used pg-boss instead of Redis for job queues and how it scaled for you!\n\nIf you play CS and want to check out how we implemented the UI, the project is live at [CSPump](https://cs-pump.com).",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey everyone,&lt;/p&gt;\n\n&lt;p&gt;A few friends and I are huge CS2 players and data nerds. If you’ve ever traded on the Steam Community Market, you know it’s prone to coordinated pumps and dumps. We wanted to see if we could build a tool to catch these market anomalies (accumulation phases) before the massive price spikes actually happen.&lt;/p&gt;\n\n&lt;p&gt;We built &lt;a href=\"https://cs-pump.com\"&gt;CSPump&lt;/a&gt; to scan the Steam Market and CSFloat for unnatural volume and listing behavior. I wanted to share a bit about our stack, the architectural choices we made to handle the background processing, and see if any other devs here play CS.&lt;/p&gt;\n\n&lt;p&gt;The Tech Stack&lt;/p&gt;\n\n&lt;p&gt;UI / Styling: Next.js, TailwindCSS, shadcn/ui&lt;/p&gt;\n\n&lt;p&gt;Authentication: better-auth (with a custom Steam plugin)&lt;/p&gt;\n\n&lt;p&gt;Database &amp;amp; Queues: PostgreSQL with pg-boss&lt;/p&gt;\n\n&lt;p&gt;Emails: AWS SES&lt;/p&gt;\n\n&lt;p&gt;Payments: Stripe&lt;/p&gt;\n\n&lt;p&gt;Observability: Pino.js + Loki transport + Grafana&lt;/p&gt;\n\n&lt;p&gt;The Technical Challenges&lt;/p&gt;\n\n&lt;h3&gt;1. Steam Authentication with better-auth&lt;/h3&gt;\n\n&lt;p&gt;Steam still relies on an ancient OpenID 2.0 implementation, which makes modern authentication a bit of a headache. We decided to use better-auth, but since there wasn&amp;#39;t an out-of-the-box solution for Steam, we had to write a custom Steam plugin for it. Getting the redirects, session state, and initial inventory sync to fire correctly without leaving the user hanging on a loading screen was an interesting challenge.&lt;/p&gt;\n\n&lt;h3&gt;2. Background Workers &amp;amp; Queueing (Without Redis)&lt;/h3&gt;\n\n&lt;p&gt;Our app doesn&amp;#39;t rely on users staring at heavy real-time dashboards. Instead, users configure watchlists, and our backend crunches the data. When an anomaly triggers, it dispatches an email alert. Instead of spinning up Redis for job queues, we opted for pg-boss, which uses PostgreSQL for background jobs. It allowed us to keep our infrastructure simple while effectively managing the massive amount of scheduled market scans and queuing up AWS SES email dispatches.&lt;/p&gt;\n\n&lt;h3&gt;3. Observability &amp;amp; Logging&lt;/h3&gt;\n\n&lt;p&gt;Because the core value of the app relies on background workers executing flawlessly, we needed solid visibility into our queues. We set up Pino.js with a Loki transport, feeding logs directly into Grafana dashboards. This lets us monitor worker health, track Steam API rate limits, and see when our anomaly engine triggers in real-time without constantly querying the database directly.&lt;/p&gt;\n\n&lt;p&gt;Did it actually work?&lt;/p&gt;\n\n&lt;p&gt;Surprisingly, yes. The algorithms have caught some pretty crazy spikes early, and the SES email dispatches have been landing right on time. For example, our system caught:&lt;/p&gt;\n\n&lt;p&gt;FAMAS | Survivor Z (FN): Flagged the accumulation phase right before it pumped 82%.&lt;/p&gt;\n\n&lt;p&gt;Sticker | BIG (Holo) | 2020 RMR: Caught it before a 47% spike in two days.&lt;/p&gt;\n\n&lt;p&gt;USP-S | Pathfinder (FN): Flagged before a 46% increase.&lt;/p&gt;\n\n&lt;p&gt;What’s next?&lt;/p&gt;\n\n&lt;p&gt;Right now, we are looking into how to handle marketing emails. We use React Email for templates, but we don&amp;#39;t know the best approach for going about promotions, new features etc. Is it best to create a new template for this and then send it out manually or should we set up a dedicated marketing system? Also curious if anyone else here has used pg-boss instead of Redis for job queues and how it scaled for you!&lt;/p&gt;\n\n&lt;p&gt;If you play CS and want to check out how we implemented the UI, the project is live at &lt;a href=\"https://cs-pump.com\"&gt;CSPump&lt;/a&gt;.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t4vg2u",
+    "title": "We removed all our animation library dependencies and reduced our bundle size by 90%",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/",
+    "author": "supportingthedogs",
+    "created_utc": 1778022242,
+    "score": 45,
+    "num_comments": 18,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?auto=webp&amp;s=e8a040bc9bf38b483bdf7c21ce2ff5914492a1b1",
+            "width": 1200,
+            "height": 630
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=0753fc4a102e9a93c80d268916a53a69e9f8d164",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=9ce5cabcddc409506827fcf7f3c4fbc089542c5b",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=180689942bbe55183c43f063673fe93fcfee572c",
+              "width": 320,
+              "height": 168
+            },
+            {
+              "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=3ed5449f7b1e20a3e6d7aa89f32017992b29ccbd",
+              "width": 640,
+              "height": 336
+            },
+            {
+              "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=c09ff922ad7dc022254c61d2c3de5686e9a22107",
+              "width": 960,
+              "height": 504
+            },
+            {
+              "url": "https://external-preview.redd.it/JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=58cb6cf744e3da43c2d77b8f6fbc4cdc2bb15b32",
+              "width": 1080,
+              "height": 567
+            }
+          ],
+          "variants": {},
+          "id": "JetmdJB_Un8JtxvY_rH3VXcquuG4-KuOetj1ciGawNw"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "We recently removed all our animation library dependencies and reduced our bundle size by 90%. With the rise of modern CSS and AI, it honestly seems you don't even really need these things anymore. I always found that if you needed to do anything remotely complex with any animation library, you'd have to use a escape hatch immediately - so why not write raw CSS and use your AI coding assistant to fetch common patterns?  \n  \n  \nWrote a full blog on my findings here: [https://frigade.com/blog/two-easing-curves-no-animation-library](https://frigade.com/blog/two-easing-curves-no-animation-library)",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;We recently removed all our animation library dependencies and reduced our bundle size by 90%. With the rise of modern CSS and AI, it honestly seems you don&amp;#39;t even really need these things anymore. I always found that if you needed to do anything remotely complex with any animation library, you&amp;#39;d have to use a escape hatch immediately - so why not write raw CSS and use your AI coding assistant to fetch common patterns?  &lt;/p&gt;\n\n&lt;p&gt;Wrote a full blog on my findings here: &lt;a href=\"https://frigade.com/blog/two-easing-curves-no-animation-library\"&gt;https://frigade.com/blog/two-easing-curves-no-animation-library&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t57go9",
+    "title": "React summit Amsterdam ticket",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t57go9/react_summit_amsterdam_ticket/",
+    "permalink": "/r/reactjs/comments/1t57go9/react_summit_amsterdam_ticket/",
+    "author": "mrplayfulll",
+    "created_utc": 1778058443,
+    "score": 2,
+    "num_comments": 4,
+    "media": null,
+    "secure_media": null,
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Hey all,\n\nI bought tickets to React Summit and JSNation in Amsterdam (June 11-16, 2026) and unfortunately can't make it anymore. The organizer (GitNation) doesn't do refunds, but tickets can be officially transferred via ti.to up until 15 days before the event.\n\nLooking to pass them on at 800 excl vat. I'm not trying to make a profit (GitNation's TOS doesn't allow resale for profit anyway, just transfer at cost).\n\nWhat I have:\n\n\\- React summit &amp; JS nation regular combo ticket.\n\n\\- Paid: €1028 incl vat\n\nHow the handover works: we get on a call (meet or teams) and do the handover together.\n\nDM if interested — first come, first served.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Hey all,&lt;/p&gt;\n\n&lt;p&gt;I bought tickets to React Summit and JSNation in Amsterdam (June 11-16, 2026) and unfortunately can&amp;#39;t make it anymore. The organizer (GitNation) doesn&amp;#39;t do refunds, but tickets can be officially transferred via ti.to up until 15 days before the event.&lt;/p&gt;\n\n&lt;p&gt;Looking to pass them on at 800 excl vat. I&amp;#39;m not trying to make a profit (GitNation&amp;#39;s TOS doesn&amp;#39;t allow resale for profit anyway, just transfer at cost).&lt;/p&gt;\n\n&lt;p&gt;What I have:&lt;/p&gt;\n\n&lt;p&gt;- React summit &amp;amp; JS nation regular combo ticket.&lt;/p&gt;\n\n&lt;p&gt;- Paid: €1028 incl vat&lt;/p&gt;\n\n&lt;p&gt;How the handover works: we get on a call (meet or teams) and do the handover together.&lt;/p&gt;\n\n&lt;p&gt;DM if interested — first come, first served.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  },
+  {
+    "id": "1t4ehug",
+    "title": "Debugging React is a skill. I built a place to practice it. (third post - here's what changed)",
+    "subreddit": "reactjs",
+    "thumbnail": "self",
+    "url": "https://www.reddit.com/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/",
+    "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/",
+    "author": "aksectraa",
+    "created_utc": 1777985356,
+    "score": 32,
+    "num_comments": 17,
+    "post_hint": "self",
+    "media": null,
+    "secure_media": null,
+    "preview": {
+      "images": [
+        {
+          "source": {
+            "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?auto=webp&amp;s=1e111cf403b2c7b0df47f79bc8f963790d816e7d",
+            "width": 1200,
+            "height": 630
+          },
+          "resolutions": [
+            {
+              "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?width=108&amp;crop=smart&amp;auto=webp&amp;s=93b0f918b3967040c9f1bb2203dbec1c389da334",
+              "width": 108,
+              "height": 56
+            },
+            {
+              "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?width=216&amp;crop=smart&amp;auto=webp&amp;s=21c49ff9069373e6d114bf95392ceb4aec6d8bab",
+              "width": 216,
+              "height": 113
+            },
+            {
+              "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?width=320&amp;crop=smart&amp;auto=webp&amp;s=bdc9c9d69eab777cd2caf2a48552fc52b92d312c",
+              "width": 320,
+              "height": 168
+            },
+            {
+              "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?width=640&amp;crop=smart&amp;auto=webp&amp;s=88e49739b10ce17f548510c213089bbd0981c1bf",
+              "width": 640,
+              "height": 336
+            },
+            {
+              "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?width=960&amp;crop=smart&amp;auto=webp&amp;s=62f04540aa97ec62c036fb2747a94a332755d83f",
+              "width": 960,
+              "height": 504
+            },
+            {
+              "url": "https://external-preview.redd.it/kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q.png?width=1080&amp;crop=smart&amp;auto=webp&amp;s=02de7b178bb89fa565678fed72a235833504b819",
+              "width": 1080,
+              "height": 567
+            }
+          ],
+          "variants": {},
+          "id": "kSm6DamOMDGJsU-_ty4Pl6r1R0JlxNEhs4CuyCuh26Q"
+        }
+      ],
+      "enabled": false
+    },
+    "is_video": false,
+    "is_self": true,
+    "selftext": "Posted this twice before. You flagged real things both times.\n\nWhat's fixed since April 21:\n\n* Hints no longer give away the answer - audited every kata\n* 25 → 39 kata, heavier bugs across the board\n* Solution tab now explains why the original code failed, not just what the correct version looks like\n* Auth and signup work properly now\n\nIf you haven't seen this before - BugDojo gives you a broken React component, live preview, and automated tests. Fix the root cause, not just the output.\n\nGuest mode if you just want to try it. Create an account to save progress.\n\n[thebugdojo.com](http://thebugdojo.com)\n\nCurious which kata actually makes you stop and think - or where the difficulty still feels off.",
+    "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;Posted this twice before. You flagged real things both times.&lt;/p&gt;\n\n&lt;p&gt;What&amp;#39;s fixed since April 21:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;Hints no longer give away the answer - audited every kata&lt;/li&gt;\n&lt;li&gt;25 → 39 kata, heavier bugs across the board&lt;/li&gt;\n&lt;li&gt;Solution tab now explains why the original code failed, not just what the correct version looks like&lt;/li&gt;\n&lt;li&gt;Auth and signup work properly now&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;If you haven&amp;#39;t seen this before - BugDojo gives you a broken React component, live preview, and automated tests. Fix the root cause, not just the output.&lt;/p&gt;\n\n&lt;p&gt;Guest mode if you just want to try it. Create an account to save progress.&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"http://thebugdojo.com\"&gt;thebugdojo.com&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;Curious which kata actually makes you stop and think - or where the difficulty still feels off.&lt;/p&gt;\n&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+    "type": "self",
+    "sample": true
+  }
+]
