@@ -26,7 +26,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 	const { ref, inView } = useInView({
 		triggerOnce: false,
 		threshold: 0.1,
-		rootMargin: "0px 400px 0px 300px",
+		rootMargin: "0px 300px 0px 200px",
 	});
 
 	useEffect(() => {
@@ -69,20 +69,30 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 							/>
 						) : !vidError ? (
 							inView ? (
-								<video
-									ref={videoRef}
-									autoPlay
-									muted
-									loop
-									playsInline
-									preload="none"
-									className={clsx(
-										"w-full h-full rounded-md",
-										isGif && !isPreview ? "object-contain" : "object-cover",
+								<div className="relative w-full h-full">
+									{previewImg && isPreview && (
+										<img
+											src={previewImg}
+											alt={post.title}
+											className="absolute inset-0 w-full h-full object-cover rounded-md"
+										/>
 									)}
-								>
-									<source src={src} type="video/mp4" />
-								</video>
+									<video
+										ref={videoRef}
+										autoPlay
+										muted
+										loop
+										playsInline
+										preload="none"
+										className={clsx(
+											"relative w-full h-full rounded-md",
+
+											isGif && !isPreview ? "object-contain" : "object-cover",
+										)}
+									>
+										<source src={src} type="video/mp4" />
+									</video>
+								</div>
 							) : // placeholder while out of view — keeps layout stable
 							previewImg ? (
 								<img
