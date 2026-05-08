@@ -23,37 +23,17 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 	const badge = isGif ? "GIF" : <Play size={14} />;
 	const isPreview = mode === MODE.preview;
 	const videoRef = useRef<HTMLVideoElement | null>(null);
-	const [hasLoaded, setHasLoaded] = useState(false);
 	const { ref, inView } = useInView({
 		triggerOnce: false,
-		threshold: 0.5,
+		threshold: 0.1,
+		rootMargin: "0px 400px 0px 300px",
 	});
 
 	useEffect(() => {
 		if (!isGif || !videoRef.current) return;
 
-		const vid = videoRef.current;
-
-		if (inView && !hasLoaded) {
-			setHasLoaded(true);
-		}
-
-		// Pause video when not in view
-		const timeout = setTimeout(() => {
-			const playPromise = inView ? vid.play() : Promise.resolve();
-			playPromise
-				.catch(() => {
-					if (!vidError) setVidError(true);
-				})
-				.then(() => {
-					if (!inView) vid.pause();
-				});
-		}, 50);
-
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, [inView, hasLoaded, vidError, isGif]);
+		videoRef.current.play().catch(() => setVidError(true));
+	}, [isGif]);
 
 	const fallback = post.url?.endsWith(".gifv")
 		? post.url.replace(".gifv", ".mp4")
@@ -71,6 +51,8 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 
 	const previewImg = getDecodedPreviewImage(post);
 
+	console.log(post.id, inView);
+
 	return (
 		<>
 			{!isGif && !isPreview && <FullVideoPlayer url={fullSrc} />}
@@ -86,26 +68,32 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 								loading="lazy"
 							/>
 						) : !vidError ? (
-							<>
-								{!hasLoaded && (
-									<p className="absolute inset-0 flex items-center justify-center text-neutral-400 italic text-sm">
-										Loading...
-									</p>
-								)}
+							inView ? (
 								<video
 									ref={videoRef}
 									autoPlay
 									muted
 									loop
 									playsInline
+									preload="none"
 									className={clsx(
 										"w-full h-full rounded-md",
 										isGif && !isPreview ? "object-contain" : "object-cover",
 									)}
 								>
-									{hasLoaded && <source src={src} type="video/mp4" />}
+									<source src={src} type="video/mp4" />
 								</video>
-							</>
+							) : // placeholder while out of view — keeps layout stable
+							previewImg ? (
+								<img
+									src={previewImg ?? ""}
+									alt={post.title}
+									className="w-full h-full object-cover rounded-md"
+									loading="lazy"
+								/>
+							) : (
+								<div className="w-full h-full bg-neutral-900 rounded-md" />
+							)
 						) : null}
 						{vidError &&
 							(!isPreview ? (

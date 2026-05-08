@@ -47,7 +47,6 @@ const PostContainer = ({
 	const [removePending] = useRemovePendingRequestMutation();
 	const { data, isLoading, error, isError, refetch } =
 		useFetchPostsBySubredditQuery(subreddit.name, {
-			//skip: !inView,
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
 			refetchOnFocus: false,
