@@ -24,7 +24,6 @@ import { BAN_DURATION_MS } from "../../utils/types";
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
 	author: "[deleted]",
-	body: "",
 	body_html: "",
 	distinguished: "moderator",
 	score: 0,
@@ -38,7 +37,6 @@ const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 const refineComments = (comment: RedditComment): RefinedCommentBase => ({
 	id: comment.id,
 	author: comment.author,
-	body: comment.body,
 	body_html: comment.body_html,
 	distinguished: comment.distinguished,
 	score: comment.score,

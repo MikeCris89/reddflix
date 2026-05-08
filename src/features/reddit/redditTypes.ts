@@ -11,7 +11,6 @@ export interface RedditPostAndComments {
 export interface RedditComment {
 	id: string;
 	author: string;
-	body: string;
 	body_html: string;
 	score: number;
 	is_submitter: boolean;
@@ -32,7 +31,6 @@ export interface RedditComment {
 export interface RefinedCommentBase {
 	id: string;
 	author: string;
-	body: string;
 	body_html: string;
 	distinguished: "moderator" | "admin" | "special" | null;
 	score: number;

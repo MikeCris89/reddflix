@@ -40,7 +40,6 @@ function refineComment(
 	return {
 		id: comment.id,
 		author: comment.author,
-		body: comment.body,
 		body_html: comment.body_html,
 		score: comment.score,
 		is_submitter: comment.is_submitter,
