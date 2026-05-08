@@ -1,10 +1,133 @@
 [
   {
+    "id": "okgyxi6",
+    "author": "AlmightyLarcener",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’m completely in the same situation. PRs with 2000 line changes. One of them contains Sentry.io, even though we do not use it. Every response is from Claude, I don’t even argue any more.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 233,
+    "is_submitter": false,
+    "created_utc": 1778170178,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okgyxi6/",
+    "replies": [
+      {
+        "id": "okh7gk5",
+        "author": "ModernLarvals",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I hope you mean you don’t argue and just immediately reject those PRs.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 82,
+        "is_submitter": false,
+        "created_utc": 1778172448,
+        "distinguished": null,
+        "parent_id": "t1_okgyxi6",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7gk5/",
+        "replies": [
+          {
+            "id": "okh7u6c",
+            "author": "AlmightyLarcener",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I ignore them. But my other teammate is being spammed and he does review them. But still, when you have 2000 line changes you miss stupid things. I plan to setup SonarQube next week and automatically block PRs with rules.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 67,
+            "is_submitter": false,
+            "created_utc": 1778172545,
+            "distinguished": null,
+            "parent_id": "t1_okh7gk5",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7u6c/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "oki8fwy",
+        "author": "chrisnlnz",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;One simple rule. The developer that&amp;#39;s generated code via prompts is responsible for the code, and they have to have reviewed and tested it before they ask anyone else for code review. Otherwise you are just asking others to do the work for you.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 37,
+        "is_submitter": false,
+        "created_utc": 1778182311,
+        "distinguished": null,
+        "parent_id": "t1_okgyxi6",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki8fwy/",
+        "replies": [
+          {
+            "id": "okk6f9p",
+            "author": "AccurateSun",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yes they have to be the one to test it, asking humans to test shit you vibe slopped is beyond disrespectful.&lt;/p&gt;\n\n&lt;p&gt;Rule 2: you shouldn’t be allowed to paste Claude messages in response to a human message. Rewrite it in your own words so I know what &lt;em&gt;you&lt;/em&gt; think &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 14,
+            "is_submitter": false,
+            "created_utc": 1778205022,
+            "distinguished": null,
+            "parent_id": "t1_oki8fwy",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okk6f9p/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okhkq5r",
+        "author": "shut_the_drawer",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thats an imediate reject.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 13,
+        "is_submitter": false,
+        "created_utc": 1778175914,
+        "distinguished": null,
+        "parent_id": "t1_okgyxi6",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhkq5r/",
+        "replies": []
+      },
+      {
+        "id": "oki3ms9",
+        "author": "nikolaz90",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;3000+ line PR this week... All in 2 commits. Contains many calls to bugsnag... We don&amp;#39;t use bugsnag...&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 9,
+        "is_submitter": false,
+        "created_utc": 1778180996,
+        "distinguished": null,
+        "parent_id": "t1_okgyxi6",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki3ms9/",
+        "replies": []
+      },
+      {
+        "id": "okh6by2",
+        "author": "comoEstas714",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That&amp;#39;s on you and your team. You can&amp;#39;t let PRs like that merge regardless of who or what wrote it. What is your review process? Where are the gates?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 9,
+        "is_submitter": false,
+        "created_utc": 1778172148,
+        "distinguished": null,
+        "parent_id": "t1_okgyxi6",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh6by2/",
+        "replies": [
+          {
+            "id": "okhg4bw",
+            "author": "shoe788",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Theres so many mediocre devs at your typical company unless you have a good EM backing you up you start to look like a trouble maker rejecting so many people&amp;#39;s slop. Pre-AI these devs were slow so you could limit their damage. Now these apes are essentially weaponized&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 12,
+            "is_submitter": false,
+            "created_utc": 1778174704,
+            "distinguished": null,
+            "parent_id": "t1_okh6by2",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhg4bw/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okijkcd",
+        "author": "MrHandSanitization",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We used to have 2k line changes regularly. Feature rewrites tend to boil up guickly, especially going from legacy code to new standards. But we had a ~300k lines PR recently from our new manager.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": false,
+        "created_utc": 1778185375,
+        "distinguished": null,
+        "parent_id": "t1_okgyxi6",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okijkcd/",
+        "replies": []
+      }
+    ]
+  },
+  {
     "id": "okh09lm",
     "author": "wastapunk",
-    "body": "I am also dealing with this. The vibe coding is crazy but why really really grinds my gears is the part where you said he copy and pasted a response from Claude to respond to your question. I deal with this also and I find it totally rude. I don’t want to talk to your agent, I want to talk to you. I have not yet come up with a response that is both diplomatic and explains my anger. \n\nIn all honesty, what can I say in response to this? All I want is a human written portion that distills what you learned from the agent response.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I am also dealing with this. The vibe coding is crazy but why really really grinds my gears is the part where you said he copy and pasted a response from Claude to respond to your question. I deal with this also and I find it totally rude. I don’t want to talk to your agent, I want to talk to you. I have not yet come up with a response that is both diplomatic and explains my anger. &lt;/p&gt;\n\n&lt;p&gt;In all honesty, what can I say in response to this? All I want is a human written portion that distills what you learned from the agent response.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 130,
+    "score": 229,
     "is_submitter": false,
     "created_utc": 1778170532,
     "distinguished": null,
@@ -14,9 +137,8 @@
       {
         "id": "okh25f0",
         "author": "LivingAsAMean",
-        "body": "I use AI as an advanced rubber duck and to play devil's advocate. I can't imagine replying to another human by using a fully generated response. Gives me shivers.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I use AI as an advanced rubber duck and to play devil&amp;#39;s advocate. I can&amp;#39;t imagine replying to another human by using a fully generated response. Gives me shivers.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 62,
+        "score": 99,
         "is_submitter": false,
         "created_utc": 1778171031,
         "distinguished": null,
@@ -24,11 +146,22 @@
         "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh25f0/",
         "replies": [
           {
+            "id": "oki989i",
+            "author": "gbeaglez",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;There is someone in my group at work that when they have to speak in a meeting just prompts for what to say and reads it off exactly word for word like a politician from a teleprompter. They used to talk normally in meetings. The whole thing is super surreal. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 25,
+            "is_submitter": false,
+            "created_utc": 1778182528,
+            "distinguished": null,
+            "parent_id": "t1_okh25f0",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki989i/",
+            "replies": []
+          },
+          {
             "id": "oki97n4",
             "author": "chumbaz",
-            "body": "At what point do people not realize if you’re just the middle man between person A and the AI that they don’t need you if you’re just using it to respond too. It’s insane how myopic these folks are. ",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;At what point do people not realize if you’re just the middle man between person A and the AI that they don’t need you if you’re just using it to respond too. It’s insane how myopic these folks are. &lt;/p&gt;\n&lt;/div&gt;",
-            "score": 13,
+            "score": 23,
             "is_submitter": false,
             "created_utc": 1778182523,
             "distinguished": null,
@@ -37,16 +170,39 @@
             "replies": []
           },
           {
-            "id": "oki989i",
-            "author": "gbeaglez",
-            "body": "There is someone in my group at work that when they have to speak in a meeting just prompts for what to say and reads it off exactly word for word like a politician from a teleprompter. They used to talk normally in meetings. The whole thing is super surreal. ",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;There is someone in my group at work that when they have to speak in a meeting just prompts for what to say and reads it off exactly word for word like a politician from a teleprompter. They used to talk normally in meetings. The whole thing is super surreal. &lt;/p&gt;\n&lt;/div&gt;",
+            "id": "okjfv6j",
+            "author": "Waxmaker",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It sounds like you work with intelligent people, and I envy you. I, all too frequently, find it useful as a business-speak fuck-you like &amp;quot;Re my last email...&amp;quot;. Did I just run your dumb question through an AI to answer it? Yes, I did. Could you have done the same instead of wasting my time with it? Yes, you damn well could have but you didn&amp;#39;t, did you, so here we are.&lt;/p&gt;\n&lt;/div&gt;",
             "score": 3,
             "is_submitter": false,
-            "created_utc": 1778182528,
+            "created_utc": 1778195071,
             "distinguished": null,
             "parent_id": "t1_okh25f0",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki989i/",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okjfv6j/",
+            "replies": []
+          },
+          {
+            "id": "okk14r3",
+            "author": "dustinechos",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Every time I ask Claude to summarize things for creating an Asana task or whatever I immediately regret it. It&amp;#39;s so verbose and I spend more time editing than I would have writing it myself (which I usually end up doing after wasting time). &lt;/p&gt;\n\n&lt;p&gt;It kind of works when I write my own description and ask if I left anything or but even then I rarely use half the suggestions. It&amp;#39;s only good at making docs that no one will read. Tech debt generator all the way down&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778203027,
+            "distinguished": null,
+            "parent_id": "t1_okh25f0",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okk14r3/",
+            "replies": []
+          },
+          {
+            "id": "okkx3v2",
+            "author": "Eternality",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You are absolutely right. Copy this into reddit now; &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778215888,
+            "distinguished": null,
+            "parent_id": "t1_okh25f0",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okkx3v2/",
             "replies": []
           }
         ]
@@ -54,9 +210,8 @@
       {
         "id": "okhis0n",
         "author": "analbumcover",
-        "body": "I'm blunt with people. I have already had to tell people \"if I wanted $LLM's opinion, I can get that myself. I asked you and not it for a reason. I want your personal opinion in your own words based on your contextual knowledge and not a copy/pasted prompt. I will be ignoring similar copy/pasted responses from you moving forward.\" Sometimes it works, sometimes it doesn't. YMMV depending on your work environment.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I&amp;#39;m blunt with people. I have already had to tell people &amp;quot;if I wanted $LLM&amp;#39;s opinion, I can get that myself. I asked you and not it for a reason. I want your personal opinion in your own words based on your contextual knowledge and not a copy/pasted prompt. I will be ignoring similar copy/pasted responses from you moving forward.&amp;quot; Sometimes it works, sometimes it doesn&amp;#39;t. YMMV depending on your work environment.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 26,
+        "score": 39,
         "is_submitter": false,
         "created_utc": 1778175403,
         "distinguished": null,
@@ -66,14 +221,25 @@
           {
             "id": "okhka4l",
             "author": "Basic-Lobster3603",
-            "body": "in my work environment asking a human is bad. we really need to challenge the llms to provide us the answer we need. I was basically told to rely on AI for technical questions even if the person has the answer already.  it's so dumb",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;in my work environment asking a human is bad. we really need to challenge the llms to provide us the answer we need. I was basically told to rely on AI for technical questions even if the person has the answer already.  it&amp;#39;s so dumb&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 3,
+            "score": 7,
             "is_submitter": false,
             "created_utc": 1778175798,
             "distinguished": null,
             "parent_id": "t1_okhis0n",
             "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhka4l/",
+            "replies": []
+          },
+          {
+            "id": "okjgqmd",
+            "author": "stumblinbear",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;&amp;quot;... Did you seriously just reply to me using an LLM? Are you kidding me?&amp;quot; is all I had to say to get them to knock that shit off &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778195370,
+            "distinguished": null,
+            "parent_id": "t1_okhis0n",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okjgqmd/",
             "replies": []
           }
         ]
@@ -81,9 +247,8 @@
       {
         "id": "okhl7c1",
         "author": "slickwombat",
-        "body": "We have basically banned any LLM-generated writing in my company. At first it was just for anything to be shared externally (especially with clients), but we quickly realized all the same considerations apply internally too:\n\n- It's always excessively long relative to the amount of actual information conveyed, which wastes everyone's time.\n- Its tone -- which I'd describe as \"very obsequious, discursive, and unnecessarily pedantic book report\" -- is usually inappropriate for business or technical discussions.\n- It can indicate an insulting dismissiveness/lack of effort by the sender. Sort of like sending a URL for google search results in response to a question.\n- Most significantly of all: since there's no way to know if a human subject matter expert has carefully reviewed it, one must assume none has, and therefore not trust any information conveyed. If an SME has reviewed it, they can summarize and avoid all of the problems mentioned above.\n\nI'd far rather get something in broken English from an ESL dev or -- even worse -- something from an native-English-speaking MBA than an AI writeup. Most people feel the same.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We have basically banned any LLM-generated writing in my company. At first it was just for anything to be shared externally (especially with clients), but we quickly realized all the same considerations apply internally too:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;It&amp;#39;s always excessively long relative to the amount of actual information conveyed, which wastes everyone&amp;#39;s time.&lt;/li&gt;\n&lt;li&gt;Its tone -- which I&amp;#39;d describe as &amp;quot;very obsequious, discursive, and unnecessarily pedantic book report&amp;quot; -- is usually inappropriate for business or technical discussions.&lt;/li&gt;\n&lt;li&gt;It can indicate an insulting dismissiveness/lack of effort by the sender. Sort of like sending a URL for google search results in response to a question.&lt;/li&gt;\n&lt;li&gt;Most significantly of all: since there&amp;#39;s no way to know if a human subject matter expert has carefully reviewed it, one must assume none has, and therefore not trust any information conveyed. If an SME has reviewed it, they can summarize and avoid all of the problems mentioned above.&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;I&amp;#39;d far rather get something in broken English from an ESL dev or -- even worse -- something from an native-English-speaking MBA than an AI writeup. Most people feel the same.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 20,
+        "score": 39,
         "is_submitter": false,
         "created_utc": 1778176039,
         "distinguished": null,
@@ -93,9 +258,8 @@
           {
             "id": "okips8q",
             "author": "lanerdofchristian",
-            "body": "&gt; I'd far rather get something in broken English from an ESL dev\n\nOftentimes I find broken technical English to be even better than the standard variety anyway; you can usually needle out what the writer intended to say. Even just passing that through an AI filter, not even yet to the point of fully-generated text, loses so much context and nuance (on top of the respect issue).",
             "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;I&amp;#39;d far rather get something in broken English from an ESL dev&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;Oftentimes I find broken technical English to be even better than the standard variety anyway; you can usually needle out what the writer intended to say. Even just passing that through an AI filter, not even yet to the point of fully-generated text, loses so much context and nuance (on top of the respect issue).&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 1,
+            "score": 8,
             "is_submitter": false,
             "created_utc": 1778187093,
             "distinguished": null,
@@ -108,9 +272,8 @@
       {
         "id": "okhyxeg",
         "author": "SunEconomy3251",
-        "body": "\"the part where you said he copy and pasted a response from Claude to respond to your question\"\n\nThat screams 0 understanding of underlying code &amp; infra. No idea how those people get hired in the first place",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;&amp;quot;the part where you said he copy and pasted a response from Claude to respond to your question&amp;quot;&lt;/p&gt;\n\n&lt;p&gt;That screams 0 understanding of underlying code &amp;amp; infra. No idea how those people get hired in the first place&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 11,
+        "score": 15,
         "is_submitter": false,
         "created_utc": 1778179736,
         "distinguished": null,
@@ -120,14 +283,25 @@
           {
             "id": "oki41ng",
             "author": "BabylonByBoobies",
-            "body": "Because hiring has this bias for AI people now",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Because hiring has this bias for AI people now&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 6,
+            "score": 14,
             "is_submitter": false,
             "created_utc": 1778181109,
             "distinguished": null,
             "parent_id": "t1_okhyxeg",
             "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki41ng/",
+            "replies": []
+          },
+          {
+            "id": "okkztdj",
+            "author": "selucram",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I&amp;#39;m currently reading a bunch of job offers now, and they&amp;#39;ve recently started to include, on top of &amp;quot;needs a bajillion years of experience as X with framework Y&amp;quot;, &amp;quot;has experience with AI Tooling and AI Agents&amp;quot;; which is how those people get in. In particular I saw one egregious job offer that weighed the actual experience at overall 60% contributing to a hiring decision and &amp;quot;AI Knowledge&amp;quot; at 40%. This already says all you need to know about the current state of mind of those hiring and HR personnel, if they&amp;#39;re almost making it a 50/50 decision between someone with actual real experience and someone how&amp;#39;s offloading all his thinking.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778217160,
+            "distinguished": null,
+            "parent_id": "t1_okhyxeg",
+            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okkztdj/",
             "replies": []
           }
         ]
@@ -135,9 +309,8 @@
       {
         "id": "okhk5e5",
         "author": "Adamzxd",
-        "body": "It’s not just rude — it’s a bad vibe.\n\nAnd honestly? That difference is all that matters.\n\n🦧🦧🦧",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It’s not just rude — it’s a bad vibe.&lt;/p&gt;\n\n&lt;p&gt;And honestly? That difference is all that matters.&lt;/p&gt;\n\n&lt;p&gt;🦧🦧🦧&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 11,
+        "score": 19,
         "is_submitter": false,
         "created_utc": 1778175763,
         "distinguished": null,
@@ -147,9 +320,8 @@
           {
             "id": "okht68u",
             "author": "jmbits",
-            "body": "Bravo Vince ",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Bravo Vince &lt;/p&gt;\n&lt;/div&gt;",
-            "score": 3,
+            "score": 6,
             "is_submitter": false,
             "created_utc": 1778178162,
             "distinguished": null,
@@ -162,7 +334,6 @@
       {
         "id": "okhzme0",
         "author": "Bushwazi",
-        "body": "Great question ",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Great question &lt;/p&gt;\n&lt;/div&gt;",
         "score": 2,
         "is_submitter": false,
@@ -173,163 +344,15 @@
         "replies": []
       },
       {
-        "id": "oki7hx1",
-        "author": "the_ai_wizard",
-        "body": "i just echo my AIs response back. works wonderfully. \n\n(throw their reply or code into AI and send back equal low effort response)",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;i just echo my AIs response back. works wonderfully. &lt;/p&gt;\n\n&lt;p&gt;(throw their reply or code into AI and send back equal low effort response)&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
+        "id": "okj8fgh",
+        "author": "m2thek",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I don&amp;#39;t use AI, but I have to deal with people using AI, and this to me sends me the message &amp;quot;I&amp;#39;m tapping out; you deal with this on your own.&amp;quot; It&amp;#39;s incredibly rude and immediately makes me lose all respect for the other person. If I want to ask AI what they think of the problem, I can do that; I don&amp;#39;t need to ask you what your opinion is and then you be a middleman to AI.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
         "is_submitter": false,
-        "created_utc": 1778182052,
+        "created_utc": 1778192619,
         "distinguished": null,
         "parent_id": "t1_okh09lm",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki7hx1/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okgyxi6",
-    "author": "AlmightyLarcener",
-    "body": "I’m completely in the same situation. PRs with 2000 line changes. One of them contains Sentry.io, even though we do not use it. Every response is from Claude, I don’t even argue any more.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’m completely in the same situation. PRs with 2000 line changes. One of them contains Sentry.io, even though we do not use it. Every response is from Claude, I don’t even argue any more.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 74,
-    "is_submitter": false,
-    "created_utc": 1778170178,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okgyxi6/",
-    "replies": [
-      {
-        "id": "okh7gk5",
-        "author": "ModernLarvals",
-        "body": "I hope you mean you don’t argue and just immediately reject those PRs.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I hope you mean you don’t argue and just immediately reject those PRs.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 22,
-        "is_submitter": false,
-        "created_utc": 1778172448,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7gk5/",
-        "replies": [
-          {
-            "id": "okh7u6c",
-            "author": "AlmightyLarcener",
-            "body": "I ignore them. But my other teammate is being spammed and he does review them. But still, when you have 2000 line changes you miss stupid things. I plan to setup SonarQube next week and automatically block PRs with rules.",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I ignore them. But my other teammate is being spammed and he does review them. But still, when you have 2000 line changes you miss stupid things. I plan to setup SonarQube next week and automatically block PRs with rules.&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 21,
-            "is_submitter": false,
-            "created_utc": 1778172545,
-            "distinguished": null,
-            "parent_id": "t1_okh7gk5",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7u6c/",
-            "replies": []
-          }
-        ]
-      },
-      {
-        "id": "okhkq5r",
-        "author": "shut_the_drawer",
-        "body": "Thats an imediate reject.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thats an imediate reject.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 6,
-        "is_submitter": false,
-        "created_utc": 1778175914,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhkq5r/",
-        "replies": []
-      },
-      {
-        "id": "oki3ms9",
-        "author": "nikolaz90",
-        "body": "3000+ line PR this week... All in 2 commits. Contains many calls to bugsnag... We don't use bugsnag...",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;3000+ line PR this week... All in 2 commits. Contains many calls to bugsnag... We don&amp;#39;t use bugsnag...&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 3,
-        "is_submitter": false,
-        "created_utc": 1778180996,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki3ms9/",
-        "replies": []
-      },
-      {
-        "id": "okh6by2",
-        "author": "comoEstas714",
-        "body": "That's on you and your team. You can't let PRs like that merge regardless of who or what wrote it. What is your review process? Where are the gates?",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That&amp;#39;s on you and your team. You can&amp;#39;t let PRs like that merge regardless of who or what wrote it. What is your review process? Where are the gates?&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 4,
-        "is_submitter": false,
-        "created_utc": 1778172148,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh6by2/",
-        "replies": [
-          {
-            "id": "okhg4bw",
-            "author": "shoe788",
-            "body": "Theres so many mediocre devs at your typical company unless you have a good EM backing you up you start to look like a trouble maker rejecting so many people's slop. Pre-AI these devs were slow so you could limit their damage. Now these apes are essentially weaponized",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Theres so many mediocre devs at your typical company unless you have a good EM backing you up you start to look like a trouble maker rejecting so many people&amp;#39;s slop. Pre-AI these devs were slow so you could limit their damage. Now these apes are essentially weaponized&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 8,
-            "is_submitter": false,
-            "created_utc": 1778174704,
-            "distinguished": null,
-            "parent_id": "t1_okh6by2",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhg4bw/",
-            "replies": []
-          }
-        ]
-      },
-      {
-        "id": "okhzgx7",
-        "author": "Bushwazi",
-        "body": "Have you guys setup a PR agent with a review.md? I’m trying to roll that out on some work in hopes of avoiding bs like that. My big bullet thus far is test changed match code changes because my first big PR I had to review had a huge section of the tests skipped because “they didn’t work”. ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Have you guys setup a PR agent with a review.md? I’m trying to roll that out on some work in hopes of avoiding bs like that. My big bullet thus far is test changed match code changes because my first big PR I had to review had a huge section of the tests skipped because “they didn’t work”. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778179882,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhzgx7/",
-        "replies": [
-          {
-            "id": "okhzt7t",
-            "author": "AlmightyLarcener",
-            "body": "Yeah we do, does not help. Shit load of comments even though I written there to not put any. Same with changes.",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah we do, does not help. Shit load of comments even though I written there to not put any. Same with changes.&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 2,
-            "is_submitter": false,
-            "created_utc": 1778179972,
-            "distinguished": null,
-            "parent_id": "t1_okhzgx7",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhzt7t/",
-            "replies": []
-          }
-        ]
-      },
-      {
-        "id": "oki8fwy",
-        "author": "chrisnlnz",
-        "body": "One simple rule. The developer that's generated code via prompts is responsible for the code, and they have to have reviewed and tested it before they ask anyone else for code review. Otherwise you are just asking others to do the work for you.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;One simple rule. The developer that&amp;#39;s generated code via prompts is responsible for the code, and they have to have reviewed and tested it before they ask anyone else for code review. Otherwise you are just asking others to do the work for you.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778182311,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki8fwy/",
-        "replies": []
-      },
-      {
-        "id": "okijkcd",
-        "author": "MrHandSanitization",
-        "body": "We used to have 2k line changes regularly. Feature rewrites tend to boil up guickly, especially going from legacy code to new standards. But we had a ~300k lines PR recently from our new manager.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We used to have 2k line changes regularly. Feature rewrites tend to boil up guickly, especially going from legacy code to new standards. But we had a ~300k lines PR recently from our new manager.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778185375,
-        "distinguished": null,
-        "parent_id": "t1_okgyxi6",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okijkcd/",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okj8fgh/",
         "replies": []
       }
     ]
@@ -337,9 +360,8 @@
   {
     "id": "okh7fjy",
     "author": "shakjj",
-    "body": "Sounds like YOU are vibecoding (by working with him). He is just a proxy. Sad to see people comfortable on that role.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Sounds like YOU are vibecoding (by working with him). He is just a proxy. Sad to see people comfortable on that role.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 19,
+    "score": 70,
     "is_submitter": false,
     "created_utc": 1778172441,
     "distinguished": null,
@@ -349,9 +371,8 @@
       {
         "id": "okhnooh",
         "author": "WJMazepas",
-        "body": "Yep, he prompts, show me something and then i have to check and tell what to change it. They could cut his job, give me his salary and i would deliver what he is delivering just fine",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yep, he prompts, show me something and then i have to check and tell what to change it. They could cut his job, give me his salary and i would deliver what he is delivering just fine&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 7,
+        "score": 25,
         "is_submitter": true,
         "created_utc": 1778176685,
         "distinguished": null,
@@ -361,39 +382,122 @@
           {
             "id": "okiokh2",
             "author": "v3gard",
-            "body": "True, but the company wants security. They dont want to invest in you because that gives you leverage. They want to manage the risk. \n\nOnce you've trained him good enough to do your job (with the LLM) the managers are going to ask why you should be paid more than him. \n\nAt that point it's just capitalism.\n\nI recommend that you learn using Claude yourself. If your company is called Acme, make a acme-skills npm project that can be installed in frontend repositories that explains what the company standard is (and what preferred libraries are).\n\nIf that makes new junior developers create better code with Claude, you can use that to your advantage by telling the managers you are making the company use AI more efficient.",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;True, but the company wants security. They dont want to invest in you because that gives you leverage. They want to manage the risk. &lt;/p&gt;\n\n&lt;p&gt;Once you&amp;#39;ve trained him good enough to do your job (with the LLM) the managers are going to ask why you should be paid more than him. &lt;/p&gt;\n\n&lt;p&gt;At that point it&amp;#39;s just capitalism.&lt;/p&gt;\n\n&lt;p&gt;I recommend that you learn using Claude yourself. If your company is called Acme, make a acme-skills npm project that can be installed in frontend repositories that explains what the company standard is (and what preferred libraries are).&lt;/p&gt;\n\n&lt;p&gt;If that makes new junior developers create better code with Claude, you can use that to your advantage by telling the managers you are making the company use AI more efficient.&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 1,
+            "score": 9,
             "is_submitter": false,
             "created_utc": 1778186756,
             "distinguished": null,
             "parent_id": "t1_okhnooh",
             "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okiokh2/",
             "replies": []
-          },
-          {
-            "id": "okhr12c",
-            "author": "AlphaBeast28",
-            "body": "👀👀👀👀",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;👀👀👀👀&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 0,
-            "is_submitter": false,
-            "created_utc": 1778177580,
-            "distinguished": null,
-            "parent_id": "t1_okhnooh",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhr12c/",
-            "replies": []
           }
         ]
+      },
+      {
+        "id": "okjd539",
+        "author": "Serengade26",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Executives were the original vibecoders&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778194171,
+        "distinguished": null,
+        "parent_id": "t1_okh7fjy",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okjd539/",
+        "replies": []
       }
     ]
   },
   {
+    "id": "okh7wfj",
+    "author": "GASd-",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;people shipping code without any architectural considerations are nightmares&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 33,
+    "is_submitter": false,
+    "created_utc": 1778172562,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7wfj/",
+    "replies": []
+  },
+  {
+    "id": "okhfec9",
+    "author": "-no_aura-",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Drives me crazy. Like hey, I actually also want to write code. I didn’t sign up to review vibe coded slop for 40 hours a week.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 21,
+    "is_submitter": false,
+    "created_utc": 1778174516,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhfec9/",
+    "replies": [
+      {
+        "id": "okmeloq",
+        "author": "SuperFLEB",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Right! Once again, it takes the fun part and leaves the drudgery.&lt;/p&gt;\n\n&lt;p&gt;(It makes me wonder how much of it is kind of a &amp;quot;Superman would be most useful spinning a turbine&amp;quot; problem, where solving the fun part imperfectly is so impressive that it gets the attention and development while the dull problems linger.)&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778241148,
+        "distinguished": null,
+        "parent_id": "t1_okhfec9",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okmeloq/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okh0i8u",
+    "author": "BigDickedAngel",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Track number of merge request requiring revisions by person.  Show the uneven metric.  If 98% of his MRs require revision and everyone else is at 10%...you may as well just cut him out and work directly with his AI lol &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 46,
+    "is_submitter": false,
+    "created_utc": 1778170596,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh0i8u/",
+    "replies": [
+      {
+        "id": "oki5189",
+        "author": "TheLatantha",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This exact metric is how I recently got a useless vibe coding consultant offboarded from my project. I spent more time reviewing than they spent spewing slop&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 14,
+        "is_submitter": false,
+        "created_utc": 1778181378,
+        "distinguished": null,
+        "parent_id": "t1_okh0i8u",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki5189/",
+        "replies": []
+      },
+      {
+        "id": "okjfya8",
+        "author": "allveggiesnoeggs_",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Underrated comment&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": false,
+        "created_utc": 1778195099,
+        "distinguished": null,
+        "parent_id": "t1_okh0i8u",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okjfya8/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhg360",
+    "author": "chervilious",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Working with vibe coders is just making you vibe codes with a human API. &lt;/p&gt;\n\n&lt;p&gt;For every PR that felt vibe coded I always asked them to walk through the code with me live.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 16,
+    "is_submitter": false,
+    "created_utc": 1778174696,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhg360/",
+    "replies": []
+  },
+  {
     "id": "okgy4bp",
     "author": "[deleted]",
-    "body": "[removed]",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;[removed]&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 124,
+    "score": 119,
     "is_submitter": false,
     "created_utc": 1778169963,
     "distinguished": null,
@@ -403,9 +507,8 @@
       {
         "id": "okh57v1",
         "author": "ShawnyMcKnight",
-        "body": "Yup, probably has no clue what he is doing but still makes 6 figures.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yup, probably has no clue what he is doing but still makes 6 figures.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 27,
+        "score": 32,
         "is_submitter": false,
         "created_utc": 1778171853,
         "distinguished": null,
@@ -415,27 +518,13 @@
           {
             "id": "okhizx5",
             "author": "eyebrows360",
-            "body": "&gt; We are also offshore developers\n\nNot likely!",
             "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;We are also offshore developers&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;Not likely!&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 10,
+            "score": 12,
             "is_submitter": false,
             "created_utc": 1778175460,
             "distinguished": null,
             "parent_id": "t1_okh57v1",
             "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhizx5/",
-            "replies": []
-          },
-          {
-            "id": "okhe0g8",
-            "author": "icyhotmike",
-            "body": "Facts ",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Facts &lt;/p&gt;\n&lt;/div&gt;",
-            "score": 1,
-            "is_submitter": false,
-            "created_utc": 1778174160,
-            "distinguished": null,
-            "parent_id": "t1_okh57v1",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhe0g8/",
             "replies": []
           }
         ]
@@ -443,9 +532,8 @@
       {
         "id": "oki1az5",
         "author": "Hands",
-        "body": "This is an ad, clever to edit in the bullshit after the comment gets traction",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is an ad, clever to edit in the bullshit after the comment gets traction&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 11,
+        "score": 12,
         "is_submitter": false,
         "created_utc": 1778180366,
         "distinguished": null,
@@ -455,9 +543,8 @@
           {
             "id": "oki4ib3",
             "author": "GenuineNiceGuy1",
-            "body": "And there's nothing visible on the profile. Nice.",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;And there&amp;#39;s nothing visible on the profile. Nice.&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 2,
+            "score": 3,
             "is_submitter": false,
             "created_utc": 1778181236,
             "distinguished": null,
@@ -470,9 +557,8 @@
       {
         "id": "okhbi52",
         "author": "blinksTooLess",
-        "body": "So instead of a Project Manager and Scrum Master, we will get an LLM Manager instead?",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;So instead of a Project Manager and Scrum Master, we will get an LLM Manager instead?&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 6,
+        "score": 8,
         "is_submitter": false,
         "created_utc": 1778173502,
         "distinguished": null,
@@ -483,7 +569,6 @@
       {
         "id": "oki3aln",
         "author": "heythisispaul",
-        "body": "I use AI plenty at work. There's some good and some bad, but I have had experiences like this as well. I was on a project recently where the project lead was operating like this. They would open giant Claude-written PRs, I spend all the time reviewing and requesting changes to the code. It's really just me talking to Claude, under the hood. It's a long, uphill battle to get things in a mergable state.\n\nThey get to claim \"how easy it was\" to get work done with AI, have their name on all the PRs, and talk about it in meetings. In reality, it's just a displacement of effort.\n\nWe had to finally have a conversation about this not being sustainable when this person called for a meeting to discuss adding a new feature requested by the business where I had to explain that 1) we already have that feature available in the application and 2) it's troubling that they didn't know that because they were the one who opened and merged the PR to add it.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I use AI plenty at work. There&amp;#39;s some good and some bad, but I have had experiences like this as well. I was on a project recently where the project lead was operating like this. They would open giant Claude-written PRs, I spend all the time reviewing and requesting changes to the code. It&amp;#39;s really just me talking to Claude, under the hood. It&amp;#39;s a long, uphill battle to get things in a mergable state.&lt;/p&gt;\n\n&lt;p&gt;They get to claim &amp;quot;how easy it was&amp;quot; to get work done with AI, have their name on all the PRs, and talk about it in meetings. In reality, it&amp;#39;s just a displacement of effort.&lt;/p&gt;\n\n&lt;p&gt;We had to finally have a conversation about this not being sustainable when this person called for a meeting to discuss adding a new feature requested by the business where I had to explain that 1) we already have that feature available in the application and 2) it&amp;#39;s troubling that they didn&amp;#39;t know that because they were the one who opened and merged the PR to add it.&lt;/p&gt;\n&lt;/div&gt;",
         "score": 3,
         "is_submitter": false,
@@ -496,24 +581,47 @@
     ]
   },
   {
-    "id": "okh7wfj",
-    "author": "GASd-",
-    "body": "people shipping code without any architectural considerations are nightmares",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;people shipping code without any architectural considerations are nightmares&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 14,
+    "id": "okgzssm",
+    "author": "tomhermans",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;No matter the big confluence docs or his over reliance on his tool, point at the outcome. Which is overhead, lot of time spent, velocity going down, triple commits.. this seems to me not productive or efficient at all. And it&amp;#39;ll lead to more frustration, errors and burnout..&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 13,
     "is_submitter": false,
-    "created_utc": 1778172562,
+    "created_utc": 1778170408,
     "distinguished": null,
     "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7wfj/",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okgzssm/",
     "replies": []
+  },
+  {
+    "id": "okhi4xy",
+    "author": "re-thc",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;At this point what is the point of this person? You might as well use Claude directly and be faster…&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 13,
+    "is_submitter": false,
+    "created_utc": 1778175235,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhi4xy/",
+    "replies": [
+      {
+        "id": "okhntvd",
+        "author": "WJMazepas",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Im wondering the same thing&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 8,
+        "is_submitter": true,
+        "created_utc": 1778176724,
+        "distinguished": null,
+        "parent_id": "t1_okhi4xy",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhntvd/",
+        "replies": []
+      }
+    ]
   },
   {
     "id": "okh2yc4",
     "author": "AlternativeFirst8412",
-    "body": "Yeah this is a pattern I've seen play out at a larger scale too.  \nI took over a platform as a PM that had been built almost entirely with AI vibe coding tool. Fast delivery, loads of features, impressive looking docs. But when you actually got into it, tons of things only worked on one side of the workflow, no one really knew which bits were production ready, and every architectural decision had been made by whatever the AI suggested that day rather than anyone with actual context of the system\n\nThe problem wasn't the AI. It was that nobody was filtering what it produced with real judgment. Your colleague isn't really a developer, he's just a prompt relay with good Confluence skills.\n\nThe bit that gets me is that this pattern rewards exactly the wrong things in the short term. Big documents, busy looking output, confident daily updates. The person doing the actual thinking and cleaning up the mess just looks slower by comparison..",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah this is a pattern I&amp;#39;ve seen play out at a larger scale too.&lt;br/&gt;\nI took over a platform as a PM that had been built almost entirely with AI vibe coding tool. Fast delivery, loads of features, impressive looking docs. But when you actually got into it, tons of things only worked on one side of the workflow, no one really knew which bits were production ready, and every architectural decision had been made by whatever the AI suggested that day rather than anyone with actual context of the system&lt;/p&gt;\n\n&lt;p&gt;The problem wasn&amp;#39;t the AI. It was that nobody was filtering what it produced with real judgment. Your colleague isn&amp;#39;t really a developer, he&amp;#39;s just a prompt relay with good Confluence skills.&lt;/p&gt;\n\n&lt;p&gt;The bit that gets me is that this pattern rewards exactly the wrong things in the short term. Big documents, busy looking output, confident daily updates. The person doing the actual thinking and cleaning up the mess just looks slower by comparison..&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 10,
+    "score": 20,
     "is_submitter": false,
     "created_utc": 1778171244,
     "distinguished": null,
@@ -523,9 +631,8 @@
       {
         "id": "okh8q4r",
         "author": "not_invented_here",
-        "body": "How did you solve this pattern? Or you didn't?",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;How did you solve this pattern? Or you didn&amp;#39;t?&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
+        "score": 2,
         "is_submitter": false,
         "created_utc": 1778172779,
         "distinguished": null,
@@ -536,104 +643,10 @@
     ]
   },
   {
-    "id": "okh0i8u",
-    "author": "BigDickedAngel",
-    "body": "Track number of merge request requiring revisions by person.  Show the uneven metric.  If 98% of his MRs require revision and everyone else is at 10%...you may as well just cut him out and work directly with his AI lol ",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Track number of merge request requiring revisions by person.  Show the uneven metric.  If 98% of his MRs require revision and everyone else is at 10%...you may as well just cut him out and work directly with his AI lol &lt;/p&gt;\n&lt;/div&gt;",
-    "score": 30,
-    "is_submitter": false,
-    "created_utc": 1778170596,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh0i8u/",
-    "replies": [
-      {
-        "id": "oki5189",
-        "author": "TheLatantha",
-        "body": "This exact metric is how I recently got a useless vibe coding consultant offboarded from my project. I spent more time reviewing than they spent spewing slop",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This exact metric is how I recently got a useless vibe coding consultant offboarded from my project. I spent more time reviewing than they spent spewing slop&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 7,
-        "is_submitter": false,
-        "created_utc": 1778181378,
-        "distinguished": null,
-        "parent_id": "t1_okh0i8u",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki5189/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okh2mxo",
-    "author": "Squigglificated",
-    "body": "You need to setup an AI agent that analyzes his code and confluence documents in excruciating detail and pedantically explains why they are not following company standards. /s\n\nI'm only half serious but sadly I also think it would work.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You need to setup an AI agent that analyzes his code and confluence documents in excruciating detail and pedantically explains why they are not following company standards. /s&lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;m only half serious but sadly I also think it would work.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 20,
-    "is_submitter": false,
-    "created_utc": 1778171161,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh2mxo/",
-    "replies": [
-      {
-        "id": "okh6vmc",
-        "author": "kewli",
-        "body": "I’ve done this at the last two companies… both managers said stop being nit picky and then that resulted in them shipping slip that did not work.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’ve done this at the last two companies… both managers said stop being nit picky and then that resulted in them shipping slip that did not work.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 12,
-        "is_submitter": false,
-        "created_utc": 1778172293,
-        "distinguished": null,
-        "parent_id": "t1_okh2mxo",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh6vmc/",
-        "replies": []
-      },
-      {
-        "id": "okhne3y",
-        "author": "WJMazepas",
-        "body": "He did used Claude to analyze my PR and it came with a bunch of requested changes that werent really necessary.   \nAnd besides, it was changes that i had already saw it when i ran Claude on my machine to look at my code",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;He did used Claude to analyze my PR and it came with a bunch of requested changes that werent really necessary.&lt;br/&gt;\nAnd besides, it was changes that i had already saw it when i ran Claude on my machine to look at my code&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 3,
-        "is_submitter": true,
-        "created_utc": 1778176609,
-        "distinguished": null,
-        "parent_id": "t1_okh2mxo",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhne3y/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okgzssm",
-    "author": "tomhermans",
-    "body": "No matter the big confluence docs or his over reliance on his tool, point at the outcome. Which is overhead, lot of time spent, velocity going down, triple commits.. this seems to me not productive or efficient at all. And it'll lead to more frustration, errors and burnout..\n\n",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;No matter the big confluence docs or his over reliance on his tool, point at the outcome. Which is overhead, lot of time spent, velocity going down, triple commits.. this seems to me not productive or efficient at all. And it&amp;#39;ll lead to more frustration, errors and burnout..&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 8,
-    "is_submitter": false,
-    "created_utc": 1778170408,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okgzssm/",
-    "replies": []
-  },
-  {
-    "id": "okhfec9",
-    "author": "-no_aura-",
-    "body": "Drives me crazy. Like hey, I actually also want to write code. I didn’t sign up to review vibe coded slop for 40 hours a week.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Drives me crazy. Like hey, I actually also want to write code. I didn’t sign up to review vibe coded slop for 40 hours a week.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 7,
-    "is_submitter": false,
-    "created_utc": 1778174516,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhfec9/",
-    "replies": []
-  },
-  {
     "id": "okh145q",
     "author": "kroxsan",
-    "body": "He has no idea about the code he's pushing and has no sense or understanding of what you guys should be building or how the architectural design behind it should be. I use claude a lot too to catch up with work but this is beyond saving the minute ypu stop reading and editing code and let the ai do the thinking you're as good as a potato trying to solve differential equations",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;He has no idea about the code he&amp;#39;s pushing and has no sense or understanding of what you guys should be building or how the architectural design behind it should be. I use claude a lot too to catch up with work but this is beyond saving the minute ypu stop reading and editing code and let the ai do the thinking you&amp;#39;re as good as a potato trying to solve differential equations&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 7,
+    "score": 9,
     "is_submitter": false,
     "created_utc": 1778170757,
     "distinguished": null,
@@ -643,9 +656,8 @@
       {
         "id": "okh7ca2",
         "author": "comoEstas714",
-        "body": "Why is he allowed to push with no PR? This is on the team. You wouldn't let some new dev off the street start pushing random, unreviewed code to the code base would you? Why is ai any different?",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Why is he allowed to push with no PR? This is on the team. You wouldn&amp;#39;t let some new dev off the street start pushing random, unreviewed code to the code base would you? Why is ai any different?&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
+        "score": 2,
         "is_submitter": false,
         "created_utc": 1778172416,
         "distinguished": null,
@@ -655,9 +667,8 @@
           {
             "id": "okhd19h",
             "author": "kroxsan",
-            "body": "Right especially if the dev who is pushing the code doesnt even know what the code is doing. Like i said i'm not gonna tell people to stop using ai but you should at least learn the thing, practice it in your own and then execute the coding phase with ai tools but not with ai, with ai tools. The moment it stops being the tool and becomes the developer is the moment that company starts piling up tech debt for the next person to come solve all those knots the last guy, or well claude, left for them",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Right especially if the dev who is pushing the code doesnt even know what the code is doing. Like i said i&amp;#39;m not gonna tell people to stop using ai but you should at least learn the thing, practice it in your own and then execute the coding phase with ai tools but not with ai, with ai tools. The moment it stops being the tool and becomes the developer is the moment that company starts piling up tech debt for the next person to come solve all those knots the last guy, or well claude, left for them&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 2,
+            "score": 3,
             "is_submitter": false,
             "created_utc": 1778173906,
             "distinguished": null,
@@ -670,38 +681,10 @@
     ]
   },
   {
-    "id": "okh402z",
-    "author": "A-Grey-World",
-    "body": "Yeah, the \"review load\" of AI coding is a real headache. I've started using AI a lot and you have to spend a lot of time cleaning up/reviewing the code before it reaches a PR (and directing it when it's doing dumb things early).\n\nDevelopers that don't self review well put a lot of strain on the PR process.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah, the &amp;quot;review load&amp;quot; of AI coding is a real headache. I&amp;#39;ve started using AI a lot and you have to spend a lot of time cleaning up/reviewing the code before it reaches a PR (and directing it when it&amp;#39;s doing dumb things early).&lt;/p&gt;\n\n&lt;p&gt;Developers that don&amp;#39;t self review well put a lot of strain on the PR process.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 8,
-    "is_submitter": false,
-    "created_utc": 1778171523,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh402z/",
-    "replies": [
-      {
-        "id": "okhzl65",
-        "author": "SunEconomy3251",
-        "body": "That, or build it function by function using very strict guidelines instead of one-shotting entire phases in a single prompt...",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That, or build it function by function using very strict guidelines instead of one-shotting entire phases in a single prompt...&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778179913,
-        "distinguished": null,
-        "parent_id": "t1_okh402z",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhzl65/",
-        "replies": []
-      }
-    ]
-  },
-  {
     "id": "okhp1a6",
     "author": "mark_hor",
-    "body": "The burden of thought and effort being shifted onto someone else has been my experience working with vibe-coders, and to me, that is what makes the difference between someone who vibe-codes and someone who uses LLM's to write code.\n\nIt is an issue because it's not reasonable or sustainable to expect that the person reviewing a vibe-coded pull request should put in more effort thinking about the code than the person who \"wrote\" it. An AI code review doesn't really solve the problem either, it just shovels the burden of doing work down into the code for the next person to find and have to deal with.\n\nOnce you know the ins and outs of basic computing, the languages and tools you work in, and the code base you write within: you are being paid to think more than you are to write code. Even with some hypothetically perfect LLM, the crux of the issue is the same as it ever was: someone has got to think.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The burden of thought and effort being shifted onto someone else has been my experience working with vibe-coders, and to me, that is what makes the difference between someone who vibe-codes and someone who uses LLM&amp;#39;s to write code.&lt;/p&gt;\n\n&lt;p&gt;It is an issue because it&amp;#39;s not reasonable or sustainable to expect that the person reviewing a vibe-coded pull request should put in more effort thinking about the code than the person who &amp;quot;wrote&amp;quot; it. An AI code review doesn&amp;#39;t really solve the problem either, it just shovels the burden of doing work down into the code for the next person to find and have to deal with.&lt;/p&gt;\n\n&lt;p&gt;Once you know the ins and outs of basic computing, the languages and tools you work in, and the code base you write within: you are being paid to think more than you are to write code. Even with some hypothetically perfect LLM, the crux of the issue is the same as it ever was: someone has got to think.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 7,
+    "score": 9,
     "is_submitter": false,
     "created_utc": 1778177048,
     "distinguished": null,
@@ -710,11 +693,71 @@
     "replies": []
   },
   {
+    "id": "okh402z",
+    "author": "A-Grey-World",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah, the &amp;quot;review load&amp;quot; of AI coding is a real headache. I&amp;#39;ve started using AI a lot and you have to spend a lot of time cleaning up/reviewing the code before it reaches a PR (and directing it when it&amp;#39;s doing dumb things early).&lt;/p&gt;\n\n&lt;p&gt;Developers that don&amp;#39;t self review well put a lot of strain on the PR process.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 8,
+    "is_submitter": false,
+    "created_utc": 1778171523,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh402z/",
+    "replies": []
+  },
+  {
+    "id": "okh2mxo",
+    "author": "Squigglificated",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You need to setup an AI agent that analyzes his code and confluence documents in excruciating detail and pedantically explains why they are not following company standards. /s&lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;m only half serious but sadly I also think it would work.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 25,
+    "is_submitter": false,
+    "created_utc": 1778171161,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh2mxo/",
+    "replies": [
+      {
+        "id": "okh6vmc",
+        "author": "kewli",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’ve done this at the last two companies… both managers said stop being nit picky and then that resulted in them shipping slip that did not work.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 12,
+        "is_submitter": false,
+        "created_utc": 1778172293,
+        "distinguished": null,
+        "parent_id": "t1_okh2mxo",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh6vmc/",
+        "replies": []
+      },
+      {
+        "id": "okhne3y",
+        "author": "WJMazepas",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;He did used Claude to analyze my PR and it came with a bunch of requested changes that werent really necessary.&lt;br/&gt;\nAnd besides, it was changes that i had already saw it when i ran Claude on my machine to look at my code&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": true,
+        "created_utc": 1778176609,
+        "distinguished": null,
+        "parent_id": "t1_okh2mxo",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhne3y/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okibmxh",
+    "author": "Alex_Dutton",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;working with vibe coders is rough, the cleanup tax usually falls on whoever actually understands the codebase&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 6,
+    "is_submitter": false,
+    "created_utc": 1778183189,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okibmxh/",
+    "replies": []
+  },
+  {
     "id": "okh3c39",
     "author": "Salamok",
-    "body": "Eventually it will implode and everyone else will have to clean it up because the person that broke it all is not the person you want fixing it.  The sooner this happens the better.  \n\nThat said AI is amazing at turning 1 or 2 sentences into multiple pages of confluence documentation that PMs and Clients love but no one ever reads or keeps up to date.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Eventually it will implode and everyone else will have to clean it up because the person that broke it all is not the person you want fixing it.  The sooner this happens the better.  &lt;/p&gt;\n\n&lt;p&gt;That said AI is amazing at turning 1 or 2 sentences into multiple pages of confluence documentation that PMs and Clients love but no one ever reads or keeps up to date.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 14,
+    "score": 16,
     "is_submitter": false,
     "created_utc": 1778171344,
     "distinguished": null,
@@ -724,9 +767,8 @@
       {
         "id": "oki94qa",
         "author": "ClubChaos",
-        "body": "Kinda funny how ai exposes how 90% of corporate positions are utterly useless lol",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Kinda funny how ai exposes how 90% of corporate positions are utterly useless lol&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 5,
+        "score": 6,
         "is_submitter": false,
         "created_utc": 1778182501,
         "distinguished": null,
@@ -737,51 +779,22 @@
     ]
   },
   {
-    "id": "okhg360",
-    "author": "chervilious",
-    "body": "Working with vibe coders is just making you vibe codes with a human API. \n\nFor every PR that felt vibe coded I always asked them to walk through the code with me live.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Working with vibe coders is just making you vibe codes with a human API. &lt;/p&gt;\n\n&lt;p&gt;For every PR that felt vibe coded I always asked them to walk through the code with me live.&lt;/p&gt;\n&lt;/div&gt;",
+    "id": "okh7qd6",
+    "author": "bookofthoth_za",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Offshore teams cutting corners and boasting... This was before AI unfortunately. &lt;/p&gt;\n&lt;/div&gt;",
     "score": 5,
     "is_submitter": false,
-    "created_utc": 1778174696,
+    "created_utc": 1778172518,
     "distinguished": null,
     "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhg360/",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7qd6/",
     "replies": []
-  },
-  {
-    "id": "okhi4xy",
-    "author": "re-thc",
-    "body": "At this point what is the point of this person? You might as well use Claude directly and be faster…",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;At this point what is the point of this person? You might as well use Claude directly and be faster…&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 3,
-    "is_submitter": false,
-    "created_utc": 1778175235,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhi4xy/",
-    "replies": [
-      {
-        "id": "okhntvd",
-        "author": "WJMazepas",
-        "body": "Im wondering the same thing",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Im wondering the same thing&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
-        "is_submitter": true,
-        "created_utc": 1778176724,
-        "distinguished": null,
-        "parent_id": "t1_okhi4xy",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhntvd/",
-        "replies": []
-      }
-    ]
   },
   {
     "id": "okhixh1",
     "author": "camppofrio",
-    "body": "The part where he says he'll 'tell Claude not to suggest that anymore' shows the deeper problem. He thinks it learns. Next new session and the same bad solution comes right back.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The part where he says he&amp;#39;ll &amp;#39;tell Claude not to suggest that anymore&amp;#39; shows the deeper problem. He thinks it learns. Next new session and the same bad solution comes right back.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 4,
+    "score": 5,
     "is_submitter": false,
     "created_utc": 1778175442,
     "distinguished": null,
@@ -791,9 +804,8 @@
       {
         "id": "okhnrmr",
         "author": "klumpp",
-        "body": "Claude will save stuff in its memory files and then tell you when it’s using the “memory” later. I’m guessing that’s what he meant. Or he’s just putting it in CLAUDE.md.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Claude will save stuff in its memory files and then tell you when it’s using the “memory” later. I’m guessing that’s what he meant. Or he’s just putting it in CLAUDE.md.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
+        "score": 2,
         "is_submitter": false,
         "created_utc": 1778176707,
         "distinguished": null,
@@ -804,9 +816,33 @@
     ]
   },
   {
+    "id": "okidh5h",
+    "author": "v3gard",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If you can&amp;#39;t beat em, join em. &lt;/p&gt;\n\n&lt;p&gt;Create a skill.md file that explains what the &amp;quot;company standard&amp;quot; is.&lt;/p&gt;\n\n&lt;p&gt;Using this file together with Claude, will inspire the LLM to base newly generated chats based on that.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1778183695,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okidh5h/",
+    "replies": [
+      {
+        "id": "okiitb9",
+        "author": "hofo",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;100% this, make the LLM generate code in the company standard. If there isn’t one, make it up. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": false,
+        "created_utc": 1778185173,
+        "distinguished": null,
+        "parent_id": "t1_okidh5h",
+        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okiitb9/",
+        "replies": []
+      }
+    ]
+  },
+  {
     "id": "okh4v6f",
     "author": "the_real_some_guy",
-    "body": "Tell your Claude to add the Atlassian MCP, then start making your own Confluence docs. Play the corporate game, but let Claude do all the heavy lifting. Your boss said you are the senior, so document the patterns you expect.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Tell your Claude to add the Atlassian MCP, then start making your own Confluence docs. Play the corporate game, but let Claude do all the heavy lifting. Your boss said you are the senior, so document the patterns you expect.&lt;/p&gt;\n&lt;/div&gt;",
     "score": 3,
     "is_submitter": false,
@@ -819,7 +855,6 @@
   {
     "id": "okh7jzf",
     "author": "Stupyyy",
-    "body": "the guy is being taken by Claude for a ride",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;the guy is being taken by Claude for a ride&lt;/p&gt;\n&lt;/div&gt;",
     "score": 3,
     "is_submitter": false,
@@ -830,64 +865,58 @@
     "replies": []
   },
   {
-    "id": "okh7qd6",
-    "author": "bookofthoth_za",
-    "body": "Offshore teams cutting corners and boasting... This was before AI unfortunately. ",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Offshore teams cutting corners and boasting... This was before AI unfortunately. &lt;/p&gt;\n&lt;/div&gt;",
+    "id": "okimzlz",
+    "author": "Supermathie",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Holy fuck - this new developer is just an interface to Claude.&lt;/p&gt;\n\n&lt;p&gt;What actual value are they providing?&lt;/p&gt;\n&lt;/div&gt;",
     "score": 3,
     "is_submitter": false,
-    "created_utc": 1778172518,
+    "created_utc": 1778186321,
     "distinguished": null,
     "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh7qd6/",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okimzlz/",
     "replies": []
   },
   {
-    "id": "okibmxh",
-    "author": "Alex_Dutton",
-    "body": "working with vibe coders is rough, the cleanup tax usually falls on whoever actually understands the codebase",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;working with vibe coders is rough, the cleanup tax usually falls on whoever actually understands the codebase&lt;/p&gt;\n&lt;/div&gt;",
+    "id": "okj5iw0",
+    "author": "Financial_Bedroom130",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yes, vibe coding creates extra review work. Frustrating.&lt;/p&gt;\n&lt;/div&gt;",
     "score": 3,
     "is_submitter": false,
-    "created_utc": 1778183189,
+    "created_utc": 1778191690,
     "distinguished": null,
     "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okibmxh/",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okj5iw0/",
     "replies": []
   },
   {
-    "id": "okidh5h",
-    "author": "v3gard",
-    "body": "If you can't beat em, join em. \n\nCreate a skill.md file that explains what the \"company standard\" is.\n\nUsing this file together with Claude, will inspire the LLM to base newly generated chats based on that.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If you can&amp;#39;t beat em, join em. &lt;/p&gt;\n\n&lt;p&gt;Create a skill.md file that explains what the &amp;quot;company standard&amp;quot; is.&lt;/p&gt;\n\n&lt;p&gt;Using this file together with Claude, will inspire the LLM to base newly generated chats based on that.&lt;/p&gt;\n&lt;/div&gt;",
+    "id": "okj6lxv",
+    "author": "CaptainDogeSparrow",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;He always generate those huge Confluence documents that no one reads&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;Speak for yourself.&lt;/p&gt;\n&lt;/div&gt;",
     "score": 3,
     "is_submitter": false,
-    "created_utc": 1778183695,
+    "created_utc": 1778192033,
     "distinguished": null,
     "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okidh5h/",
-    "replies": [
-      {
-        "id": "okiitb9",
-        "author": "hofo",
-        "body": "100% this, make the LLM generate code in the company standard. If there isn’t one, make it up. ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;100% this, make the LLM generate code in the company standard. If there isn’t one, make it up. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
-        "is_submitter": false,
-        "created_utc": 1778185173,
-        "distinguished": null,
-        "parent_id": "t1_okidh5h",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okiitb9/",
-        "replies": []
-      }
-    ]
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okj6lxv/",
+    "replies": []
+  },
+  {
+    "id": "okk6jak",
+    "author": "mrtrly",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;AlternativeFirst8412 nailed the structural problem. Three survival tactics since your boss isn&amp;#39;t siding with you:&lt;/p&gt;\n\n&lt;ol&gt;\n&lt;li&gt;&lt;p&gt;Write your architectural proposals as a paragraph in the PR or ticket BEFORE he gets to it. Dated record of the right answer. When the wrong one ships and breaks, you didn&amp;#39;t just say so in passing.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Make him explain decisions live, not in Confluence. Standup, design review, anywhere synchronous. Real engineers defend choices in 30 seconds. Prompt relays freeze. Doing this in front of the boss a few times shifts what &amp;quot;looks competent&amp;quot; looks like.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Stop convincing his Claude session. You did it once and it worked, but it taught him that talking to you = talking to Claude. Human-to-human or escalate.&lt;/p&gt;&lt;/li&gt;\n&lt;/ol&gt;\n\n&lt;p&gt;Companies don&amp;#39;t have a screen for &amp;quot;uses AI to think&amp;quot; vs &amp;quot;uses AI to skip thinking.&amp;quot; Both look the same in the deliverable. The only signal that survives is who engages with critique vs who regenerates when challenged.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778205064,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okk6jak/",
+    "replies": []
   },
   {
     "id": "okh0wff",
     "author": "amtcannon",
-    "body": "Sounds like a him problem not a vibe coding problem.\n\nYou’ll get less traction framing it as a vibe coding problem with your boss, you have to point out how they aren’t meeting standards and block their crappy code from being merged. Make it a performance issue. ",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Sounds like a him problem not a vibe coding problem.&lt;/p&gt;\n\n&lt;p&gt;You’ll get less traction framing it as a vibe coding problem with your boss, you have to point out how they aren’t meeting standards and block their crappy code from being merged. Make it a performance issue. &lt;/p&gt;\n&lt;/div&gt;",
-    "score": 7,
+    "score": 8,
     "is_submitter": false,
     "created_utc": 1778170700,
     "distinguished": null,
@@ -897,9 +926,8 @@
       {
         "id": "okh6yxn",
         "author": "comoEstas714",
-        "body": "100% agreed. This is a process problem. Proper review standards are not in place. ",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;100% agreed. This is a process problem. Proper review standards are not in place. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
+        "score": 3,
         "is_submitter": false,
         "created_utc": 1778172318,
         "distinguished": null,
@@ -912,7 +940,6 @@
   {
     "id": "okhy0xl",
     "author": "Happy_Macaron5197",
-    "body": "bro this sounds like an absolute nightmare to deal with. my whole workflow is basically just orchestrating different gen ai agents to build my stuff, but even i know u cant just let a general llm architect a multi-repo backend integration. it always defaults to the most complicated, spaghetti-code way possible just to sound smart.\n\n\n\nthis exact problem is why i had to start strictly isolating my tools. i let antigravity handle the deep backend logic so the data routing actually follows a sane pattern. then i completely offload the presentation layer to runable. having a dedicated ui agent handle the frontend end-to-end stops the models from hallucinating terrible architectural decisions because they aren't trying to do everything at once in a single chat window.\n\n\n\nyour coworker is giving vibe coders a bad name by just copy-pasting your messages into claude instead of actually learning how to pipeline his agents. hoping u get to work independently soon man.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;bro this sounds like an absolute nightmare to deal with. my whole workflow is basically just orchestrating different gen ai agents to build my stuff, but even i know u cant just let a general llm architect a multi-repo backend integration. it always defaults to the most complicated, spaghetti-code way possible just to sound smart.&lt;/p&gt;\n\n&lt;p&gt;this exact problem is why i had to start strictly isolating my tools. i let antigravity handle the deep backend logic so the data routing actually follows a sane pattern. then i completely offload the presentation layer to runable. having a dedicated ui agent handle the frontend end-to-end stops the models from hallucinating terrible architectural decisions because they aren&amp;#39;t trying to do everything at once in a single chat window.&lt;/p&gt;\n\n&lt;p&gt;your coworker is giving vibe coders a bad name by just copy-pasting your messages into claude instead of actually learning how to pipeline his agents. hoping u get to work independently soon man.&lt;/p&gt;\n&lt;/div&gt;",
     "score": 2,
     "is_submitter": false,
@@ -923,9 +950,20 @@
     "replies": []
   },
   {
+    "id": "oki8l5o",
+    "author": "archagon",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;&amp;quot;What would you say... you do here?&amp;quot;  &lt;/p&gt;\n\n&lt;p&gt;(I have Claude skills!!)&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778182352,
+    "distinguished": null,
+    "parent_id": "t3_1t6eupy",
+    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki8l5o/",
+    "replies": []
+  },
+  {
     "id": "okigk0u",
     "author": "sirf_trivedi",
-    "body": "I am going through the exact same situation (different stack etc.). I am also new on the team but have enough experience to see through the other guy's bullshit. Its so annoying lol. He gets all the praise for using AI willy nilly even if the output is garbage spaghetti code.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I am going through the exact same situation (different stack etc.). I am also new on the team but have enough experience to see through the other guy&amp;#39;s bullshit. Its so annoying lol. He gets all the praise for using AI willy nilly even if the output is garbage spaghetti code.&lt;/p&gt;\n&lt;/div&gt;",
     "score": 2,
     "is_submitter": false,
@@ -934,125 +972,5 @@
     "parent_id": "t3_1t6eupy",
     "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okigk0u/",
     "replies": []
-  },
-  {
-    "id": "okildcy",
-    "author": "Cool-Customer9200",
-    "body": "In order to properly integrate wibecoded change the one has to know the whole design and architecture of your system, then you can generate such documentation and adjust it to specifically fit in that architecture. You need to know what exactly you need it to generate. \n\nReviewing someone else’s unpolished slop should be no way to go and this is exactly the point you need to make and explain to someone who is responsible for the project. If it’s not possible then you probably best to look for a better place or start documenting and structuring things yourself. Then you have to be the one who is writing those documents and providing proper documentation instead of the slop. This is the way, because programming in a team is essentially a territorial fight over the codebase. You simply can’t be passive in this case and you have to push back.\n\nI do wibecode things myself but I also do a tons of research and I review everything myself, plus I already had years of experience working with my tools before ai even appeared so at least I know what I am doing.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;In order to properly integrate wibecoded change the one has to know the whole design and architecture of your system, then you can generate such documentation and adjust it to specifically fit in that architecture. You need to know what exactly you need it to generate. &lt;/p&gt;\n\n&lt;p&gt;Reviewing someone else’s unpolished slop should be no way to go and this is exactly the point you need to make and explain to someone who is responsible for the project. If it’s not possible then you probably best to look for a better place or start documenting and structuring things yourself. Then you have to be the one who is writing those documents and providing proper documentation instead of the slop. This is the way, because programming in a team is essentially a territorial fight over the codebase. You simply can’t be passive in this case and you have to push back.&lt;/p&gt;\n\n&lt;p&gt;I do wibecode things myself but I also do a tons of research and I review everything myself, plus I already had years of experience working with my tools before ai even appeared so at least I know what I am doing.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 2,
-    "is_submitter": false,
-    "created_utc": 1778185871,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okildcy/",
-    "replies": []
-  },
-  {
-    "id": "okimzlz",
-    "author": "Supermathie",
-    "body": "Holy fuck - this new developer is just an interface to Claude.\n\nWhat actual value are they providing?",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Holy fuck - this new developer is just an interface to Claude.&lt;/p&gt;\n\n&lt;p&gt;What actual value are they providing?&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 2,
-    "is_submitter": false,
-    "created_utc": 1778186321,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okimzlz/",
-    "replies": []
-  },
-  {
-    "id": "okh66ea",
-    "author": "goldio_games",
-    "body": "Replace vibe coder with junior engineer \n\nNothing has changed, well if anything the junior engineer's output is probably better then it was before as I wouldn't have even expected them to come up with a viable solution (albeit not optimized) in the first place",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Replace vibe coder with junior engineer &lt;/p&gt;\n\n&lt;p&gt;Nothing has changed, well if anything the junior engineer&amp;#39;s output is probably better then it was before as I wouldn&amp;#39;t have even expected them to come up with a viable solution (albeit not optimized) in the first place&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 2,
-    "is_submitter": false,
-    "created_utc": 1778172108,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okh66ea/",
-    "replies": [
-      {
-        "id": "okhbv0x",
-        "author": "flesjewater",
-        "body": "A junior engineer is at least able to explain what he did because he wrote it himself.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;A junior engineer is at least able to explain what he did because he wrote it himself.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 4,
-        "is_submitter": false,
-        "created_utc": 1778173598,
-        "distinguished": null,
-        "parent_id": "t1_okh66ea",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhbv0x/",
-        "replies": [
-          {
-            "id": "okhmpn9",
-            "author": "Adamzxd",
-            "body": "And they learn from their mistakes (sometimes).",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;And they learn from their mistakes (sometimes).&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 3,
-            "is_submitter": false,
-            "created_utc": 1778176430,
-            "distinguished": null,
-            "parent_id": "t1_okhbv0x",
-            "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhmpn9/",
-            "replies": []
-          }
-        ]
-      },
-      {
-        "id": "okhmw3i",
-        "author": "WJMazepas",
-        "body": "The thing is, he is hired as a Senior Engineer",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The thing is, he is hired as a Senior Engineer&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
-        "is_submitter": true,
-        "created_utc": 1778176478,
-        "distinguished": null,
-        "parent_id": "t1_okh66ea",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okhmw3i/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "oki9d3t",
-    "author": "dpaanlka",
-    "body": "I’ve been coding since the 90s, so I’m not some vibe coding kid, but nevertheless I now use Claude extensively every single day. \n\nHowever, it’s pretty obvious it has to be guided, monitored, and corrected *constantly.* It’s a great tool and helps a lot, but I’ve also encountered this type of person who absolutely turns off their brains when using AI agents. \n\nI simply don’t understand how they create anything that works.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’ve been coding since the 90s, so I’m not some vibe coding kid, but nevertheless I now use Claude extensively every single day. &lt;/p&gt;\n\n&lt;p&gt;However, it’s pretty obvious it has to be guided, monitored, and corrected &lt;em&gt;constantly.&lt;/em&gt; It’s a great tool and helps a lot, but I’ve also encountered this type of person who absolutely turns off their brains when using AI agents. &lt;/p&gt;\n\n&lt;p&gt;I simply don’t understand how they create anything that works.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 2,
-    "is_submitter": false,
-    "created_utc": 1778182565,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki9d3t/",
-    "replies": []
-  },
-  {
-    "id": "oki00yl",
-    "author": "yopla",
-    "body": "Well, i'm currently doing the opposite, refactoring a lot of crap code produced by supposedly senior developers using claude by feeding it architectural guideline and building plan to fix the crap, so there's that too.\n\nTBH, if claude doesn't respect your \"entreprise architecture\" it's because it's not documented properly in markdown file, in the repo, properly linked to by a [CLAUDE.md](http://CLAUDE.md) \n\nFirst thing you can do is write down those rules, the patterns you want and have an AI do a first review and reject pass if the PR doesn't follow the rules.\n\nThe mindset change and organisational change required to properly use agents is on you since you're the senior dev in the story.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Well, i&amp;#39;m currently doing the opposite, refactoring a lot of crap code produced by supposedly senior developers using claude by feeding it architectural guideline and building plan to fix the crap, so there&amp;#39;s that too.&lt;/p&gt;\n\n&lt;p&gt;TBH, if claude doesn&amp;#39;t respect your &amp;quot;entreprise architecture&amp;quot; it&amp;#39;s because it&amp;#39;s not documented properly in markdown file, in the repo, properly linked to by a &lt;a href=\"http://CLAUDE.md\"&gt;CLAUDE.md&lt;/a&gt; &lt;/p&gt;\n\n&lt;p&gt;First thing you can do is write down those rules, the patterns you want and have an AI do a first review and reject pass if the PR doesn&amp;#39;t follow the rules.&lt;/p&gt;\n\n&lt;p&gt;The mindset change and organisational change required to properly use agents is on you since you&amp;#39;re the senior dev in the story.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 2,
-    "is_submitter": false,
-    "created_utc": 1778180029,
-    "distinguished": null,
-    "parent_id": "t3_1t6eupy",
-    "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/oki00yl/",
-    "replies": [
-      {
-        "id": "okidlvj",
-        "author": "WJMazepas",
-        "body": "Claude didnt respected our decision and its okay. My problem is he simply forgetting about it and defaulting to whatever Claude said. \n\nAnd also, here is the thing. He is also hired as a Senior. Im just expected to know more about the company architecture, but supposedly he is just as capable as me ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Claude didnt respected our decision and its okay. My problem is he simply forgetting about it and defaulting to whatever Claude said. &lt;/p&gt;\n\n&lt;p&gt;And also, here is the thing. He is also hired as a Senior. Im just expected to know more about the company architecture, but supposedly he is just as capable as me &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": true,
-        "created_utc": 1778183732,
-        "distinguished": null,
-        "parent_id": "t1_oki00yl",
-        "permalink": "/r/webdev/comments/1t6eupy/ive_been_working_with_a_vibe_coder_and_this_has/okidlvj/",
-        "replies": []
-      }
-    ]
   }
 ]

@@ -1,10 +1,169 @@
 [
   {
+    "id": "okgvppo",
+    "author": "AuthorityPath",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think the ideas in Remix 3 are interesting but with the architecture volatility of 1, 2, and then the RR7 merger I wouldn&amp;#39;t be willing to ship anything production ready with it till I see Ryan/MJ stick with it for 5+ years. Also, what were they thinking with calling this thing Remix 3?&lt;/p&gt;\n\n&lt;p&gt;Unfortunately, I fear this is DOA for business software. Maybe it&amp;#39;ll find an AI/startup niche or something?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 53,
+    "is_submitter": false,
+    "created_utc": 1778169326,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okgvppo/",
+    "replies": [
+      {
+        "id": "okh79p4",
+        "author": "simple_explorer1",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;Also, what were they thinking with calling this thing Remix 3?&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;100% agree. nothing remix about it. It is completely new and not relevant to original remix or react router&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 26,
+        "is_submitter": true,
+        "created_utc": 1778172397,
+        "distinguished": null,
+        "parent_id": "t1_okgvppo",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okh79p4/",
+        "replies": []
+      },
+      {
+        "id": "okit73x",
+        "author": "ochowie",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This! I read the blog and was intrigued by the idea but there is absolutely no way I would get fooled into using Remix again with all this amount of churn release to release.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 5,
+        "is_submitter": false,
+        "created_utc": 1778188056,
+        "distinguished": null,
+        "parent_id": "t1_okgvppo",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okit73x/",
+        "replies": []
+      },
+      {
+        "id": "okis0rs",
+        "author": "yardeni",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think it&amp;#39;s fine they chose to develop something completely different. It&amp;#39;s curious how they keep naming their next project remix regardless. It&amp;#39;s like they&amp;#39;re a band rather than a team of Devs&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 5,
+        "is_submitter": false,
+        "created_utc": 1778187719,
+        "distinguished": null,
+        "parent_id": "t1_okgvppo",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okis0rs/",
+        "replies": []
+      },
+      {
+        "id": "oknkowr",
+        "author": "Business-Row-478",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Remix getting merged into RR had almost no volatility, migration was trivial. &lt;/p&gt;\n\n&lt;p&gt;They are calling it remix because they didn’t want to lose out on the name recognition of remix, but def seems questionable &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778253549,
+        "distinguished": null,
+        "parent_id": "t1_okgvppo",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oknkowr/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhaa9t",
+    "author": "FalseWait7",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Jesus I wanted to like Remix so much, was really invested in it, but holy shit these guys can&amp;#39;t commit to one direction for ten years.&lt;/p&gt;\n\n&lt;p&gt;Also, weren&amp;#39;t they dropping the Remix name in favor of React Router 7?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 44,
+    "is_submitter": false,
+    "created_utc": 1778173184,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhaa9t/",
+    "replies": [
+      {
+        "id": "okhikyr",
+        "author": "michaelfrieze",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Old Remix is now just React Router. The new Remix isn&amp;#39;t using React at all. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 17,
+        "is_submitter": false,
+        "created_utc": 1778175352,
+        "distinguished": null,
+        "parent_id": "t1_okhaa9t",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhikyr/",
+        "replies": []
+      },
+      {
+        "id": "okhwth7",
+        "author": "simple_explorer1",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;they truly can&amp;#39;t commit to anything for years and we know they are not going to either in future given their track record&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 9,
+        "is_submitter": true,
+        "created_utc": 1778179163,
+        "distinguished": null,
+        "parent_id": "t1_okhaa9t",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhwth7/",
+        "replies": []
+      },
+      {
+        "id": "oklmqo4",
+        "author": "This-Nectarine-3761",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The problem is not commitment, it&amp;#39;s branding. They still develop what was Remix 2 (now as part of RR) and they still develop what was React Router and I suppose this Remix 3 they will do as well. But it&amp;#39;s their branding choices they make which make it all super confusing. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778228424,
+        "distinguished": null,
+        "parent_id": "t1_okhaa9t",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oklmqo4/",
+        "replies": [
+          {
+            "id": "oklnk7z",
+            "author": "FalseWait7",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Way way way before Remix became a thing (when React Router was version 0.something) they already made weird choices and each change was breaking. Upgrading Router was a chore, that is why companies back then simply had whatever version they started with. It is not branding, these guys simply don&amp;#39;t know what they are doing. And this is coming from a guy that was dying on the &amp;quot;Remix is a great software, leave Mike and Ryan alone&amp;quot; hill. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778228852,
+            "distinguished": null,
+            "parent_id": "t1_oklmqo4",
+            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oklnk7z/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okhh1dw",
+        "author": "RegmasterJ",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Other way around, they dropped the RR branding in favor of Remix, which IMO is a terrible decision. The name Remix doesn’t exactly scream “stability”, and it IS, in fact a router. Just a weird choice all around. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 5,
+        "is_submitter": false,
+        "created_utc": 1778174949,
+        "distinguished": null,
+        "parent_id": "t1_okhaa9t",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhh1dw/",
+        "replies": [
+          {
+            "id": "okiemge",
+            "author": "adfawf3f3f32a",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;They made react router. It got popular. They experimented with new ideas in reach router. That got popular. The merged those ideas back into react router. SSR became a thing so they released remix (react router and SSR). react router and remix continued side-by-side but independently for a couple versions. Vite came out and got popular and they realized remix could be rewritten as a simple vite plugin on top of react router so they did that and named it react router 6. Now moving forward remix has nothing to do with react router. react router is both a client side and/or server rendered react framework and should be stable moving forward. remix is now a new web framework they&amp;#39;re building based on a fork of preact.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 5,
+            "is_submitter": false,
+            "created_utc": 1778184011,
+            "distinguished": null,
+            "parent_id": "t1_okhh1dw",
+            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okiemge/",
+            "replies": []
+          },
+          {
+            "id": "oki0f7z",
+            "author": "sergiodxa",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;They didn&amp;#39;t dropped RR branding in favor of Remix, RR still exists as a React framework. They dropped Remix (v2) branding in favor of RR, and now they&amp;#39;re using Remix (v3) for a new framework that&amp;#39;s not just a router&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778180135,
+            "distinguished": null,
+            "parent_id": "t1_okhh1dw",
+            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oki0f7z/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "okglzek",
     "author": "sebasgarcep",
-    "body": "No thank you. I’ll stick with Tanstack for the foreseeable future",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;No thank you. I’ll stick with Tanstack for the foreseeable future&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 94,
+    "score": 177,
     "is_submitter": false,
     "created_utc": 1778166768,
     "distinguished": null,
@@ -14,9 +173,8 @@
       {
         "id": "okh2kjd",
         "author": "nemosz",
-        "body": "Real stuff. I’m at a point that when I need a library for something I default to check tanstack first, maybe they already have an awesome solution. ",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Real stuff. I’m at a point that when I need a library for something I default to check tanstack first, maybe they already have an awesome solution. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 15,
+        "score": 36,
         "is_submitter": false,
         "created_utc": 1778171143,
         "distinguished": null,
@@ -27,22 +185,45 @@
       {
         "id": "oki0w29",
         "author": "Suspicious-Watch9681",
-        "body": "Yep, tanstack router is just another level",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yep, tanstack router is just another level&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
+        "score": 8,
         "is_submitter": false,
         "created_utc": 1778180256,
         "distinguished": null,
         "parent_id": "t1_okglzek",
         "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oki0w29/",
+        "replies": [
+          {
+            "id": "okjv38k",
+            "author": "blinger44",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Tanstack start as well. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778200680,
+            "distinguished": null,
+            "parent_id": "t1_oki0w29",
+            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okjv38k/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okks3g6",
+        "author": "pVom",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I dunno man half their shit is in beta. No guarantee of long term stability there.&lt;/p&gt;\n\n&lt;p&gt;People were banging on about remix a few years ago. People were banging on about nextjs until quite recently and now everyone hates it.&lt;/p&gt;\n\n&lt;p&gt;Really you&amp;#39;ve just got to make a gamble and hope it works out, but it&amp;#39;s foolish to think tanstack will somehow be immune to these problems down the line.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778213611,
+        "distinguished": null,
+        "parent_id": "t1_okglzek",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okks3g6/",
         "replies": []
       },
       {
         "id": "okgwfy5",
         "author": "Saschb2b",
-        "body": "Which uses react router v7 which mostly absorbed remix dna",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Which uses react router v7 which mostly absorbed remix dna&lt;/p&gt;\n&lt;/div&gt;",
-        "score": -36,
+        "score": -50,
         "is_submitter": false,
         "created_utc": 1778169517,
         "distinguished": null,
@@ -52,9 +233,8 @@
           {
             "id": "okh1ckd",
             "author": "dcousineau",
-            "body": "You are correct that react router v7 is just remix under the hood. \n\nYou are incorrect that TanStack start uses react router. It uses TanStack’s own router. See https://tanstack.com/start/latest and https://tanstack.com/router/latest",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You are correct that react router v7 is just remix under the hood. &lt;/p&gt;\n\n&lt;p&gt;You are incorrect that TanStack start uses react router. It uses TanStack’s own router. See &lt;a href=\"https://tanstack.com/start/latest\"&gt;https://tanstack.com/start/latest&lt;/a&gt; and &lt;a href=\"https://tanstack.com/router/latest\"&gt;https://tanstack.com/router/latest&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 16,
+            "score": 25,
             "is_submitter": false,
             "created_utc": 1778170818,
             "distinguished": null,
@@ -65,9 +245,8 @@
           {
             "id": "okgyjb5",
             "author": "MadJoee00",
-            "body": "You don’t know what you’re talking about ",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You don’t know what you’re talking about &lt;/p&gt;\n&lt;/div&gt;",
-            "score": 8,
+            "score": 11,
             "is_submitter": false,
             "created_utc": 1778170074,
             "distinguished": null,
@@ -78,9 +257,8 @@
           {
             "id": "okgzkrv",
             "author": "csthraway11",
-            "body": "Lol",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Lol&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 1,
+            "score": 3,
             "is_submitter": false,
             "created_utc": 1778170348,
             "distinguished": null,
@@ -95,9 +273,8 @@
   {
     "id": "okgiy85",
     "author": "doxara",
-    "body": "“Built for the web”\n\nYeah no shit, I thought it was built for my asshole",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;“Built for the web”&lt;/p&gt;\n\n&lt;p&gt;Yeah no shit, I thought it was built for my asshole&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 122,
+    "score": 191,
     "is_submitter": false,
     "created_utc": 1778165947,
     "distinguished": null,
@@ -107,9 +284,8 @@
       {
         "id": "okgraaa",
         "author": "damnburglar",
-        "body": "Two things can be true, bud",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Two things can be true, bud&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 21,
+        "score": 39,
         "is_submitter": false,
         "created_utc": 1778168176,
         "distinguished": null,
@@ -119,7 +295,6 @@
           {
             "id": "okh5neh",
             "author": "simple_explorer1",
-            "body": "but too many things shouldn't be true at the same time 😉 or else it is a mess",
             "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;but too many things shouldn&amp;#39;t be true at the same time 😉 or else it is a mess&lt;/p&gt;\n&lt;/div&gt;",
             "score": 3,
             "is_submitter": true,
@@ -130,148 +305,26 @@
             "replies": []
           }
         ]
-      }
-    ]
-  },
-  {
-    "id": "okgvppo",
-    "author": "AuthorityPath",
-    "body": "I think the ideas in Remix 3 are interesting but with the architecture volatility of 1, 2, and then the RR7 merger I wouldn't be willing to ship anything production ready with it till I see Ryan/MJ stick with it for 5+ years. Also, what were they thinking with calling this thing Remix 3?\n\n\nUnfortunately, I fear this is DOA for business software. Maybe it'll find an AI/startup niche or something?",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think the ideas in Remix 3 are interesting but with the architecture volatility of 1, 2, and then the RR7 merger I wouldn&amp;#39;t be willing to ship anything production ready with it till I see Ryan/MJ stick with it for 5+ years. Also, what were they thinking with calling this thing Remix 3?&lt;/p&gt;\n\n&lt;p&gt;Unfortunately, I fear this is DOA for business software. Maybe it&amp;#39;ll find an AI/startup niche or something?&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 23,
-    "is_submitter": false,
-    "created_utc": 1778169326,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okgvppo/",
-    "replies": [
-      {
-        "id": "okh79p4",
-        "author": "simple_explorer1",
-        "body": "&gt;Also, what were they thinking with calling this thing Remix 3?\n\n100% agree. nothing remix about it. It is completely new and not relevant to original remix or react router",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;Also, what were they thinking with calling this thing Remix 3?&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;100% agree. nothing remix about it. It is completely new and not relevant to original remix or react router&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 13,
-        "is_submitter": true,
-        "created_utc": 1778172397,
-        "distinguished": null,
-        "parent_id": "t1_okgvppo",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okh79p4/",
-        "replies": []
       },
       {
-        "id": "okis0rs",
-        "author": "yardeni",
-        "body": "I think it's fine they chose to develop something completely different. It's curious how they keep naming their next project remix regardless. It's like they're a band rather than a team of Devs",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think it&amp;#39;s fine they chose to develop something completely different. It&amp;#39;s curious how they keep naming their next project remix regardless. It&amp;#39;s like they&amp;#39;re a band rather than a team of Devs&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778187719,
-        "distinguished": null,
-        "parent_id": "t1_okgvppo",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okis0rs/",
-        "replies": []
-      },
-      {
-        "id": "okit73x",
-        "author": "ochowie",
-        "body": "This! I read the blog and was intrigued by the idea but there is absolutely no way I would get fooled into using Remix again with all this amount of churn release to release.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This! I read the blog and was intrigued by the idea but there is absolutely no way I would get fooled into using Remix again with all this amount of churn release to release.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778188056,
-        "distinguished": null,
-        "parent_id": "t1_okgvppo",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okit73x/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okhaa9t",
-    "author": "FalseWait7",
-    "body": "Jesus I wanted to like Remix so much, was really invested in it, but holy shit these guys can't commit to one direction for ten years.\n\nAlso, weren't they dropping the Remix name in favor of React Router 7?",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Jesus I wanted to like Remix so much, was really invested in it, but holy shit these guys can&amp;#39;t commit to one direction for ten years.&lt;/p&gt;\n\n&lt;p&gt;Also, weren&amp;#39;t they dropping the Remix name in favor of React Router 7?&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 18,
-    "is_submitter": false,
-    "created_utc": 1778173184,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhaa9t/",
-    "replies": [
-      {
-        "id": "okhikyr",
-        "author": "michaelfrieze",
-        "body": "Old Remix is now just React Router. The new Remix isn't using React at all. ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Old Remix is now just React Router. The new Remix isn&amp;#39;t using React at all. &lt;/p&gt;\n&lt;/div&gt;",
+        "id": "okk2ym8",
+        "author": "KINGodfather",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nest framework - Bung.Hole! All files are going to be &lt;code&gt;x.component.tp&lt;/code&gt;&lt;/p&gt;\n&lt;/div&gt;",
         "score": 3,
         "is_submitter": false,
-        "created_utc": 1778175352,
+        "created_utc": 1778203725,
         "distinguished": null,
-        "parent_id": "t1_okhaa9t",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhikyr/",
+        "parent_id": "t1_okgiy85",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okk2ym8/",
         "replies": []
-      },
-      {
-        "id": "okhwth7",
-        "author": "simple_explorer1",
-        "body": "they truly can't commit to anything for years and we know they are not going to either in future given their track record",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;they truly can&amp;#39;t commit to anything for years and we know they are not going to either in future given their track record&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": true,
-        "created_utc": 1778179163,
-        "distinguished": null,
-        "parent_id": "t1_okhaa9t",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhwth7/",
-        "replies": []
-      },
-      {
-        "id": "okhh1dw",
-        "author": "RegmasterJ",
-        "body": "Other way around, they dropped the RR branding in favor of Remix, which IMO is a terrible decision. The name Remix doesn’t exactly scream “stability”, and it IS, in fact a router. Just a weird choice all around. ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Other way around, they dropped the RR branding in favor of Remix, which IMO is a terrible decision. The name Remix doesn’t exactly scream “stability”, and it IS, in fact a router. Just a weird choice all around. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 0,
-        "is_submitter": false,
-        "created_utc": 1778174949,
-        "distinguished": null,
-        "parent_id": "t1_okhaa9t",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhh1dw/",
-        "replies": [
-          {
-            "id": "oki0f7z",
-            "author": "sergiodxa",
-            "body": "They didn't dropped RR branding in favor of Remix, RR still exists as a React framework. They dropped Remix (v2) branding in favor of RR, and now they're using Remix (v3) for a new framework that's not just a router",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;They didn&amp;#39;t dropped RR branding in favor of Remix, RR still exists as a React framework. They dropped Remix (v2) branding in favor of RR, and now they&amp;#39;re using Remix (v3) for a new framework that&amp;#39;s not just a router&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 3,
-            "is_submitter": false,
-            "created_utc": 1778180135,
-            "distinguished": null,
-            "parent_id": "t1_okhh1dw",
-            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oki0f7z/",
-            "replies": []
-          },
-          {
-            "id": "okiemge",
-            "author": "adfawf3f3f32a",
-            "body": "They made react router. It got popular. They experimented with new ideas in reach router. That got popular. The merged those ideas back into react router. SSR became a thing so they released remix (react router and SSR). react router and remix continued side-by-side but independently for a couple versions. Vite came out and got popular and they realized remix could be rewritten as a simple vite plugin on top of react router so they did that and named it react router 6. Now moving forward remix has nothing to do with react router. react router is both a client side and/or server rendered react framework and should be stable moving forward. remix is now a new web framework they're building based on a fork of preact.",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;They made react router. It got popular. They experimented with new ideas in reach router. That got popular. The merged those ideas back into react router. SSR became a thing so they released remix (react router and SSR). react router and remix continued side-by-side but independently for a couple versions. Vite came out and got popular and they realized remix could be rewritten as a simple vite plugin on top of react router so they did that and named it react router 6. Now moving forward remix has nothing to do with react router. react router is both a client side and/or server rendered react framework and should be stable moving forward. remix is now a new web framework they&amp;#39;re building based on a fork of preact.&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 3,
-            "is_submitter": false,
-            "created_utc": 1778184011,
-            "distinguished": null,
-            "parent_id": "t1_okhh1dw",
-            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okiemge/",
-            "replies": []
-          }
-        ]
       }
     ]
   },
   {
     "id": "okghgux",
     "author": "ScallionZestyclose16",
-    "body": "I just go full tanstack, it’s nice!",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I just go full tanstack, it’s nice!&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 50,
+    "score": 64,
     "is_submitter": false,
     "created_utc": 1778165549,
     "distinguished": null,
@@ -281,9 +334,8 @@
       {
         "id": "okh1wae",
         "author": "illepic",
-        "body": "Really enjoying tanstack right now",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Really enjoying tanstack right now&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 4,
+        "score": 3,
         "is_submitter": false,
         "created_utc": 1778170963,
         "distinguished": null,
@@ -294,11 +346,35 @@
     ]
   },
   {
+    "id": "okhfrd4",
+    "author": "SpinatMixxer",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Wasn&amp;#39;t this already known when they merged it with react-router?\nYou can still use react-router in framework mode and they publicly said something along the lines of &amp;quot;react-router v7 replaces Remix v2, you should migrate there, we will do something different with Remix in the future&amp;quot;.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 13,
+    "is_submitter": false,
+    "created_utc": 1778174610,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhfrd4/",
+    "replies": [
+      {
+        "id": "okhxon0",
+        "author": "simple_explorer1",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;yes that was in 2025 and even then merging with react router was a very big change. Now they are using the name Remix 3 for this &amp;quot;yet another pivot&amp;quot; but this has absolutely nothing to do with original Remix. They should stop giving illusion that this is the continuation of the original remix and drop the name and version number i.e. &amp;quot;Remix 3&amp;quot; completely.&lt;/p&gt;\n\n&lt;p&gt;And, why can&amp;#39;t they commit to anything? Remix to react router and then now this remix 3 which is not even react or anything really. I am sure given their track record of last 5 years, in next 6 months or a year they will pivot again. It is highly impossible to use their &amp;quot;Remix&amp;quot; branded frameworks in any capacity for serious work.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778179399,
+        "distinguished": null,
+        "parent_id": "t1_okhfrd4",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhxon0/",
+        "replies": []
+      }
+    ]
+  },
+  {
     "id": "okgihci",
     "author": "knpwrs",
-    "body": "This was initially announced almost a year ago on May 28th, 2025: https://remix.run/blog/wake-up-remix\n\nThere have also been a number of demos since then:\n\n- [\n\"Introducing Remix 3 Part 1\" by Ryan Florence and Michael Jackson](https://www.youtube.com/watch?v=iZl0IKj0HHc)\n- [\n\"Introducing Remix 3 Part 2\" by Ryan Florence and Michael Jackson](https://www.youtube.com/watch?v=dZbZgxWlzr8)\n\nAnd lots of community engagement:\n\n- [A First Look at Remix 3](https://www.youtube.com/watch?v=_STrAAi8Ujg)\n- [\nWhy Leaving React Was Remix 3's BIGGEST Gamble (That Paid Off)](https://www.youtube.com/watch?v=ZXcQR2jZL8s)\n- [\nRemix is ditching React (and I think that's a good thing)](https://www.youtube.com/watch?v=y_64170hz0o)\n\nReact Router in framework mode is more or less the continuation of Remix 1/2.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This was initially announced almost a year ago on May 28th, 2025: &lt;a href=\"https://remix.run/blog/wake-up-remix\"&gt;https://remix.run/blog/wake-up-remix&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;There have also been a number of demos since then:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\"https://www.youtube.com/watch?v=iZl0IKj0HHc\"&gt;\n&amp;quot;Introducing Remix 3 Part 1&amp;quot; by Ryan Florence and Michael Jackson&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\"https://www.youtube.com/watch?v=dZbZgxWlzr8\"&gt;\n&amp;quot;Introducing Remix 3 Part 2&amp;quot; by Ryan Florence and Michael Jackson&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;And lots of community engagement:&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\"https://www.youtube.com/watch?v=_STrAAi8Ujg\"&gt;A First Look at Remix 3&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\"https://www.youtube.com/watch?v=ZXcQR2jZL8s\"&gt;\nWhy Leaving React Was Remix 3&amp;#39;s BIGGEST Gamble (That Paid Off)&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\"https://www.youtube.com/watch?v=y_64170hz0o\"&gt;\nRemix is ditching React (and I think that&amp;#39;s a good thing)&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;React Router in framework mode is more or less the continuation of Remix 1/2.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 36,
+    "score": 46,
     "is_submitter": false,
     "created_utc": 1778165822,
     "distinguished": null,
@@ -308,7 +384,6 @@
       {
         "id": "okh6yuu",
         "author": "simple_explorer1",
-        "body": "yes it was announced in 2015 and I was pissed off back then as well.\n\nBtw look at the top youtube comments of this link you shared [Why Leaving React Was Remix 3's BIGGEST Gamble (That Paid Off)](https://www.youtube.com/watch?v=ZXcQR2jZL8s)\n\n&gt;How in the hell \"it paid off\" ? It's not even fully out yet\n\n&gt;It seems the Remix team loves to change everything between versions. I have no confidence they won‘t ditch all of this in v4. If I would move away from Next, Tanstack Start it is.\n\n&gt;tanstack start it is then...\n\n&gt;Seems like a mess\n\n&gt;There's nothing innovative just use vue or alpine or raw js if people hate react so much... Remix 3 will become tech debt\n\n&gt;yeah no thanks, i think we have enough frameworks. both remix and ripple can piss right off\n\n&gt;Seems like a mess. Why not Vue or Svelte?",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;yes it was announced in 2015 and I was pissed off back then as well.&lt;/p&gt;\n\n&lt;p&gt;Btw look at the top youtube comments of this link you shared &lt;a href=\"https://www.youtube.com/watch?v=ZXcQR2jZL8s\"&gt;Why Leaving React Was Remix 3&amp;#39;s BIGGEST Gamble (That Paid Off)&lt;/a&gt;&lt;/p&gt;\n\n&lt;blockquote&gt;\n&lt;p&gt;How in the hell &amp;quot;it paid off&amp;quot; ? It&amp;#39;s not even fully out yet&lt;/p&gt;\n\n&lt;p&gt;It seems the Remix team loves to change everything between versions. I have no confidence they won‘t ditch all of this in v4. If I would move away from Next, Tanstack Start it is.&lt;/p&gt;\n\n&lt;p&gt;tanstack start it is then...&lt;/p&gt;\n\n&lt;p&gt;Seems like a mess&lt;/p&gt;\n\n&lt;p&gt;There&amp;#39;s nothing innovative just use vue or alpine or raw js if people hate react so much... Remix 3 will become tech debt&lt;/p&gt;\n\n&lt;p&gt;yeah no thanks, i think we have enough frameworks. both remix and ripple can piss right off&lt;/p&gt;\n\n&lt;p&gt;Seems like a mess. Why not Vue or Svelte?&lt;/p&gt;\n&lt;/blockquote&gt;\n&lt;/div&gt;",
         "score": -2,
         "is_submitter": true,
@@ -323,9 +398,8 @@
   {
     "id": "okggvsl",
     "author": "RaltzKlamar",
-    "body": "Given that it's the same people behind react router, this isn't really surprising to me, that package also had large changes every major version. It doesn't say anything about dropping react sorry, so it sounds like you can still use it (unless i missed something?)\n\nIt could be that they tried remix as a next competitor and got nowhere, so now they're pivoting to try and still have it be useful in more contexts. Possibly this is a directive from Shopify.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Given that it&amp;#39;s the same people behind react router, this isn&amp;#39;t really surprising to me, that package also had large changes every major version. It doesn&amp;#39;t say anything about dropping react sorry, so it sounds like you can still use it (unless i missed something?)&lt;/p&gt;\n\n&lt;p&gt;It could be that they tried remix as a next competitor and got nowhere, so now they&amp;#39;re pivoting to try and still have it be useful in more contexts. Possibly this is a directive from Shopify.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 27,
+    "score": 34,
     "is_submitter": false,
     "created_utc": 1778165393,
     "distinguished": null,
@@ -335,9 +409,8 @@
       {
         "id": "okhi4pi",
         "author": "michaelfrieze",
-        "body": "&gt; It doesn't say anything about dropping react sorry, so it sounds like you can still use it (unless i missed something?)\n\nThe new Remix is no longer using React. \n\nThe old Remix just got merged into react router. ",
         "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;It doesn&amp;#39;t say anything about dropping react sorry, so it sounds like you can still use it (unless i missed something?)&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;The new Remix is no longer using React. &lt;/p&gt;\n\n&lt;p&gt;The old Remix just got merged into react router. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
+        "score": 2,
         "is_submitter": false,
         "created_utc": 1778175233,
         "distinguished": null,
@@ -348,65 +421,10 @@
     ]
   },
   {
-    "id": "okhfrd4",
-    "author": "SpinatMixxer",
-    "body": "Wasn't this already known when they merged it with react-router?\nYou can still use react-router in framework mode and they publicly said something along the lines of \"react-router v7 replaces Remix v2, you should migrate there, we will do something different with Remix in the future\".",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Wasn&amp;#39;t this already known when they merged it with react-router?\nYou can still use react-router in framework mode and they publicly said something along the lines of &amp;quot;react-router v7 replaces Remix v2, you should migrate there, we will do something different with Remix in the future&amp;quot;.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 8,
-    "is_submitter": false,
-    "created_utc": 1778174610,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhfrd4/",
-    "replies": [
-      {
-        "id": "okhxon0",
-        "author": "simple_explorer1",
-        "body": "yes that was in 2025 and even then merging with react router was a very big change. Now they are using the name Remix 3 for this \"yet another pivot\" but this has absolutely nothing to do with original Remix. They should stop giving illusion that this is the continuation of the original remix and drop the name and version number i.e. \"Remix 3\" completely.\n\nAnd, why can't they commit to anything? Remix to react router and then now this remix 3 which is not even react or anything really. I am sure given their track record of last 5 years, in next 6 months or a year they will pivot again. It is highly impossible to use their \"Remix\" branded frameworks in any capacity for serious work.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;yes that was in 2025 and even then merging with react router was a very big change. Now they are using the name Remix 3 for this &amp;quot;yet another pivot&amp;quot; but this has absolutely nothing to do with original Remix. They should stop giving illusion that this is the continuation of the original remix and drop the name and version number i.e. &amp;quot;Remix 3&amp;quot; completely.&lt;/p&gt;\n\n&lt;p&gt;And, why can&amp;#39;t they commit to anything? Remix to react router and then now this remix 3 which is not even react or anything really. I am sure given their track record of last 5 years, in next 6 months or a year they will pivot again. It is highly impossible to use their &amp;quot;Remix&amp;quot; branded frameworks in any capacity for serious work.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 0,
-        "is_submitter": true,
-        "created_utc": 1778179399,
-        "distinguished": null,
-        "parent_id": "t1_okhfrd4",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhxon0/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okhk1ph",
-    "author": "michaelfrieze",
-    "body": "&gt;Remix on the other hand has become completely unrecognisable and completely screwed their userbase in backwards incompatible way.\n\nThe old Remix got merged into React Router, so those users didn't get screwed. \n\nI'm personally not interested in using React Router these days, but it's still a good framework. React Router can be used like old Remix for SSR or to build SPAs without SSR like old RR. It even supports server components now (with or without SSR).",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;Remix on the other hand has become completely unrecognisable and completely screwed their userbase in backwards incompatible way.&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;The old Remix got merged into React Router, so those users didn&amp;#39;t get screwed. &lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;m personally not interested in using React Router these days, but it&amp;#39;s still a good framework. React Router can be used like old Remix for SSR or to build SPAs without SSR like old RR. It even supports server components now (with or without SSR).&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 6,
-    "is_submitter": false,
-    "created_utc": 1778175736,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhk1ph/",
-    "replies": [
-      {
-        "id": "okhld5a",
-        "author": "michaelfrieze",
-        "body": "Since they merged Remix into RR, I think they just wanted to do something interesting with the Remix name instead of letting it die. So, they took the opportunity to build something totally new. ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Since they merged Remix into RR, I think they just wanted to do something interesting with the Remix name instead of letting it die. So, they took the opportunity to build something totally new. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 4,
-        "is_submitter": false,
-        "created_utc": 1778176081,
-        "distinguished": null,
-        "parent_id": "t1_okhk1ph",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhld5a/",
-        "replies": []
-      }
-    ]
-  },
-  {
     "id": "okggoj5",
     "author": "CovidWarriorForLife",
-    "body": "No offense to the people working on remix but I wouldn't trust that framework. React router was already known for wildly changing their architectural direction from version to version and Remix was created solely for them to try and make more money.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;No offense to the people working on remix but I wouldn&amp;#39;t trust that framework. React router was already known for wildly changing their architectural direction from version to version and Remix was created solely for them to try and make more money.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 24,
+    "score": 34,
     "is_submitter": false,
     "created_utc": 1778165339,
     "distinguished": null,
@@ -416,9 +434,8 @@
       {
         "id": "okhkzq6",
         "author": "Excellent_Fondant794",
-        "body": "I always got the vibe they merged remix with react router purely because router was a successful project with a lot of weekly npm downloads.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I always got the vibe they merged remix with react router purely because router was a successful project with a lot of weekly npm downloads.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 4,
+        "score": 6,
         "is_submitter": false,
         "created_utc": 1778175983,
         "distinguished": null,
@@ -431,9 +448,8 @@
   {
     "id": "okglibq",
     "author": "dnrvs",
-    "body": "I think react router is in great hands now with the change to the open govornance model [https://github.com/remix-run/react-router/blob/main/GOVERNANCE.md#steering-committee](https://github.com/remix-run/react-router/blob/main/GOVERNANCE.md#steering-committee)\n\nryan and mj can go work on whatever interests them",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think react router is in great hands now with the change to the open govornance model &lt;a href=\"https://github.com/remix-run/react-router/blob/main/GOVERNANCE.md#steering-committee\"&gt;https://github.com/remix-run/react-router/blob/main/GOVERNANCE.md#steering-committee&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;ryan and mj can go work on whatever interests them&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 11,
+    "score": 15,
     "is_submitter": false,
     "created_utc": 1778166640,
     "distinguished": null,
@@ -443,9 +459,8 @@
       {
         "id": "okh7es7",
         "author": "simple_explorer1",
-        "body": "then they better not call it remix 3 because it is not the next version of their previous react ssr framework. ",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;then they better not call it remix 3 because it is not the next version of their previous react ssr framework. &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
+        "score": -1,
         "is_submitter": true,
         "created_utc": 1778172435,
         "distinguished": null,
@@ -456,51 +471,71 @@
     ]
   },
   {
-    "id": "okig08l",
-    "author": "djslakor",
-    "body": "New here?",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;New here?&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 3,
+    "id": "okhk1ph",
+    "author": "michaelfrieze",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;Remix on the other hand has become completely unrecognisable and completely screwed their userbase in backwards incompatible way.&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;The old Remix got merged into React Router, so those users didn&amp;#39;t get screwed. &lt;/p&gt;\n\n&lt;p&gt;I&amp;#39;m personally not interested in using React Router these days, but it&amp;#39;s still a good framework. React Router can be used like old Remix for SSR or to build SPAs without SSR like old RR. It even supports server components now (with or without SSR).&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 7,
     "is_submitter": false,
-    "created_utc": 1778184400,
+    "created_utc": 1778175736,
     "distinguished": null,
     "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okig08l/",
-    "replies": []
-  },
-  {
-    "id": "okhxu23",
-    "author": "saito200",
-    "body": "maybe just maybe it would be better to not even use react altogether",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;maybe just maybe it would be better to not even use react altogether&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 2,
-    "is_submitter": false,
-    "created_utc": 1778179440,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhxu23/",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhk1ph/",
     "replies": [
       {
-        "id": "okhzq8c",
-        "author": "simple_explorer1",
-        "body": "that ship has sailed a long time ago. Svelte didn't make it and neither did Solid.js. The rankings haven't moved for last 6 years. React rules especially in startups and scaleups and modern high scale companies like Airbnb, uber, Tesla etc, Angular holds a small dominance in enterprise sector especially banking (which is also taken over by React.js btw) and Vue.js sits somewhere in the middle but haven't moved in popularity at all. \n\nDespite solid/svelte being technically/performance wise superior, they still remain niche till this very day.\n\nIt is significantly harder for any frontend framework to make it in 2026 and beyond. There is no appetite for \"Yet another JS FE framework\" in the market.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;that ship has sailed a long time ago. Svelte didn&amp;#39;t make it and neither did Solid.js. The rankings haven&amp;#39;t moved for last 6 years. React rules especially in startups and scaleups and modern high scale companies like Airbnb, uber, Tesla etc, Angular holds a small dominance in enterprise sector especially banking (which is also taken over by React.js btw) and Vue.js sits somewhere in the middle but haven&amp;#39;t moved in popularity at all. &lt;/p&gt;\n\n&lt;p&gt;Despite solid/svelte being technically/performance wise superior, they still remain niche till this very day.&lt;/p&gt;\n\n&lt;p&gt;It is significantly harder for any frontend framework to make it in 2026 and beyond. There is no appetite for &amp;quot;Yet another JS FE framework&amp;quot; in the market.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
-        "is_submitter": true,
-        "created_utc": 1778179950,
+        "id": "okhld5a",
+        "author": "michaelfrieze",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Since they merged Remix into RR, I think they just wanted to do something interesting with the Remix name instead of letting it die. So, they took the opportunity to build something totally new. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": false,
+        "created_utc": 1778176081,
         "distinguished": null,
-        "parent_id": "t1_okhxu23",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhzq8c/",
+        "parent_id": "t1_okhk1ph",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhld5a/",
         "replies": []
       }
     ]
   },
   {
+    "id": "okispm7",
+    "author": "shuwatto",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah, but honestly what else can you expect from devs of react-router in the first place?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778187917,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okispm7/",
+    "replies": []
+  },
+  {
+    "id": "okiyevz",
+    "author": "Sulungskwa",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Even back when it was just react-router I felt like every change to react-router was completely backwards compatible and the attitude always felt very &amp;quot;fuck you&amp;quot; when people asked for smoother transitions. I once tried to migrate from react-router 3 to 6 (in anticipation of 7) and it was just so fundamentally different that we would have had to rebuild the core architecture from scratch&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778189538,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okiyevz/",
+    "replies": []
+  },
+  {
+    "id": "okjlunp",
+    "author": "femio",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Guess it’s just me but the code samples they’re showing def seem pretty nice &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778197150,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okjlunp/",
+    "replies": []
+  },
+  {
     "id": "okgqsta",
     "author": "Few_Pick3973",
-    "body": "Feels like they just want to say “hey, this is an AI-native frontend framework” and hype, but LLMs actually work better when there’s more pre-training data, sso the premise is kind of a paradox to an brand new framework.",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Feels like they just want to say “hey, this is an AI-native frontend framework” and hype, but LLMs actually work better when there’s more pre-training data, sso the premise is kind of a paradox to an brand new framework.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 4,
+    "score": 8,
     "is_submitter": false,
     "created_utc": 1778168049,
     "distinguished": null,
@@ -510,9 +545,8 @@
       {
         "id": "okhfuki",
         "author": "SirDaev",
-        "body": "I think they mean that since it's as close as possible to only using Web APIs to achieve their vision, the LLMs are already trained on the vast majority of it.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think they mean that since it&amp;#39;s as close as possible to only using Web APIs to achieve their vision, the LLMs are already trained on the vast majority of it.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 3,
+        "score": 2,
         "is_submitter": false,
         "created_utc": 1778174633,
         "distinguished": null,
@@ -523,65 +557,34 @@
     ]
   },
   {
-    "id": "okhmq96",
-    "author": "Ghostfly-",
-    "body": "The Co-Founder has a really great name",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The Co-Founder has a really great name&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 1,
+    "id": "okjleuv",
+    "author": "kyualun",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Laughing remembering all the why I dropped X for Remix discourse. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
     "is_submitter": false,
-    "created_utc": 1778176435,
+    "created_utc": 1778196998,
     "distinguished": null,
     "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhmq96/",
-    "replies": [
-      {
-        "id": "okhy9kz",
-        "author": "simple_explorer1",
-        "body": "what",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;what&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": true,
-        "created_utc": 1778179557,
-        "distinguished": null,
-        "parent_id": "t1_okhmq96",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhy9kz/",
-        "replies": [
-          {
-            "id": "okhyltp",
-            "author": "Ghostfly-",
-            "body": "\"Michael Jackson\" if the blog post is correct",
-            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;&amp;quot;Michael Jackson&amp;quot; if the blog post is correct&lt;/p&gt;\n&lt;/div&gt;",
-            "score": 1,
-            "is_submitter": false,
-            "created_utc": 1778179649,
-            "distinguished": null,
-            "parent_id": "t1_okhy9kz",
-            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhyltp/",
-            "replies": []
-          }
-        ]
-      }
-    ]
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okjleuv/",
+    "replies": []
   },
   {
-    "id": "okhzinh",
-    "author": "FilmWeasle",
-    "body": "This is a widespread issue in the JavaScript world. None of the JS frameworks work the way that I want them to. None do all of the things that I want them to do. Yes, they change a lot, but they all seem to leave a lot of room for improvement. \n\nI still want regex routing. I think variables should be set at runtime rather than build time. Page meta data should be passed to the layout as a prop (rather than to a function). I want a framework with an SSR-first design pattern.\n\nI ported some code from Remix 2 to RR7. It took some effort, but I followed the migration guide, and the were no unexpected challenges.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is a widespread issue in the JavaScript world. None of the JS frameworks work the way that I want them to. None do all of the things that I want them to do. Yes, they change a lot, but they all seem to leave a lot of room for improvement. &lt;/p&gt;\n\n&lt;p&gt;I still want regex routing. I think variables should be set at runtime rather than build time. Page meta data should be passed to the layout as a prop (rather than to a function). I want a framework with an SSR-first design pattern.&lt;/p&gt;\n\n&lt;p&gt;I ported some code from Remix 2 to RR7. It took some effort, but I followed the migration guide, and the were no unexpected challenges.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 1,
+    "id": "okl7q35",
+    "author": "SirVoltington",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Again? This was announced a while ago when the merge with rr7 happened. Rr7 is the continuation of the react framework and remix is its own thing now. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
     "is_submitter": false,
-    "created_utc": 1778179895,
+    "created_utc": 1778220954,
     "distinguished": null,
     "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhzinh/",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okl7q35/",
     "replies": []
   },
   {
     "id": "oki71f7",
     "author": "rennademilan",
-    "body": "To me they are going towards the angular way. One full opinionated package. A bit late ",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;To me they are going towards the angular way. One full opinionated package. A bit late &lt;/p&gt;\n&lt;/div&gt;",
-    "score": 1,
+    "score": 2,
     "is_submitter": false,
     "created_utc": 1778181926,
     "distinguished": null,
@@ -590,50 +593,181 @@
     "replies": []
   },
   {
-    "id": "okidlsr",
-    "author": "adfawf3f3f32a",
-    "body": "I personally think most people are over dramatic about the react-router / remix history and dealing with its breaking changes over the years but reusing the name remix for their new framework is fucking dumb. That said, I did watch their very early demo a while back and liked what they were doing. But at the end of the day nobody is going to use it so I wont either.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I personally think most people are over dramatic about the react-router / remix history and dealing with its breaking changes over the years but reusing the name remix for their new framework is fucking dumb. That said, I did watch their very early demo a while back and liked what they were doing. But at the end of the day nobody is going to use it so I wont either.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 1,
+    "id": "okj11cp",
+    "author": "pm_me_ur_happy_traiI",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This was announced last year at Remix conf, it was bullshit then and it&amp;#39;s bullshit now. I asked at the conference, why make this deliberately confusing by making this look like a major version when it&amp;#39;s actually a completely new thing. They&amp;#39;re answer:&lt;/p&gt;\n\n&lt;p&gt;We like the name.&lt;/p&gt;\n\n&lt;p&gt;This is a bunch of guys who have made a career on pushing the next big thing reacting to the fact that the industry has settled down. Peo-ple aren&amp;#39;t looking for the next big thing anymore. React won.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
     "is_submitter": false,
-    "created_utc": 1778183731,
+    "created_utc": 1778190310,
     "distinguished": null,
     "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okidlsr/",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okj11cp/",
     "replies": []
   },
   {
-    "id": "okismzd",
-    "author": "chillermane",
-    "body": "I mean it’s a frame work for massively scaled companies by a massively scaled company. \n\nAnyone who is not a massively scaled company with 8,000 questionable programmers on staff is not going to understand the value of Remix, because it is made to be able to keep 8,000 questionably skilled programmers to be able to contribute to the same software without exploding it. \n\nIt’s not made for regular businesses or typical software projects\n",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I mean it’s a frame work for massively scaled companies by a massively scaled company. &lt;/p&gt;\n\n&lt;p&gt;Anyone who is not a massively scaled company with 8,000 questionable programmers on staff is not going to understand the value of Remix, because it is made to be able to keep 8,000 questionably skilled programmers to be able to contribute to the same software without exploding it. &lt;/p&gt;\n\n&lt;p&gt;It’s not made for regular businesses or typical software projects&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 1,
+    "id": "okjcatw",
+    "author": "BigFaceBass",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We use RR7 at work… started with Remix v2. I like it quite a bit. The lead devs are getting paid by a corporate daddy to follow their whims and explore web technologies. More power to them. If all of us could be so lucky. &lt;/p&gt;\n\n&lt;p&gt;I find it weird to get bent out of shape about this. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
     "is_submitter": false,
-    "created_utc": 1778187896,
+    "created_utc": 1778193893,
     "distinguished": null,
     "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okismzd/",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okjcatw/",
     "replies": []
   },
   {
-    "id": "okispm7",
-    "author": "shuwatto",
-    "body": "Yeah, but honestly what else can you expect from devs of react-router in the first place?",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah, but honestly what else can you expect from devs of react-router in the first place?&lt;/p&gt;\n&lt;/div&gt;",
+    "id": "okivm8o",
+    "author": "Dethstroke54",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This feels so asinine. RR felt like a good direction and I guess ultimately it still is and you can ignore this.&lt;/p&gt;\n\n&lt;p&gt;I’m just struggling to follow the thinking RR brought the framework back into the router, which is the way many modern ones seem to be going and is essentially a framework on top of Vite. It’s more modular, Vite is great, you can progressively use what you need: bare Vite, simple router, framework router.&lt;/p&gt;\n\n&lt;p&gt;From Vite itself you can jump to many other routers/frameworks like Tanstack, Vike, etc.&lt;/p&gt;\n\n&lt;p&gt;Why tf would I want to go to a monolith like NextJS from what I’m understanding. Even good things about NextJS considered, I feel like it’s spent a good part of its history receiving justified complaints bc the tooling it was stuck and rigid. For instance for the longest time everyone complained it was still on webpack&lt;/p&gt;\n\n&lt;p&gt;I don’t get how it’s not a monolith but a full stack. Don’t really have interest in digging that deep though.&lt;/p&gt;\n&lt;/div&gt;",
     "score": 1,
     "is_submitter": false,
-    "created_utc": 1778187917,
+    "created_utc": 1778188742,
     "distinguished": null,
     "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okispm7/",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okivm8o/",
     "replies": []
+  },
+  {
+    "id": "okjy7uh",
+    "author": "DrewHoov",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Library name checks out&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778201907,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okjy7uh/",
+    "replies": []
+  },
+  {
+    "id": "okjz94o",
+    "author": "bzbub2",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;seems like they buried the lede and invented their own component model thats completely separate from react? wtf is this copytoclipboard example. it might not be bad but it needs more explanation&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778202311,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okjz94o/",
+    "replies": []
+  },
+  {
+    "id": "oklxax1",
+    "author": "Halleys_Vomit",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Lol. They did not &amp;quot;screw their userbase in [sic] backwards incompatible way.&amp;quot; If you want to use the old Remix -- a React meta-framework that&amp;#39;s an alternative to NextJS -- that became part of React Router. That still exists. It did not disappear.&lt;/p&gt;\n\n&lt;p&gt;It is confusing &lt;em&gt;branding&lt;/em&gt;, but the actual framework that was Remix v2 is still there. The only &amp;quot;volatility&amp;quot; is the name. And if a company &amp;quot;built massive products on Remix,&amp;quot; they are not just going to YOLO a major version upgrade. They are going to do some digging to find out what the differences are between versions... at which point they would find that the package they want to use now is React Router. It&amp;#39;s a &lt;em&gt;little&lt;/em&gt; confusing, but it&amp;#39;s not rocket science.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778233851,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oklxax1/",
+    "replies": []
+  },
+  {
+    "id": "okmio2a",
+    "author": "xxbeanxx",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We use it in many applications that each have userbases of 10M+ users. We&amp;#39;ve never had any issues with it and literally every team I&amp;#39;ve worked on prefers it over Nextjs.&lt;/p&gt;\n\n&lt;p&gt;The negativity and hate towards the remix team comes from inexperienced developers who have little to no actual real life experience, in my opinion.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778242555,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okmio2a/",
+    "replies": [
+      {
+        "id": "okmola8",
+        "author": "simple_explorer1",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;really so it is users fault that remix authors keep changing the direction of remix and have made it unrecognizable at this point? Hard disagree&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778244488,
+        "distinguished": null,
+        "parent_id": "t1_okmio2a",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okmola8/",
+        "replies": [
+          {
+            "id": "okofhzs",
+            "author": "xxbeanxx",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Remix became React Router v7.. there was no change in direction, there was a change in name.&lt;/p&gt;\n\n&lt;p&gt;We migrated all of our applications from Remix v2.x to React Router v7 in a day (pre-AI). Not a single developer on any of our dev teams complained.&lt;/p&gt;\n\n&lt;p&gt;These were huge (and some smaller) enterprise-grade applications.&lt;/p&gt;\n\n&lt;p&gt;🤷🏻&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778261723,
+            "distinguished": null,
+            "parent_id": "t1_okmola8",
+            "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okofhzs/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "oknaj67",
+    "author": "bobbyboobies",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;With this level of instability who is going to use them to build a company? Maybe for hobby projects? At least Nextjs sticks to what they are. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778250840,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oknaj67/",
+    "replies": []
+  },
+  {
+    "id": "oknr9mu",
+    "author": "AccomplishedRoll6388",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;L&amp;#39;exemple de copy clipboard de leur article est dégueulasse. Tant de code pour ça &amp;quot;juste&amp;quot; pour utiliser un framework qui va exploser ton bundle size&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778255269,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oknr9mu/",
+    "replies": []
+  },
+  {
+    "id": "okig08l",
+    "author": "djslakor",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;New here?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778184400,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okig08l/",
+    "replies": []
+  },
+  {
+    "id": "okhxu23",
+    "author": "saito200",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;maybe just maybe it would be better to not even use react altogether&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778179440,
+    "distinguished": null,
+    "parent_id": "t3_1t6cej2",
+    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhxu23/",
+    "replies": [
+      {
+        "id": "okhzq8c",
+        "author": "simple_explorer1",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;that ship has sailed a long time ago. Svelte didn&amp;#39;t make it and neither did Solid.js. The rankings haven&amp;#39;t moved for last 6 years. React rules especially in startups and scaleups and modern high scale companies like Airbnb, uber, Tesla etc, Angular holds a small dominance in enterprise sector especially banking (which is also taken over by React.js btw) and Vue.js sits somewhere in the middle but haven&amp;#39;t moved in popularity at all. &lt;/p&gt;\n\n&lt;p&gt;Despite solid/svelte being technically/performance wise superior, they still remain niche till this very day.&lt;/p&gt;\n\n&lt;p&gt;It is significantly harder for any frontend framework to make it in 2026 and beyond. There is no appetite for &amp;quot;Yet another JS FE framework&amp;quot; in the market.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": true,
+        "created_utc": 1778179950,
+        "distinguished": null,
+        "parent_id": "t1_okhxu23",
+        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhzq8c/",
+        "replies": []
+      }
+    ]
   },
   {
     "id": "okggs4f",
     "author": "[deleted]",
-    "body": "[deleted]",
     "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;[deleted]&lt;/p&gt;\n&lt;/div&gt;",
-    "score": -1,
+    "score": -3,
     "is_submitter": false,
     "created_utc": 1778165366,
     "distinguished": null,
@@ -643,9 +777,8 @@
       {
         "id": "okgup3t",
         "author": "yabai90",
-        "body": "Nextjs is nothing stable.",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nextjs is nothing stable.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 8,
+        "score": 9,
         "is_submitter": false,
         "created_utc": 1778169062,
         "distinguished": null,
@@ -656,175 +789,13 @@
       {
         "id": "okgt35v",
         "author": "lunacraz",
-        "body": "lol nextjs being the \"stable\" one is so funny to me",
         "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;lol nextjs being the &amp;quot;stable&amp;quot; one is so funny to me&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 4,
+        "score": 6,
         "is_submitter": false,
         "created_utc": 1778168648,
         "distinguished": null,
         "parent_id": "t1_okggs4f",
         "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okgt35v/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okgvtq8",
-    "author": "akirozen",
-    "body": "Who the fuk uses remix?",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Who the fuk uses remix?&lt;/p&gt;\n&lt;/div&gt;",
-    "score": -1,
-    "is_submitter": false,
-    "created_utc": 1778169355,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okgvtq8/",
-    "replies": [
-      {
-        "id": "oki0ep6",
-        "author": "FilmWeasle",
-        "body": "Currently, it's called React Router 7, and it is one of the more popular NPM packages.",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Currently, it&amp;#39;s called React Router 7, and it is one of the more popular NPM packages.&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 3,
-        "is_submitter": false,
-        "created_utc": 1778180131,
-        "distinguished": null,
-        "parent_id": "t1_okgvtq8",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/oki0ep6/",
-        "replies": []
-      },
-      {
-        "id": "okhp40n",
-        "author": "Cumak_",
-        "body": "diy.com   \ncastorama.fr",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;diy.com&lt;br/&gt;\ncastorama.fr&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778177069,
-        "distinguished": null,
-        "parent_id": "t1_okgvtq8",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhp40n/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okhmo0b",
-    "author": "peanutbutter4all",
-    "body": "Remix became the new Google ",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Remix became the new Google &lt;/p&gt;\n&lt;/div&gt;",
-    "score": 0,
-    "is_submitter": false,
-    "created_utc": 1778176419,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhmo0b/",
-    "replies": [
-      {
-        "id": "okhy3oa",
-        "author": "simple_explorer1",
-        "body": "exactly, except [google kills features](https://killedbygoogle.com/) where as remix makes highly unstable and incompatible pivots ",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;exactly, except &lt;a href=\"https://killedbygoogle.com/\"&gt;google kills features&lt;/a&gt; where as remix makes highly unstable and incompatible pivots &lt;/p&gt;\n&lt;/div&gt;",
-        "score": 3,
-        "is_submitter": true,
-        "created_utc": 1778179513,
-        "distinguished": null,
-        "parent_id": "t1_okhmo0b",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhy3oa/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okhrqb2",
-    "author": "Otherwise_Eye_611",
-    "body": "Their big problem is marketing. Remix should have stayed Remix, it never should have become RR7, they should have maintained the separation. Now they are making a new Remix that is nothing like the old one when it could have just been called something else. And for what? It's confusing and annoying and given RRs history, they've given themselves a huge uphill battle.\n\nI am glad it's not tied to react though.\n\n",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Their big problem is marketing. Remix should have stayed Remix, it never should have become RR7, they should have maintained the separation. Now they are making a new Remix that is nothing like the old one when it could have just been called something else. And for what? It&amp;#39;s confusing and annoying and given RRs history, they&amp;#39;ve given themselves a huge uphill battle.&lt;/p&gt;\n\n&lt;p&gt;I am glad it&amp;#39;s not tied to react though.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": 0,
-    "is_submitter": false,
-    "created_utc": 1778177771,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhrqb2/",
-    "replies": [
-      {
-        "id": "okhyq33",
-        "author": "simple_explorer1",
-        "body": "&gt;Now they are making a new Remix that is nothing like the old one when it could have just been called something else\n\n100% agree. They just want to ride the wave on the old name which many react users know as a funnel to their \"brand new\" esoteric framework which majority of people this time aren't even gonna touch because of constant pivots",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;Now they are making a new Remix that is nothing like the old one when it could have just been called something else&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;100% agree. They just want to ride the wave on the old name which many react users know as a funnel to their &amp;quot;brand new&amp;quot; esoteric framework which majority of people this time aren&amp;#39;t even gonna touch because of constant pivots&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 2,
-        "is_submitter": true,
-        "created_utc": 1778179681,
-        "distinguished": null,
-        "parent_id": "t1_okhrqb2",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhyq33/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okgfchy",
-    "author": "Commercial_Echo923",
-    "body": "react people are just crazy but i would say remix is one of the less frequently changing frameworks.\n\nI dont know if it has been always like this but at list since ive known it react router has always been a remix module which was just provided as a standalone.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;react people are just crazy but i would say remix is one of the less frequently changing frameworks.&lt;/p&gt;\n\n&lt;p&gt;I dont know if it has been always like this but at list since ive known it react router has always been a remix module which was just provided as a standalone.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": -14,
-    "is_submitter": false,
-    "created_utc": 1778164979,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okgfchy/",
-    "replies": [
-      {
-        "id": "okh7co7",
-        "author": "dragonageoranges",
-        "body": "Me when it’s my first day using Remix so it all seems stable to me 😇",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Me when it’s my first day using Remix so it all seems stable to me 😇&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 6,
-        "is_submitter": false,
-        "created_utc": 1778172420,
-        "distinguished": null,
-        "parent_id": "t1_okgfchy",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okh7co7/",
-        "replies": []
-      }
-    ]
-  },
-  {
-    "id": "okgw3mg",
-    "author": "AbrahelOne",
-    "body": "We should go back to vanilla and use web components.",
-    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We should go back to vanilla and use web components.&lt;/p&gt;\n&lt;/div&gt;",
-    "score": -4,
-    "is_submitter": false,
-    "created_utc": 1778169427,
-    "distinguished": null,
-    "parent_id": "t3_1t6cej2",
-    "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okgw3mg/",
-    "replies": [
-      {
-        "id": "okh79lb",
-        "author": "aragost",
-        "body": "good news, no one is stopping you!",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;good news, no one is stopping you!&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 6,
-        "is_submitter": false,
-        "created_utc": 1778172397,
-        "distinguished": null,
-        "parent_id": "t1_okgw3mg",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okh79lb/",
-        "replies": []
-      },
-      {
-        "id": "okhiqpy",
-        "author": "michaelfrieze",
-        "body": "eww no",
-        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;eww no&lt;/p&gt;\n&lt;/div&gt;",
-        "score": 1,
-        "is_submitter": false,
-        "created_utc": 1778175393,
-        "distinguished": null,
-        "parent_id": "t1_okgw3mg",
-        "permalink": "/r/reactjs/comments/1t6cej2/remix_changed_the_direction_yet_again_this_time/okhiqpy/",
         "replies": []
       }
     ]
