@@ -23,6 +23,7 @@ interface InfoProps {
 	text?: string | number;
 	onClick?: () => void;
 	size?: "sm" | "md" | "lg";
+	className?: string;
 }
 
 const InfoBubble = ({
@@ -31,6 +32,7 @@ const InfoBubble = ({
 	text,
 	onClick,
 	size = "lg",
+	className,
 }: InfoProps) => {
 	const IconComponent: LucideIcon | undefined = icon
 		? bubbleIcons[icon]
@@ -43,7 +45,8 @@ const InfoBubble = ({
 				onClick
 					? "cursor-pointer hover:bg-gray-500 box-shadow-thin"
 					: "cursor-default",
-				size === "lg" ? "px-3 py-1 bg-[#242424]" : "px-2 py-0.5"
+				size === "lg" ? "px-3 py-1 bg-[#242424]" : "px-2 py-0.5",
+				className,
 			)}
 			onClick={onClick}
 		>
@@ -52,7 +55,7 @@ const InfoBubble = ({
 				<p
 					className={clsx(
 						"font-semibold",
-						size === "lg" ? "text-sm" : "text-xs"
+						size === "lg" ? "text-sm" : "text-xs",
 					)}
 				>
 					{typeof text === "number" ? formatCounts(text) : text}

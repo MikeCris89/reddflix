@@ -11,13 +11,15 @@ import {
 	isVideoPost,
 	POST_TYPES,
 	RawRedditPost,
+	RedditCommentFormatted,
 	RedditPost,
 	VideoPost,
 } from "../features/reddit/redditTypes";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { toast } from "sonner";
-import manifest from "../data/fallback/posts/_manifest.json";
+import postsManifest from "../data/fallback/posts/_manifest.json";
+import commentsManifest from "../data/fallback/comments/_manifest.json";
 
 export const getPostType = (
 	post: RawRedditPost | RedditPost,
@@ -196,17 +198,28 @@ export const refinePost = (data: RawRedditPost): RedditPost => {
 	};
 };
 
-export const hasFallback = (sub: string): boolean => {
-	return (manifest as string[]).includes(sub);
+export const hasPostFallback = (sub: string): boolean => {
+	return (postsManifest as string[]).includes(sub);
+};
+export const hasCommentFallback = (sub: string): boolean => {
+	return (commentsManifest as string[]).includes(sub);
 };
 
 export const getFallbackPosts = async (sub: string): Promise<RedditPost[]> => {
-	if (!hasFallback(sub)) return [];
+	if (!hasPostFallback(sub)) return [];
 	const module = await import(`../data/fallback/posts/${sub}.json`);
 	return (module.default as RedditPost[]).map((post) => ({
 		...post,
 		type: getPostType(post),
 	}));
+};
+
+export const getFallbackComments = async (
+	postId: string,
+): Promise<RedditCommentFormatted[]> => {
+	if (!hasCommentFallback(postId)) return [];
+	const module = await import(`../data/fallback/comments/${postId}.json`);
+	return module.default as RedditCommentFormatted[];
 };
 
 export const getDecodedPreviewImage = (

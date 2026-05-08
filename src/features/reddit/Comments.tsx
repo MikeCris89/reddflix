@@ -3,7 +3,7 @@ import { useFetchPostAndCommentsQuery } from "./redditApi";
 import { RedditCommentFormatted } from "./redditTypes";
 import InfoBubble from "../../components/InfoBubble";
 import { BUBBLE_ICON, isAppHandledError } from "../../utils/types";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import {
 	ArrowBigUpDashIcon,
@@ -14,7 +14,11 @@ import {
 } from "lucide-react";
 import useDisplay from "../../hooks/useDisplay";
 import HTML from "../../components/HTML";
-import { getCreatedTime } from "../../utils/helpers";
+import {
+	getCreatedTime,
+	getFallbackComments,
+	hasCommentFallback,
+} from "../../utils/helpers";
 import { motion, AnimatePresence } from "framer-motion";
 import Spinner from "../../components/Spinner";
 import { useRemovePendingRequestMutation } from "../localApp/localAppApi";
@@ -103,7 +107,7 @@ const RecursiveComments = ({
 									"pl-1 pr-1 pt-1 w-full",
 									comment.replies.length > 0
 										? "cursor-pointer"
-										: "cursor-default"
+										: "cursor-default",
 								)}
 							>
 								<CommentCard
@@ -115,7 +119,7 @@ const RecursiveComments = ({
 											toggleExpanded(
 												comment.id,
 												getDescendants(comment),
-												e.currentTarget
+												e.currentTarget,
 											);
 									}}
 								/>
@@ -187,7 +191,7 @@ const CommentThread = ({ comment }: { comment: RedditCommentFormatted }) => {
 			<div
 				className={clsx(
 					"",
-					comment.replies.length > 0 ? "cursor-pointer" : "cursor-default"
+					comment.replies.length > 0 ? "cursor-pointer" : "cursor-default",
 				)}
 			>
 				<CommentCard
@@ -199,7 +203,7 @@ const CommentThread = ({ comment }: { comment: RedditCommentFormatted }) => {
 							toggleExpanded(
 								comment.id,
 								getDescendants(comment),
-								e.currentTarget
+								e.currentTarget,
 							);
 					}}
 				/>
@@ -230,7 +234,7 @@ const CommentThread = ({ comment }: { comment: RedditCommentFormatted }) => {
 								toggleExpanded(
 									comment.id,
 									getDescendants(comment),
-									commentRef.current || e.currentTarget
+									commentRef.current || e.currentTarget,
 								)
 							}
 						>
@@ -280,25 +284,37 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 	const { isPortrait, isMobile } = useDisplay();
 	const commRef = useRef<HTMLDivElement>(null);
 	const [removePending] = useRemovePendingRequestMutation();
+	const [fallbackComments, setFallbackComments] = useState<
+		RedditCommentFormatted[] | null
+	>(null);
 	const remaining = useCountdown(pendingTime);
-	const {
-		data: comments,
-		isLoading,
-		isError,
-		error,
-		refetch,
-	} = useFetchPostAndCommentsQuery(postId, {
-		refetchOnMountOrArgChange: false,
-		refetchOnReconnect: false,
-		refetchOnFocus: false,
-		selectFromResult: ({ data, isLoading, error, isError }) => ({
-			data: data?.comments,
-			isLoading,
-			isError,
 
-			error,
-		}),
-	});
+	const hasFallback = postId ? hasCommentFallback(postId) : false;
+
+	const { data, isLoading, isError, error, refetch } =
+		useFetchPostAndCommentsQuery(postId, {
+			refetchOnMountOrArgChange: false,
+			refetchOnReconnect: false,
+			refetchOnFocus: false,
+			skip: hasFallback,
+			selectFromResult: ({ data, isLoading, error, isError }) => ({
+				data: data?.comments,
+				isLoading,
+				isError,
+
+				error,
+			}),
+		});
+
+	const comments = useMemo(() => {
+		if (hasFallback) return fallbackComments;
+		if (data) return data;
+		return null;
+	}, [data, fallbackComments, hasFallback]);
+
+	useEffect(() => {
+		if (postId) getFallbackComments(postId).then(setFallbackComments);
+	}, [postId]);
 
 	useEffect(() => {
 		const el = commRef.current;
@@ -333,13 +349,13 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 		) {
 			console.warn(
 				"Pending request: ",
-				new Date(error.data.pendingTimestamp).toLocaleDateString()
+				new Date(error.data.pendingTimestamp).toLocaleDateString(),
 			);
 			setPendingTime(error.data.pendingTimestamp);
 		}
 	}, [isError, error]);
 
-	if (isError && error) {
+	if (hasFallback && isError && error) {
 		return (
 			<div className="flex flex-col h-[300px] justify-center items-center">
 				{isError && error && (
@@ -376,12 +392,16 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 			</div>
 		);
 
-	if (!comments || comments.length === 0)
+	if (!comments || comments.length === 0) {
+		if (hasFallback) {
+			return <Spinner />;
+		}
 		return (
 			<div className=" h-full w-full p-1">
 				<h3 className="text-lg text-center">No Comments</h3>
 			</div>
 		);
+	}
 
 	const section = page * PAGE_SIZE;
 	const maxPages = Math.max(0, Math.floor(comments.length / PAGE_SIZE) - 1);
@@ -450,7 +470,7 @@ const PageButtons = ({
 }) => {
 	const handlePage = () => {
 		setPage((prev) =>
-			dir === "next" ? Math.min(max, prev + 1) : Math.max(0, prev - 1)
+			dir === "next" ? Math.min(max, prev + 1) : Math.max(0, prev - 1),
 		);
 	};
 
@@ -468,7 +488,7 @@ const PageButtons = ({
 					<button
 						onClick={handlePage}
 						className={clsx(
-							"flex gap-2 py-[3px] px-2 w-fit justify-center items-center bg-[#E50914]"
+							"flex gap-2 py-[3px] px-2 w-fit justify-center items-center bg-[#E50914]",
 						)}
 						disabled={dir === "next" && lastPage}
 					>

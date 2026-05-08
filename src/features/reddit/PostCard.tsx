@@ -8,7 +8,7 @@ import { useSetSeenPostMutation } from "../localApp/localAppApi";
 import { useLocation, useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import useDisplay from "../../hooks/useDisplay";
-import { relativeTime } from "../../utils/helpers";
+import { hasCommentFallback, relativeTime } from "../../utils/helpers";
 
 interface PostCardProps {
 	post: RedditPost;
@@ -29,8 +29,6 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		delay: 200,
 	});
 
-	const isSample = post.sample === true;
-
 	useEffect(() => {
 		if (inView) {
 			setSeenPost({ subreddit: sub, postId: post.id });
@@ -43,6 +41,10 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		shadow-[0_10px_24px_rgba(0,0,0,0.5)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.7)] hover:scale-[1.02]
 		active:scale-[0.97] active:shadow-[0_6px_20px_rgba(0,0,0,0.5)]
 		transition-all duration-200 ease-in-out`;
+
+	const isSample = post.sample === true;
+
+	const hasComment = hasCommentFallback(post.id);
 
 	return (
 		<div
@@ -112,6 +114,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 						icon={BUBBLE_ICON.chat}
 						text={post.num_comments}
 						size="md"
+						className={clsx(isSample && hasComment && "bg-blue-500")}
 					/>
 				</div>
 			</div>
