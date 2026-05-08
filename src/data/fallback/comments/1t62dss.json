@@ -1,0 +1,102 @@
+[
+  {
+    "id": "okivd9d",
+    "author": "l5atn00b",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thanks. I had to integrate a calendar component into an app a few days ago.&lt;/p&gt;\n\n&lt;p&gt;The component looks very slick, and I love the views.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778188670,
+    "distinguished": null,
+    "parent_id": "t3_1t62dss",
+    "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okivd9d/",
+    "replies": [
+      {
+        "id": "okjsjdy",
+        "author": "Cultural_Mission_482",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thanks mate&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778199630,
+        "distinguished": null,
+        "parent_id": "t1_okivd9d",
+        "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okjsjdy/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okgsmoj",
+    "author": "Far-Plenty6731",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Calendars are notoriously brutal to build properly. Make sure you nail the keyboard routing and ARIA grid structure early on. Retrofitting accessibility into complex date matrices later is an absolute nightmare.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778168529,
+    "distinguished": null,
+    "parent_id": "t3_1t62dss",
+    "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okgsmoj/",
+    "replies": [
+      {
+        "id": "okjshuh",
+        "author": "Cultural_Mission_482",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The project already includes keyboard shortcuts and core accessibility features.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1778199614,
+        "distinguished": null,
+        "parent_id": "t1_okgsmoj",
+        "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okjshuh/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okj9euq",
+    "author": "thonfom",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Does it support grouping or swim lane style views?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778192939,
+    "distinguished": null,
+    "parent_id": "t3_1t62dss",
+    "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okj9euq/",
+    "replies": [
+      {
+        "id": "okjsxxt",
+        "author": "Cultural_Mission_482",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The resource timeline and grid are already supported. It works well for booking rooms, equipment, studios, desks, or staff shifts.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778199785,
+        "distinguished": null,
+        "parent_id": "t1_okj9euq",
+        "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okjsxxt/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okefk4r",
+    "author": "Meow_man1213",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Here is my take, It&amp;#39;s a good demo but as for the UI i say don&amp;#39;t make it look too obvious that it&amp;#39;s vibe coded. The emojis and the color pattern are a dead giveaway besides that good job!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778136108,
+    "distinguished": null,
+    "parent_id": "t3_1t62dss",
+    "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okefk4r/",
+    "replies": [
+      {
+        "id": "okefvvp",
+        "author": "Cultural_Mission_482",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Where is the emoji? Without even looking at the actual implementation, you’re just using your keyboard and calling it ‘vibe-coded’? That’s crazy.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778136274,
+        "distinguished": null,
+        "parent_id": "t1_okefk4r",
+        "permalink": "/r/reactjs/comments/1t62dss/i_built_an_opensource_calendar_component_inspired/okefvvp/",
+        "replies": []
+      }
+    ]
+  }
+]

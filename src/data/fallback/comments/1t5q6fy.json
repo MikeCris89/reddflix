@@ -1,0 +1,126 @@
+[
+  {
+    "id": "okc4b8p",
+    "author": "Terrariant",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Generally speaking, people don’t like it when you move UI around. Especially in navigation lists. I don’t want to have to search for the item each time in case it has shifted position.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 23,
+    "is_submitter": false,
+    "created_utc": 1778104879,
+    "distinguished": null,
+    "parent_id": "t3_1t5q6fy",
+    "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okc4b8p/",
+    "replies": [
+      {
+        "id": "okeexwm",
+        "author": "Potential-Still-3545",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It depends on you if you want to move the UI based on rank or not. You can use the rank to increase or decrease the opacity of an item. \nIt&amp;#39;s on you how you want the UX.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1778135792,
+        "distinguished": null,
+        "parent_id": "t1_okc4b8p",
+        "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okeexwm/",
+        "replies": [
+          {
+            "id": "okefnw2",
+            "author": "Terrariant",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Usually you would be able to pin it, and have your pins at the top. But rearranging them manually works too. All im saying is I don’t want to search for the navigation because it changed places without me changing its place. That is what is annoying to me.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 5,
+            "is_submitter": false,
+            "created_utc": 1778136162,
+            "distinguished": null,
+            "parent_id": "t1_okeexwm",
+            "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okefnw2/",
+            "replies": []
+          },
+          {
+            "id": "okeg8sp",
+            "author": "spamjavelin",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think a good use case is a &amp;#39;frequently used&amp;#39; type menu - bit more niche, but then you can leave the core UI alone while users can benefit from having quick access to stuff at the same time. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778136456,
+            "distinguished": null,
+            "parent_id": "t1_okeexwm",
+            "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okeg8sp/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okddzuk",
+        "author": "klumpp",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah this has the right spirit but kinda tanks the UX. No idea why you’d want your most used toolbar button to move. And then it dims the others making the icons I’m not as familiar with harder to see. &lt;/p&gt;\n\n&lt;p&gt;Instead of shuffling things around the rank could be used for secondary entry points or something. I’m thinking command palette or similar. Favorites without manually favoriting anything.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": false,
+        "created_utc": 1778120062,
+        "distinguished": null,
+        "parent_id": "t1_okc4b8p",
+        "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okddzuk/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okeouvd",
+    "author": "iMissMacandCheese",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think this could be more useful if we could choose to turn parts of the optimization on our off. For example, I don&amp;#39;t think I&amp;#39;d want sidebar options to jump around that much in terms of frequency, but recency yes. So there would just be two groups, the top group, fixed sort, bolded, but only included options I have used recently, and a second group below that has stuff that is rarely used. But within those two groups, the items should stay in the same relative order. &lt;/p&gt;\n\n&lt;p&gt;Very cool idea though and like the lightweight implementation&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778141004,
+    "distinguished": null,
+    "parent_id": "t3_1t5q6fy",
+    "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okeouvd/",
+    "replies": [
+      {
+        "id": "oklonn5",
+        "author": "Potential-Still-3545",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;i like the idea. i would consider this too. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778229427,
+        "distinguished": null,
+        "parent_id": "t1_okeouvd",
+        "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/oklonn5/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okbyr2h",
+    "author": "n0tKamui",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;hey that&amp;#39;s pretty cool ! simple, but clean and cool.&lt;/p&gt;\n\n&lt;p&gt;i can probably guess that you&amp;#39;ll implement framework specific helpers such as auto-sync with storage/stores ?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778103237,
+    "distinguished": null,
+    "parent_id": "t3_1t5q6fy",
+    "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okbyr2h/",
+    "replies": [
+      {
+        "id": "okbz4bt",
+        "author": "Potential-Still-3545",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yes, this was v1 just the simple API and core. I am planning to add more to it and will also create framework specific utils.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778103344,
+        "distinguished": null,
+        "parent_id": "t1_okbyr2h",
+        "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/okbz4bt/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "oke23ak",
+    "author": "devtrivi",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Settings show hide&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778129540,
+    "distinguished": null,
+    "parent_id": "t3_1t5q6fy",
+    "permalink": "/r/reactjs/comments/1t5q6fy/i_extracted_the_frecency_pattern_from_firefoxvs/oke23ak/",
+    "replies": []
+  }
+]

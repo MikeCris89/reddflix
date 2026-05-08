@@ -1,0 +1,75 @@
+[
+  {
+    "id": "okj56gh",
+    "author": "VolumeActual8333",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Server-driven UI sounds like freedom until your PM starts demanding &amp;#39;just one small layout change&amp;#39; that requires a backend deploy. We tried this for our admin dashboard and ended up with a monstrous JSON schema that was harder to version than actual components. Turns out coupling your UI structure to API responses just moves the deployment bottleneck from the build pipeline to your database migrations.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 20,
+    "is_submitter": false,
+    "created_utc": 1778191581,
+    "distinguished": null,
+    "parent_id": "t3_1t6h3lj",
+    "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/okj56gh/",
+    "replies": []
+  },
+  {
+    "id": "okkqb1y",
+    "author": "RuslanDevs",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Good pattern but works in some of the cases only - if you need interactivity and components respond to user input differently, your renderer will be very complex and unintuitive. But for some cases it is good if number of different interactions are low.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1778212851,
+    "distinguished": null,
+    "parent_id": "t3_1t6h3lj",
+    "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/okkqb1y/",
+    "replies": []
+  },
+  {
+    "id": "okj5ijx",
+    "author": "avataw",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Hey I do follow Neciudan on LinkedIn and I like his stuff! Is that actually you OP?&lt;/p&gt;\n\n&lt;p&gt;Anyways I had to immediately think of &lt;a href=\"https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html\"&gt;LiveView (Elixir)&lt;/a&gt; when I saw this!&lt;br/&gt;\nPersonally it&amp;#39;s an interesting paradigm that I just can&amp;#39;t get to work properly in my projects as of yet.&lt;/p&gt;\n\n&lt;p&gt;For me it resembles somewhat of an old idea: the MVC or MVP designs - where the UI is exclusively a presentational layer.&lt;br/&gt;\nIn practice it is extremely difficult to prevent business / domain logic to get muddled with the rest in the frontend code.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778191687,
+    "distinguished": null,
+    "parent_id": "t3_1t6h3lj",
+    "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/okj5ijx/",
+    "replies": [
+      {
+        "id": "okl4pia",
+        "author": "creasta29",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It is me yes haha&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": true,
+        "created_utc": 1778219498,
+        "distinguished": null,
+        "parent_id": "t1_okj5ijx",
+        "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/okl4pia/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "oklyqiv",
+    "author": "doxxed-chris",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Isn’t this just a rediscovery of a basic headless cms implementation?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778234531,
+    "distinguished": null,
+    "parent_id": "t3_1t6h3lj",
+    "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/oklyqiv/",
+    "replies": []
+  },
+  {
+    "id": "oklys12",
+    "author": "doxxed-chris",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Isn’t this just a rediscovery of a basic headless cms implementation?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778234551,
+    "distinguished": null,
+    "parent_id": "t3_1t6h3lj",
+    "permalink": "/r/reactjs/comments/1t6h3lj/serverdriven_ui_in_reactjs/oklys12/",
+    "replies": []
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "okl2b0q",
+    "author": "chandrakanth527",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;going vanilla store with useSyncExternalStore for drag state instead of Context is the right move. context re-renders during 60fps drag ops would be brutal, especially inside a virtualized grid. curious how you handle virtual rows unmounting mid-drag, do you snapshot the geometry beforehand or keep phantom elements in the DOM?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778218349,
+    "distinguished": null,
+    "parent_id": "t3_1t6cdy5",
+    "permalink": "/r/reactjs/comments/1t6cdy5/i_rewrote_my_react_draganddrop_table_library_to/okl2b0q/",
+    "replies": []
+  }
+]

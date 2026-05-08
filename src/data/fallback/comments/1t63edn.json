@@ -1,0 +1,124 @@
+[
+  {
+    "id": "okel7lj",
+    "author": "Nintendo_Pro_03",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nice!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1778139033,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okel7lj/",
+    "replies": []
+  },
+  {
+    "id": "okemj6m",
+    "author": "UnnecessaryLemon",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Great, first coding and now Rubik cube is solved. Can&amp;#39;t we just have fun?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1778139748,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okemj6m/",
+    "replies": []
+  },
+  {
+    "id": "okelceh",
+    "author": "Klutzy_Bird_7802",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;GGs bro&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778139105,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okelceh/",
+    "replies": []
+  },
+  {
+    "id": "okenk4a",
+    "author": "BurningDoge",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Move failed: Unknown move: 2Rw2&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778140297,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okenk4a/",
+    "replies": [
+      {
+        "id": "okfa00o",
+        "author": "anish2good",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Issue fixed thanks for reporting &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1778151648,
+        "distinguished": null,
+        "parent_id": "t1_okenk4a",
+        "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okfa00o/",
+        "replies": []
+      },
+      {
+        "id": "oket5fp",
+        "author": "anish2good",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;checking ... &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778143373,
+        "distinguished": null,
+        "parent_id": "t1_okenk4a",
+        "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/oket5fp/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okevoye",
+    "author": "Master-Chocolate1420",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I had a similar idea to try good that you tried.\nAlso I wanna ask .jsp? How are you hosting this?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778144748,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okevoye/",
+    "replies": [
+      {
+        "id": "okew17l",
+        "author": "anish2good",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is hosted on vm&amp;#39;s running with tomcat container &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778144937,
+        "distinguished": null,
+        "parent_id": "t1_okevoye",
+        "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okew17l/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okg3egy",
+    "author": "joshkuttler",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Cool!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778161652,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okg3egy/",
+    "replies": []
+  },
+  {
+    "id": "okgbcm0",
+    "author": "anish2good",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I have added a record gif feature which is useful to record solved stuffed and that can be shared &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": true,
+    "created_utc": 1778163883,
+    "distinguished": null,
+    "parent_id": "t3_1t63edn",
+    "permalink": "/r/webdev/comments/1t63edn/rubik_nn_solver_33_44_55_66_and_77/okgbcm0/",
+    "replies": []
+  }
+]

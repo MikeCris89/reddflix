@@ -1,0 +1,261 @@
+[
+  {
+    "id": "okh6hza",
+    "author": "Bitter_Marketing_807",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Webdev teaches webdev!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 22,
+    "is_submitter": false,
+    "created_utc": 1778172193,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okh6hza/",
+    "replies": [
+      {
+        "id": "okh9l80",
+        "author": "iGotYourPistola",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;*incredibles meme* webdev is webdev!&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778173004,
+        "distinguished": null,
+        "parent_id": "t1_okh6hza",
+        "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okh9l80/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhl56p",
+    "author": "camppofrio",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Redesigning your nav at midnight with zero stakes is how you actually close the loop instead of abandoning it halfway through a tutorial project.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 16,
+    "is_submitter": false,
+    "created_utc": 1778176023,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okhl56p/",
+    "replies": [
+      {
+        "id": "okhvrsp",
+        "author": "iGotYourPistola",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;agreed, there’s something about knowing your project lives in the world for people to see, for you to actually light a fire underneath you and make sure you’re shipping software &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778178879,
+        "distinguished": null,
+        "parent_id": "t1_okhl56p",
+        "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okhvrsp/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhmqcm",
+    "author": "BigDickedAngel",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You learn by doing...who would&amp;#39;ve thought.  &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 5,
+    "is_submitter": false,
+    "created_utc": 1778176436,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okhmqcm/",
+    "replies": []
+  },
+  {
+    "id": "oki0g07",
+    "author": "SunEconomy3251",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nice mate... But you host on a droplet? I&amp;#39;m pretty sure that&amp;#39;s a lot more expensive compared to bare metal VPS from let&amp;#39;s say Hetzner or OVH :)&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778180141,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/oki0g07/",
+    "replies": [
+      {
+        "id": "okiau6a",
+        "author": "iGotYourPistola",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;i do. when i first joined i needed just $5/month for hosting, but its been steadily upticking closer to $20 (w/ backups). investigating something a little more close to the metal is on my todo list! :D&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1778182968,
+        "distinguished": null,
+        "parent_id": "t1_oki0g07",
+        "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okiau6a/",
+        "replies": [
+          {
+            "id": "okihgcc",
+            "author": "SunEconomy3251",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Hehe, I recommend doing so. It&amp;#39;s fun &amp;amp; the best way to learn. Besides that, once you&amp;#39;re comfortable with bare metal servers - migrating to other providers becomes very easy. You&amp;#39;ll never experience being vendor locked like most vibecode SaaS teams!&lt;/p&gt;\n\n&lt;p&gt;Since you like self-hosted, consider open-source hosting panels such as AAPanel or CloudPanel. &lt;/p&gt;\n\n&lt;p&gt;I like AAPanel a lot since the most recent UI update. Also way better support for Node, Python, etc than most competitors.&lt;/p&gt;\n\n&lt;p&gt;Next, you could set up a daily backup over rsync to another server, your own PC - or, in my case, a Raspberry Pi. It sounds complicated, but it’s actually very easy in practice. Good luck :)&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778184802,
+            "distinguished": null,
+            "parent_id": "t1_okiau6a",
+            "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okihgcc/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okibozw",
+    "author": "Alex_Dutton",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;this resonates, running a personal site on a small Droplet at DigitalOcean has taught me more about linux and networking than any tutorial, breaking it and fixing it is the curriculum.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778183205,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okibozw/",
+    "replies": []
+  },
+  {
+    "id": "okiufde",
+    "author": "IAmRules",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That is the thing i tel newbies all the time. The best way to learn is to build from scratch. You appreciate the tools more too once you know why they exist. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778188407,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okiufde/",
+    "replies": [
+      {
+        "id": "okiwo6y",
+        "author": "iGotYourPistola",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;when i started programming i always wanted to learn the new tech or tools, so i&amp;#39;d start tutorials and quit halfway through. however, when my side projects when i&amp;#39;d build something 0:1 had a way longer runway, and i actually came out learning stuff.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778189034,
+        "distinguished": null,
+        "parent_id": "t1_okiufde",
+        "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okiwo6y/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhmc4r",
+    "author": "Caraes_Naur",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;So, you&amp;#39;re still running WordPress?  Did you ever set up a contact form?&lt;/p&gt;\n\n&lt;p&gt;Anyway.&lt;/p&gt;\n\n&lt;p&gt;FOSS project participation did this for me.  Joining a project, causing a fork, and being highly active in said fork for a decade did a lot.&lt;/p&gt;\n\n&lt;p&gt;The most important things are interacting with other developers &lt;em&gt;and their code&lt;/em&gt;.  It&amp;#39;s low stakes yet real-world development experience that no tutorial treadmill or social media echo chamber can impart.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778176332,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okhmc4r/",
+    "replies": [
+      {
+        "id": "okhvl9p",
+        "author": "iGotYourPistola",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;no, im running ghost :) with ghost i was able to stitch a simple form with just JS. &lt;/p&gt;\n\n&lt;p&gt;agreed, open source is one of the best ways to learn!&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778178828,
+        "distinguished": null,
+        "parent_id": "t1_okhmc4r",
+        "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okhvl9p/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okidc4q",
+    "author": "Fluffcake",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Doing the thing is good for learning the thing, more at 8.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778183657,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okidc4q/",
+    "replies": []
+  },
+  {
+    "id": "oklns5e",
+    "author": "_Siradj",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;just webdev teach you webdev&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778228969,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/oklns5e/",
+    "replies": []
+  },
+  {
+    "id": "oklspxc",
+    "author": "FlashyExamination463",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Solo-built a Chrome extension + small webapp over ~18 months. The thing that taught me the most webdev wasn&amp;#39;t writing the code — it was shipping it and watching the 1-star reviews come in.  &lt;/p&gt;\n\n&lt;p&gt;Three:&lt;br/&gt;\n1. Real CSP. An inline script that worked locally broke for ~30% of users because their corporate Chrome policy blocked it. No tutorial would have made me care. A bug report at 2 AM did.  &lt;/p&gt;\n\n&lt;ol&gt;\n&lt;li&gt;&lt;p&gt;Real CORS. My dev environment lied to me for 3 weeks; production didn&amp;#39;t. The 6-line fetch wrapper I wrote afterward — with the actual error fingerprints I&amp;#39;d seen — is still the most useful utility in the codebase.  &lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Real i18n. Two German users reported a button overflow I&amp;#39;d never tested. My grid had been silently English-only.  &lt;/p&gt;&lt;/li&gt;\n&lt;/ol&gt;\n\n&lt;p&gt;Tutorials teach the happy path. Users teach the fail modes.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778231526,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/oklspxc/",
+    "replies": []
+  },
+  {
+    "id": "oklwz8z",
+    "author": "PersianMG",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Couldn&amp;#39;t agree more, started my first website &amp;amp; blog first year of Uni. It was just self-hosted WordPress but I owned all the infra. Learnt so much about hosting, Linux, security, performance, reliability and other common operations issues. The money and struggles we&amp;#39;re worth it! I&amp;#39;d recommend it to anyone wanting to learn more.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778233693,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/oklwz8z/",
+    "replies": []
+  },
+  {
+    "id": "okp3yp5",
+    "author": "cshaiku",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Started Micro-City BBS in 1986. Built the first website for Grant MacEwan College in 1996 (thereabouts) at a DTP company, to be fair…. Started a virtual real estate service in 1998. Created a PHP based newspaper in 2000 which ran for several years. Built and open sourced an online job agency service in 2004. Started a side gig VPS based hosting company in 2006. Started building a free fintech platform in 2023. &lt;/p&gt;\n\n&lt;p&gt;What do all of these have in common? Did it all without frameworks, third party libraries or any help and learned the hard way by research and trial and error. All of it was worth it. &lt;/p&gt;\n\n&lt;p&gt;I only provide a few select examples to show sometimes the hard way is the best teacher. Cheers.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778268529,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okp3yp5/",
+    "replies": []
+  },
+  {
+    "id": "okhybi5",
+    "author": "Happy_Macaron5197",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;dude this is so true. my whole workflow is basically just orchestrating different gen ai agents since i dont write raw syntax, but actually shipping a live personal project taught me more about web architecture than anything else. &lt;/p&gt;\n\n&lt;p&gt;when u just build toy projects locally, u think one massive claude chat can build an entire app. but the second u try to actually host it and make it reliable, u realize u have to actually organize the systems. that&amp;#39;s exactly how i learned i had to split my stack to survive. &lt;/p&gt;\n\n&lt;p&gt;i learned to keep antigravity isolated strictly for deep backend logic and data routing. then for the frontend and web design stuff u mentioned, i completely hand that off to runable. just studying how a dedicated ui agent structures a clean presentation layer taught me so much about good design principles without me having to manually fight css for hours. putting a project into the wild is 100% the ultimate teacher.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778179571,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okhybi5/",
+    "replies": []
+  },
+  {
+    "id": "okiblyp",
+    "author": "mal73",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Replacing — with -- ain’t fooling anyone. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": -1,
+    "is_submitter": false,
+    "created_utc": 1778183182,
+    "distinguished": null,
+    "parent_id": "t3_1t6f97y",
+    "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okiblyp/",
+    "replies": [
+      {
+        "id": "okibshk",
+        "author": "iGotYourPistola",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;ugh these were suppose to render as —, silly markdown flavors &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778183232,
+        "distinguished": null,
+        "parent_id": "t1_okiblyp",
+        "permalink": "/r/webdev/comments/1t6f97y/selfhosting_a_blog_taught_me_more_webdev_than_any/okibshk/",
+        "replies": []
+      }
+    ]
+  }
+]
