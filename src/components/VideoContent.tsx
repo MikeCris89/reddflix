@@ -6,6 +6,7 @@ import ContentBadge from "./ContentBadge";
 import { Play } from "lucide-react";
 import FullVideoPlayer from "./FullVideoPlayer";
 import clsx from "clsx";
+import { getDecodedPreviewImage, getGifMp4Url } from "../utils/helpers";
 
 interface VideoProps {
 	post: VideoPost | GifPost;
@@ -14,7 +15,11 @@ interface VideoProps {
 
 const VideoContent = ({ post, mode }: VideoProps) => {
 	const [vidError, setVidError] = useState(false);
+
 	const isGif = post.type === POST_TYPES.gif;
+
+	const gifMp4 = isGif ? getGifMp4Url(post) : null;
+
 	const badge = isGif ? "GIF" : <Play size={14} />;
 	const isPreview = mode === MODE.preview;
 	const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -25,7 +30,8 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 	});
 
 	useEffect(() => {
-		if (!videoRef.current) return;
+		if (!isGif || !videoRef.current) return;
+
 		const vid = videoRef.current;
 
 		if (inView && !hasLoaded) {
@@ -47,18 +53,23 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 		return () => {
 			clearTimeout(timeout);
 		};
-	}, [inView, hasLoaded, vidError]);
+	}, [inView, hasLoaded, vidError, isGif]);
 
 	const fallback = post.url?.endsWith(".gifv")
 		? post.url.replace(".gifv", ".mp4")
 		: post.url;
-	const src = post.media?.reddit_video.fallback_url || fallback;
+
+	const src = gifMp4 || post.media?.reddit_video?.fallback_url || fallback;
+
 	const fullSrc =
-		post.media?.reddit_video.hls_url ||
-		post.media?.reddit_video.fallback_url ||
+		post.media?.reddit_video?.hls_url ||
+		post.media?.reddit_video?.fallback_url ||
+		gifMp4 ||
 		fallback;
 
 	if (!src || !fullSrc) return <p>VIDEO NOT RECOGNIZED {post.id}</p>;
+
+	const previewImg = getDecodedPreviewImage(post);
 
 	return (
 		<>
@@ -66,28 +77,46 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 
 			{(isPreview || isGif) && (
 				<div ref={ref} className="w-full h-full">
-					{!hasLoaded && <p>Loading...</p>}
 					<ContentBadge badge={badge}>
-						{!vidError && (
-							<video
-								ref={videoRef}
-								autoPlay
-								muted
-								loop
-								playsInline
-								className={clsx(
-									"w-full h-full rounded-md",
-									isGif && !isPreview ? "object-contain" : "object-cover"
+						{isPreview && !isGif && previewImg ? (
+							<img
+								src={previewImg}
+								alt={post.title}
+								className="w-full h-full object-cover rounded-md"
+								loading="lazy"
+							/>
+						) : !vidError ? (
+							<>
+								{!hasLoaded && (
+									<p className="absolute inset-0 flex items-center justify-center text-neutral-400 italic text-sm">
+										Loading...
+									</p>
 								)}
-							>
-								{hasLoaded && <source src={src} type="video/mp4" />}
-							</video>
-						)}
-						{vidError && (
-							<p className="text-red-500 italic text-sm h-full flex justify-center items-center">
-								This video is no longer available or has been removed.
-							</p>
-						)}
+								<video
+									ref={videoRef}
+									autoPlay
+									muted
+									loop
+									playsInline
+									className={clsx(
+										"w-full h-full rounded-md",
+										isGif && !isPreview ? "object-contain" : "object-cover",
+									)}
+								>
+									{hasLoaded && <source src={src} type="video/mp4" />}
+								</video>
+							</>
+						) : null}
+						{vidError &&
+							(!isPreview ? (
+								<p className="text-red-500 italic text-sm h-full flex justify-center items-center">
+									This video is no longer available or has been removed
+								</p>
+							) : (
+								<p className="text-neutral-400 italic text-sm h-full flex justify-center items-center">
+									Click to view
+								</p>
+							))}
 					</ContentBadge>
 				</div>
 			)}

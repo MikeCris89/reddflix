@@ -1,5 +1,7 @@
 import DOMPurify from "dompurify";
 import {
+	GifPost,
+	ImagePost,
 	isEmbedPost,
 	isGalleryPost,
 	isGifPost,
@@ -10,12 +12,12 @@ import {
 	POST_TYPES,
 	RawRedditPost,
 	RedditPost,
+	VideoPost,
 } from "../features/reddit/redditTypes";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import { toast } from "sonner";
 import manifest from "../data/fallback/posts/_manifest.json";
-import defaultPosts from "../data/defaultPosts.json";
 
 export const getPostType = (
 	post: RawRedditPost | RedditPost,
@@ -201,5 +203,29 @@ export const hasFallback = (sub: string): boolean => {
 export const getFallbackPosts = async (sub: string): Promise<RedditPost[]> => {
 	if (!hasFallback(sub)) return [];
 	const module = await import(`../data/fallback/posts/${sub}.json`);
-	return module.default as RedditPost[];
+	return (module.default as RedditPost[]).map((post) => ({
+		...post,
+		type: getPostType(post),
+	}));
+};
+
+export const getDecodedPreviewImage = (
+	post: ImagePost | VideoPost | GifPost,
+) => {
+	const previewImg =
+		post.preview?.images?.[0]?.resolutions?.find((r) => r.width >= 640)?.url ||
+		post.preview?.images?.[0]?.source?.url ||
+		post.thumbnail;
+
+	return previewImg?.replace(/&amp;/g, "&") ?? null;
+};
+
+export const getGifMp4Url = (
+	post: RedditPost | RawRedditPost,
+): string | null => {
+	const mp4 = post.preview?.images?.[0]?.variants?.mp4;
+	if (!mp4) return null;
+	// prefer a 320-wide version for previews; fall back to source
+	const res = mp4.resolutions?.find((r) => r.width >= 320) ?? mp4.source;
+	return res?.url?.replace(/&amp;/g, "&") ?? null;
 };

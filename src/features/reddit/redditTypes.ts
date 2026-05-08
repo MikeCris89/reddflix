@@ -163,8 +163,18 @@ export interface Preview {
 export interface Image {
 	source: Source;
 	resolutions: Source[];
-	variants: Gildings;
+	variants: ImageVariants;
 	id: string;
+}
+
+export interface ImageVariants {
+	gif?: ImageVariant;
+	mp4?: ImageVariant;
+}
+
+export interface ImageVariant {
+	source: Source;
+	resolutions: Source[];
 }
 
 export interface Source {
@@ -173,9 +183,9 @@ export interface Source {
 	height: number;
 }
 
-export interface Gildings {
-	[key: string]: number;
-}
+// export interface Gildings {
+// 	[key: string]: number;
+// }
 
 export interface Media {
 	reddit_video?: RedditVideo;
@@ -280,9 +290,20 @@ export const isEmbedPost = (
 	typeof post.secure_media?.oembed?.thumbnail_url === "string" &&
 	typeof post.url === "string";
 
-export const isGifPost = (post: RedditPost | RawRedditPost): post is GifPost =>
-	post.media?.reddit_video?.is_gif === true ||
-	(post.url?.endsWith(".gifv") ?? false);
+export const isGifPost = (
+	post: RedditPost | RawRedditPost,
+): post is GifPost => {
+	if (post.media?.reddit_video?.is_gif === true) return true;
+	if (post.url?.endsWith(".gifv")) return true;
+	if (
+		post.post_hint === "image" &&
+		post.url?.endsWith(".gif") &&
+		post.preview?.images?.[0]?.variants?.mp4
+	) {
+		return true;
+	}
+	return false;
+};
 
 export const isImagePost = (
 	post: RedditPost | RawRedditPost,

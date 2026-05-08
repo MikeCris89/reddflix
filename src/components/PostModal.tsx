@@ -10,8 +10,6 @@ import useDisplay from "../hooks/useDisplay";
 import { isTitleAsPost, RedditPost } from "../features/reddit/redditTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
-import { useSelector } from "react-redux";
-import { selectFallbackPosts } from "../features/reddit/fallbackPostsSlice";
 
 const PostModal = ({
 	setLayoutSize,
@@ -47,11 +45,6 @@ const PostModal = ({
 			setPost(posts.find((el) => el.id === postId) ?? null),
 		);
 	}, []);
-
-	// const fallbackPosts = useSelector(selectFallbackPosts(category ?? ""));
-
-	// const post =
-	// 	data ?? (!isLoading ? fallbackPosts?.find((p) => p.id === postId) : null);
 
 	useEffect(() => {
 		if (backgroundLocation && setLayoutSize) {

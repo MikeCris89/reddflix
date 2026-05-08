@@ -25,6 +25,7 @@ interface MediaProps {
 
 const PostMedia = ({ post, mode }: MediaProps) => {
 	let type = post.type;
+
 	if (post.type === POST_TYPES.unknown) {
 		type = getPostType(post);
 	}
