@@ -16,7 +16,7 @@ import {
 // ── Configuration ─────────────────────────────────────────────────────────────
 
 const DELAY_MS = 9_000;
-const FETCHES_PER_SUB_PER_RUN = 1;
+const FETCHES_PER_SUB_PER_RUN = 5;
 const MAX_DEPTH = 3;
 const MAX_TOP_LEVEL = 30;
 const USER_AGENT = "reddflix-fallback-generator/1.0 (portfolio project)";
@@ -151,6 +151,26 @@ async function main() {
 		totalFailed += failed;
 		perSub[sub] = { fetched, skipped, failed };
 	}
+
+	// Update comments manifest with all post IDs that have a comments file
+	const manifestPath = resolve(commentsDir, "_manifest.json");
+	const existingManifest: string[] = existsSync(manifestPath)
+		? JSON.parse(readFileSync(manifestPath, "utf-8"))
+		: [];
+	const manifestSet = new Set(existingManifest);
+	for (const sub of subreddits) {
+		const posts: { id: string }[] = JSON.parse(
+			readFileSync(resolve(postsDir, `${sub}.json`), "utf-8"),
+		);
+		for (const post of posts) {
+			if (existsSync(resolve(commentsDir, `${post.id}.json`))) {
+				manifestSet.add(post.id);
+			}
+		}
+	}
+	const manifest = [...manifestSet].sort();
+	writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));
+	console.log(`\nManifest updated: ${manifest.length} post IDs`);
 
 	console.log(
 		`\nDone. fetched=${totalFetched} skipped=${totalSkipped} failed=${totalFailed}`,

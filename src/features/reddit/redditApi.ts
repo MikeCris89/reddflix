@@ -79,6 +79,21 @@ const customBaseQuery: BaseQueryFn<
 > = async (args, api, extraOptions) => {
 	const now = Date.now();
 
+	if (import.meta.env.DEV) {
+		console.error("Dev - blocking all requests. (redditApi custom base query)");
+		return {
+			error: {
+				status: 403,
+				data: {
+					message: `Dev Block`,
+					pendingTimestamp: now + 1000 * 60 * 60,
+					isAppHandledError: true,
+					reason: "ban",
+				},
+			},
+		};
+	}
+
 	// Synchronous check — blocks concurrent requests the moment a ban is set
 	if (now < inMemoryBannedUntil) {
 		return {
