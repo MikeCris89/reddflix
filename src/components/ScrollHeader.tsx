@@ -46,6 +46,9 @@ const ScrollHeader = ({
 		</span>
 	);
 
+	// console.log(remaining);
+	// console.log(banMinutesLeft);
+
 	const banEl = remaining <= 0 && banMinutesLeft > 0 && (
 		<span className="flex items-center gap-1 text-blue-400 text-xs">
 			Temp banned · {banMinutesLeft}m left

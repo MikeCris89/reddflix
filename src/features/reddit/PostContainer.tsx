@@ -4,10 +4,10 @@ import {
 	useFetchSeenPostsQuery,
 	useRemovePendingRequestMutation,
 } from "../localApp/localAppApi";
-import { useFetchPostsBySubredditQuery } from "./redditApi";
+import { useLazyFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
-import { getFallbackPosts } from "../../utils/helpers";
+import { getFallbackPosts, hasPostFallback } from "../../utils/helpers";
 
 export const PostSkeleton = () => (
 	<div className="animate-pulse h-[400px] bg-zinc-800 w-80 md:w-90 rounded-xl ">
@@ -45,12 +45,19 @@ const PostContainer = ({
 	const [fallbackPosts, setFallbackPosts] = useState<RedditPost[] | null>(null);
 	const isFirstLoad = useRef(true);
 	const [removePending] = useRemovePendingRequestMutation();
-	const { data, isLoading, error, isError, refetch } =
-		useFetchPostsBySubredditQuery(subreddit.name, {
-			refetchOnMountOrArgChange: false,
-			refetchOnReconnect: false,
-			refetchOnFocus: false,
-		});
+
+	const hasFallback = hasPostFallback(subreddit.name);
+
+	const [triggerFetch, { data, isLoading, isError, error }] =
+		useLazyFetchPostsBySubredditQuery();
+
+	// const { data, isLoading, error, isError, refetch } =
+	// 	useFetchPostsBySubredditQuery(subreddit.name, {
+	// 		refetchOnMountOrArgChange: false,
+	// 		refetchOnReconnect: false,
+	// 		refetchOnFocus: false,
+	// 		skip: hasFallback,
+	// 	});
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
@@ -58,13 +65,17 @@ const PostContainer = ({
 		getFallbackPosts(subreddit.name).then(setFallbackPosts);
 	}, [subreddit]);
 
+	// const refetch = () => {
+	// 	triggerFetch(subreddit.name, false);
+	// };
+
 	const resolvedData = useMemo(() => {
 		if (data) return data;
-		if (isError && !isLoading && fallbackPosts && fallbackPosts.length > 0) {
+		if (hasFallback && fallbackPosts && fallbackPosts.length > 0) {
 			return { posts: fallbackPosts, after: null };
 		}
 		return null;
-	}, [data, isError, isLoading, fallbackPosts]);
+	}, [data, fallbackPosts, hasFallback]);
 
 	const { allSortedPosts, unseenPosts: _unseenPosts } = useMemo(() => {
 		if (!resolvedData || !seenPosts)
@@ -83,18 +94,30 @@ const PostContainer = ({
 		};
 	}, [resolvedData, seenPosts]);
 
+	// useEffect(() => {
+	// 	if (!pendingTime || pendingTime < Date.now()) return;
+
+	// 	const timeout = setTimeout(() => {
+	// 		refetch();
+	// 		removePending(pendingTime);
+	// 	}, pendingTime - Date.now());
+
+	// 	return () => {
+	// 		clearTimeout(timeout);
+	// 	};
+	// }, [pendingTime, refetch, removePending]);
+
 	useEffect(() => {
 		if (!pendingTime || pendingTime < Date.now()) return;
 
 		const timeout = setTimeout(() => {
-			refetch();
+			triggerFetch(subreddit.name, false);
 			removePending(pendingTime);
 		}, pendingTime - Date.now());
+		//
 
-		return () => {
-			clearTimeout(timeout);
-		};
-	}, [pendingTime, refetch, removePending]);
+		return () => clearTimeout(timeout);
+	}, [pendingTime, subreddit.name, triggerFetch, removePending]);
 
 	useEffect(() => {
 		if (

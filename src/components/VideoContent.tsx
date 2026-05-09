@@ -51,8 +51,6 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 
 	const previewImg = getDecodedPreviewImage(post);
 
-	console.log(post.id, inView);
-
 	return (
 		<>
 			{!isGif && !isPreview && <FullVideoPlayer url={fullSrc} />}
