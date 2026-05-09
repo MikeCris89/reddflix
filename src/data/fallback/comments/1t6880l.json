@@ -1,0 +1,228 @@
+[
+  {
+    "id": "okfkfit",
+    "author": "BurritoDrivenDev",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I fetch a JSON file in my main.ts that contains all my app settings and only mount my app once that has finished. When I deploy I mount that JSON file in my docker containers as a volume. Something like:&lt;/p&gt;\n\n&lt;p&gt;```\nfetch(&amp;quot;/config.json&amp;quot;)\n  .then(r =&amp;gt; r.json())\n  .then(config =&amp;gt; {\n    const root = ReactDOM.createRoot(document.getElementById(&amp;quot;root&amp;quot;));&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;root.render(\n  &amp;lt;AppSettingsProvider value={config}&amp;gt;\n      // Stuff\n &amp;lt;/AppSettingsProvider&amp;gt;\n);\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;});\n```&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 11,
+    "is_submitter": false,
+    "created_utc": 1778155644,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfkfit/",
+    "replies": [
+      {
+        "id": "okfmnog",
+        "author": "Darex97",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I tried that but I still have to fetch config.js/env.js so its the same like I do atm. I publish UI image + env.js per prod&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778156419,
+        "distinguished": null,
+        "parent_id": "t1_okfkfit",
+        "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfmnog/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okfj9t1",
+    "author": "pomle",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The only one I have successfully used is a ConfigContext that downloads a /config.json that mounts the rest of the app when done.&lt;/p&gt;\n\n&lt;p&gt;Sometimes I think about synchronous solutions, but I think there is so many asynchronous things happening after the first HTML file is parsed anyways so fixing the asynchronous ”problem” seems… not important.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 6,
+    "is_submitter": false,
+    "created_utc": 1778155229,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfj9t1/",
+    "replies": []
+  },
+  {
+    "id": "okfjlxh",
+    "author": "fredsq",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;what are you ACTUALLY trying to do? &lt;/p&gt;\n\n&lt;p&gt;multitenancy doesn’t have to depend on env variables or even separate deploys&lt;/p&gt;\n\n&lt;p&gt;explain in simple terms and we will get there&lt;/p&gt;\n\n&lt;p&gt;e.g.: i want tenant.mydomain.com to have their site and other.mydomain.com to also have their site. i want them to be static as there is no dynamic data in any page. my tenants may have other domains too  &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 11,
+    "is_submitter": false,
+    "created_utc": 1778155352,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfjlxh/",
+    "replies": [
+      {
+        "id": "okfnq2z",
+        "author": "Darex97",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Problem is that env from build with vite would finish embeded in UI code. So I would have 1 image that I can publish on 1 prod.&lt;/p&gt;\n\n&lt;p&gt;What i want to do :\nI want to somehow build Image of UI that doesnt deppend on env and then in runtime to add it on pod so it can target right api for that production.&lt;/p&gt;\n\n&lt;p&gt;So atm,on every prod i have UI + env.js that must be downloaded on users browser when they go on &lt;a href=\"http://www.myapp.com\"&gt;www.myapp.com&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;",
+        "score": -2,
+        "is_submitter": true,
+        "created_utc": 1778156775,
+        "distinguished": null,
+        "parent_id": "t1_okfjlxh",
+        "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfnq2z/",
+        "replies": [
+          {
+            "id": "oku73kw",
+            "author": "DudeWithFearOfLoss",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;you basically ignored his comment and restated your post with marginally more information&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778341028,
+            "distinguished": null,
+            "parent_id": "t1_okfnq2z",
+            "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/oku73kw/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okfmapz",
+    "author": "opentabs-dev",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;what we ended up doing: put &lt;code&gt;window.__ENV__ = { API_URL: &amp;quot;${API_URL}&amp;quot;, ... }&lt;/code&gt; in a small script at the top of index.html, then run envsubst on it at container startup (docker entrypoint). one image, 50 deploys, values injected at boot. just make sure the Cache-Control on index.html is no-store (or at least max-age=0, must-revalidate) otherwise a stale index at the CDN will serve the wrong env to everyone for hours. the hashed vendor bundles can stay long-cache.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 6,
+    "is_submitter": false,
+    "created_utc": 1778156297,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfmapz/",
+    "replies": [
+      {
+        "id": "okfod1k",
+        "author": "Darex97",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That will add it to index.html and I should read it from there?&lt;/p&gt;\n\n&lt;p&gt;My concern is mostly related to pentests/security audits. I don’t have any actual secrets there — only public API endpoints/URLs and similar frontend-visible values — but I’m still worried security reviewers could flag it if those values are directly visible in index.html or easily inspectable in the Network tab.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778156989,
+        "distinguished": null,
+        "parent_id": "t1_okfmapz",
+        "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfod1k/",
+        "replies": [
+          {
+            "id": "okfrr1p",
+            "author": "shiftclickpoint",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If they&amp;#39;re just API routes they will be visible in the browser network tab when requests are made anyway.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778158100,
+            "distinguished": null,
+            "parent_id": "t1_okfod1k",
+            "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfrr1p/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okfrzgc",
+    "author": "WeAllHaveSomething",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;So there&amp;#39;s basically three approaches on how to do this. Neither is perfect; I&amp;#39;ve had experience with all of them in production applications, and I&amp;#39;d say they all have their benefits and drawbacks.&lt;/p&gt;\n\n&lt;ul&gt;\n&lt;li&gt;&lt;p&gt;A &lt;code&gt;conf.js&lt;/code&gt; file which places the environment/tenant data on a window object, which you then access across the app. This is pretty straightforward, is basically synchronous (your app won&amp;#39;t load quicker than a head-placed minimal JS file anyway), but is open to easy modifying by a malicious actor, and hard to modify real-time if necessary. Then again, you&amp;#39;re probably not storing anything &amp;quot;secret&amp;quot; there anyway.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;A &lt;code&gt;conf.json&lt;/code&gt; file which is fetched either before your app is initialized, or as the first step of your app. Slightly more complex, by definition asynchronous, but since you&amp;#39;re storing it on the same CDN anyway, it won&amp;#39;t incur any significant performance or $$ costs. You&amp;#39;ll have to store this data in a Context Provider (or any other global store) and work with it as you&amp;#39;re used to work with global state. &lt;strong&gt;This is what we&amp;#39;re currently doing in larger monorepo applications with tens of MFEs.&lt;/strong&gt; The most flexible, debuggable, etc.&lt;/p&gt;&lt;/li&gt;\n&lt;li&gt;&lt;p&gt;Since you&amp;#39;re using Docker, you can use &lt;code&gt;ENTRYPOINT entrypoint.sh&lt;/code&gt; to set up your own custom entrypoint shell script to achieve similar functionality. First of all, you&amp;#39;d set your &lt;code&gt;.env&lt;/code&gt; file like this:\n&lt;code&gt;\nVITE_API_URL=RUNTIME_REPLACE_API_URL\n&lt;/code&gt;&lt;/p&gt;\n\n&lt;p&gt;This shell script can then do a full find-and-replace across your finished artifact to replace placeholder values in your artifact (those that start with &lt;code&gt;RUNTIME_REPLACE_*&lt;/code&gt;) with values in a separate &lt;code&gt;.env&lt;/code&gt; file, which means that the final started artifact has your env variables baked in. No sync/async handling, no extra steps before startup, smaller surface for potential issues. HOWEVER, if you&amp;#39;re using source maps for anything (debugging, sentry.js reporting, etc.) they WILL BREAK. I&amp;#39;d say this is the most complex to set up, as you (or your AI agent) needs to do some bash fiddling, but is in the end hassle-free.&lt;/p&gt;&lt;/li&gt;\n&lt;/ul&gt;\n\n&lt;p&gt;There might be a fourth approach I haven&amp;#39;t met yet, but these are the most standard ones.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778158176,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfrzgc/",
+    "replies": [
+      {
+        "id": "okfwqmm",
+        "author": "Darex97",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thenks for resposne, problem is I tried all aproaches and end up in the same place, before user is logged in they can do View page source and see index.html if i put env there or can see config.js/json easy.&lt;/p&gt;\n\n&lt;p&gt;We really need smth like backend with apseting.json and thats what i want here but i gues i will have to w8 few more years😁&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": true,
+        "created_utc": 1778159654,
+        "distinguished": null,
+        "parent_id": "t1_okfrzgc",
+        "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfwqmm/",
+        "replies": [
+          {
+            "id": "okfzegp",
+            "author": "WeAllHaveSomething",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That&amp;#39;s unfortunately unavoidable. All Frontend code is by its nature visible to the client. If you need to store some actual secrets you don&amp;#39;t want leaking (API keys, etc), you need a backend (micro)service which could then route those requests to their respective paths. That Backend service will then need proper CORS settings &amp;amp; auth flow implemented, as will your Frontend for this to be secure.&lt;/p&gt;\n\n&lt;p&gt;Depending on how you&amp;#39;re using and deploying your Docker image, this could live next to your frontend code too.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778160461,
+            "distinguished": null,
+            "parent_id": "t1_okfwqmm",
+            "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfzegp/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okfzuge",
+    "author": "Glum_Cheesecake9859",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We do a similar thing. The front end specific settings are served from the backend as a pseudo js file and loaded first in a freezed object. Hope that makes sense. &lt;/p&gt;\n\n&lt;p&gt;Something like /settings.js but it has json built on the backend using appsettings.json etc.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778160594,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okfzuge/",
+    "replies": [
+      {
+        "id": "okg319v",
+        "author": "Darex97",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is interesting, can I hear more 😁&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778161546,
+        "distinguished": null,
+        "parent_id": "t1_okfzuge",
+        "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okg319v/",
+        "replies": [
+          {
+            "id": "okga517",
+            "author": "Glum_Cheesecake9859",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;What is your backend?&lt;/p&gt;\n\n&lt;p&gt;This happens in .net core.&lt;/p&gt;\n\n&lt;p&gt;the /settings.js url is mapped on the web server to render javascript from server side settings. This JS has a global variable called window.__APP_CONFIG__ with your settings in it. &lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;public static void MapClientAppSettingsJs(this IApplicationBuilder app, object clientAppSettings)\n{\n    var json = JsonSerializer.Serialize(clientAppSettings, Constants.DefaultSerializerOptions);\n    var settingsJs = $&amp;quot;var config = {json}; window.__APP_CONFIG__ = Object.freeze(config)&amp;quot;;\n\n    app.Map(&amp;quot;/settings.js&amp;quot;, app =&amp;gt;\n    {\n        app.Run(async context =&amp;gt;\n        {\n            context.Response.ContentType = &amp;quot;text/javascript; charset=UTF-8&amp;quot;;\n            context.Response.AddNoCache();\n            await context.Response.WriteAsync(settingsJs);\n        });\n    });\n}\n&lt;/code&gt;&lt;/pre&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778163549,
+            "distinguished": null,
+            "parent_id": "t1_okg319v",
+            "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okga517/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okg7f7z",
+    "author": "bawhee23",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We use pattern already described here - config.js that attaches an object to the window. \nWe create it using terraform template file tftpl. \nSince everything is visible in the frontend, maybe some obfuscation of this file would satisfy your pentesters? &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778162791,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okg7f7z/",
+    "replies": [
+      {
+        "id": "okg9g6g",
+        "author": "Darex97",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thanks, I was thinking about some encoding just to make it harder to read.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778163356,
+        "distinguished": null,
+        "parent_id": "t1_okg7f7z",
+        "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okg9g6g/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okjuz2f",
+    "author": "dutchman76",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I use a couple env variables so the app knows it&amp;#39;s identity, and it fetches it&amp;#39;s config from the DB/back end API &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778200631,
+    "distinguished": null,
+    "parent_id": "t3_1t6880l",
+    "permalink": "/r/reactjs/comments/1t6880l/build_once_deploy_many_react_vite/okjuz2f/",
+    "replies": []
+  }
+]

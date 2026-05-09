@@ -1,0 +1,39 @@
+[
+  {
+    "id": "oklofk8",
+    "author": "aelfric5578",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Hypothetically speaking, what would you do if the library you were using for the dialog didn&amp;#39;t support being opened declaratively and instead required calling an imperative open method after navigating to the nested route?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778229309,
+    "distinguished": null,
+    "parent_id": "t3_1t69mvl",
+    "permalink": "/r/reactjs/comments/1t69mvl/untangling_dialogs_in_react_router/oklofk8/",
+    "replies": [
+      {
+        "id": "okmt93q",
+        "author": "dadamssg",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You would need useEffect to call it imperatively. Something like this&lt;/p&gt;\n\n&lt;p&gt;```tsx&lt;br/&gt;\nconst open = useEffectEvent(() =&amp;gt; {&lt;br/&gt;\n  dialog.open()&lt;br/&gt;\n})&lt;/p&gt;\n\n&lt;p&gt;useEffect(function openDialog() {&lt;br/&gt;\n  open()&lt;br/&gt;\n}, [])&lt;/p&gt;\n\n&lt;p&gt;```&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778245917,
+        "distinguished": null,
+        "parent_id": "t1_oklofk8",
+        "permalink": "/r/reactjs/comments/1t69mvl/untangling_dialogs_in_react_router/okmt93q/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okfstno",
+    "author": "dadamssg",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is the guide i wish existed years ago!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": true,
+    "created_utc": 1778158442,
+    "distinguished": null,
+    "parent_id": "t3_1t69mvl",
+    "permalink": "/r/reactjs/comments/1t69mvl/untangling_dialogs_in_react_router/okfstno/",
+    "replies": []
+  }
+]

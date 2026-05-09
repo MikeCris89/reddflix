@@ -1,0 +1,89 @@
+[
+  {
+    "id": "okevvp8",
+    "author": "sandeshjha",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The Twilio country code normalization is a silent killer. We had a bug where users in the UK were getting double-billed because some came in as +44 and others as 0. We ended up having to write a custom regex wrapper just to &amp;#39;sanitize&amp;#39; what Twilio was supposed to be doing for us. It’s wild how the more &amp;#39;mature&amp;#39; an API is, the more legacy debt you end up inheriting as a dev. Great call on the logging layer—it&amp;#39;s the only thing that saves your sanity when the carrier-level stuff starts failing.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778144853,
+    "distinguished": null,
+    "parent_id": "t3_1t64xnt",
+    "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okevvp8/",
+    "replies": [
+      {
+        "id": "okewzpr",
+        "author": "Excellent_Poetry_718",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;the double billing from number formatting is exactly the kind of thing that looks impossible in code review and only shows up three months in. we ended up doing the same thing, a normalisation function that runs on every inbound number before it touches the db. should be a one liner, ends up being a carefully tested utility with six edge cases. the legacy debt point is real, mature APIs have years of decisions baked in that made sense at the time and now you just inherit them silently&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": true,
+        "created_utc": 1778145458,
+        "distinguished": null,
+        "parent_id": "t1_okevvp8",
+        "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okewzpr/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okevvhv",
+    "author": "conehito_por_favor",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I know what you mean. I think it&amp;#39;s the same reason that you can&amp;#39;t send a Facebook 2FA code to a Twilio number.&lt;br/&gt;\nIf you&amp;#39;re sending to non-US numbers, I&amp;#39;d just get a SIM card, put it in a phone and put that in the server rack and hook up the code to it. It&amp;#39;s more reliable.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778144850,
+    "distinguished": null,
+    "parent_id": "t3_1t64xnt",
+    "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okevvhv/",
+    "replies": [
+      {
+        "id": "okew5cu",
+        "author": "CookieNo4218",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;physical sim solution is actually smart for this case&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": false,
+        "created_utc": 1778144999,
+        "distinguished": null,
+        "parent_id": "t1_okevvhv",
+        "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okew5cu/",
+        "replies": []
+      },
+      {
+        "id": "okewngu",
+        "author": "Excellent_Poetry_718",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;the SIM card in the rack approach is interesting and probably more reliable for certain regions but it introduces its own problems, what happens when the carrier blocks the number for looking like automated traffic, or the SIM needs reregistering. we looked at that route early on and ended up sticking with Twilio despite the reliability issues because at least the failures are logged and predictable. the Facebook 2FA thing is a good example of how carriers are actively fighting this at the infrastructure level which no API layer can fully abstract away&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": true,
+        "created_utc": 1778145274,
+        "distinguished": null,
+        "parent_id": "t1_okevvhv",
+        "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okewngu/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okh3stm",
+    "author": "cargo_run_rust",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Payment processor APIs carry a lot of tribal knowledge.&lt;/p&gt;\n\n&lt;p&gt;Such tribal knowledge are available in payment integration libraries like &lt;a href=\"https://github.com/juspay/hyperswitch-prism\"&gt;hyperswitch prism&lt;/a&gt;.&lt;/p&gt;\n\n&lt;p&gt;And it&amp;#39;s not a one time problem to solve. It needs a continuous testing and upgrades to regress with the provider&amp;#39;s API and environment behaviour.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778171468,
+    "distinguished": null,
+    "parent_id": "t3_1t64xnt",
+    "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okh3stm/",
+    "replies": [
+      {
+        "id": "okkxseg",
+        "author": "Excellent_Poetry_718",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Tribal knowledge is often exactly where the real production details live: GitHub issues, old forum threads, and internal runbooks that never got published.&lt;/p&gt;\n\n&lt;p&gt;The continuous testing point is underrated. A lot of teams test once during integration and assume it will keep working forever. Stripe has changed webhook behavior multiple times in ways that were not labeled breaking, but still broke real flows.&lt;/p&gt;\n\n&lt;p&gt;I’ll check out Hyperswitch Prism. Curious to see how well it handles edge cases.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778216209,
+        "distinguished": null,
+        "parent_id": "t1_okh3stm",
+        "permalink": "/r/webdev/comments/1t64xnt/built_on_twilio_whatsapp_stripe_webhooks_and/okkxseg/",
+        "replies": []
+      }
+    ]
+  }
+]

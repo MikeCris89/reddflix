@@ -1,0 +1,630 @@
+[
+  {
+    "id": "ok7eeul",
+    "author": "[deleted]",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;[removed]&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 41,
+    "is_submitter": false,
+    "created_utc": 1778049874,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7eeul/",
+    "replies": [
+      {
+        "id": "ok7gnx1",
+        "author": "AbrahelOne",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think Mozilla made a good start when they have rebuilt their MDN from React to vanilla JavaScript and web components. &lt;/p&gt;\n\n&lt;p&gt;This shows that you don’t need a library or framework.&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://developer.mozilla.org/en-US/blog/mdn-front-end-deep-dive/\"&gt;https://developer.mozilla.org/en-US/blog/mdn-front-end-deep-dive/&lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 9,
+        "is_submitter": false,
+        "created_utc": 1778051023,
+        "distinguished": null,
+        "parent_id": "t1_ok7eeul",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7gnx1/",
+        "replies": [
+          {
+            "id": "ok7kyqo",
+            "author": "Helpful_City5455",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You dont need it *always*, not that you should start creating extremely interactive applications using only web-components&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778053296,
+            "distinguished": null,
+            "parent_id": "t1_ok7gnx1",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7kyqo/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok7djf5",
+    "author": "Werzam",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Right tool for right job.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 65,
+    "is_submitter": false,
+    "created_utc": 1778049429,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7djf5/",
+    "replies": [
+      {
+        "id": "ok8tjgu",
+        "author": "chillermane",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is a cop out answer and doesn’t even really apply here. because you can basically use SPA for any front end app and it will be totally fine. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": -20,
+        "is_submitter": false,
+        "created_utc": 1778072776,
+        "distinguished": null,
+        "parent_id": "t1_ok7djf5",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8tjgu/",
+        "replies": [
+          {
+            "id": "ok8wytf",
+            "author": "dschazam",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Not if you or your client cares about SEO. Then you’ll definitely need SSR. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778073803,
+            "distinguished": null,
+            "parent_id": "t1_ok8tjgu",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8wytf/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok7gs9f",
+    "author": "yksvaan",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nobody outside tech hypers and content creators cares. SPA and boring but fast backend get the job done. &lt;/p&gt;\n\n&lt;p&gt;For typical use case you can always generate static pages for static content and then mount the app for the dynamic part. There&amp;#39;s not even any loading time since js can be preloaded while users land on the page, login etc. Or on subsequent visits it&amp;#39;s all cached already. &lt;/p&gt;\n\n&lt;p&gt;Also remember metaframeworks aren&amp;#39;t necessary for SSR. Anyone can use the React server apis just like we have done for 10 years already. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 14,
+    "is_submitter": false,
+    "created_utc": 1778051086,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7gs9f/",
+    "replies": []
+  },
+  {
+    "id": "ok7f6xl",
+    "author": "Chenipan",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;People got fed up with Next. tanstack start for ssr or tanstack router for SPA only already has a lot of traction&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 53,
+    "is_submitter": false,
+    "created_utc": 1778050273,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7f6xl/",
+    "replies": [
+      {
+        "id": "ok7g4ul",
+        "author": "r-nck-51",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;+1 &lt;/p&gt;\n\n&lt;p&gt;Being a tanstack fanboi has so far not backfired for me yet lol&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 22,
+        "is_submitter": false,
+        "created_utc": 1778050751,
+        "distinguished": null,
+        "parent_id": "t1_ok7f6xl",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7g4ul/",
+        "replies": []
+      },
+      {
+        "id": "ok9mxmu",
+        "author": "ljuglampa",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Maybe in here. But everyday Next.js is chosen in 95% of the times for a green field project in the corporate world because of familiarity, dev knowledge and eco system integration. Nextjs is a beast and sadly it will take a long time for it to be dethroned.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 5,
+        "is_submitter": false,
+        "created_utc": 1778081014,
+        "distinguished": null,
+        "parent_id": "t1_ok7f6xl",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok9mxmu/",
+        "replies": [
+          {
+            "id": "okdymzc",
+            "author": "SubhumanOxford",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That’s because TanStack start is still in RC or beta&lt;/p&gt;\n\n&lt;p&gt;I cannot pitch that in my corporate until it’s stable &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778128003,
+            "distinguished": null,
+            "parent_id": "t1_ok9mxmu",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okdymzc/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "ok7h9hu",
+        "author": "Krizzu",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Or even tanstack start with selective ssr is sweet spot when you have a dashboard behind login wall, but still need some decent SEO&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 6,
+        "is_submitter": false,
+        "created_utc": 1778051333,
+        "distinguished": null,
+        "parent_id": "t1_ok7f6xl",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7h9hu/",
+        "replies": []
+      },
+      {
+        "id": "ok8x9eh",
+        "author": "dschazam",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I love TanStack Start. Best stack experience I’ve had in a long long time! Never want to get back to Next.js / Remix. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778073888,
+        "distinguished": null,
+        "parent_id": "t1_ok7f6xl",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8x9eh/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "ok7ki2d",
+    "author": "CapitalDiligent1676",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I&amp;#39;ve been saying this for years!&lt;br/&gt;\nNextjs is a colossal hype promoted by influencers in the pay of Vercel.&lt;br/&gt;\nIn 99% of SaaS, it&amp;#39;s unnecessary, if not harmful.&lt;br/&gt;\nAnd yet, why does everyone use it? Because everyone uses it!&lt;br/&gt;\nThe more I think about Claude Code and Nextjs, the more I&amp;#39;m convinced that programmers are absolute idiots.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 30,
+    "is_submitter": false,
+    "created_utc": 1778053047,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7ki2d/",
+    "replies": [
+      {
+        "id": "okavbe2",
+        "author": "Jugad",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;What does Claude Code have to do with Nextjs?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778092645,
+        "distinguished": null,
+        "parent_id": "t1_ok7ki2d",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okavbe2/",
+        "replies": [
+          {
+            "id": "okgks1j",
+            "author": "itsjbean",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;that&amp;#39;s what I was asking but got downvoted lol&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778166443,
+            "distinguished": null,
+            "parent_id": "t1_okavbe2",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okgks1j/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okakhr4",
+        "author": "itsjbean",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;wdym by Claude Code?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": false,
+        "created_utc": 1778089802,
+        "distinguished": null,
+        "parent_id": "t1_ok7ki2d",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okakhr4/",
+        "replies": [
+          {
+            "id": "okhjagu",
+            "author": "RegmasterJ",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If you vibe code a React app without specifying a stack, LLMs like Claude will default to Next.js 9 out of 10 times, boosting their usage even more. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778175537,
+            "distinguished": null,
+            "parent_id": "t1_okakhr4",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okhjagu/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok7ugcr",
+    "author": "Mean-Accountant8656",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;People are finally coming to their senses. I’ve been building more apps with just React, Vite, and TanStack Router, and it’s bliss. And this isn&amp;#39;t just about Vercel, people just love to overcomplicate things.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 12,
+    "is_submitter": false,
+    "created_utc": 1778058474,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7ugcr/",
+    "replies": [
+      {
+        "id": "ok8cr5d",
+        "author": "Windyvale",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Tanstack start has been awesome too (which is just 90% router anyways).&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 4,
+        "is_submitter": false,
+        "created_utc": 1778067017,
+        "distinguished": null,
+        "parent_id": "t1_ok7ugcr",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8cr5d/",
+        "replies": [
+          {
+            "id": "ok8gs2w",
+            "author": "Mean-Accountant8656",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Any TanStack stuff I tried was awesome. 😃&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 5,
+            "is_submitter": false,
+            "created_utc": 1778068522,
+            "distinguished": null,
+            "parent_id": "t1_ok8cr5d",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8gs2w/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok7qeul",
+    "author": "Robodobdob",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I would argue not every internal dashboard, simple CRUD app, or personal portfolio needs React. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 7,
+    "is_submitter": false,
+    "created_utc": 1778056268,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7qeul/",
+    "replies": [
+      {
+        "id": "ok8sgrn",
+        "author": "ianpaschal",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Interesting but based on what? Dashboards and CRUD apps seems like exactly the cases where you &lt;em&gt;should&lt;/em&gt; reach for React.&lt;/p&gt;\n\n&lt;p&gt;I would agree with you though that static websites (like the portfolio) or other things that need to be pre-rendered, have SEO, etc should avoid react unless absolutely necessary &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778072444,
+        "distinguished": null,
+        "parent_id": "t1_ok7qeul",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8sgrn/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "ok7iuk9",
+    "author": "MongooseEmpty4801",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I never felt guilty not using Next.js, its a bad fit for most projects.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 9,
+    "is_submitter": false,
+    "created_utc": 1778052162,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7iuk9/",
+    "replies": []
+  },
+  {
+    "id": "ok7x9pj",
+    "author": "KikiPolaski",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I&amp;#39;m getting deja vu of people making these kinds of posts for React, coming from raw JS/HTML&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1778059980,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7x9pj/",
+    "replies": [
+      {
+        "id": "ok9xr0c",
+        "author": "lunacraz",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;nahhh stuff like vue and react was definitely needed for reactive components. handwriting all that shit is pretty tough&lt;/p&gt;\n\n&lt;p&gt;but if your page is effectively static, you definitely dont need uch more than HTML/JS/CSS&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 4,
+        "is_submitter": false,
+        "created_utc": 1778083870,
+        "distinguished": null,
+        "parent_id": "t1_ok7x9pj",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok9xr0c/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okadx9r",
+    "author": "fii0",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is posted like once a week in this sub I swear&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778088130,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okadx9r/",
+    "replies": []
+  },
+  {
+    "id": "ok7uage",
+    "author": "Wirde",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;IMO you should never use Next.JS, they are snake oil salesman that shoves down bad practices down your throat with extremely predatory business practices.&lt;/p&gt;\n\n&lt;p&gt;While they where first with making SSR accessible to the masses SSR wasn’t impossible to implement yourself before they were around and its only become easier with react growing more mature.&lt;/p&gt;\n\n&lt;p&gt;Nah, we decided on making our own SSR and haven’t looked back since. You solve it once and it’s done. Any application where SSR is needed is also an application it’s worth adding a week of development time to solve SSR for. &lt;/p&gt;\n\n&lt;p&gt;After that you have it solved and can export the solution to new projects if needed. It’s a one time investment, I don’t understand how people can be so adverse to doing that investment, especially when you get cleaner code and don’t have to pay ridiculous server fees.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 6,
+    "is_submitter": false,
+    "created_utc": 1778058383,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7uage/",
+    "replies": [
+      {
+        "id": "ok99wam",
+        "author": "switz213",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;None of this is true. They were not the first. They are not snakeoil salesman.&lt;/p&gt;\n\n&lt;p&gt;This is pure FUD.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": false,
+        "created_utc": 1778077501,
+        "distinguished": null,
+        "parent_id": "t1_ok7uage",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok99wam/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "ok7tu8q",
+    "author": "Dry_Author8849",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;We use SPAs mostly with .Net backends. We haven&amp;#39;t found any benefit for server side components in our use case.&lt;/p&gt;\n\n&lt;p&gt;We don&amp;#39;t use next.js, there are lot&amp;#39;s of people using react like this.&lt;/p&gt;\n\n&lt;p&gt;Cheers!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778058137,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7tu8q/",
+    "replies": []
+  },
+  {
+    "id": "ok83vze",
+    "author": "RelationshipFresh966",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;No one is feeling guilty about this&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778063268,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok83vze/",
+    "replies": []
+  },
+  {
+    "id": "ok94la5",
+    "author": "TheRealSeeThruHead",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Can we normalize telling people to avoid nextjs at all costs &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778076022,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok94la5/",
+    "replies": []
+  },
+  {
+    "id": "ok7hwxz",
+    "author": "Hamburgerfatso",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Lol just don&amp;#39;t use it then? Is someone holding you at gunpoint through your screen or what &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1778051669,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7hwxz/",
+    "replies": []
+  },
+  {
+    "id": "ok7fs74",
+    "author": "azangru",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;Can we normalize just building a standard React SPA with Vite again&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;Can we normalize just building plain web pages like we did in early 2010s? Not every simple crud app or personal portfolio need an spa.&lt;/p&gt;\n\n&lt;blockquote&gt;\n&lt;p&gt;without feeling guilty that we aren&amp;#39;t using Next.js&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;Guilty? Why would you feel guilty about that?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778050572,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7fs74/",
+    "replies": [
+      {
+        "id": "ok7gcnj",
+        "author": "r-nck-51",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Tech debt is now tech guilt!&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 3,
+        "is_submitter": false,
+        "created_utc": 1778050860,
+        "distinguished": null,
+        "parent_id": "t1_ok7fs74",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7gcnj/",
+        "replies": []
+      },
+      {
+        "id": "ok7hvcf",
+        "author": "No-Somewhere-3888",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Plain web pages would be server components.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778051646,
+        "distinguished": null,
+        "parent_id": "t1_ok7fs74",
+        "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7hvcf/",
+        "replies": [
+          {
+            "id": "ok7kjy1",
+            "author": "azangru",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yes; but why?&lt;/p&gt;\n\n&lt;p&gt;As a server-side templating language, react is notoriously slower than old string-based alternatives. Plus, if there are client-side requests to server components, it attracts the ghost of version skew.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": -2,
+            "is_submitter": false,
+            "created_utc": 1778053075,
+            "distinguished": null,
+            "parent_id": "t1_ok7hvcf",
+            "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7kjy1/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok7j5d2",
+    "author": "BreadfruitNaive6261",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I use nuxt just for spa. Built in router and server side for reverse proxy is super useful&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778052323,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7j5d2/",
+    "replies": []
+  },
+  {
+    "id": "ok7z4pe",
+    "author": "gh0stF4CE7",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’m using the bhvr stack for one of my apps and I love it. Clear separation of concerns (server x client) while having e2e type safety in a single repo (monorepo setup with turbo repo) + all the goodies from the tanstack ecosystem on the frontend (router, query). I’ve long stopped caring what other people think and just use what I like.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778060946,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7z4pe/",
+    "replies": []
+  },
+  {
+    "id": "ok8m8ni",
+    "author": "IMP4283",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I just inherited a project developed by contractors for my company that management touted as the next big thing because they use Next and we don’t… they didn’t use a single feature of Next. Instead they just built a standard React app in Next.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778070412,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8m8ni/",
+    "replies": []
+  },
+  {
+    "id": "ok8ohug",
+    "author": "gaytechdadwithson",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;absolutely &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778071174,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok8ohug/",
+    "replies": []
+  },
+  {
+    "id": "okaaya6",
+    "author": "kyualun",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;blockquote&gt;\n&lt;p&gt;a complex caching layer that requires a PhD to invalidate.&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;Skill issue, but agreed otherwise.&lt;/p&gt;\n\n&lt;p&gt;I think it&amp;#39;s very important to realize that what people are talking about online, sometime literally just discourse for discourse&amp;#39;s sake isn&amp;#39;t representative of the world outside of those specific echo chambers. People still do what you&amp;#39;re describing. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778087380,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okaaya6/",
+    "replies": []
+  },
+  {
+    "id": "okdh159",
+    "author": "D0MiN0H",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;my brother in christ why would you feel guilty over a tech stack?  we’re all web developers, these frameworks and design philosophies are all just tools. Nobody judges a carpenter for what saw they use to cut wood. &lt;/p&gt;\n\n&lt;p&gt;also i cannot think of a scenario where the definition of gaslighting applies to navigating various frontend ecosystems.&lt;/p&gt;\n\n&lt;p&gt;like i am not trying to be mean but this post makes me think we all need to collectively go touch grass. class is outside today.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778121120,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okdh159/",
+    "replies": []
+  },
+  {
+    "id": "okdn2ek",
+    "author": "Ariandel2002",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Hell yeah, even if you want &amp;quot;SEO&amp;quot;, for a Saas most of the time you are perfectly fine with a traditional web page as a landpage and then serve the app as an SPA.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778123322,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okdn2ek/",
+    "replies": []
+  },
+  {
+    "id": "oke1ekg",
+    "author": "NefariousnessFar2266",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Not if you need SEO/AEO - sorry &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778129234,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/oke1ekg/",
+    "replies": []
+  },
+  {
+    "id": "oke1kns",
+    "author": "NefariousnessFar2266",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I build all my apps go backend, embed next js static build for frontend; works beautifully for saas apps &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778129309,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/oke1kns/",
+    "replies": []
+  },
+  {
+    "id": "oki31w4",
+    "author": "denu5",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Just use angular, it has everything out of the box. no decision fatigue regarding frameworks&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778180839,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/oki31w4/",
+    "replies": []
+  },
+  {
+    "id": "ok7k2ct",
+    "author": "NotGoodSoftwareMaker",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I just do react, tailwind, remix, zustand, vite and hard routing. Simple and easy.&lt;/p&gt;\n\n&lt;p&gt;I am however looking to solve request coalescing and introduce caching for some endpoints. Tanstack looks reasonable for this but im thinking there are better alternatives that dont introduce context bleeding&lt;/p&gt;\n\n&lt;p&gt;Also im a bit wary of opening the door to hypetrain via tanstack&lt;/p&gt;\n\n&lt;p&gt;I dont get the obsession with anything less than 200ms, ssr or tanstack. But hey, the guys at my previous company went full tilt on cypress and that went about as well as can be expected when you dont consider the tradeoffs&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778052812,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7k2ct/",
+    "replies": []
+  },
+  {
+    "id": "okav6qi",
+    "author": "Jugad",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nextjs got too big for its own good.&lt;/p&gt;\n\n&lt;p&gt;We are using React / Vite for a pretty complicated project and it works great.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778092611,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okav6qi/",
+    "replies": []
+  },
+  {
+    "id": "okcnqav",
+    "author": "CasualBlockPlacer",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I ditch nextjs over a year ago. It&amp;#39;s a mess and I didn&amp;#39;t feel great using it anymore. Tanstack is goated and if you haven&amp;#39;t used their router or start you really should give it a try.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778111149,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/okcnqav/",
+    "replies": []
+  },
+  {
+    "id": "ok7ir1z",
+    "author": "No-Somewhere-3888",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You can host a small server for like $5. Next.js got the model right, and I’m honestly tired of people living in the past.&lt;/p&gt;\n\n&lt;p&gt;All apps - content or interactive, benefit from app router and server functions. Stop shipping all your code to the client. Stop waiting on backend devs to build your APIs. Ship your full stack JS app today.&lt;/p&gt;\n\n&lt;p&gt;/rant&lt;/p&gt;\n&lt;/div&gt;",
+    "score": -5,
+    "is_submitter": false,
+    "created_utc": 1778052110,
+    "distinguished": null,
+    "parent_id": "t3_1t54wi2",
+    "permalink": "/r/reactjs/comments/1t54wi2/nextjs_spa_reality_check/ok7ir1z/",
+    "replies": []
+  }
+]

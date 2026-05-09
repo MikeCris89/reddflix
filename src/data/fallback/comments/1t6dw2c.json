@@ -1,0 +1,26 @@
+[
+  {
+    "id": "okgsuzj",
+    "author": "pmmeyourfannie",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;People that do this are nuts in the first place. I don’t even trust plain text from users.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778168589,
+    "distinguished": null,
+    "parent_id": "t3_1t6dw2c",
+    "permalink": "/r/webdev/comments/1t6dw2c/critical_vm2_sandbox_escape_bugs_let_attackers/okgsuzj/",
+    "replies": []
+  },
+  {
+    "id": "okgs8wc",
+    "author": "Full_Donut_1477",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Well this explains why our staging environment was acting weird last week. Already updated all our Node instances but damn, WebAssembly exception handling being the attack vector is pretty wild&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778168429,
+    "distinguished": null,
+    "parent_id": "t3_1t6dw2c",
+    "permalink": "/r/webdev/comments/1t6dw2c/critical_vm2_sandbox_escape_bugs_let_attackers/okgs8wc/",
+    "replies": []
+  }
+]

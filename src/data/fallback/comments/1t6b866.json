@@ -1,0 +1,26 @@
+[
+  {
+    "id": "okiby5v",
+    "author": "Alex_Dutton",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;dnssec failures at the tld level are brutal, no amount of your own redundancy saves you when the chain of trust breaks upstream&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 5,
+    "is_submitter": false,
+    "created_utc": 1778183275,
+    "distinguished": null,
+    "parent_id": "t3_1t6b866",
+    "permalink": "/r/webdev/comments/1t6b866/massive_de_dnssec_failure_took_large_parts_of/okiby5v/",
+    "replies": []
+  },
+  {
+    "id": "okmo0gc",
+    "author": "mrtrly",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;DNSSEC fails closed by design which is the whole point, but it makes these incidents binary in a way most infra failures aren&amp;#39;t. hit a smaller version on a customer zone last year. stale DS record after a key rollover took everything dark for about 4 hours and the only fix was waiting for the registrar to publish the correction. users on non-validating resolvers never noticed, users on 1.1.1.1 or quad9 were just gone. did the writeup mention how long bad records sat in resolver caches after denic pushed the fix?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778244304,
+    "distinguished": null,
+    "parent_id": "t3_1t6b866",
+    "permalink": "/r/webdev/comments/1t6b866/massive_de_dnssec_failure_took_large_parts_of/okmo0gc/",
+    "replies": []
+  }
+]

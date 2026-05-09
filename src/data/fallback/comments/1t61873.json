@@ -1,0 +1,38 @@
+[
+  {
+    "id": "okhuz8o",
+    "author": "Kitty_Sparkles",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Looks very cute, good work on the design layer, it’s well done.&lt;/p&gt;\n\n&lt;p&gt;A couple of pointers regarding accessibility:&lt;/p&gt;\n\n&lt;p&gt;- The checkbox label mapping is incorrect: the `for` attribute from the `&amp;lt;label&amp;gt;` should reference the `id` of the `&amp;lt;input&amp;gt;`, not its `name`. Same with the slider component, and the input component. A lot of them probably. Kudos for using a `&amp;lt;label&amp;gt;` though, just have to fix the association.&lt;br/&gt;\n- I also think the checkbox should be squared, not circular. Right now it’s indistinguishable from the radio component.&lt;br/&gt;\n- The modal is absolutely not accessible. It carries the wrong semantic, doesn’t trap the focus, it needs a lot of work.&lt;br/&gt;\n- Same with the select, it’s not accessible at all since it’s rebuilt with nothing but divs. Either use an actual &amp;lt;select&amp;gt; element, or look into &lt;a href=\"https://nerdy.dev/nice-select\"&gt;https://nerdy.dev/nice-select&lt;/a&gt; .&lt;br/&gt;\n- The tab component should handle arrow keys for navigation. See: &lt;a href=\"https://www.w3.org/WAI/ARIA/apg/patterns/tabs/\"&gt;https://www.w3.org/WAI/ARIA/apg/patterns/tabs/&lt;/a&gt;&lt;br/&gt;\n- The switch component cannot be operated with a keyboard.&lt;/p&gt;\n\n&lt;p&gt;It’s a bit confusing because some components are not bad, and use semantic markups, and some don’t, and some do but it’s kinda 80% there.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778178659,
+    "distinguished": null,
+    "parent_id": "t3_1t61873",
+    "permalink": "/r/reactjs/comments/1t61873/open_source_pixel_art_component_library_for_react/okhuz8o/",
+    "replies": []
+  },
+  {
+    "id": "okk2ool",
+    "author": "Wirde",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nice!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778203620,
+    "distinguished": null,
+    "parent_id": "t3_1t61873",
+    "permalink": "/r/reactjs/comments/1t61873/open_source_pixel_art_component_library_for_react/okk2ool/",
+    "replies": []
+  },
+  {
+    "id": "okklz1b",
+    "author": "No_Neck_550",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;seem like 8bit&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778211065,
+    "distinguished": null,
+    "parent_id": "t3_1t61873",
+    "permalink": "/r/reactjs/comments/1t61873/open_source_pixel_art_component_library_for_react/okklz1b/",
+    "replies": []
+  }
+]
