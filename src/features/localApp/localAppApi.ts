@@ -13,7 +13,7 @@ import {
 	getItem,
 	setItem,
 } from "../../utils/dbHelpers";
-import { evaluateRateLimit } from "./requestMonitorUtils";
+import { evaluateRateLimit, RateLimit } from "./requestMonitorUtils";
 
 export const localAppApi = createApi({
 	reducerPath: "localAppApi",
@@ -200,14 +200,7 @@ export const localAppApi = createApi({
 			},
 			providesTags: ["requestMonitor"],
 		}),
-		fetchRequestLimit: build.query<
-			{
-				ok: boolean;
-				delayMs: number;
-				reason: "ban" | "rateLimit" | undefined;
-			},
-			RequestMonitor
-		>({
+		fetchRequestLimit: build.query<RateLimit, RequestMonitor>({
 			async queryFn(reqMonitor, api) {
 				const prunePending = async (newPending: number[]) => {
 					await api.dispatch(

@@ -4,7 +4,7 @@ import {
 	useFetchSeenPostsQuery,
 	useRemovePendingRequestMutation,
 } from "../localApp/localAppApi";
-import { useLazyFetchPostsBySubredditQuery } from "./redditApi";
+import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
 import { getFallbackPosts, hasPostFallback } from "../../utils/helpers";
@@ -48,26 +48,24 @@ const PostContainer = ({
 
 	const hasFallback = hasPostFallback(subreddit.name);
 
-	const [triggerFetch, { data, isLoading, isError, error }] =
-		useLazyFetchPostsBySubredditQuery();
+	// NOTE: useQuery here (not in ScrollContainer) because of inView gating.
+	// Refresh button in ScrollContainer uses useLazyQuery against same cache.
+	// TODO: Refactor when proxy backend lands — lift state to ScrollContainer
+	// and pass data down, since rate-limit/ban handling will be much simpler.
 
-	// const { data, isLoading, error, isError, refetch } =
-	// 	useFetchPostsBySubredditQuery(subreddit.name, {
-	// 		refetchOnMountOrArgChange: false,
-	// 		refetchOnReconnect: false,
-	// 		refetchOnFocus: false,
-	// 		skip: hasFallback,
-	// 	});
+	const { data, isLoading, error, isError, refetch } =
+		useFetchPostsBySubredditQuery(subreddit.name, {
+			refetchOnMountOrArgChange: false,
+			refetchOnReconnect: false,
+			refetchOnFocus: false,
+			skip: true,
+		});
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
 	useEffect(() => {
 		getFallbackPosts(subreddit.name).then(setFallbackPosts);
 	}, [subreddit]);
-
-	// const refetch = () => {
-	// 	triggerFetch(subreddit.name, false);
-	// };
 
 	const resolvedData = useMemo(() => {
 		if (data) return data;
@@ -94,30 +92,16 @@ const PostContainer = ({
 		};
 	}, [resolvedData, seenPosts]);
 
-	// useEffect(() => {
-	// 	if (!pendingTime || pendingTime < Date.now()) return;
-
-	// 	const timeout = setTimeout(() => {
-	// 		refetch();
-	// 		removePending(pendingTime);
-	// 	}, pendingTime - Date.now());
-
-	// 	return () => {
-	// 		clearTimeout(timeout);
-	// 	};
-	// }, [pendingTime, refetch, removePending]);
-
 	useEffect(() => {
 		if (!pendingTime || pendingTime < Date.now()) return;
 
 		const timeout = setTimeout(() => {
-			triggerFetch(subreddit.name, false);
+			refetch();
 			removePending(pendingTime);
 		}, pendingTime - Date.now());
-		//
 
 		return () => clearTimeout(timeout);
-	}, [pendingTime, subreddit.name, triggerFetch, removePending]);
+	}, [pendingTime, refetch, removePending]);
 
 	useEffect(() => {
 		if (

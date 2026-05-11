@@ -291,17 +291,17 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 
 	const hasFallback = postId ? hasCommentFallback(postId) : false;
 
+	// TODO: skip=true, keep until backend setup
 	const { data, isLoading, isError, error, refetch } =
 		useFetchPostAndCommentsQuery(postId, {
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
 			refetchOnFocus: false,
-			skip: hasFallback,
+			skip: true,
 			selectFromResult: ({ data, isLoading, error, isError }) => ({
 				data: data?.comments,
 				isLoading,
 				isError,
-
 				error,
 			}),
 		});

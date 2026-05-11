@@ -25,6 +25,7 @@ const PostModal = ({
 	const state = location.state as { backgroundLocation?: Location };
 	const backgroundLocation = state?.backgroundLocation;
 
+	// Skip for now: keep for backend setup
 	const { data, isLoading } = useFetchPostsBySubredditQuery(category, {
 		selectFromResult: ({ data, isLoading }) => {
 			return {
@@ -32,6 +33,7 @@ const PostModal = ({
 				isLoading,
 			};
 		},
+		skip: true,
 	});
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(data?.subreddit ?? "", {

@@ -4,7 +4,7 @@ import useCountdown from "../hooks/useCountdown";
 import { useMinuteClock } from "../hooks/useMinuteClock";
 import Spinner from "./Spinner";
 import MinutesLeft from "./MinutesLeft";
-import { getMinutesLeft, relativeTime } from "../utils/helpers";
+import { relativeTime } from "../utils/helpers";
 import { Subreddit } from "../utils/types";
 
 const COOLDOWN_MS = 10 * 60 * 1000;
@@ -32,8 +32,9 @@ const ScrollHeader = ({
 			? Math.max(0, Math.ceil((banExpiry - Date.now()) / 60000))
 			: 0;
 
-	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
-	const inCooldown = mLeft > 0;
+	// keep for button disable
+	// const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
+	// const inCooldown = mLeft > 0;
 
 	const titleStyle3 = `text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
@@ -45,9 +46,6 @@ const ScrollHeader = ({
 			Retrying in {Math.ceil(remaining / 1000)}s
 		</span>
 	);
-
-	// console.log(remaining);
-	// console.log(banMinutesLeft);
 
 	const banEl = remaining <= 0 && banMinutesLeft > 0 && (
 		<span className="flex items-center gap-1 text-blue-400 text-xs">
@@ -63,7 +61,9 @@ const ScrollHeader = ({
 				<span>r/{subreddit.name}</span>
 				<button
 					onClick={onRefresh}
-					disabled={isRefreshing || inCooldown || !!banEl}
+					// keep for future
+					// disabled={isRefreshing || inCooldown || !!banEl}
+					disabled={true}
 					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
 					title="Refresh"
 				>
