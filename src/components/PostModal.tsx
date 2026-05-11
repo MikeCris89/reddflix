@@ -26,15 +26,18 @@ const PostModal = ({
 	const backgroundLocation = state?.backgroundLocation;
 
 	// Skip for now: keep for backend setup
-	const { data, isLoading } = useFetchPostsBySubredditQuery(category, {
-		selectFromResult: ({ data, isLoading }) => {
-			return {
-				data: data?.posts.find((posts) => posts.id === postId),
-				isLoading,
-			};
+	const { data, isLoading: _loadingPosts } = useFetchPostsBySubredditQuery(
+		category,
+		{
+			selectFromResult: ({ data, isLoading }) => {
+				return {
+					data: data?.posts.find((posts) => posts.id === postId),
+					isLoading,
+				};
+			},
+			skip: true,
 		},
-		skip: true,
-	});
+	);
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(data?.subreddit ?? "", {
 		skip: !data?.subreddit,
