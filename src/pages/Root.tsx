@@ -22,6 +22,7 @@ import Spinner from "../components/Spinner";
 import { defaultSubreddits } from "../data/defaultSubreddits";
 import { RequestMonitor } from "../utils/types";
 import { Toaster } from "sonner";
+import DemoBanner from "../components/DemoBanner";
 
 const RateLimitManager = () => {
 	// initial rtk query fetches to setup cache
@@ -40,7 +41,10 @@ const Root = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const location = useLocation();
 	const state = location.state as { backgroundLocation?: Location };
-	const backgroundLocation = state?.backgroundLocation;
+	// const backgroundLocation = state?.backgroundLocation;
+	const backgroundLocation =
+		state?.backgroundLocation ||
+		(location.pathname === "/about" ? { pathname: "/" } : undefined);
 	const elements = useRoutes(childRoutes, backgroundLocation || location);
 
 	const {
@@ -48,13 +52,6 @@ const Root = () => {
 		isError,
 		isLoading: subloading,
 	} = useFetchSubredditsQuery();
-	// const { data: reqMonitor } = useFetchRequestMonitorQuery();
-	// const { data: rateLimit } = useFetchRequestLimitQuery(
-	// 	reqMonitor as RequestMonitor,
-	// 	{
-	// 		skip: !reqMonitor,
-	// 	}
-	// );
 	const [setAllSubreddits] = useSetAllSubredditsMutation();
 	const [setSubreddit] = useSetSubredditMutation();
 	const [clearPending] = useClearPendingMutation();
@@ -103,6 +100,7 @@ const Root = () => {
 			<Toaster position="top-right" richColors />
 			<RateLimitManager />
 			<Navbar />
+			<DemoBanner />
 			<main className="flex-1 overflow-hidden w-full flex justify-center">
 				{(isLoading || subloading) && (
 					<div className="h-full w-full flex justify-center items-center">
@@ -113,6 +111,7 @@ const Root = () => {
 					<ErrorBoundary>
 						{backgroundLocation && (
 							<Routes>
+								<Route path="/about" element={<Modal about />} />
 								<Route path="/:category/:postId" element={<Modal />} />
 							</Routes>
 						)}

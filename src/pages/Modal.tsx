@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import useDisplay from "../hooks/useDisplay";
+import About from "./About";
 
-const Modal = () => {
+const Modal = ({ about = false }: { about?: boolean }) => {
 	const [layoutSize, setLayoutSize] = useState<"normal" | "wide">("normal");
 
 	const navigate = useNavigate();
@@ -56,11 +57,13 @@ const Modal = () => {
 								!isPortrait && backgroundLocation && layoutSize === "normal",
 							"w-[95%]":
 								!isPortrait && backgroundLocation && layoutSize === "wide",
-						}
+							"w-[500px]": !isPortrait && about,
+							"h-[500px]": isPortrait && about,
+						},
 					)}
 					onClick={(e) => e.stopPropagation()}
 				>
-					<PostModal setLayoutSize={setLayoutSize} />
+					{about ? <About /> : <PostModal setLayoutSize={setLayoutSize} />}
 				</motion.div>
 			</AnimatePresence>
 		</div>

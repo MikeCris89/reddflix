@@ -28,7 +28,7 @@ const routes = [
 	{
 		path: "/",
 		element: <Root />,
-		children: childRoutes, // DON'T call useRoutes on this whole object!
+		children: childRoutes, // DON'T call useRoutes on this whole object
 	},
 ];
 
