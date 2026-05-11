@@ -114,7 +114,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 						icon={BUBBLE_ICON.chat}
 						text={post.num_comments}
 						size="md"
-						className={clsx(isSample && hasComment && "bg-blue-500")}
+						className={clsx(isSample && !hasComment && "text-slate-500")}
 					/>
 				</div>
 			</div>

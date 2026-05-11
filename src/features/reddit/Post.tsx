@@ -10,7 +10,7 @@ import redditLogo from "../../assets/reddit.svg";
 import redditBlack from "../../assets/reddit-black.svg";
 import useDisplay from "../../hooks/useDisplay";
 import useHoverTouch from "../../hooks/useHoverTouch";
-import { handleNativeShare } from "../../utils/helpers";
+import { handleNativeShare, hasCommentFallback } from "../../utils/helpers";
 import { useLocation } from "react-router-dom";
 
 const Post = ({
@@ -31,12 +31,17 @@ const Post = ({
 			scrollRef.current.scrollTop = 0;
 		}
 	}, [seeMore]);
+
+	const isSample = post.sample === true;
+
+	const hasComment = hasCommentFallback(post.id);
+
 	return (
 		<div className={clsx("flex flex-col overflow-hidden gap-1 w-full h-full")}>
 			{/* Post */}
 			<div
 				className={clsx(
-					"flex justify-center items-center overflow-hidden px-1 py-2 bg-black rounded-md flex-1 min-w-full"
+					"flex justify-center items-center overflow-hidden px-1 py-2 bg-black rounded-md flex-1 min-w-full",
 				)}
 			>
 				{isTitleAsPost(post) ? (
@@ -73,13 +78,14 @@ const Post = ({
 						icon={BUBBLE_ICON.chat}
 						text={post.num_comments}
 						onClick={toggleComments}
+						className={clsx(isSample && !hasComment && "text-slate-500")}
 					/>
 					<InfoBubble
 						icon={BUBBLE_ICON.share}
 						onClick={() =>
 							handleNativeShare(
 								`${window.location.origin}${location.pathname}`,
-								post.title
+								post.title,
 							)
 						}
 					/>

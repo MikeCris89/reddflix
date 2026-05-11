@@ -20,7 +20,7 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 
 	const gifMp4 = isGif ? getGifMp4Url(post) : null;
 
-	const badge = isGif ? "GIF" : <Play size={14} />;
+	const badge = isGif ? "GIF" : <Play size={60} />;
 	const isPreview = mode === MODE.preview;
 	const videoRef = useRef<HTMLVideoElement | null>(null);
 	const { ref, inView } = useInView({
@@ -56,8 +56,8 @@ const VideoContent = ({ post, mode }: VideoProps) => {
 			{!isGif && !isPreview && <FullVideoPlayer url={fullSrc} />}
 
 			{(isPreview || isGif) && (
-				<div ref={ref} className="w-full h-full">
-					<ContentBadge badge={badge}>
+				<div ref={ref} className="w-full h-full group">
+					<ContentBadge badge={badge} video>
 						{isPreview && !isGif && previewImg ? (
 							<img
 								src={previewImg}
