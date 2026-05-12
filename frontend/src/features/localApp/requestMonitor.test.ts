@@ -15,7 +15,7 @@ describe("evaluateRateLimit with proper delays", () => {
 			const diff = endIndex - i;
 			if (diff > 10) {
 				console.log(
-					`windowStart: ${windowStart}, windowEnd: ${windowEnd}, index at error: ${i}, endIndex: ${endIndex}, diff: ${diff}`
+					`windowStart: ${windowStart}, windowEnd: ${windowEnd}, index at error: ${i}, endIndex: ${endIndex}, diff: ${diff}`,
 				);
 				return false;
 			}
@@ -45,7 +45,7 @@ describe("evaluateRateLimit with proper delays", () => {
 			`Num Reqs: ${numReqs}, Recent Array: (${recentArr.length})`,
 			recentArr,
 			`Pending Array: (${pendingArr.length})`,
-			pendingArr
+			pendingArr,
 		);
 		return { recentArr, pendingArr };
 	};
