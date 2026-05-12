@@ -2,6 +2,7 @@ import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import postRouter from "./routes/posts";
+import commentRouter from "./routes/comments";
 
 const PORT = process.env.PORT || 3001;
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(cors());
 
 app.use("/r", postRouter);
+app.use("/comments", commentRouter);
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 	console.error(err);
