@@ -5,7 +5,7 @@ import {
 	RequestMonitor,
 	SeenPosts,
 	Subreddit,
-} from "./../../utils/types";
+} from "../../utils/types";
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import {
 	deleteItem,
