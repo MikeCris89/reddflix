@@ -22,7 +22,7 @@ app.use(
 			if (allowedOrigins.includes(origin)) return callback(null, true);
 			callback(new Error(`CORS: origin ${origin} not allowed`));
 		},
-		allowedHeaders: ["Content-Type", "X_Slot_Token"],
+		allowedHeaders: ["Content-Type", "X-Slot-Token"],
 		exposedHeaders: ["Retry-After"],
 	}),
 );

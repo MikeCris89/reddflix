@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "tsx watch src/server.ts",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "vitest"
 	},
 	"keywords": [],
 	"author": "",
@@ -20,6 +20,7 @@
 		"@types/express": "^5.0.6",
 		"@types/node": "^25.7.0",
 		"tsx": "^4.21.0",
-		"typescript": "^6.0.3"
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.6"
 	}
 }

@@ -2,15 +2,21 @@
 import { RateLimit } from "../../shared/types";
 
 const dev = process.env.NODE_ENV !== "production";
-const windowMs = dev ? 15_000 : 63_000;
-const maxReqs = dev ? 2 : 10;
+// export const windowMs = dev ? 15_000 : 63_000;
+// export const maxReqs = dev ? 2 : 10;
 
-export const createRateLimiter = () => {
+export const createRateLimiter = ({
+	windowMs,
+	maxReqs,
+}: {
+	windowMs: number;
+	maxReqs: number;
+}) => {
 	let recent: number[] = [];
 	let bannedUntil: number | undefined;
 
-	const evaluate = (timestamp?: number): RateLimit => {
-		const now = Date.now();
+	const evaluate = (timestamp?: number, dateNow?: number): RateLimit => {
+		const now = dateNow ?? Date.now();
 
 		if (bannedUntil && now < bannedUntil) {
 			return { ok: false, delayMs: bannedUntil - now, reason: "ban" };
@@ -22,13 +28,13 @@ export const createRateLimiter = () => {
 			const idx = recent.findIndex((t) => t === timestamp);
 			if (idx !== -1 && timestamp <= now) {
 				recent.splice(idx, 1, now);
-				return { ok: true, delayMs: 0, reason: undefined };
+				return { ok: true };
 			}
 		}
 
 		if (recent.length < maxReqs) {
 			recent.push(now);
-			return { ok: true, delayMs: 0, reason: undefined };
+			return { ok: true };
 		}
 
 		const anchor = recent[recent.length - maxReqs];
@@ -58,4 +64,7 @@ export const createRateLimiter = () => {
 };
 
 // singleton for production use
-export const rateLimiter = createRateLimiter();
+export const rateLimiter = createRateLimiter({
+	windowMs: dev ? 15_000 : 63_000,
+	maxReqs: dev ? 2 : 10,
+});
