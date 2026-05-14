@@ -1,12 +1,15 @@
 import { Response } from "express";
 import { rateLimiter } from "../rateLimiter";
 import { BannedResponse, RateLimitedResponse } from "../../../shared/types";
+import { USER_AGENT } from "../config";
 
 const BAN_DURATION_MS = 1000 * 60 * 5;
-const RATE_DURATION_MS = 1000 * 60;
+const RATE_DURATION_MS = 1000 * 63;
 
 export const proxyFetch = async (url: string, res: Response) => {
-	const resp = await fetch(url);
+	const resp = await fetch(url, {
+		headers: { "User-Agent": USER_AGENT },
+	});
 
 	if (resp.status === 429) {
 		const slot = Date.now() + RATE_DURATION_MS;

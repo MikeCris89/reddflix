@@ -1,23 +1,15 @@
 import { Router } from "express";
-import { REDDIT_BASE_URL, USER_AGENT } from "../config";
+import { REDDIT_BASE_URL } from "../config";
+import { proxyFetch } from "../lib/proxyFetch";
 
 const postRouter = Router();
 
 postRouter.get("/:subreddit", async (req, res) => {
 	const { subreddit } = req.params;
 
-	// TODO create reddit account
-	const resp = await fetch(`${REDDIT_BASE_URL}/r/${subreddit}.json?limit=50`, {
-		headers: { "User-Agent": USER_AGENT },
-	});
+	const url = `${REDDIT_BASE_URL}/r/${subreddit}.json?limit=50`;
 
-	if (!resp.ok) {
-		throw new Error(`Reddit returned ${resp.status}`);
-	}
-
-	const body = await resp.text();
-
-	res.type("application/json").send(body);
+	await proxyFetch(url, res);
 });
 
 export default postRouter;
