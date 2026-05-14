@@ -1,0 +1,188 @@
+[
+  {
+    "id": "ok5j71b",
+    "author": "mastermindchilly",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Fwiw, if you need an animation library for a specific reason - have it be bundled separately and cache it between deployments. Try to lazy load it so it doesn’t block the main thread, but before animations are needed. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 68,
+    "is_submitter": false,
+    "created_utc": 1778023594,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5j71b/",
+    "replies": [
+      {
+        "id": "ok5klmj",
+        "author": "supportingthedogs",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The only issue is if you deliver your product as a single minified bundle, you can&amp;#39;t really do this :(&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 13,
+        "is_submitter": true,
+        "created_utc": 1778024046,
+        "distinguished": null,
+        "parent_id": "t1_ok5j71b",
+        "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5klmj/",
+        "replies": [
+          {
+            "id": "ok5ln3f",
+            "author": "Milo0192",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Like a single file? Or a single bundle with a folder of chunks minified?&lt;/p&gt;\n\n&lt;p&gt;Why would you need a single file?&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 5,
+            "is_submitter": false,
+            "created_utc": 1778024388,
+            "distinguished": null,
+            "parent_id": "t1_ok5klmj",
+            "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5ln3f/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "ok6uv92",
+        "author": "anonyuser415",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;how often is the Frigade marketing site getting repeat visitors?&lt;/p&gt;\n\n&lt;blockquote&gt;\n&lt;p&gt;Try to lazy load it so it doesn’t block the main thread&lt;/p&gt;\n&lt;/blockquote&gt;\n\n&lt;p&gt;why would loading it block the main thread&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778040571,
+        "distinguished": null,
+        "parent_id": "t1_ok5j71b",
+        "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok6uv92/",
+        "replies": [
+          {
+            "id": "ok9oxtz",
+            "author": "mastermindchilly",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;My intent was that page rendering can be blocked by the downloading of large bundles, thus lazy loading can make things async rather than sync. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778081541,
+            "distinguished": null,
+            "parent_id": "t1_ok6uv92",
+            "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok9oxtz/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok5oppv",
+    "author": "jakiestfu",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I think what you’re acknowledging here is AI has helped you build something you didn’t know how to do before? Like I never reached for animation libraries because css is a thing, lol&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 13,
+    "is_submitter": false,
+    "created_utc": 1778025413,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5oppv/",
+    "replies": [
+      {
+        "id": "ok5yd53",
+        "author": "Dreadsin",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It’s just time consuming to write out animations by hand. I made one today with AI and it took maybe 30 minutes, if I did it by hand it would take all day&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 7,
+        "is_submitter": false,
+        "created_utc": 1778028758,
+        "distinguished": null,
+        "parent_id": "t1_ok5oppv",
+        "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5yd53/",
+        "replies": [
+          {
+            "id": "ok634c3",
+            "author": "jakiestfu",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I mean, yah. That’s the whole point. I guess what I’m saying is it’s not worth a blog post because if you posted an article every time AI sped something up for you. It’s obvious. I’m glad you had a positive experience regardless.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778030418,
+            "distinguished": null,
+            "parent_id": "t1_ok5yd53",
+            "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok634c3/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok72bkt",
+    "author": "yksvaan",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;css has been enough for animations for ages. Also likely fancy animations are only annoying actual users &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 5,
+    "is_submitter": false,
+    "created_utc": 1778043929,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok72bkt/",
+    "replies": []
+  },
+  {
+    "id": "ok5fsd3",
+    "author": "chillermane",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;People did not care about bundle size even before AI :*)&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 5,
+    "is_submitter": false,
+    "created_utc": 1778022483,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5fsd3/",
+    "replies": [
+      {
+        "id": "ok5g7n5",
+        "author": "supportingthedogs",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;depends a lot on what you&amp;#39;re building - we manage multiple npm packages/minified bundles and I can tell you that our customers do care a lot about 500kb vs 2MB :)&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 8,
+        "is_submitter": true,
+        "created_utc": 1778022622,
+        "distinguished": null,
+        "parent_id": "t1_ok5fsd3",
+        "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5g7n5/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "ok9wzex",
+    "author": "_dekoorc",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeahhh, I’ve been trying to get rid of Lottie for a while now. I haven’t been successful in getting rid of it, but have successfully pushed back against adding it to new projects. So, a win&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778083664,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok9wzex/",
+    "replies": []
+  },
+  {
+    "id": "okqs5e1",
+    "author": "thinksInCode",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nice writeup! Have you looked at the Web Animations API at all?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778288140,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/okqs5e1/",
+    "replies": []
+  },
+  {
+    "id": "okye469",
+    "author": "matt-travels-eu",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That&amp;#39;s until you actually need to debug or adjust things and your boss runs out of subscription money. YMMV.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778396139,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/okye469/",
+    "replies": []
+  },
+  {
+    "id": "ok5xevf",
+    "author": "Necessary-Zombie3656",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;100% agree. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778028412,
+    "distinguished": null,
+    "parent_id": "t3_1t4vg2u",
+    "permalink": "/r/reactjs/comments/1t4vg2u/we_removed_all_our_animation_library_dependencies/ok5xevf/",
+    "replies": []
+  }
+]

@@ -1,0 +1,332 @@
+[
+  {
+    "id": "ok8txgg",
+    "author": "leeharrison1984",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;TanStack Start. Everything Next does, TanStack does better.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 35,
+    "is_submitter": false,
+    "created_utc": 1778072894,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok8txgg/",
+    "replies": [
+      {
+        "id": "okc1caw",
+        "author": "driftking428",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Except for getting you a job.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 19,
+        "is_submitter": false,
+        "created_utc": 1778103993,
+        "distinguished": null,
+        "parent_id": "t1_ok8txgg",
+        "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okc1caw/",
+        "replies": [
+          {
+            "id": "okc1pig",
+            "author": "leeharrison1984",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It&amp;#39;s all just React.&lt;/p&gt;\n\n&lt;p&gt;If you can&amp;#39;t translate NextJs to TanStack to React, you&amp;#39;re screwed anyway. I know both, and they&amp;#39;re both React with extra convenience features. TanStack just does it better.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 6,
+            "is_submitter": false,
+            "created_utc": 1778104102,
+            "distinguished": null,
+            "parent_id": "t1_okc1caw",
+            "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okc1pig/",
+            "replies": []
+          },
+          {
+            "id": "okesejl",
+            "author": "inglandation",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You guys are getting jobs??&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778142955,
+            "distinguished": null,
+            "parent_id": "t1_okc1caw",
+            "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okesejl/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "ok8w5mj",
+        "author": "ImpressiveAction2382",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Sure, it&amp;#39;s like React and Vue/Svetle, but only React can help you to find a job&lt;/p&gt;\n&lt;/div&gt;",
+        "score": -5,
+        "is_submitter": false,
+        "created_utc": 1778073562,
+        "distinguished": null,
+        "parent_id": "t1_ok8txgg",
+        "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok8w5mj/",
+        "replies": [
+          {
+            "id": "ok9099d",
+            "author": "leeharrison1984",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It is a framework built on React, same as NextJS&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 9,
+            "is_submitter": false,
+            "created_utc": 1778074776,
+            "distinguished": null,
+            "parent_id": "t1_ok8w5mj",
+            "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok9099d/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok8zhor",
+    "author": "azizbecha",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;this is a career choice, not a random decision. i think you need to try both for a good period, then decide based on where you see yourself doing better, and take the job market in consideration.&lt;/p&gt;\n\n&lt;p&gt;both fields are awesome, you need to dedicate a good time to dive deeper and explore more!&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 6,
+    "is_submitter": false,
+    "created_utc": 1778074549,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok8zhor/",
+    "replies": []
+  },
+  {
+    "id": "ok8uacl",
+    "author": "Kotix-",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;how the hell I&amp;#39;m tired of these kind of questions&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 15,
+    "is_submitter": false,
+    "created_utc": 1778073002,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok8uacl/",
+    "replies": [
+      {
+        "id": "ok9w67p",
+        "author": "guacamoletango",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thank god you reserved enough energy to write this valuable comment&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": false,
+        "created_utc": 1778083445,
+        "distinguished": null,
+        "parent_id": "t1_ok8uacl",
+        "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok9w67p/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okb5qf6",
+    "author": "Kwerdna",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’d say go with web for now , Next, React Router 7, Tanstack start, all great tools and teach you to read docs etc while using react.&lt;/p&gt;\n\n&lt;p&gt;Then when you feel like dabbling with RN go make an app for fun. The skills will transfer pretty well.&lt;/p&gt;\n\n&lt;p&gt;Just my 2cents&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778095427,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okb5qf6/",
+    "replies": []
+  },
+  {
+    "id": "okecmcn",
+    "author": "shaq-ille-oatmeal",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’d say Next.js first, mainly because it builds naturally on top of React and teaches you more about full stack workflows, routing, APIs, auth, deployment, and performance, which helps a lot overall&lt;/p&gt;\n\n&lt;p&gt;React Native is great too, but mobile introduces a lot of extra platform specific stuff early on, so the learning curve feels steeper&lt;/p&gt;\n\n&lt;p&gt;what helped me was building small end to end projects and using tools like Runable along with GitHub or Curose to quickly generate working flows and understand how everything connects instead of learning features in isolation&lt;/p&gt;\n\n&lt;p&gt;once you’re comfortable shipping web apps with Next.js, moving into React Native becomes much easier 👍&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778134599,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okecmcn/",
+    "replies": []
+  },
+  {
+    "id": "okd01xg",
+    "author": "AaronBonBarron",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Did you learn JavaScript first, or just React?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778115316,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okd01xg/",
+    "replies": []
+  },
+  {
+    "id": "okdpi21",
+    "author": "DrNoobz5000",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Next fucking sucks&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778124267,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okdpi21/",
+    "replies": []
+  },
+  {
+    "id": "okemcpu",
+    "author": "DhirajLochib",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Next.js. Learn it, ship stuff, get hired. React Native isn&amp;#39;t going anywhere.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778139651,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okemcpu/",
+    "replies": []
+  },
+  {
+    "id": "ok9dxp2",
+    "author": "Confident-Entry-1784",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If web, Next.js. If mobile, React Native. Next is pretty much the industry standard for React web dev right now.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778078606,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok9dxp2/",
+    "replies": []
+  },
+  {
+    "id": "ok8vjyt",
+    "author": "perpetual_papercut",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If you&amp;#39;re just learning, pick one, build something or two and then do the other one or some else.  OR cater your learning to roles/jobs you want. there&amp;#39;s no right path &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778073382,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok8vjyt/",
+    "replies": []
+  },
+  {
+    "id": "okbgi8y",
+    "author": "OrdinaryAcrobatic790",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Next.js, learn the thing that lets you ship complete products, not just screens. api routes, server components, auth, etc, the whole stack in one framework. react native will always be there later and 80% of the knowledge transfers anyway.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778098238,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okbgi8y/",
+    "replies": []
+  },
+  {
+    "id": "okf0psx",
+    "author": "Apple_sack_mac",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Learn Next Js, then you’ll be able to learn Expo (React Native) very quickly afterwards &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778147410,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okf0psx/",
+    "replies": []
+  },
+  {
+    "id": "okfm1vx",
+    "author": "JohnChen0501",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You can check out &lt;a href=\"https://github.com/john-data-chen/turborepo-starter-kit\"&gt;my portfolio&lt;/a&gt; also test filed, I learned React, then my previous project is Next.js. After I got my previous position, I have to learn Truborepo, and I rewrite web app into React Native APP in Chinese New Year.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778156211,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okfm1vx/",
+    "replies": []
+  },
+  {
+    "id": "okifg7v",
+    "author": "ieatwurms",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Well first think about what is your goal, why did you even learn React for? If just for the sake of learning it, then it doesn’t really matter. Go Next first and then do Native. Or vice versa. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778184243,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okifg7v/",
+    "replies": []
+  },
+  {
+    "id": "okxvuf3",
+    "author": "Impressive-Sense-581",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;React native is dead because people dont install apps as easily as opening a website. Literally no one wants to install an app. In fact number of apps installed per person is going down. Companies see this as high cost of acquisition. Im a react native dev. Learn Next.js. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778387055,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/okxvuf3/",
+    "replies": []
+  },
+  {
+    "id": "olm5xa3",
+    "author": "7amed3li",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Depends what you want to build next.&lt;/p&gt;\n\n&lt;p&gt;If your goal is web jobs / freelance / SaaS / dashboards, I’d go Next.js first. It’s basically the natural next step after React for real-world web apps: routing, SSR/SSG, API routes, auth flows, SEO, deployment, etc.&lt;/p&gt;\n\n&lt;p&gt;React Native is great, but I’d pick it if you actually want to build mobile apps.&lt;/p&gt;\n\n&lt;p&gt;My honest path would be:&lt;/p&gt;\n\n&lt;p&gt;React → Next.js → backend basics/API/auth/database → then React Native if mobile still interests you.&lt;/p&gt;\n\n&lt;p&gt;Next.js will probably make your React knowledge more useful faster.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778696799,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/olm5xa3/",
+    "replies": []
+  },
+  {
+    "id": "ok8v6p0",
+    "author": "ghostwilliz",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Other frameworks might be better or newer or whatever, but learning next will be good for finding a job&lt;/p&gt;\n\n&lt;p&gt;I swear every job now uses nextjs&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778073272,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok8v6p0/",
+    "replies": [
+      {
+        "id": "ok90ywy",
+        "author": "Ceryyse",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nope we rejected it due to the high frequency of hydration errors we experienced back in NextJS 14 and have never looked back, even after the team fixed them. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": false,
+        "created_utc": 1778074984,
+        "distinguished": null,
+        "parent_id": "t1_ok8v6p0",
+        "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok90ywy/",
+        "replies": [
+          {
+            "id": "ok94qyc",
+            "author": "ghostwilliz",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I have never seen issues like that, but that doesn&amp;#39;t really matter, there&amp;#39;s still tons and tons of nextjs job&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 4,
+            "is_submitter": false,
+            "created_utc": 1778076066,
+            "distinguished": null,
+            "parent_id": "t1_ok90ywy",
+            "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok94qyc/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok90xep",
+    "author": "Plenty-Appointment91",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;React Native, without a doubt.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778074972,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok90xep/",
+    "replies": []
+  },
+  {
+    "id": "ok9cvtq",
+    "author": "Last-Daikon945",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Go React native just for lols &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778078324,
+    "distinguished": null,
+    "parent_id": "t3_1t5c6fa",
+    "permalink": "/r/reactjs/comments/1t5c6fa/reactjs_learned_next_step_nextjs_or_react_native/ok9cvtq/",
+    "replies": []
+  }
+]

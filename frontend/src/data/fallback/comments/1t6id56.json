@@ -1,0 +1,188 @@
+[
+  {
+    "id": "okhql1r",
+    "author": "mealovaapp",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Honestly for static sites you’re probably overcomplicating things a bit. A lot of people just use something like Vercel/Netlify + Cloudflare and call it a day.\nBut if you specifically want to self-host GitLab and learn the infrastructure side, Ubuntu LTS on Hetzner or DigitalOcean is a pretty solid and common choice.\nAnd yeah, Cloudflare in front of your server for DNS/CDN/SSL is extremely common. For full stack later on, you’d usually keep the frontend and backend separated logically, but it doesn’t have to be complicated at first. Start simple and scale only when you actually need to.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778177462,
+    "distinguished": null,
+    "parent_id": "t3_1t6id56",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhql1r/",
+    "replies": [
+      {
+        "id": "okhzhc4",
+        "author": "AbrahelOne",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You don&amp;#39;t even need Vercel/Netlify  for static pages. I have React and Vue projects running on GitLabs CI with pages. No problem.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778179885,
+        "distinguished": null,
+        "parent_id": "t1_okhql1r",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhzhc4/",
+        "replies": [
+          {
+            "id": "oki1kn1",
+            "author": "_-Julian-",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I forgot that Gitlabs provides website pages as well - however isn&amp;#39;t that more dangerous with having to manage the security rather than using Cloudflare with Gitlab? At least for the extra DDos protection? let me know if im wrong&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": true,
+            "created_utc": 1778180438,
+            "distinguished": null,
+            "parent_id": "t1_okhzhc4",
+            "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/oki1kn1/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okhvibk",
+        "author": "_-Julian-",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thank you for putting Vercel &amp;amp; Netlify on my map, not sure if ill use it but good to know about it. Ill Looks like Ubuntu is the winner, ill give that a look. Im glad to know it looks like im on the right path overall, the one thing im worried about managing is the security of the Ubuntu machine but maybe its a good thing cause I kinda need this experience on my resume anyways. Thank you for your response, much appreciated! &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778178805,
+        "distinguished": null,
+        "parent_id": "t1_okhql1r",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhvibk/",
+        "replies": [
+          {
+            "id": "okhw6p9",
+            "author": "mealovaapp",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah, security/admin stuff can definitely become a rabbit hole lol, but honestly you’ll learn a ton from it. Ubuntu is probably the easiest starting point because basically every issue you run into already has 20 forum posts and tutorials about it.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778178993,
+            "distinguished": null,
+            "parent_id": "t1_okhvibk",
+            "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhw6p9/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "oki9ul2",
+        "author": "NixNightOwl",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;For static, I&amp;#39;ve always just tossed everything on AWS S3 and used Cloudflare up front. It costs absolute peanuts. Even if there&amp;#39;s a backend needed, the frontend still goes on S3 unless I really need some SSR features which is becoming more and more rare due to using Astrojs.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": false,
+        "created_utc": 1778182698,
+        "distinguished": null,
+        "parent_id": "t1_okhql1r",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/oki9ul2/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhqz21",
+    "author": "Every-Possession1187",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;For self-hosting GitLab you&amp;#39;re gonna want something pretty beefy since GitLab is known to be resource hungry. Ubuntu Server or Debian are solid choices - Ubuntu has more tutorials online which helps when you&amp;#39;re starting out&lt;/p&gt;\n\n&lt;p&gt;The CloudFlare setup sounds bit confusing though. You probably mean using CloudFlare Pages to automatically deploy from your GitLab repo? That would pull your static files and serve them, not really &amp;quot;pull commits to update page&amp;quot;. Pages has good integration with GitLab so it should work fine&lt;/p&gt;\n\n&lt;p&gt;For full stack later - you&amp;#39;d typically run your backend API on the droplet and frontend can be on CloudFlare Pages or wherever. The frontend makes HTTP requests to your backend API. Just make sure you set up proper CORS and maybe put CloudFlare in front of your API too for caching and DDoS protection&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778177565,
+    "distinguished": null,
+    "parent_id": "t3_1t6id56",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhqz21/",
+    "replies": [
+      {
+        "id": "okhxcjy",
+        "author": "nuttertools",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’ve been running gitlab on 1/2 of a mobile core and 4GB of RAM for many years with no complaints. With 1 user and just using for VCS it doesn’t consume any resources, backups are the only thing that pegs the vCPU.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": false,
+        "created_utc": 1778179308,
+        "distinguished": null,
+        "parent_id": "t1_okhqz21",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhxcjy/",
+        "replies": []
+      },
+      {
+        "id": "okhxy8h",
+        "author": "_-Julian-",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Sorry yeah I mean CloudFlare pages, I totally described the &amp;quot;pull commits to update pages&amp;quot; wrong haha. You&amp;#39;re the second person to suggest Ubuntu so it sounds like thats the goto, glad it has a lots of tutorials. It looks like digital ocean already has a page and tutorials for the GitLab setup which is nice to start building. Thank you for your response and for the description about the full stack. Full stack is still a little mysterious to think about but that cleared it up some more. &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778179472,
+        "distinguished": null,
+        "parent_id": "t1_okhqz21",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhxy8h/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okp0ohu",
+    "author": "alfxast",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Your setup actually makes sense for what you’re trying to do. Ubuntu Server is probably the easiest distro to start with, and pairing GitLab with Cloudflare is pretty common nowadays. For hosting, I’d also check out InMotion Hosting since they have decent VPS options if you don’t want to manage everything from scratch right away, and their support is solid too.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778267575,
+    "distinguished": null,
+    "parent_id": "t3_1t6id56",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okp0ohu/",
+    "replies": [
+      {
+        "id": "okp1p57",
+        "author": "_-Julian-",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Good to know, thank you!&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1778267871,
+        "distinguished": null,
+        "parent_id": "t1_okp0ohu",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okp1p57/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhundw",
+    "author": "barrel_of_noodles",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If this is your first time doing server administration, I really wouldn’t recommend managing your own VPS.&lt;/p&gt;\n\n&lt;p&gt;If you’re technical, enjoy tinkering, can tolerate downtime/data loss, are comfortable with Linux/CLI/bash, and already have some systems/admin experience, then sure go for it.&lt;/p&gt;\n\n&lt;p&gt;But judging from your questions, you’re probably better off starting with shared hosting.\nPaying an extra $10/month for managed/shared hosting is absolutely worth it for a basic store or business site. You get backups, a control panel, email setup, SSL, updates, support, etc without having to become a sysadmin overnight.&lt;/p&gt;\n\n&lt;p&gt;I’ve been doing development for 10+ years if I needed to launch a simple store tomorrow, I’d probably start with managed/shared hosting too and only move to a VPS once I actually needed the flexibility.&lt;/p&gt;\n\n&lt;p&gt;You&amp;#39;re gonna want to use debian.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778178569,
+    "distinguished": null,
+    "parent_id": "t3_1t6id56",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhundw/",
+    "replies": [
+      {
+        "id": "okhzufu",
+        "author": "_-Julian-",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah im in a mix rn, im a little bit of a masochist with learning new things, but i sometimes can go overboard. I think im gonna go for it for the experience (something to add to the resume cause im currently in IT rn) but for long term solutions, especially for my company website, I will probably want that all managed by a shared hosting service. &lt;/p&gt;\n\n&lt;p&gt;What is a shared hosting company you would recommend in case I go that way that way with my company site?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778179981,
+        "distinguished": null,
+        "parent_id": "t1_okhundw",
+        "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okhzufu/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okl93b1",
+    "author": "No_Molasses_9249",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I just host my own site &lt;a href=\"http://www.cockatiels.au\"&gt;www.cockatiels.au&lt;/a&gt; &lt;/p&gt;\n\n&lt;p&gt;Costs me next to nothing. Why are you even considering gitlab to host your static sites? What purpose are you using gitlab for?&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778221608,
+    "distinguished": null,
+    "parent_id": "t3_1t6id56",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/okl93b1/",
+    "replies": []
+  },
+  {
+    "id": "oklem74",
+    "author": "GiDevHappy",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If you want to keep GitLab for code but avoid managing the hosting side yourself, Diploi could fit that workflow. You can start with static sites and later move into full-stack apps on the same platform, with deployments and environment management handled for you. That way you do not have to piece together Cloudflare + VPS + DB + deploy scripts yourself.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778224290,
+    "distinguished": null,
+    "parent_id": "t3_1t6id56",
+    "permalink": "/r/webdev/comments/1t6id56/the_right_path_for_gitlab_hosting_web_hosting_and/oklem74/",
+    "replies": []
+  }
+]

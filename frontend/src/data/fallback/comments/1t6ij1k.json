@@ -1,0 +1,233 @@
+[
+  {
+    "id": "okhrcbn",
+    "author": "Beregolas",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;you can link images from any source in your html. Look for a free image hosting service, and then you can use that link in your html to embed the images. As long as the html is static, github pages should be fine&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 3,
+    "is_submitter": false,
+    "created_utc": 1778177665,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhrcbn/",
+    "replies": [
+      {
+        "id": "okhsz8g",
+        "author": "Prize-Attempt1298",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Actually GitHub Pages does let you upload images directly to your repo, you just put them in folders and reference them normally in your HTML 😂 I do this all the time for my projects&lt;/p&gt;\n\n&lt;p&gt;For animations tho you might want something like Netlify or Vercel since they handle larger files better. Both have generous free tiers and work great with static sites. Just drag and drop your folder or connect from GitHub and you&amp;#39;re good to go&lt;/p&gt;\n\n&lt;p&gt;The image hosting thing works too but then you&amp;#39;re depending in external services which can sometimes go down 💀&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 6,
+        "is_submitter": false,
+        "created_utc": 1778178109,
+        "distinguished": null,
+        "parent_id": "t1_okhrcbn",
+        "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhsz8g/",
+        "replies": [
+          {
+            "id": "okhu2au",
+            "author": "Beregolas",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;huh, I never used that, I just took OPs word for it ^^&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778178409,
+            "distinguished": null,
+            "parent_id": "t1_okhsz8g",
+            "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhu2au/",
+            "replies": []
+          }
+        ]
+      },
+      {
+        "id": "okhrpvx",
+        "author": "Kindly_Jump_7642",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Does it work for animations also?? Sorry for the beginner question &lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778177768,
+        "distinguished": null,
+        "parent_id": "t1_okhrcbn",
+        "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhrpvx/",
+        "replies": [
+          {
+            "id": "okhu9mj",
+            "author": "Beregolas",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;so.. animation is not a data format. What is an animation to you? &lt;/p&gt;\n\n&lt;p&gt;If you want to animate your HTML, you use CSS. &lt;/p&gt;\n\n&lt;p&gt;If you want a video, you upload a video and link it basically the same way. You can also embed a video player for more contorls. &lt;/p&gt;\n\n&lt;p&gt;If you want a gif, you embed a gif the same way. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778178465,
+            "distinguished": null,
+            "parent_id": "t1_okhrpvx",
+            "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhu9mj/",
+            "replies": []
+          },
+          {
+            "id": "okhtduq",
+            "author": "Ollidav",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Depende del tipo de fichero y si está soportado por el navegador. Hoy en día los navegadores soportan hasta un renderizado 3D. Pero tienes que mirar que formato de animación vas a subir y que soporte tiene en los navegadores o si se necesita una app específica para reproducirlos&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778178220,
+            "distinguished": null,
+            "parent_id": "t1_okhrpvx",
+            "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhtduq/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okhs2mr",
+    "author": "mealovaapp",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;GitHub Pages actually does allow images and animations, you just include them in the repo like normal files. For simple static sites/art portfolios, GitHub Pages + Cloudflare is honestly enough for most people.&lt;/p&gt;\n\n&lt;p&gt;Also check out Netlify or Vercel. They’re free, super beginner friendly, and easier than Wordpress imo.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778177862,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhs2mr/",
+    "replies": []
+  },
+  {
+    "id": "okhu1sv",
+    "author": "Murky_Explanation_73",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Try to link images from any source in your html.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778178406,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhu1sv/",
+    "replies": []
+  },
+  {
+    "id": "okhwndu",
+    "author": "Sad_Reporter7446",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You can create a gallery type project in vanilla JS or other, put images to project folder and provide link to img src. Push to guthub and deploy it on vercel, netlify or even on github pages&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778179118,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhwndu/",
+    "replies": []
+  },
+  {
+    "id": "okhyn7m",
+    "author": "Happy_Macaron5197",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;tbh github pages totally allows images, but fighting with git commits just to upload a drawing is super annoying when u first start out. &lt;/p&gt;\n\n&lt;p&gt;my whole workflow is basically just orchestrating different gen ai agents now so i avoid manual hosting setup like the plague. since u just want a visual portfolio for your animations, u dont even need a database or backend logic, so u can completely skip heavy stuff like antigravity. &lt;/p&gt;\n\n&lt;p&gt;i would honestly just use runable for this. u literally just prompt it to build an animation gallery and it spits out a super clean frontend ui. u can just drop your images in and it handles making it look like a legit portfolio without u having to figure out wordpress plugins or github repos. it&amp;#39;s way faster for purely visual sites.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778179660,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okhyn7m/",
+    "replies": []
+  },
+  {
+    "id": "okifeww",
+    "author": "qwertydiy",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Place the images into the GitHub repo in the assets folder as WebPs or AVIFs to get that good fast load time. Then on deploy simply use the HTML img tag.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778184233,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okifeww/",
+    "replies": []
+  },
+  {
+    "id": "okihka0",
+    "author": "why_so_sergious",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;github pages, no hassle.&lt;/p&gt;\n\n&lt;p&gt;just keep in mind that if the animations in question are videos, the size limit of a single file is 100mb if you push via command line or 50mb is you upload via web.&lt;/p&gt;\n\n&lt;p&gt;a repo has only a soft size limit of 5gb&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778184831,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okihka0/",
+    "replies": []
+  },
+  {
+    "id": "okjhadb",
+    "author": "SaltineAmerican_1970",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Flickr or Imgur are still options, even in the second quarter of the 21st century.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778195566,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okjhadb/",
+    "replies": []
+  },
+  {
+    "id": "okjppwu",
+    "author": "resume-razor",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Since you only have images and animation, a static host is definitely the way to go. Make a basic index.html file, dump your assets in there, and push that folder to any static provider.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778198560,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okjppwu/",
+    "replies": []
+  },
+  {
+    "id": "okl604b",
+    "author": "Silentsedative",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Come work with me and I&amp;#39;ll take care of your issue. Trust. &lt;a href=\"https://dapatternweaver-qbe.caffeine.xyz/\"&gt;More Information &lt;/a&gt;&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778220126,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okl604b/",
+    "replies": []
+  },
+  {
+    "id": "okleq49",
+    "author": "GiDevHappy",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;If you just want an easy way to get a site live without dealing with servers, Diploi can host static websites too. You can publish from a repo, keep it simple now, and still have room to grow later if the site turns into something more dynamic.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778224344,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okleq49/",
+    "replies": []
+  },
+  {
+    "id": "okm0jzq",
+    "author": "clampbucket",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;github pages does support images, you just commit them into the repo like any other file. wordpress handles animations fine too, gif and mp4 embed without issue. if you want proper hosting with more control, Host Depot works well for this kind of portfolio site.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778235376,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okm0jzq/",
+    "replies": []
+  },
+  {
+    "id": "okm4g5t",
+    "author": "Dry-Hamster-5358",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;GitHub Pages can host images and animations fine btw, you just keep the assets inside the repo and reference them normally in your HTML/CSS.&lt;/p&gt;\n\n&lt;p&gt;If you want something simpler though, Netlify, Vercel, Carrd or even Webflow are probably easier starting points depending on whether you care more about coding or just showcasing your work.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778237148,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/okm4g5t/",
+    "replies": []
+  },
+  {
+    "id": "olgcac2",
+    "author": "2morrowisnotherday",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Create temaple with Google AI Studio, push them to Github, and live all with Cloudflare Pages.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778622513,
+    "distinguished": null,
+    "parent_id": "t3_1t6ij1k",
+    "permalink": "/r/webdev/comments/1t6ij1k/how_to_deploy_a_bunch_of_images_and_animation_as/olgcac2/",
+    "replies": []
+  }
+]

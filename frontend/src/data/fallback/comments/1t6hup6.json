@@ -1,0 +1,176 @@
+[
+  {
+    "id": "okhmpn3",
+    "author": "BuildingConscious627",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Amazon data center in that area probably. Many VPNs route through there&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 56,
+    "is_submitter": false,
+    "created_utc": 1778176430,
+    "distinguished": null,
+    "parent_id": "t3_1t6hup6",
+    "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhmpn3/",
+    "replies": [
+      {
+        "id": "okhr76w",
+        "author": "iAhMedZz",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Amazon data centers are all around the globe though. Why this place in particular?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": -17,
+        "is_submitter": true,
+        "created_utc": 1778177626,
+        "distinguished": null,
+        "parent_id": "t1_okhmpn3",
+        "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhr76w/",
+        "replies": [
+          {
+            "id": "okhv5q4",
+            "author": "wack_overflow",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Oregon is the default for lots of cloud hosting, VPS, etc. It ends up being a very common origin.&lt;/p&gt;\n\n&lt;p&gt;So probably bots &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 29,
+            "is_submitter": false,
+            "created_utc": 1778178709,
+            "distinguished": null,
+            "parent_id": "t1_okhr76w",
+            "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhv5q4/",
+            "replies": []
+          },
+          {
+            "id": "okhwr7l",
+            "author": "DecimePapucho",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Oregon is one of the cheapest AWS regions.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 18,
+            "is_submitter": false,
+            "created_utc": 1778179146,
+            "distinguished": null,
+            "parent_id": "t1_okhr76w",
+            "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhwr7l/",
+            "replies": []
+          },
+          {
+            "id": "okl7h55",
+            "author": "air_thing",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Screw you for asking a question!&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1778220834,
+            "distinguished": null,
+            "parent_id": "t1_okhr76w",
+            "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okl7h55/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okhxd8u",
+    "author": "mal73",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;The Amazon AWS us-west-2 “Port of Morrow 3“ Datacenter is based in Boardman, Oregon. &lt;/p&gt;\n\n&lt;p&gt;Do you use Stripe? They are known to aggressively poll testing endpoints from that location. &lt;/p&gt;\n\n&lt;p&gt;Either way, this is 100% coming from AWS.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 22,
+    "is_submitter": false,
+    "created_utc": 1778179313,
+    "distinguished": null,
+    "parent_id": "t3_1t6hup6",
+    "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhxd8u/",
+    "replies": [
+      {
+        "id": "oki9jqx",
+        "author": "iAhMedZz",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yes, we use Stripe. I ran into an article that described this exact case, but it was addressing traffic, not user registrations, I don&amp;#39;t suppose Stripe bots would register.&lt;/p&gt;\n\n&lt;p&gt;As folks indicated, us-west-2 is among the cheapest AWS regions, so it&amp;#39;s probably where bots, VPNs and cloud providers use. Makes sense that it can be both legit users with VPNs and bots scraping the service. Don&amp;#39;t suppose I should be aggressive towards the VPNs but probably add more hardening against the bots.&lt;/p&gt;\n\n&lt;p&gt;Edit: makes more sense also that these bots are doing card testing against Stripe, since the checkout sessions get created after registration.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 4,
+        "is_submitter": true,
+        "created_utc": 1778182615,
+        "distinguished": null,
+        "parent_id": "t1_okhxd8u",
+        "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/oki9jqx/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "okhx9j1",
+    "author": "ancap_attack",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;us-west-2&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 8,
+    "is_submitter": false,
+    "created_utc": 1778179285,
+    "distinguished": null,
+    "parent_id": "t3_1t6hup6",
+    "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhx9j1/",
+    "replies": []
+  },
+  {
+    "id": "okhmhws",
+    "author": "really_cool_legend",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;From Google:&lt;/p&gt;\n\n&lt;p&gt;&amp;quot;Boardman, Oregon&amp;quot; traffic in web analytics is a well-known phenomenon often driven by bot traffic, specifically associated with Amazon data centers in the area, resulting in high-volume, low-engagement visits.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 25,
+    "is_submitter": false,
+    "created_utc": 1778176375,
+    "distinguished": null,
+    "parent_id": "t3_1t6hup6",
+    "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhmhws/",
+    "replies": [
+      {
+        "id": "okhrn1c",
+        "author": "iAhMedZz",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Google AI search is probably not where you&amp;#39;d look for this kind of questions. I asked the exact same question but swapped Boardman with Madrid and got the same answer as the one you got.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": -20,
+        "is_submitter": true,
+        "created_utc": 1778177747,
+        "distinguished": null,
+        "parent_id": "t1_okhmhws",
+        "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhrn1c/",
+        "replies": [
+          {
+            "id": "okkiwv8",
+            "author": "Drugba",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;AWS PDX4 data center is in Boardman Oregon. The exact address is 79539 Rippee Road Boardman, OR 97818. You can look it up on whatever source you trust.&lt;/p&gt;\n\n&lt;p&gt;You can also enter the IP here and confirm it’s an AWS IP &lt;a href=\"https://thameera.com/awsip/\"&gt;https://thameera.com/awsip/&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;Google AI gives plenty of wrong answers, but that doesn’t mean every answer it gives is wrong.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 7,
+            "is_submitter": false,
+            "created_utc": 1778209771,
+            "distinguished": null,
+            "parent_id": "t1_okhrn1c",
+            "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okkiwv8/",
+            "replies": []
+          },
+          {
+            "id": "okhtr5q",
+            "author": "CodeAndBiscuits",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Why would that change anything? They have data centers in both Boardman and Madrid so all you did is select a question with an identical answer when the locations are swapped. &lt;/p&gt;\n\n&lt;p&gt;When you get EC2 boxes (one of the the primary ways loads like this get run in AWS) they don&amp;#39;t float around. Amazon is global in the way UHaul is global: you can rent a truck anywhere, but you still ultimately rent it &lt;strong&gt;from&lt;/strong&gt; somewhere, not 12 places. The folks running these scraper bots aren&amp;#39;t moving their boxes around because they don&amp;#39;t need to.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 6,
+            "is_submitter": false,
+            "created_utc": 1778178324,
+            "distinguished": null,
+            "parent_id": "t1_okhrn1c",
+            "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okhtr5q/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okl7k6e",
+    "author": "VegetableChemical165",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;yeah that&amp;#39;s AWS us-west-2, everyone else nailed it. the thing worth adding though is that not all of those 3k are bots — a ton of consumer VPNs route through AWS because us-west-2 is dirt cheap, so some of those are real users behind a VPN. if you want to clean up your analytics, check whether the IPs are classified as datacenter vs residential proxy vs actual VPN exit node. that&amp;#39;ll tell you which to exclude from your metrics and which are just privacy-conscious humans you probably still want to count.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778220873,
+    "distinguished": null,
+    "parent_id": "t3_1t6hup6",
+    "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/okl7k6e/",
+    "replies": [
+      {
+        "id": "oklad6j",
+        "author": "iAhMedZz",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yup, I noticed some of them are legit users with actual subscriptions. I guess the solution wouldn&amp;#39;t be aggressively flagging users from this location, rather applying stricter mechanisms against bots in general. There are some in place already but apparently they suck.&lt;/p&gt;\n\n&lt;p&gt;Thanks for your insight! I owe the hedgehogs an apology though :&amp;#39;D&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 0,
+        "is_submitter": true,
+        "created_utc": 1778222225,
+        "distinguished": null,
+        "parent_id": "t1_okl7k6e",
+        "permalink": "/r/webdev/comments/1t6hup6/posthog_is_detecting_massive_percentage_of_our/oklad6j/",
+        "replies": []
+      }
+    ]
+  }
+]

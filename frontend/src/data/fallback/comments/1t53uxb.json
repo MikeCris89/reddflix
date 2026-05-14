@@ -1,0 +1,227 @@
+[
+  {
+    "id": "ok7ewpt",
+    "author": "Ok-Repair7727",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It&amp;#39;s a nice approach to save yourself the slug of managing isOpen state everywhere &lt;/p&gt;\n\n&lt;p&gt;Ant Design has been using this exact imperative pattern (Modal.confirm) for years, and eBay&amp;#39;s nice-modal-react has been solving this for custom UIs for a long time, so I think it&amp;#39;s fine.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 18,
+    "is_submitter": false,
+    "created_utc": 1778050129,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok7ewpt/",
+    "replies": [
+      {
+        "id": "ok7knbs",
+        "author": "Warm-Preparation7106",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Thanks! You&amp;#39;re right, both are great prior art. The main difference is that Modal.confirm renders outside the React tree (so no access to context), and nice-modal-react requires registering modals with string IDs upfront.&lt;/p&gt;\n\n&lt;p&gt;overlay-kit lets you pass JSX directly at the call site, stays inside React&amp;#39;s tree, and returns results as a Promise with no registration needed.&lt;/p&gt;\n\n&lt;p&gt;All valid approaches depending on your needs though!&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 6,
+        "is_submitter": true,
+        "created_utc": 1778053125,
+        "distinguished": null,
+        "parent_id": "t1_ok7ewpt",
+        "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok7knbs/",
+        "replies": [
+          {
+            "id": "ok7l0i3",
+            "author": "Ok-Repair7727",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Nice, I didn&amp;#39;t mean to sound negative.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778053323,
+            "distinguished": null,
+            "parent_id": "t1_ok7knbs",
+            "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok7l0i3/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok7s801",
+    "author": "ORCANZ",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;It actually sounds quite nice. I&amp;#39;m bookmarking this and will try it out.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778057259,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok7s801/",
+    "replies": [
+      {
+        "id": "ok7sjs8",
+        "author": "Warm-Preparation7106",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Appreciate it! Let me know if you have any feedback after trying it out.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778057436,
+        "distinguished": null,
+        "parent_id": "t1_ok7s801",
+        "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok7sjs8/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "ok8j8l4",
+    "author": "NLemay",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;You haven’t mentioned the possibility of putting your modal under a custom route in the router. It then let navigate the user to the modal and the user can use browser history (back button) to navigate out. My only issue is that it needs to be defined under each parent that might open it.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778069390,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok8j8l4/",
+    "replies": [
+      {
+        "id": "okau0s2",
+        "author": "mavenHawk",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;But is that correct way to use modals in terms of a11y and everything else?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778092300,
+        "distinguished": null,
+        "parent_id": "t1_ok8j8l4",
+        "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okau0s2/",
+        "replies": [
+          {
+            "id": "okc5o04",
+            "author": "NLemay",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Not sure why this would be an issue. I would argue it’s probably better as the integration of the modal in the URL should give more context compared to just using a local state.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778105299,
+            "distinguished": null,
+            "parent_id": "t1_okau0s2",
+            "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okc5o04/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "okb3240",
+    "author": "prehensilemullet",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This is the approach I’m leaning toward after years of awkwardness with always rendering modals with an &lt;code&gt;isOpen&lt;/code&gt; prop.  It always requires awkward workarounds to avoid a brief flash of changed state when closing the modal or to reset a form before opening a modal; those problems go away with this approach.&lt;/p&gt;\n\n&lt;p&gt;OverlayProvider in your example needs to be inside the other typical app context providers though, so that dialogs can use query context, theme context, etc&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778094704,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okb3240/",
+    "replies": []
+  },
+  {
+    "id": "okcbz6w",
+    "author": "nickjvandyke",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Why does the static docs page have a mini-Furmark donut that uses 50% of my CPU? :P&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1778107322,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okcbz6w/",
+    "replies": []
+  },
+  {
+    "id": "okkq6p3",
+    "author": "With_Macaque",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Why not just ref a native dialog element and call showModal when you need it?&lt;/p&gt;\n\n&lt;p&gt;&lt;a href=\"https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal\"&gt;https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;If you really need to call close with a value:&lt;/p&gt;\n\n&lt;p&gt;```\nfunction showDialog(dialogElement) {\n  return new Promise((resolve) =&amp;gt; {\n    const handleClose = () =&amp;gt; {\n      dialogElement.removeEventListener(&amp;#39;close&amp;#39;, handleClose);\n      resolve(dialogElement.returnValue);\n    };&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;dialogElement.addEventListener(&amp;#39;close&amp;#39;, handleClose);\n\ndialogElement.showModal();\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;});\n}&lt;/p&gt;\n\n&lt;p&gt;function My component() {\n  const dialogRef = useRef&amp;lt;HTMLDialogElement&amp;gt;();&lt;/p&gt;\n\n&lt;p&gt;const handleAction = async () =&amp;gt; {\n    const value = await showDialog(dialogRef.current);\n    ...\n  }&lt;/p&gt;\n\n&lt;p&gt;return &amp;lt;&amp;gt;\n    ...\n    &amp;lt;dialog ref={dialogRef}&amp;gt;\n      &amp;lt;AnyUnmanagedModal\n        onClose={dialogRef.current.close}\n      /&amp;gt;\n    &amp;lt;/dialog&amp;gt;\n  &amp;lt;/&amp;gt;\n}\n```&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778212800,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okkq6p3/",
+    "replies": []
+  },
+  {
+    "id": "ok7olck",
+    "author": "Matrix8910",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Oh I like this, I’ve been doing something similar, where I create zustand stores and providers for each dialog, this allows us to just open the dialog from wherever, without having to manage all the state around it everywhere &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778055268,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok7olck/",
+    "replies": [
+      {
+        "id": "okauxmo",
+        "author": "luvsads",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;What made you use Zustand over built-in Context?&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": false,
+        "created_utc": 1778092543,
+        "distinguished": null,
+        "parent_id": "t1_ok7olck",
+        "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okauxmo/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "oka06wo",
+    "author": "DeepFriedOprah",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I’m not a fan of the awaited modal approach. When the open/close mechanism is async you open itself up to stale closures from the caller. &lt;/p&gt;\n\n&lt;p&gt;Imagine you’re inside a fn in a component &amp;amp; it opens a modal async &amp;amp; it pauses execution of that closure until the modal closes. What if the modal triggers a render tha effects its parent tree? Now tha fn that called the modal was just rendered and everything inside that closure is now stale. &lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778084523,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/oka06wo/",
+    "replies": [
+      {
+        "id": "okb67w6",
+        "author": "prehensilemullet",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Stale context makes more sense for passing static data to a dialog, though not if you need to pass in dynamically changing state from the parent component.  I’ve had a lot of cases where when a dialog is closed I need to clear the that data for the dialog from memory.  But if I clear that data immediately and there’s an animated close transition, then the user sees an unexpected change in the dialog content while it’s closing.  There’s no problem with this when the static data lives in a stale closure context.&lt;/p&gt;\n\n&lt;p&gt;I’ve never found a workaround for this I totally like with declarative dialogs.  What I’ve landed on is remembering the last rendered dialog element and cloning that with &lt;code&gt;isOpen={false}&lt;/code&gt; so that the dialog content won’t change as it’s closing.&lt;/p&gt;\n\n&lt;p&gt;I can see how it would be difficult to pass changing data into the dialog opened imperatively though.&lt;/p&gt;\n\n&lt;p&gt;Another case of minor funky behavior that can come up with the declarative approach is opening a “new” dialog when a closed one isn’t done transitioning out.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": false,
+        "created_utc": 1778095556,
+        "distinguished": null,
+        "parent_id": "t1_oka06wo",
+        "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okb67w6/",
+        "replies": [
+          {
+            "id": "okb7phs",
+            "author": "DeepFriedOprah",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;This isn’t so much a fault with the dialog or its approach as it is with how the user leverages the async control. Cuz it matters less (IMO) what gets passed to the dialog and matter more that the data in the caller closure is now stale. This often depends more on composition &amp;amp; state responsibilities. But it creates a gotcha that requires tricks to solve. Just my experience. &lt;/p&gt;\n&lt;/div&gt;",
+            "score": 1,
+            "is_submitter": false,
+            "created_utc": 1778095957,
+            "distinguished": null,
+            "parent_id": "t1_okb67w6",
+            "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okb7phs/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok948v6",
+    "author": "VolumeActual8333",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Imperative modals look clean in the demo but become a nightmare when you need auth context three layers deep. I had to rip this pattern out of a dashboard last year because the modal couldn&amp;#39;t access the user provider and we were passing tokens manually through the API. Breaking React&amp;#39;s tree boundaries just to save some useState boilerplate creates more architectural debt than it solves.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 0,
+    "is_submitter": false,
+    "created_utc": 1778075925,
+    "distinguished": null,
+    "parent_id": "t3_1t53uxb",
+    "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/ok948v6/",
+    "replies": [
+      {
+        "id": "okb3bal",
+        "author": "prehensilemullet",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Why did only some parts of your component tree have access to this auth context though?&lt;/p&gt;\n\n&lt;p&gt;When I use this pattern I put the component that renders imperatively opened modals inside all the necessary context providers.  In other words, the OverlayProvider in OP’s lib would be inside the other context providers&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": false,
+        "created_utc": 1778094773,
+        "distinguished": null,
+        "parent_id": "t1_ok948v6",
+        "permalink": "/r/reactjs/comments/1t53uxb/we_opensourced_our_approach_to_modal_state/okb3bal/",
+        "replies": []
+      }
+    ]
+  }
+]
