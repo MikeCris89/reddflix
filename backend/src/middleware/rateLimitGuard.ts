@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { rateLimiter } from "../rateLimiter";
+import { BannedResponse, RateLimitedResponse } from "../../../shared/types";
 
 export const rateLimitGuard = (
 	req: Request,
@@ -21,13 +22,13 @@ export const rateLimitGuard = (
 	res.set("Retry-After", String(retryAfterSec));
 
 	if (verdict.reason === "ban") {
-		res.status(503).json({ reason: "ban" });
+		res.status(503).json({ reason: "ban" } satisfies BannedResponse);
 		return;
 	}
 
 	// rateLimit
 	res.status(429).json({
 		reason: "rateLimit",
-		slotToken: verdict.timestamp, // absolute ms, frontend sends back on retry
-	});
+		slotToken: verdict.timestamp!, // absolute ms, frontend sends back on retry
+	} satisfies RateLimitedResponse);
 };

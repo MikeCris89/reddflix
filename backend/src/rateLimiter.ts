@@ -46,7 +46,15 @@ export const createRateLimiter = () => {
 		bannedUntil = Date.now() + durationMs;
 	};
 
-	return { evaluate, recordBan };
+	const saturateRateLimit = (slot: number): void => {
+		// Fill recent to capacity with current time. The reservation slot goes
+		// on top, pushing recent into "over capacity" state so subsequent
+		// requests reserve slots strictly after this one.
+		recent = new Array(maxReqs).fill(Date.now());
+		recent.push(slot);
+	};
+
+	return { evaluate, recordBan, saturateRateLimit };
 };
 
 // singleton for production use
