@@ -21,8 +21,8 @@ import {
 } from "../../utils/helpers";
 import { motion, AnimatePresence } from "framer-motion";
 import Spinner from "../../components/Spinner";
-import { useRemovePendingRequestMutation } from "../localApp/localAppApi";
 import useCountdown from "../../hooks/useCountdown";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 const getDescendants = (comment: RedditCommentFormatted): string[] => {
 	const desc: string[] = [];
@@ -211,22 +211,6 @@ const CommentThread = ({ comment }: { comment: RedditCommentFormatted }) => {
 			<div className={clsx("flex justify-between gap-3")}>
 				{isExpanded && comment.replies.length > 0 && (
 					<>
-						{/* <div
-							className="relative flex items-center justify-center px-1"
-							onClick={(e) =>
-								toggleExpanded(
-									comment.id,
-									getDescendants(comment),
-									commentRef.current || e.currentTarget
-								)
-							}
-						>
-							<div className="absolute top-0 bottom-0 left-1/2 w-px bg-neutral-500" />
-
-							<div className="relative z-10 bg-[#1a1a1a] px-1 hover:bg-neutral-800 rounded cursor-pointer transition">
-								<MinusCircle size={18} color="#a5f3fc" />
-							</div>
-						</div> */}
 						<div
 							title="Collapse Thread"
 							className="relative flex w-2 cursor-pointer group  justify-center"
@@ -278,12 +262,12 @@ const btnTextClass = "text-xs md:text-sm";
 
 const Comments = ({ hideComments }: { hideComments: () => void }) => {
 	const [pendingTime, setPendingTime] = useState(0);
+	const [slotToken, setSlotToken] = useState<number | undefined>();
 	const { postId } = useParams();
 	const PAGE_SIZE = 20;
 	const [page, setPage] = useState(0);
 	const { isPortrait, isMobile } = useDisplay();
 	const commRef = useRef<HTMLDivElement>(null);
-	const [removePending] = useRemovePendingRequestMutation();
 	const [fallbackComments, setFallbackComments] = useState<
 		RedditCommentFormatted[] | null
 	>(null);
@@ -291,20 +275,20 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 
 	const hasFallback = postId ? hasCommentFallback(postId) : false;
 
-	// TODO: skip=true, keep until backend setup
-	const { data, isLoading, isError, error, refetch } =
-		useFetchPostAndCommentsQuery(postId, {
+	const { data, isLoading, isError, error } = useFetchPostAndCommentsQuery(
+		postId && !hasFallback ? { postId, slotToken } : skipToken,
+		{
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
 			refetchOnFocus: false,
-			skip: true,
 			selectFromResult: ({ data, isLoading, error, isError }) => ({
 				data: data?.comments,
 				isLoading,
 				isError,
 				error,
 			}),
-		});
+		},
+	);
 
 	const comments = useMemo(() => {
 		if (hasFallback) return fallbackComments;
@@ -330,14 +314,13 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 		if (!pendingTime || pendingTime < Date.now()) return;
 
 		const timeout = setTimeout(() => {
-			refetch();
-			removePending(pendingTime);
+			setSlotToken(pendingTime);
 		}, pendingTime - Date.now());
 
 		return () => {
 			clearTimeout(timeout);
 		};
-	}, [pendingTime, refetch, removePending]);
+	}, [pendingTime]);
 
 	useEffect(() => {
 		if (

@@ -11,31 +11,14 @@ import Modal from "./Modal";
 import { childRoutes } from "../utils/router";
 import { ErrorBoundary } from "./ErrorBoundary";
 import {
-	useClearPendingMutation,
-	useFetchRequestLimitQuery,
-	useFetchRequestMonitorQuery,
 	useFetchSubredditsQuery,
 	useSetAllSubredditsMutation,
 	useSetSubredditMutation,
 } from "../features/localApp/localAppApi";
 import Spinner from "../components/Spinner";
 import { defaultSubreddits } from "../data/defaultSubreddits";
-import { RequestMonitor } from "../utils/types";
 import { Toaster } from "sonner";
 import DemoBanner from "../components/DemoBanner";
-
-const RateLimitManager = () => {
-	// initial rtk query fetches to setup cache
-	const { data: reqMonitor } = useFetchRequestMonitorQuery();
-	const { data: _rateLimit } = useFetchRequestLimitQuery(
-		reqMonitor as RequestMonitor,
-		{
-			skip: !reqMonitor,
-		},
-	);
-
-	return null;
-};
 
 const Root = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -54,12 +37,6 @@ const Root = () => {
 	} = useFetchSubredditsQuery();
 	const [setAllSubreddits] = useSetAllSubredditsMutation();
 	const [setSubreddit] = useSetSubredditMutation();
-	const [clearPending] = useClearPendingMutation();
-
-	useEffect(() => {
-		//clear all pending requests in storage
-		clearPending("");
-	}, [clearPending]);
 
 	useEffect(() => {
 		// pause preview videos when not visible
@@ -98,7 +75,6 @@ const Root = () => {
 	return (
 		<div className="h-full w-full flex flex-col overflow-hidden gap-2 p-1">
 			<Toaster position="top-right" richColors />
-			<RateLimitManager />
 			<Navbar />
 			<DemoBanner />
 			<main className="flex-1 overflow-hidden w-full flex justify-center">

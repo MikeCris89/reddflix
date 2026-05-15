@@ -248,8 +248,18 @@ export const redditApi = createApi({
 			},
 		}),
 
-		fetchPostAndComments: builder.query({
-			query: (postId) => `comments/${postId}.json`,
+		fetchPostAndComments: builder.query<
+			RedditPostAndComments,
+			{ postId: string; slotToken?: number }
+		>({
+			query: ({ postId, slotToken }) => ({
+				url: `comments/${postId}.json`,
+				headers:
+					slotToken !== undefined
+						? { "X-Slot-Token": String(slotToken) }
+						: undefined,
+			}),
+			serializeQueryArgs: ({ queryArgs }) => queryArgs.postId,
 			keepUnusedDataFor: 60 * 60 * 24 * 7,
 			transformResponse: (
 				response: PostAndCommentsResponse,
@@ -257,8 +267,8 @@ export const redditApi = createApi({
 				if (
 					!response ||
 					!Array.isArray(response) ||
-					!Array.isArray(response[0].data.children) ||
-					response[1].data.children.length === 0
+					!Array.isArray(response[0].data.children)
+					// response[1].data.children.length === 0
 				) {
 					throw new Error("Invalid Reddit response");
 				}
@@ -270,14 +280,19 @@ export const redditApi = createApi({
 				};
 			},
 			onQueryStarted(arg, { queryFulfilled }) {
-				console.log(`fetchPostAndComments(${arg}) fetch request started.`);
+				console.log(
+					`fetchPostAndComments(${arg.postId}) fetch request started.`,
+				);
 
 				queryFulfilled
 					.then((res) => {
-						console.log(`✅ fetchPostAndComments(${arg}) Success:`, res);
+						console.log(`✅ fetchPostAndComments(${arg.postId}) Success:`, res);
 					})
 					.catch((err) => {
-						console.error(`❌ fetchPostAndComments(${arg}) failed:`, err);
+						console.error(
+							`❌ fetchPostAndComments(${arg.postId}) failed:`,
+							err,
+						);
 					});
 			},
 		}),
