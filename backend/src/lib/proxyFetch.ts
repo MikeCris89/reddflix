@@ -1,6 +1,6 @@
 import { Response } from "express";
 import { rateLimiter } from "../rateLimiter";
-import { BannedResponse, RateLimitedResponse } from "../../../shared/types";
+import { BannedResponse, RateLimitedResponse } from "../types";
 import { USER_AGENT } from "../config";
 
 const BAN_DURATION_MS = 1000 * 60 * 5;

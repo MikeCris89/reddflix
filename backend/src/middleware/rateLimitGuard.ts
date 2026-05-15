@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { rateLimiter } from "../rateLimiter";
-import { BannedResponse, RateLimitedResponse } from "../../../shared/types";
+import { BannedResponse, RateLimitedResponse } from "../types";
 
 export const rateLimitGuard = (
 	req: Request,

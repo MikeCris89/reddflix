@@ -1,0 +1,141 @@
+[
+  {
+    "id": "ok2iupa",
+    "author": "repeating_bears",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;So I land on the homepage, click the first puzzle.&lt;/p&gt;\n\n&lt;p&gt;The title is &amp;quot;useEffect Missing Dependency&amp;quot;&lt;/p&gt;\n\n&lt;p&gt;Sure enough the useEffect is missing a dependency. What problem am I supposed to be solving? lol You&amp;#39;re just outright telling me the problem&lt;/p&gt;\n\n&lt;p&gt;Not only that, the solution is garbage.&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;const [query, setQuery] = useState(&amp;#39;&amp;#39;);\nconst [results, setResults] = useState(ITEMS);\nuseEffect(() =&amp;gt; {\n  setResults(ITEMS.filter(item =&amp;gt; item.toLowerCase().includes(query.toLowerCase())));\n}, [query]);\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;The solution here isn&amp;#39;t to fix the useEffect. The useEffect shouldn&amp;#39;t even be there in the first place.&lt;/p&gt;\n\n&lt;p&gt;This is derived state.&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;  \nconst [query, setQuery] = useState(&amp;#39;&amp;#39;);\nconst results = ITEMS.filter(item =&amp;gt; item.toLowerCase().includes(query.toLowerCase()));\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;You can memo it if you want but it&amp;#39;s only 6 items so there&amp;#39;s no point&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 15,
+    "is_submitter": false,
+    "created_utc": 1777993047,
+    "distinguished": null,
+    "parent_id": "t3_1t4ehug",
+    "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok2iupa/",
+    "replies": [
+      {
+        "id": "ok3doy3",
+        "author": "aksectraa",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Agreed on the title - naming the mechanism is the same as naming the answer. That will get fixed.&lt;/p&gt;\n\n&lt;p&gt;On the solution - theres a constraint on this kata that says don&amp;#39;t move the filter logic outside the effect. Derived state is cleaner React, agreed, but it bypasses the whole point - which is what happens when a useEffect closes over a stale value. The dependency array fix is intentional, not a mistake.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": -6,
+        "is_submitter": true,
+        "created_utc": 1778001364,
+        "distinguished": null,
+        "parent_id": "t1_ok2iupa",
+        "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok3doy3/",
+        "replies": [
+          {
+            "id": "ok3fks9",
+            "author": "repeating_bears",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah, the title made clear what the point was. But are you trying to suggest there is no possible problem you could design that both uses useEffect in its correct context, and has a missing dependency issue?&lt;/p&gt;\n\n&lt;p&gt;You are supposed to be training people to fix broken React code. The fix here isn&amp;#39;t to add a dependency. A real codebase doesn&amp;#39;t have arbitrary constraints like &amp;quot;don&amp;#39;t move the filter logic outside the effect&amp;quot;. If you have to introduce things like that, it should be a red flag that the problem is poorly designed.&lt;/p&gt;\n\n&lt;p&gt;Sorry if the feedback seems harsh, but I am your target user so hopefully it&amp;#39;s helpful even if you don&amp;#39;t like it. My impression is that you have put a lot of effort into making the platform and that the content has had less attention.&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 12,
+            "is_submitter": false,
+            "created_utc": 1778001860,
+            "distinguished": null,
+            "parent_id": "t1_ok3doy3",
+            "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok3fks9/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok1wubf",
+    "author": "blind-octopus",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Here&amp;#39;s an idea: scrape actual open source projects on github where the commit says something like &amp;quot;bug fix for react&amp;quot; in order to get real world examples.&lt;/p&gt;\n\n&lt;p&gt;You&amp;#39;d have to make sure the fixes are correct and do some other work, maybe make sure you&amp;#39;re allowed to even do this, but you might be able to populate your site with lots of real world examples pretty quickly.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 4,
+    "is_submitter": false,
+    "created_utc": 1777986712,
+    "distinguished": null,
+    "parent_id": "t3_1t4ehug",
+    "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok1wubf/",
+    "replies": [
+      {
+        "id": "ok208wl",
+        "author": "aksectraa",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Yeah already looking into this. The tricky part is not every repo is straightforward even if it&amp;#39;s open source , fixes usually span multiple files which makes isolating them into a clean sandbox harder than it sounds.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1777987747,
+        "distinguished": null,
+        "parent_id": "t1_ok1wubf",
+        "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok208wl/",
+        "replies": []
+      }
+    ]
+  },
+  {
+    "id": "ok1v9of",
+    "author": "howdoigetauniquename",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Everytime I type the cursor moves to the first character in the editor.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 2,
+    "is_submitter": false,
+    "created_utc": 1777986229,
+    "distinguished": null,
+    "parent_id": "t3_1t4ehug",
+    "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok1v9of/",
+    "replies": [
+      {
+        "id": "ok1ygww",
+        "author": "aksectraa",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Got you, working on it . Will come back to you once fixed&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 2,
+        "is_submitter": true,
+        "created_utc": 1777987207,
+        "distinguished": null,
+        "parent_id": "t1_ok1v9of",
+        "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok1ygww/",
+        "replies": [
+          {
+            "id": "ok1yrph",
+            "author": "howdoigetauniquename",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;That&amp;#39;s okay&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 3,
+            "is_submitter": false,
+            "created_utc": 1777987300,
+            "distinguished": null,
+            "parent_id": "t1_ok1ygww",
+            "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok1yrph/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ok3jaj3",
+    "author": "rcaillouet",
+    "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;on the &amp;quot;Score won&amp;#39;t Update&amp;quot;....&lt;/p&gt;\n\n&lt;p&gt;it can be fixed by doing just&lt;/p&gt;\n\n&lt;pre&gt;&lt;code&gt;setOptions([...options]);\n&lt;/code&gt;&lt;/pre&gt;\n\n&lt;p&gt;This achieves the goal and all scores update individually. Yes it&amp;#39;s not creating a new object each time and it mutates the 3 objects, but it does solve the issue because it&amp;#39;s a new array and react re-renders the component. I was told it&amp;#39;s wrong because &amp;quot;Voting on one option does not affect the others&amp;quot;... when that is clearly not what is happening if you implement that small change. Not saying the solution proposed is incorrect, just that whatever you are doing to test is flawed. You should specifically mention that object mutation is not allowed.&lt;/p&gt;\n&lt;/div&gt;",
+    "score": 1,
+    "is_submitter": false,
+    "created_utc": 1778002846,
+    "distinguished": null,
+    "parent_id": "t3_1t4ehug",
+    "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok3jaj3/",
+    "replies": [
+      {
+        "id": "ok3moii",
+        "author": "aksectraa",
+        "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;Just ran your fix - it fails Test 3 and here&amp;#39;s why.&lt;/p&gt;\n\n&lt;p&gt;target.score += 1 mutates the object directly, and that object is part of the INITIAL constant defined outside the component. Each test remounts the component fresh with useState(INITIAL), but INITIAL is already corrupted from the previous test. So by the time Test 3 runs, the scores are dirty before a single click happens.&lt;/p&gt;\n\n&lt;p&gt;The spread fixes the re-render but the mutation is still poisoning the source data across renders. That&amp;#39;s exactly what the test is catching.&lt;/p&gt;\n&lt;/div&gt;",
+        "score": 1,
+        "is_submitter": true,
+        "created_utc": 1778003742,
+        "distinguished": null,
+        "parent_id": "t1_ok3jaj3",
+        "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok3moii/",
+        "replies": [
+          {
+            "id": "ok3n6oq",
+            "author": "rcaillouet",
+            "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;I completely understand the reason. I was just point out that you can solve the issue &amp;quot;incorrectly&amp;quot; and it achieves the stated goal. The test should clarify the mutation issue than just saying &amp;quot;Voting on one option does not affect the others&amp;quot;.&lt;/p&gt;\n\n&lt;p&gt;Good work on the app though, loved being able to do it without signing up 😃&lt;/p&gt;\n&lt;/div&gt;",
+            "score": 2,
+            "is_submitter": false,
+            "created_utc": 1778003876,
+            "distinguished": null,
+            "parent_id": "t1_ok3moii",
+            "permalink": "/r/reactjs/comments/1t4ehug/debugging_react_is_a_skill_i_built_a_place_to/ok3n6oq/",
+            "replies": []
+          }
+        ]
+      }
+    ]
+  }
+]
