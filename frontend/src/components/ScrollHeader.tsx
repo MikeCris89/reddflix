@@ -4,7 +4,7 @@ import useCountdown from "../hooks/useCountdown";
 import { useMinuteClock } from "../hooks/useMinuteClock";
 import Spinner from "./Spinner";
 import MinutesLeft from "./MinutesLeft";
-import { relativeTime } from "../utils/helpers";
+import { getMinutesLeft, relativeTime } from "../utils/helpers";
 import { Subreddit } from "../utils/types";
 
 const COOLDOWN_MS = 10 * 60 * 1000;
@@ -33,8 +33,8 @@ const ScrollHeader = ({
 			: 0;
 
 	// keep for button disable
-	// const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
-	// const inCooldown = mLeft > 0;
+	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
+	const inCooldown = mLeft > 0;
 
 	const titleStyle3 = `text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
@@ -62,8 +62,8 @@ const ScrollHeader = ({
 				<button
 					onClick={onRefresh}
 					// keep for future
-					// disabled={isRefreshing || inCooldown || !!banEl}
-					disabled={true}
+					disabled={isRefreshing || inCooldown || !!banEl}
+					// disabled={true}
 					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
 					title="Refresh"
 				>

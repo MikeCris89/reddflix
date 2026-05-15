@@ -165,7 +165,7 @@ export const redditApi = createApi({
 			{ subreddit: string; slotToken?: number }
 		>({
 			query: ({ subreddit, slotToken }) => ({
-				url: `r/${subreddit}.json?limit=50`,
+				url: `r/${subreddit}`,
 				headers:
 					slotToken !== undefined
 						? { "X-Slot-Token": String(slotToken) }
@@ -253,7 +253,7 @@ export const redditApi = createApi({
 			{ postId: string; slotToken?: number }
 		>({
 			query: ({ postId, slotToken }) => ({
-				url: `comments/${postId}.json`,
+				url: `comments/${postId}`,
 				headers:
 					slotToken !== undefined
 						? { "X-Slot-Token": String(slotToken) }

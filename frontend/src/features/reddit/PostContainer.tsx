@@ -56,7 +56,6 @@ const PostContainer = ({
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
 			refetchOnFocus: false,
-			skip: true,
 		},
 	);
 
