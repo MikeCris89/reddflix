@@ -43,10 +43,6 @@ export interface RequestMonitor {
 	bannedUntil?: number;
 }
 
-export const BAN_DURATION_MS = import.meta.env.DEV
-	? 1000 * 60 * 30
-	: 1000 * 60 * 25; // 25 minutes
-
 export const defaultMonitor: RequestMonitor = {
 	recent: [],
 	pending: [],
@@ -76,4 +72,31 @@ export const isAppHandledError = (
 		error.data != null &&
 		"isAppHandledError" in error.data
 	);
+};
+
+// ==== HTTP RESPONSE ====
+// =======================
+
+export interface RateLimitedResponse {
+	reason: "rateLimit";
+	slotToken: number;
+}
+
+export interface BannedResponse {
+	reason: "ban";
+}
+
+export type ProxyRejection = RateLimitedResponse | BannedResponse;
+
+// HTTP Rejection typeguard
+export const isRateLimitedResponse = (v: unknown): v is RateLimitedResponse => {
+	if (!v || typeof v !== "object") return false;
+	const obj = v as Record<string, unknown>;
+	return obj.reason === "rateLimit" && typeof obj.slotToken === "number";
+};
+
+export const isBannedResponse = (v: unknown): v is BannedResponse => {
+	if (!v || typeof v !== "object") return false;
+	const obj = v as Record<string, unknown>;
+	return obj.reason === "ban";
 };

@@ -1,9 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { isAppHandledError, Subreddit } from "../../utils/types";
-import {
-	useFetchSeenPostsQuery,
-	useRemovePendingRequestMutation,
-} from "../localApp/localAppApi";
+import { useFetchSeenPostsQuery } from "../localApp/localAppApi";
 import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
@@ -41,10 +38,10 @@ const PostContainer = ({
 	onBanExpiry?: (timestamp: number) => void;
 	onDataUpdated?: () => void;
 }) => {
+	const [slotToken, setSlotToken] = useState<number | undefined>();
 	const [pendingTime, setPendingTime] = useState<number>(0);
 	const [fallbackPosts, setFallbackPosts] = useState<RedditPost[] | null>(null);
 	const isFirstLoad = useRef(true);
-	const [removePending] = useRemovePendingRequestMutation();
 
 	const hasFallback = hasPostFallback(subreddit.name);
 
@@ -53,13 +50,15 @@ const PostContainer = ({
 	// TODO: Refactor when proxy backend lands — lift state to ScrollContainer
 	// and pass data down, since rate-limit/ban handling will be much simpler.
 
-	const { data, isLoading, error, isError, refetch } =
-		useFetchPostsBySubredditQuery(subreddit.name, {
+	const { data, isLoading, error, isError } = useFetchPostsBySubredditQuery(
+		{ subreddit: subreddit.name, slotToken },
+		{
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
 			refetchOnFocus: false,
 			skip: true,
-		});
+		},
+	);
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
@@ -96,12 +95,11 @@ const PostContainer = ({
 		if (!pendingTime || pendingTime < Date.now()) return;
 
 		const timeout = setTimeout(() => {
-			refetch();
-			removePending(pendingTime);
+			setSlotToken(pendingTime);
 		}, pendingTime - Date.now());
 
 		return () => clearTimeout(timeout);
-	}, [pendingTime, refetch, removePending]);
+	}, [pendingTime]);
 
 	useEffect(() => {
 		if (

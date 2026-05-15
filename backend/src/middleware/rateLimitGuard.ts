@@ -22,7 +22,7 @@ export const rateLimitGuard = (
 	res.set("Retry-After", String(retryAfterSec));
 
 	if (verdict.reason === "ban") {
-		res.status(503).json({ reason: "ban" } satisfies BannedResponse);
+		res.status(403).json({ reason: "ban" } satisfies BannedResponse);
 		return;
 	}
 

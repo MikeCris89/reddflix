@@ -34,7 +34,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		setBanExpiry((prev) => (prev === timestamp ? prev : timestamp));
 	}, []);
 
-	const handleRefresh = () => trigger(subreddit.name, false);
+	const handleRefresh = () => trigger({ subreddit: subreddit.name }, false);
 
 	const scrollRef = useRef<HTMLDivElement>(null);
 
