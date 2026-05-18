@@ -10,6 +10,7 @@ import useDisplay from "../hooks/useDisplay";
 import { isTitleAsPost, RedditPost } from "../features/reddit/redditTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
+import { skipToken } from "@reduxjs/toolkit/query";
 
 const PostModal = ({
 	setLayoutSize,
@@ -27,7 +28,7 @@ const PostModal = ({
 
 	// Skip for now: keep for backend setup
 	const { data, isLoading: _loadingPosts } = useFetchPostsBySubredditQuery(
-		category,
+		category ? { subreddit: category } : skipToken,
 		{
 			selectFromResult: ({ data, isLoading }) => {
 				return {
@@ -39,9 +40,12 @@ const PostModal = ({
 		},
 	);
 
-	const { data: seenPosts } = useFetchSeenPostsQuery(data?.subreddit ?? "", {
-		skip: !data?.subreddit,
-	});
+	const { data: seenPosts } = useFetchSeenPostsQuery(
+		(data as RedditPost | undefined)?.subreddit ?? "",
+		{
+			skip: !data?.subreddit,
+		},
+	);
 	const isSeen = !!(postId && seenPosts?.[postId]);
 
 	useEffect(() => {
