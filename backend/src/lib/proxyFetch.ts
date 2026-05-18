@@ -3,6 +3,7 @@ import { rateLimiter } from "../rateLimiter";
 import { BannedResponse, RateLimitedResponse } from "../types";
 import { USER_AGENT } from "../config";
 import { cache } from "./cache";
+import { log } from "./logger";
 
 const BAN_DURATION_MS = 1000 * 60 * 5;
 const RATE_DURATION_MS = 1000 * 63;
@@ -13,6 +14,8 @@ export const proxyFetch = async (
 	originalUrl: string,
 	ttlMs?: number,
 ) => {
+	log.info("📡 Network request started.", { url: originalUrl });
+
 	const resp = await fetch(url, {
 		headers: { "User-Agent": USER_AGENT },
 	});
