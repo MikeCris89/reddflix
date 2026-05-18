@@ -3,7 +3,6 @@ import cors from "cors";
 import "dotenv/config";
 import postRouter from "./routes/posts";
 import commentRouter from "./routes/comments";
-import { rateLimitGuard } from "./middleware/rateLimitGuard";
 
 const PORT = process.env.PORT || 3001;
 
@@ -27,8 +26,8 @@ app.use(
 	}),
 );
 
-app.use("/r", rateLimitGuard, postRouter);
-app.use("/comments", rateLimitGuard, commentRouter);
+app.use("/r", postRouter);
+app.use("/comments", commentRouter);
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 	console.error(err);
