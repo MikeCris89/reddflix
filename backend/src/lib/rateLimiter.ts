@@ -6,8 +6,6 @@ export type RateLimit =
 	| { ok: false; delayMs: number; reason: "ban" };
 
 const dev = process.env.NODE_ENV !== "production";
-// export const windowMs = dev ? 15_000 : 63_000;
-// export const maxReqs = dev ? 2 : 10;
 
 export const createRateLimiter = ({
 	windowMs,
@@ -64,7 +62,12 @@ export const createRateLimiter = ({
 		recent.push(slot);
 	};
 
-	return { evaluate, recordBan, saturateRateLimit };
+	const clear = () => {
+		recent.length = 0;
+		bannedUntil = undefined;
+	};
+
+	return { evaluate, recordBan, saturateRateLimit, clear };
 };
 
 // singleton for production use

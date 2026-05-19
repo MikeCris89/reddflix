@@ -45,6 +45,15 @@ describe("rateLimiter", () => {
 			expect(rejected.timestamp).toBe(now + windowMs);
 			expect(rejected.delayMs).toBe(windowMs);
 		});
+
+		it("clears rate limiter", () => {
+			for (let i = 0; i < maxReqs; i++) limiter.evaluate();
+			limiter.clear();
+
+			const res = limiter.evaluate();
+
+			expect(res.ok).toBe(true);
+		});
 	});
 
 	describe("saturateRateLimit", () => {
