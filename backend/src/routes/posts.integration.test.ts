@@ -6,8 +6,10 @@ import { BAN_DURATION_MS, RATE_DURATION_MS } from "../lib/proxyFetch";
 import { rateLimiter } from "../lib/rateLimiter";
 
 const KEY_1 = "/r/pics";
-const VALUE_1 = JSON.stringify({ value: "some payload" });
 const KEY_2 = "/comments/uiop1389";
+const KEY_3 = "/r/aww";
+const KEY_4 = "/r/gaming";
+const VALUE_1 = JSON.stringify({ value: "some payload" });
 
 const res200 = {
 	ok: true,
@@ -45,12 +47,12 @@ describe("posts route", () => {
 	let now: number;
 
 	beforeEach(() => {
+		vi.useFakeTimers({ toFake: ["Date"] });
+		vi.stubGlobal("fetch", fetchMock);
 		now = Date.now();
 		fetchMock = vi.fn();
 		cache.clear();
 		rateLimiter.reset();
-		vi.stubGlobal("fetch", fetchMock);
-		vi.useFakeTimers({ toFake: ["Date"] });
 
 		// Insurance for practice - Ensure reddit never gets hit
 		fetchMock.mockImplementation(() => {
@@ -151,6 +153,40 @@ describe("posts route", () => {
 				.set("x-slot-token", String(res.body.slotToken));
 
 			expect(res2.status).toBe(200);
+		});
+
+		// Note: this tests the GUARD-rejection path (organic saturation from
+		// staggered requests). The slot-token priority property only holds here
+		// because `recent` has staggered timestamps. The saturateRateLimit path
+		// (when Reddit returns 429) fills `recent` at a single instant, so all
+		// slots open simultaneously and the token grants no priority over new
+		// requests in that scenario.
+		// This test assumes dev config: maxReqs=2, windowMs=15s.
+		// If you change those constants, update this test's timing and request count.
+		it("token from guard rejection grants retry access", async () => {
+			fetchMock.mockResolvedValue(res200); // always 200 for any call that makes it through
+
+			await request(app).get(KEY_1); // capacity 1/2
+			vi.advanceTimersByTime(5_000);
+			await request(app).get(KEY_2); // capacity 2/2
+
+			const rejected = await request(app).get(KEY_3); // guard rejects, issues token
+			expect(rejected.status).toBe(429);
+			expect(rejected.body.slotToken).toBeGreaterThan(now);
+			expect(fetchMock).toHaveBeenCalledTimes(2); // 3rd never reached Reddit
+
+			vi.advanceTimersByTime(rejected.body.slotToken - Date.now());
+
+			const retried = await request(app)
+				.get(KEY_3)
+				.set("x-slot-token", String(rejected.body.slotToken));
+			expect(retried.status).toBe(200);
+
+			// Staggered window: KEY_1's slot has expired (advanced past 15s total),
+			// but KEY_2's hasn't. So there's exactly one slot free, claimed by the retry.
+			// A new request without a token should still be rejected.
+			const newReq = await request(app).get(KEY_4);
+			expect(newReq.status).toBe(429);
 		});
 	});
 
