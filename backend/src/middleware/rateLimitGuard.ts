@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { rateLimiter } from "../rateLimiter";
+import { rateLimiter } from "../lib/rateLimiter";
 import { BannedResponse, RateLimitedResponse } from "../types";
 
 export const rateLimitGuard = (

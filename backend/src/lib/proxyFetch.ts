@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { rateLimiter } from "../rateLimiter";
+import { rateLimiter } from "./rateLimiter";
 import { BannedResponse, RateLimitedResponse } from "../types";
 import { USER_AGENT } from "../config";
 import { cache } from "./cache";
