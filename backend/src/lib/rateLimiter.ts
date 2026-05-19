@@ -62,12 +62,12 @@ export const createRateLimiter = ({
 		recent.push(slot);
 	};
 
-	const clear = () => {
+	const reset = () => {
 		recent.length = 0;
 		bannedUntil = undefined;
 	};
 
-	return { evaluate, recordBan, saturateRateLimit, clear };
+	return { evaluate, recordBan, saturateRateLimit, reset };
 };
 
 // singleton for production use

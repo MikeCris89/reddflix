@@ -48,7 +48,7 @@ describe("rateLimiter", () => {
 
 		it("clears rate limiter", () => {
 			for (let i = 0; i < maxReqs; i++) limiter.evaluate();
-			limiter.clear();
+			limiter.reset();
 
 			const res = limiter.evaluate();
 
