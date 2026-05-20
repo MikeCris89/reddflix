@@ -92,63 +92,62 @@ const RecursiveComments = ({
 		<div
 			className={clsx("flex flex-col gap-2 justify-center items-center w-full")}
 		>
-			{comments.length &&
-				comments.map((comment) => {
-					if (comment.distinguished) return null;
-					const isExpanded = expanded.has(comment.id);
+			{comments.map((comment) => {
+				if (comment.distinguished) return null;
+				const isExpanded = expanded.has(comment.id);
 
-					return (
+				return (
+					<div
+						className={clsx("flex flex-col gap-3 flex-1 w-full")}
+						key={comment.id}
+					>
 						<div
-							className={clsx("flex flex-col gap-3 flex-1 w-full")}
-							key={comment.id}
+							className={clsx(
+								"pl-1 pr-1 pt-1 w-full",
+								comment.replies.length > 0
+									? "cursor-pointer"
+									: "cursor-default",
+							)}
 						>
-							<div
-								className={clsx(
-									"pl-1 pr-1 pt-1 w-full",
-									comment.replies.length > 0
-										? "cursor-pointer"
-										: "cursor-default",
-								)}
-							>
-								<CommentCard
-									c={comment}
-									oc={comment.author === oc}
-									onClick={(e) => {
-										e.stopPropagation();
-										if (comment.replies.length > 0)
-											toggleExpanded(
-												comment.id,
-												getDescendants(comment),
-												e.currentTarget,
-											);
-									}}
-								/>
-							</div>
-							<AnimatePresence>
-								{isExpanded && comment.replies.length > 0 && (
-									<motion.div
-										layout
-										key={comment.id}
-										initial={{ height: 0, opacity: 0 }}
-										animate={{ height: "auto", opacity: 1 }}
-										exit={{ height: 0, opacity: 0 }}
-										transition={{ duration: 0.3 }}
-										className="overflow-hidden"
-									>
-										<div className={clsx("pl-5  border-l-slate-600 border-l ")}>
-											<RecursiveComments
-												comments={comment.replies}
-												expanded={expanded}
-												toggleExpanded={toggleExpanded}
-												oc={oc}
-											/>
-										</div>
-									</motion.div>
-								)}
-							</AnimatePresence>
+							<CommentCard
+								c={comment}
+								oc={comment.author === oc}
+								onClick={(e) => {
+									e.stopPropagation();
+									if (comment.replies.length > 0)
+										toggleExpanded(
+											comment.id,
+											getDescendants(comment),
+											e.currentTarget,
+										);
+								}}
+							/>
 						</div>
-					);
-				})}
+						<AnimatePresence>
+							{isExpanded && comment.replies.length > 0 && (
+								<motion.div
+									layout
+									key={comment.id}
+									initial={{ height: 0, opacity: 0 }}
+									animate={{ height: "auto", opacity: 1 }}
+									exit={{ height: 0, opacity: 0 }}
+									transition={{ duration: 0.3 }}
+									className="overflow-hidden"
+								>
+									<div className={clsx("pl-5  border-l-slate-600 border-l ")}>
+										<RecursiveComments
+											comments={comment.replies}
+											expanded={expanded}
+											toggleExpanded={toggleExpanded}
+											oc={oc}
+										/>
+									</div>
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</div>
+				);
+			})}
 		</div>
 	);
 };

@@ -217,6 +217,7 @@ export const redditApi = createApi({
 					});
 			},
 		}),
+		// UNUSED - keep for future feature
 		searchPosts: builder.query({
 			query: (searchTerm) =>
 				`search.json?q=${encodeURIComponent(searchTerm)}&sort=top`,
@@ -247,7 +248,6 @@ export const redditApi = createApi({
 					});
 			},
 		}),
-
 		fetchPostAndComments: builder.query<
 			RedditPostAndComments,
 			{ postId: string; slotToken?: number }

@@ -198,75 +198,7 @@ export const localAppApi = createApi({
 			},
 			providesTags: ["requestMonitor"],
 		}),
-		// fetchRequestLimit: build.query<RateLimit, RequestMonitor>({
-		// 	async queryFn(reqMonitor, api) {
-		// 		const prunePending = async (newPending: number[]) => {
-		// 			await api.dispatch(
-		// 				localAppApi.endpoints.setPendingArray.initiate(newPending),
-		// 			);
-		// 		};
-		// 		const data = await evaluateRateLimit(
-		// 			Date.now(),
-		// 			reqMonitor,
-		// 			prunePending,
-		// 		);
-		// 		return { data };
-		// 	},
-		// 	providesTags: ["requestMonitor"],
-		// }),
-		// setRequestTime: build.mutation<unknown, number>({
-		// 	async queryFn(timestamp: number = 0) {
-		// 		const store = "requestMonitor";
-		// 		const key = "recent";
-		// 		const now = Date.now();
-		// 		const existing = await getItem<number[]>(store, key);
-		// 		const recent = (existing || []).filter((t) => now - t < 63_000);
-		// 		const pending = (await getItem<number[]>(store, "pending")) || [];
-		// 		if (timestamp) {
-		// 			const index = pending.findIndex((el) => el === timestamp);
-		// 			if (index !== -1) {
-		// 				pending.splice(index, 1);
-		// 				await setItem(store, "pending", pending);
-		// 			}
-		// 		}
-		// 		const data = await setItem(store, key, [...recent, now]);
 
-		// 		return { data };
-		// 	},
-		// 	invalidatesTags: ["requestMonitor"],
-		// }),
-		// setPendingRequest: build.mutation<unknown, number>({
-		// 	async queryFn(timestamp: number) {
-		// 		const store = "requestMonitor";
-		// 		const key = "pending";
-		// 		const pending = (await getItem<number[]>(store, key)) || [];
-		// 		const data = await setItem(store, key, [...pending, timestamp]);
-		// 		return { data };
-		// 	},
-		// 	invalidatesTags: ["requestMonitor"],
-		// }),
-		// removePendingRequest: build.mutation<unknown, number>({
-		// 	async queryFn(timestamp: number) {
-		// 		const store = "requestMonitor";
-		// 		const key = "pending";
-		// 		const pending = (await getItem<number[]>(store, key)) || [];
-		// 		const index = pending.findIndex((el) => el === timestamp);
-		// 		if (index === -1) return { data: false };
-		// 		pending.splice(index, 1);
-		// 		const data = await setItem(store, key, pending);
-		// 		return { data };
-		// 	},
-		// 	invalidatesTags: ["requestMonitor"],
-		// }),
-		// setPendingArray: build.mutation<unknown, number[]>({
-		// 	async queryFn(arr: number[]) {
-		// 		const store = "requestMonitor";
-		// 		const key = "pending";
-		// 		const data = await setItem(store, key, arr);
-		// 		return { data };
-		// 	},
-		// 	invalidatesTags: ["requestMonitor"],
-		// }),
 		setBannedUntil: build.mutation<unknown, number>({
 			async queryFn(bannedUntil: number) {
 				const data = await setItem(
@@ -278,13 +210,6 @@ export const localAppApi = createApi({
 			},
 			invalidatesTags: ["requestMonitor"],
 		}),
-		// clearPending: build.mutation({
-		// 	async queryFn() {
-		// 		const data = await deleteItem("requestMonitor", "pending");
-		// 		return { data };
-		// 	},
-		// 	invalidatesTags: ["requestMonitor"],
-		// }),
 	}),
 });
 
@@ -304,11 +229,5 @@ export const {
 	useSetSubredditMutation,
 	useSetSubredditTTLMutation,
 	useSetSubredditLastUpdatedMutation,
-
 	useFetchRequestMonitorQuery,
-	// useFetchRequestLimitQuery,
-	// useRemovePendingRequestMutation,
-	// useSetPendingArrayMutation,
-	// useSetPendingRequestMutation,
-	// useClearPendingMutation,
 } = localAppApi;
