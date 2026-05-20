@@ -48,11 +48,11 @@ describe("posts route", () => {
 
 	beforeEach(() => {
 		vi.useFakeTimers({ toFake: ["Date"] });
-		vi.stubGlobal("fetch", fetchMock);
 		now = Date.now();
 		fetchMock = vi.fn();
 		cache.clear();
 		rateLimiter.reset();
+		vi.stubGlobal("fetch", fetchMock);
 
 		// Insurance for practice - Ensure reddit never gets hit
 		fetchMock.mockImplementation(() => {
