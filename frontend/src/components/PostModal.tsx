@@ -26,9 +26,8 @@ const PostModal = ({
 	const state = location.state as { backgroundLocation?: Location };
 	const backgroundLocation = state?.backgroundLocation;
 
-	// Skip for now: keep for backend setup
 	const { data, isLoading: _loadingPosts } = useFetchPostsBySubredditQuery(
-		subreddit ? { subreddit: subreddit } : skipToken,
+		subreddit ? { subreddit } : skipToken,
 		{
 			selectFromResult: ({ data, isLoading }) => {
 				return {
@@ -36,7 +35,6 @@ const PostModal = ({
 					isLoading,
 				};
 			},
-			skip: true,
 		},
 	);
 
@@ -50,6 +48,8 @@ const PostModal = ({
 
 	useEffect(() => {
 		if (!subreddit) return;
+		if (data) return setPost(data);
+
 		getFallbackPosts(subreddit).then((posts) =>
 			setPost(posts.find((el) => el.id === postId) ?? null),
 		);
