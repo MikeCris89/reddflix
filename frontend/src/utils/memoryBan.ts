@@ -1,3 +1,5 @@
+import { getItem } from "./dbHelpers";
+
 const createMemoryBan = () => {
 	let inMemoryBannedUntil: number = 0;
 
@@ -12,3 +14,10 @@ const createMemoryBan = () => {
 };
 
 export const memoryBan = createMemoryBan();
+
+export const hydrateBan = async () => {
+	const persisted = await getItem<number>("requestMonitor", "bannedUntil");
+	if (persisted && persisted > Date.now()) {
+		memoryBan.set(persisted);
+	}
+};
