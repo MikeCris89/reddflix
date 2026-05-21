@@ -118,7 +118,7 @@ npm run dev
 | `npm run build`   | Type-check and build for production  |
 | `npm run lint`    | Run ESLint                           |
 | `npm run preview` | Preview the production build locally |
-| `npm test`        | Run Jest unit tests                  |
+| `npm test`        | Run Vitest unit tests                  |
 
 **Environment variables** (`.env`):
 

@@ -9,7 +9,7 @@ npm run dev        # Start Vite dev server with HMR
 npm run build      # Type-check (tsc -b) then build for production
 npm run lint       # Run ESLint
 npm run preview    # Preview production build locally
-npm test           # Run Jest unit tests
+npm test           # Run Vitest unit tests
 ```
 
 ## Architecture
