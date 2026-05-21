@@ -20,6 +20,7 @@ import {
 import { refinePost } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
 import { isBannedResponse, isRateLimitedResponse } from "../../utils/types";
+import { memoryBan } from "../../utils/memoryBan";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -69,8 +70,6 @@ const formatCommentTree = (comment: RedditComment): RedditCommentFormatted => {
 	return base;
 };
 
-let inMemoryBannedUntil = 0;
-
 const customBaseQuery: BaseQueryFn<
 	string | FetchArgs,
 	unknown,
@@ -79,13 +78,13 @@ const customBaseQuery: BaseQueryFn<
 	const now = Date.now();
 
 	// Synchronous check — blocks concurrent requests the moment a ban is set
-	if (now < inMemoryBannedUntil) {
+	if (now < memoryBan.get()) {
 		return {
 			error: {
 				status: 403,
 				data: {
 					message: `Reddit has temporarily blocked requests.`,
-					pendingTimestamp: inMemoryBannedUntil,
+					pendingTimestamp: memoryBan.get(),
 					isAppHandledError: false,
 					reason: "ban",
 				},
@@ -115,9 +114,9 @@ const customBaseQuery: BaseQueryFn<
 				throw new Error("Malformed 403 response from backend.");
 
 			// Set in-memory ban immediately to block any concurrent requests
-			inMemoryBannedUntil = now + delaySec * 1000;
+			memoryBan.set(now + delaySec * 1000);
 			await api.dispatch(
-				localAppApi.endpoints.setBannedUntil.initiate(inMemoryBannedUntil),
+				localAppApi.endpoints.setBannedUntil.initiate(memoryBan.get()),
 			);
 
 			return {
@@ -125,7 +124,7 @@ const customBaseQuery: BaseQueryFn<
 					status: 403,
 					data: {
 						message: `Reddit has temporarily blocked further requests. Retry after cooldown.`,
-						pendingTimestamp: inMemoryBannedUntil,
+						pendingTimestamp: memoryBan.get(),
 						isAppHandledError: false,
 						reason: "ban",
 					},
