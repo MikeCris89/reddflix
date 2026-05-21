@@ -1,5 +1,4 @@
 import {
-	Category,
 	defaultMonitor,
 	RequestMonitor,
 	SeenPosts,
@@ -16,58 +15,8 @@ import {
 export const localAppApi = createApi({
 	reducerPath: "localAppApi",
 	baseQuery: fakeBaseQuery(),
-	tagTypes: [
-		"categories",
-		"settings",
-		"seenPosts",
-		"requestMonitor",
-		"subreddits",
-	],
+	tagTypes: ["settings", "seenPosts", "requestMonitor", "subreddits"],
 	endpoints: (build) => ({
-		// ===== CATEGORIES =====
-		// =======================
-		fetchCategories: build.query<Category[], void>({
-			async queryFn() {
-				const data = await getAllFromStore<Category>("categories");
-				return { data };
-			},
-			providesTags: ["categories"],
-		}),
-		setCategory: build.mutation({
-			async queryFn(args: { title: string; value: Category }) {
-				const data = await setItem("categories", args.title, args.value);
-				return { data };
-			},
-			invalidatesTags: ["categories"],
-		}),
-		setAllCategories: build.mutation({
-			async queryFn(categories: Category[]) {
-				const data = await Promise.all(
-					categories.map((cat) => setItem("categories", cat.title, cat)),
-				);
-				return { data };
-			},
-			invalidatesTags: ["categories"],
-		}),
-		setCategoryTTL: build.mutation({
-			async queryFn(title: string) {
-				const existing = await getItem<Category>("categories", title);
-				if (!existing) return { error: new Error("Category not found") };
-				const ttl = 1000 * 60 * 60 * 3;
-				const updated = { ...existing, ttl: Date.now() + ttl };
-				const data = await setItem("categories", title, updated);
-				return { data };
-			},
-			invalidatesTags: ["categories"],
-		}),
-		deleteCategory: build.mutation({
-			async queryFn(title: string) {
-				await deleteItem("categories", title);
-				await deleteItem("seenPosts", title);
-				return { data: true };
-			},
-			invalidatesTags: ["categories", "seenPosts"],
-		}),
 		// ==== SUBREDDITS ====
 		// =======================
 		fetchSubreddits: build.query<Subreddit[], void>({
@@ -214,15 +163,10 @@ export const localAppApi = createApi({
 });
 
 export const {
-	useFetchCategoriesQuery,
 	useFetchSeenPostsQuery,
 	useFetchSettingsQuery,
-	useSetAllCategoriesMutation,
-	useSetCategoryMutation,
-	useSetCategoryTTLMutation,
 	useSetSeenPostMutation,
 	useClearSeenPostsForSubredditMutation,
-	useDeleteCategoryMutation,
 	useFetchSubredditsQuery,
 	useLazyFetchSubredditsQuery,
 	useSetAllSubredditsMutation,

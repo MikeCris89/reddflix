@@ -12,16 +12,6 @@ export const BUBBLE_ICON = {
 	link: "link",
 } as const;
 
-export type Categories = Record<string, Category>;
-
-export interface Category {
-	title: string;
-	keywords?: string;
-	active: boolean;
-	subreddits?: string[];
-	ttl: number;
-}
-
 export type Subreddits = Record<string, Subreddit>;
 
 export interface Subreddit {

@@ -18,7 +18,7 @@ const PostModal = ({
 	setLayoutSize?: (size: "normal" | "wide") => void;
 }) => {
 	const navigate = useNavigate();
-	const { category, postId } = useParams();
+	const { subreddit, postId } = useParams();
 	const [post, setPost] = useState<RedditPost | null>(null);
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
@@ -28,7 +28,7 @@ const PostModal = ({
 
 	// Skip for now: keep for backend setup
 	const { data, isLoading: _loadingPosts } = useFetchPostsBySubredditQuery(
-		category ? { subreddit: category } : skipToken,
+		subreddit ? { subreddit: subreddit } : skipToken,
 		{
 			selectFromResult: ({ data, isLoading }) => {
 				return {
@@ -49,8 +49,8 @@ const PostModal = ({
 	const isSeen = !!(postId && seenPosts?.[postId]);
 
 	useEffect(() => {
-		if (!category) return;
-		getFallbackPosts(category).then((posts) =>
+		if (!subreddit) return;
+		getFallbackPosts(subreddit).then((posts) =>
 			setPost(posts.find((el) => el.id === postId) ?? null),
 		);
 	}, []);
@@ -61,7 +61,7 @@ const PostModal = ({
 		}
 	}, [showComments, backgroundLocation, setLayoutSize]);
 
-	if (!category || !postId) {
+	if (!subreddit || !postId) {
 		return <NoMatch />;
 	}
 

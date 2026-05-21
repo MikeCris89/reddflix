@@ -2,7 +2,7 @@
 
 ![Tests](https://github.com/MikeCris89/reddflix/actions/workflows/test.yml/badge.svg)
 
-A Netflix-style Reddit media browser. Browse posts by subreddit category, search for content, and read threaded comments — all in a clean, dark-themed interface.
+A Netflix-style Reddit media browser. Browse posts by subreddit and read threaded comments — all in a clean, dark-themed interface.
 
 Built as a portfolio project. The work I'm proudest of is the rate-limiting protocol, the cache layer, and the fallback-first data strategy.
 

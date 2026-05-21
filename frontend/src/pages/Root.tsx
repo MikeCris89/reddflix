@@ -88,7 +88,7 @@ const Root = () => {
 						{backgroundLocation && (
 							<Routes>
 								<Route path="/about" element={<Modal about />} />
-								<Route path="/:category/:postId" element={<Modal />} />
+								<Route path="/:subreddit/:postId" element={<Modal />} />
 							</Routes>
 						)}
 						{elements}

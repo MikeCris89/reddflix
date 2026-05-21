@@ -15,7 +15,7 @@ export const childRoutes = [
 		element: <Settings />,
 	},
 	{
-		path: "/:category/:postId",
+		path: "/:subreddit/:postId",
 		element: <PostModal />, // full page version
 	},
 	{

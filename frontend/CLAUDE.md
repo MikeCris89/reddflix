@@ -24,7 +24,7 @@ Reddit public JSON API (no auth)
   → Redux store (persisted via redux-persist → localForage → IndexedDB)
   → React components
   ↕
-localAppApi.ts (RTK Query over IndexedDB for app state: categories, subreddits, seenPosts, requestMonitor, settings)
+localAppApi.ts (RTK Query over IndexedDB for app state: subreddits, seenPosts, requestMonitor, settings)
 ```
 
 ### Key Directories
@@ -35,7 +35,7 @@ localAppApi.ts (RTK Query over IndexedDB for app state: categories, subreddits, 
 - `src/components/` — Reusable UI: `ScrollContainer` (horizontal row per subreddit), `PostModal`, media renderers (`VideoContent`, `GalleryContent`, `ImageContent`, `EmbedContent`)
 - `src/pages/` — Route-level components; `Root.tsx` handles app init and the rate-limit request manager
 - `src/utils/` — `router.tsx` (React Router v7 config), `db.ts` (idb IndexedDB wrapper), `helpers.ts` (markdown rendering, time formatting)
-- `src/data/` — Static defaults for subreddits, categories, and fallback posts (`defaultPosts.json`)
+- `src/data/` — Static defaults for subreddits, and fallback /posts /comments.
 
 ### Rate Limiting
 
@@ -50,14 +50,14 @@ Reddit's public API has no authentication but enforces rate limits. `redditApi.t
 `reddflix-db` (v2) — managed via `src/utils/db.ts` using the `idb` library:
 
 - `settings` — app preferences
-- `categories` — content category groupings
+
 - `subreddits` — per-subreddit state (enabled/disabled, TTL)
 - `seenPosts` — post view history
 - `requestMonitor` — rate-limit tracking state
 
 ### State Persistence
 
-Redux Persist serializes the RTK Query cache (Reddit API responses) to IndexedDB via localForage. App-specific state (subreddits, categories, etc.) bypasses Redux and goes directly to IndexedDB through `localAppApi`.
+Redux Persist serializes the RTK Query cache (Reddit API responses) to IndexedDB via localForage. App-specific state (subreddits, etc.) bypasses Redux and goes directly to IndexedDB through `localAppApi`.
 
 ### Styling
 
