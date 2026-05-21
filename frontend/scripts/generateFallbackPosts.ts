@@ -1,7 +1,7 @@
 /**
  * generateFallbackPosts.ts
  * Fetches top 15 hot posts for each default subreddit and saves them to
- * src/data/defaultPosts.json, processed through refinePost logic.
+ * src/data/fallback/posts, processed through refinePost logic.
  *
  * Run with: npx tsx scripts/generateFallbackPosts.ts
  */
