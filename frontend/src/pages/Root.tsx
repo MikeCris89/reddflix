@@ -18,6 +18,7 @@ import {
 import Spinner from "../components/Spinner";
 import { defaultSubreddits } from "../data/defaultSubreddits";
 import { Toaster } from "sonner";
+import DemoBanner from "../components/DemoBanner";
 
 const Root = () => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -75,7 +76,7 @@ const Root = () => {
 		<div className="h-full w-full flex flex-col overflow-hidden gap-2 p-1">
 			<Toaster position="top-right" richColors />
 			<Navbar />
-			{/* <DemoBanner /> */}
+			<DemoBanner />
 			<main className="flex-1 overflow-hidden w-full flex justify-center">
 				{(isLoading || subloading) && (
 					<div className="h-full w-full flex justify-center items-center">

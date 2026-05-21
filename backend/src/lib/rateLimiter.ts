@@ -71,7 +71,8 @@ export const createRateLimiter = ({
 };
 
 // singleton for production use
+// DEV MODE - prod: 10/63s
 export const rateLimiter = createRateLimiter({
-	windowMs: dev ? 15_000 : 63_000,
-	maxReqs: dev ? 2 : 10,
+	windowMs: 15_000,
+	maxReqs: 2,
 });

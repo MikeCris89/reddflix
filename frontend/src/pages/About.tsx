@@ -40,18 +40,23 @@ const About = () => {
 			{/* Content */}
 			<div className="flex-1 overflow-y-auto pt-3 text-sm md:text-base text-zinc-300 space-y-3">
 				<p>
-					<span className="text-[#E50914] font-semibold">Demo Mode:</span>{" "}
-					ReddFlix pulls from Reddit's free public JSON API, which is heavily
-					rate-limited and prone to blocking. It worked fine during development,
-					but Reddit started rejecting requests from the deployed site.
+					<span className="text-[#E50914] font-semibold">Demo Mode:</span> The
+					live demo runs with a deliberately low rate limit —{" "}
+					<span className="font-semibold">2 requests per 15 seconds</span> — so
+					the backend rate limiter and cache are observable in normal use.
+					Production tuning would be 10 requests per 60 seconds, matching
+					Reddit's actual limit.
 				</p>
 				<p>
-					To keep the demo usable, ReddFlix loads pre-scraped sample posts and
-					comments so you can still try out the features.
+					If you hit a "Retrying in Xs" countdown after a few refreshes, that's
+					the limiter working as designed. Wait for the countdown, watch the
+					request auto-retry with its reserved slot, and the cache will serve
+					the same data instantly for the next 5 minutes.
 				</p>
 				<p>
-					Next step: a small proxy backend with proper request headers, which
-					should restore live data and make the app more resilient to blocks.
+					Pre-scraped sample posts and comments are bundled with the app as a
+					fallback, so the UI stays usable even if Reddit blocks the proxy
+					entirely.
 				</p>
 			</div>
 		</div>
