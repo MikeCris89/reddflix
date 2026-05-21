@@ -104,14 +104,22 @@ const customBaseQuery: BaseQueryFn<
 	if (result.error) {
 		const retryAfterHeader = result.meta?.response?.headers.get("retry-after");
 		if (!retryAfterHeader || isNaN(Number(retryAfterHeader))) {
-			throw new Error(
-				`Missing or invalid Retry-After header on ${result.error.status} response. Got: ${retryAfterHeader}`,
-			);
+			return {
+				error: {
+					status: "CUSTOM_ERROR",
+					error: `Missing or invalid Retry-After header on ${result.error.status} response. Got: ${retryAfterHeader}`,
+				},
+			};
 		}
 		const delaySec = Number(retryAfterHeader);
 		if (result.error.status === 403) {
 			if (!isBannedResponse(result.error.data))
-				throw new Error("Malformed 403 response from backend.");
+				return {
+					error: {
+						status: "CUSTOM_ERROR",
+						error: "Malformed 403 response from backend.",
+					},
+				};
 
 			// Set in-memory ban immediately to block any concurrent requests
 			memoryBan.set(now + delaySec * 1000);
@@ -132,7 +140,12 @@ const customBaseQuery: BaseQueryFn<
 			};
 		} else if (result.error.status === 429) {
 			if (!isRateLimitedResponse(result.error.data))
-				throw new Error("Malformed 429 response from backend.");
+				return {
+					error: {
+						status: "CUSTOM_ERROR",
+						error: "Malformed 429 response from backend.",
+					},
+				};
 
 			const slot = result.error.data.slotToken;
 			return {
@@ -148,7 +161,7 @@ const customBaseQuery: BaseQueryFn<
 				},
 			};
 		} else {
-			throw Object.assign(new Error(`Error communicating with Reddit.`));
+			return { error: result.error };
 		}
 	}
 
