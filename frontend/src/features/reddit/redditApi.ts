@@ -107,17 +107,9 @@ const customBaseQuery: BaseQueryFn<
 	if (cacheStatus) console.log(`🗄️ cache ${cacheStatus}`);
 
 	if (result.error) {
-		const retryAfterHeader = result.meta?.response?.headers.get("retry-after");
-		if (!retryAfterHeader || isNaN(Number(retryAfterHeader))) {
-			return {
-				error: {
-					status: "CUSTOM_ERROR",
-					error: `Missing or invalid Retry-After header on ${result.error.status} response. Got: ${retryAfterHeader}`,
-				},
-			};
-		}
-		const delaySec = Number(retryAfterHeader);
-		if (result.error.status === 403) {
+		const status = result.error.status;
+
+		if (status === 403) {
 			if (!isBannedResponse(result.error.data))
 				return {
 					error: {
@@ -126,11 +118,18 @@ const customBaseQuery: BaseQueryFn<
 					},
 				};
 
-			// Set in-memory ban immediately to block any concurrent requests
-			const banTime = now + delaySec * 1000;
+			const retryAfter = result.meta?.response?.headers.get("retry-after");
+			if (!retryAfter || isNaN(Number(retryAfter)))
+				return {
+					error: {
+						status: "CUSTOM_ERROR",
+						error: "403 missing Retry-After header.",
+					},
+				};
+
+			const banTime = now + Number(retryAfter) * 1000;
 			memoryBan.set(banTime);
 			setItem("requestMonitor", "bannedUntil", banTime);
-
 			return {
 				error: {
 					status: 403,
@@ -142,7 +141,9 @@ const customBaseQuery: BaseQueryFn<
 					},
 				},
 			};
-		} else if (result.error.status === 429) {
+		}
+
+		if (status === 429) {
 			if (!isRateLimitedResponse(result.error.data))
 				return {
 					error: {
@@ -151,6 +152,16 @@ const customBaseQuery: BaseQueryFn<
 					},
 				};
 
+			const retryAfter = result.meta?.response?.headers.get("retry-after");
+			if (!retryAfter || isNaN(Number(retryAfter)))
+				return {
+					error: {
+						status: "CUSTOM_ERROR",
+						error: "429 missing Retry-After header.",
+					},
+				};
+
+			const delaySec = Number(retryAfter);
 			const slot = result.error.data.slotToken;
 			return {
 				error: {
@@ -163,9 +174,11 @@ const customBaseQuery: BaseQueryFn<
 					},
 				},
 			};
-		} else {
-			return { error: result.error };
 		}
+
+		console.error("Error fetching from proxy: ", result.error);
+		// everything else — 500, PARSING_ERROR, FETCH_ERROR — passes through untouched
+		return { error: result.error };
 	}
 
 	return result;
