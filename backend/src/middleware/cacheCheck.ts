@@ -9,9 +9,11 @@ export const cacheCheck = (req: Request, res: Response, next: NextFunction) => {
 
 	if (data) {
 		log.info("Cache HIT", { url: req.originalUrl });
+		res.setHeader("X-Cache", "HIT");
 		res.type("application/json").send(data);
 		return;
 	}
 	log.info("Cache MISS", { url: req.originalUrl });
+	res.setHeader("X-Cache", "MISS");
 	next();
 };

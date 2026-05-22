@@ -80,6 +80,7 @@ const customBaseQuery: BaseQueryFn<
 
 	// Synchronous check — blocks concurrent requests the moment a ban is set
 	if (now < memoryBan.get()) {
+		console.log("🚫 blocked by ban — no request sent");
 		return {
 			error: {
 				status: 403,
@@ -93,7 +94,7 @@ const customBaseQuery: BaseQueryFn<
 		};
 	}
 
-	console.log(`📡 network request started.`);
+	console.log("📡 → proxy");
 
 	const rawBaseQuery = fetchBaseQuery({
 		baseUrl: import.meta.env.DEV
@@ -101,6 +102,9 @@ const customBaseQuery: BaseQueryFn<
 			: import.meta.env.VITE_API_URL,
 	});
 	const result = await rawBaseQuery(args, api, extraOptions);
+
+	const cacheStatus = result.meta?.response?.headers.get("x-cache");
+	if (cacheStatus) console.log(`🗄️ cache ${cacheStatus}`);
 
 	if (result.error) {
 		const retryAfterHeader = result.meta?.response?.headers.get("retry-after");
