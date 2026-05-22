@@ -24,7 +24,7 @@ Reddit public JSON API (no auth)
   → Redux store (persisted via redux-persist → localForage → IndexedDB)
   → React components
   ↕
-localAppApi.ts (RTK Query over IndexedDB for app state: subreddits, seenPosts, requestMonitor, settings)
+localAppApi.ts (RTK Query over IndexedDB for app state: subreddits, seenPosts, requestMonitor)
 ```
 
 ### Key Directories
@@ -49,11 +49,9 @@ Reddit's public API has no authentication but enforces rate limits. `redditApi.t
 
 `reddflix-db` (v2) — managed via `src/utils/db.ts` using the `idb` library:
 
-- `settings` — app preferences
-
 - `subreddits` — per-subreddit state (enabled/disabled, TTL)
 - `seenPosts` — post view history
-- `requestMonitor` — rate-limit tracking state
+- `requestMonitor` — only for the bannedUntil timestamp for 403's
 
 ### State Persistence
 

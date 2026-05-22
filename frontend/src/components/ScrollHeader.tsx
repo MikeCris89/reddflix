@@ -6,6 +6,8 @@ import Spinner from "./Spinner";
 import MinutesLeft from "./MinutesLeft";
 import { getMinutesLeft, relativeTime } from "../utils/helpers";
 import { Subreddit } from "../utils/types";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
 
 const COOLDOWN_MS = 10 * 60 * 1000;
 
@@ -15,6 +17,7 @@ interface Props {
 	banExpiry: number;
 	isRefreshing: boolean;
 	onRefresh: () => void;
+	refreshError?: FetchBaseQueryError | SerializedError;
 }
 
 const ScrollHeader = ({
@@ -23,6 +26,7 @@ const ScrollHeader = ({
 	banExpiry,
 	isRefreshing,
 	onRefresh,
+	refreshError,
 }: Props) => {
 	const { isMobile } = useDisplay();
 	const remaining = useCountdown(pendingTime);
@@ -53,6 +57,12 @@ const ScrollHeader = ({
 		</span>
 	);
 
+	const errEl = !rateLimitEl && !banEl && refreshError && (
+		<span className="flex items-center gap-1 text-[#E50914] text-xs">
+			Something went wrong.
+		</span>
+	);
+
 	return (
 		<>
 			<div
@@ -78,11 +88,11 @@ const ScrollHeader = ({
 						{relativeTime(subreddit.lastUpdated / 1000)} ago
 					</span>
 				)}
-				{!isMobile && (rateLimitEl || banEl)}
+				{!isMobile && (rateLimitEl || banEl || errEl)}
 			</div>
 			{isMobile && (rateLimitEl || banEl) && (
 				<div className="flex items-center gap-3 px-3 pb-1 bg-[#212121]">
-					{rateLimitEl || banEl}
+					{rateLimitEl || banEl || errEl}
 				</div>
 			)}
 		</>

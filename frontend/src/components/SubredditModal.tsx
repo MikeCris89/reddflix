@@ -1,7 +1,7 @@
 import { CheckCircle2Icon, Circle } from "lucide-react";
 import {
 	useFetchSubredditsQuery,
-	useSetAllSubredditsMutation,
+	useSetSubbredditListMutation,
 } from "../features/localApp/localAppApi";
 import Spinner from "./Spinner";
 import clsx from "clsx";
@@ -11,7 +11,7 @@ import { Subreddit } from "../utils/types";
 const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 	const [subreddits, setSubreddits] = useState<Subreddit[]>([]);
 	const { data, isLoading: loadingSubs } = useFetchSubredditsQuery();
-	const [setSubs, { isLoading: savingSubs }] = useSetAllSubredditsMutation();
+	const [setSubs, { isLoading: savingSubs }] = useSetSubbredditListMutation();
 
 	useEffect(() => {
 		if (data) {
@@ -24,7 +24,7 @@ const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 					else acc.notActive.push(curr);
 					return acc;
 				},
-				{ activeSubs: [], notActive: [] }
+				{ activeSubs: [], notActive: [] },
 			);
 			activeSubs.sort((a, b) => a.name.localeCompare(b.name));
 			notActive.sort((a, b) => a.name.localeCompare(b.name));
@@ -34,7 +34,7 @@ const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 
 	const toggleSub = (name: string) => {
 		setSubreddits((prev) =>
-			prev.map((s) => (s.name === name ? { ...s, active: !s.active } : s))
+			prev.map((s) => (s.name === name ? { ...s, active: !s.active } : s)),
 		);
 	};
 
@@ -66,7 +66,7 @@ const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 									// 	: "bg-neutral-800 hover:bg-neutral-700",
 									sub.active
 										? "bg-zinc-900 border border-cyan-500/30 hover:border-cyan-500/60 hover:bg-zinc-800"
-										: "bg-zinc-800 hover:bg-zinc-700"
+										: "bg-zinc-800 hover:bg-zinc-700",
 								)}
 							>
 								{!sub.active && <Circle className="h-5 w-5 text-gray-500" />}
@@ -74,7 +74,7 @@ const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 									<CheckCircle2Icon
 										className={clsx(
 											"h-5 w-5 text-[#E50914]",
-											sub.active ? "" : "text-gray-500"
+											sub.active ? "" : "text-gray-500",
 										)}
 									/>
 								)}
@@ -83,7 +83,7 @@ const SubredditModal = ({ onClose }: { onClose: () => void }) => {
 										"text-md  font-semibold",
 										sub.active
 											? "text-[rgba(255, 255, 255, 0.87)]"
-											: "text-neutral-400"
+											: "text-neutral-400",
 									)}
 								>
 									r/{sub.name}

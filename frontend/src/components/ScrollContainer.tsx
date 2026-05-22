@@ -27,6 +27,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 
 	const [trigger, refreshResult] = useLazyFetchPostsBySubredditQuery();
 	const isRefreshing = refreshResult.isFetching;
+	const refreshError = refreshResult.isError ? refreshResult.error : undefined;
 
 	const [pendingTime, setPendingTime] = useState(0);
 	const [banExpiry, setBanExpiry] = useState(0);
@@ -77,6 +78,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				banExpiry={banExpiry}
 				isRefreshing={isRefreshing}
 				onRefresh={handleRefresh}
+				refreshError={refreshError}
 			/>
 
 			<div className="relative">

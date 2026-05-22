@@ -8,8 +8,6 @@ const About = () => {
 	const location = useLocation();
 	const state = location.state as { backgroundLocation?: Location };
 
-	console.log(state);
-
 	return (
 		<div
 			className={clsx("flex flex-col ", {

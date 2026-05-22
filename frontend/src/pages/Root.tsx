@@ -12,7 +12,7 @@ import { childRoutes } from "../utils/router";
 import { ErrorBoundary } from "./ErrorBoundary";
 import {
 	useFetchSubredditsQuery,
-	useSetAllSubredditsMutation,
+	useSetSubbredditListMutation,
 	useSetSubredditMutation,
 } from "../features/localApp/localAppApi";
 import Spinner from "../components/Spinner";
@@ -35,7 +35,7 @@ const Root = () => {
 		isError,
 		isLoading: subloading,
 	} = useFetchSubredditsQuery();
-	const [setAllSubreddits] = useSetAllSubredditsMutation();
+	const [setSubredditList] = useSetSubbredditListMutation();
 	const [setSubreddit] = useSetSubredditMutation();
 
 	useEffect(() => {
@@ -56,7 +56,7 @@ const Root = () => {
 		// check subreddits in local storage
 		const subredditCheck = async () => {
 			if (subreddits.length === 0) {
-				await setAllSubreddits(defaultSubreddits);
+				await setSubredditList(defaultSubreddits);
 			} else {
 				const subCheck = defaultSubreddits.filter(
 					(def) => !subreddits.some((sub) => def.name === sub.name),
@@ -70,7 +70,7 @@ const Root = () => {
 			setIsLoading(false);
 		};
 		subredditCheck();
-	}, [subreddits, setAllSubreddits, setSubreddit]);
+	}, [subreddits, setSubredditList, setSubreddit]);
 
 	return (
 		<div className="h-full w-full flex flex-col overflow-hidden gap-2 p-1">

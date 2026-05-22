@@ -21,6 +21,7 @@ import { refinePost } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
 import { isBannedResponse, isRateLimitedResponse } from "../../utils/types";
 import { memoryBan } from "../../utils/memoryBan";
+import { setItem } from "../../utils/dbHelpers";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -122,10 +123,9 @@ const customBaseQuery: BaseQueryFn<
 				};
 
 			// Set in-memory ban immediately to block any concurrent requests
-			memoryBan.set(now + delaySec * 1000);
-			await api.dispatch(
-				localAppApi.endpoints.setBannedUntil.initiate(memoryBan.get()),
-			);
+			const banTime = now + delaySec * 1000;
+			memoryBan.set(banTime);
+			setItem("requestMonitor", "bannedUntil", banTime);
 
 			return {
 				error: {
@@ -153,7 +153,6 @@ const customBaseQuery: BaseQueryFn<
 					status: 429,
 					data: {
 						message: `You've reached Reddit's rate limit. Retrying in ~${delaySec}s`,
-						//delay: requestLimit.delayMs,
 						pendingTimestamp: slot,
 						isAppHandledError: true,
 						reason: result.error.data.reason,
@@ -229,37 +228,6 @@ export const redditApi = createApi({
 					});
 			},
 		}),
-		// UNUSED - keep for future feature
-		searchPosts: builder.query({
-			query: (searchTerm) =>
-				`search.json?q=${encodeURIComponent(searchTerm)}&sort=top`,
-			keepUnusedDataFor: 60 * 60 * 24 * 7,
-			transformResponse: (
-				response: RedditListing<RawRedditPost>,
-			): RedditPostsPage => {
-				if (
-					!response?.data?.children ||
-					!Array.isArray(response.data.children)
-				) {
-					throw new Error("Invalid Reddit response");
-				}
-				return {
-					after: response.data.after,
-					posts: response.data.children.map((post) => refinePost(post.data)),
-				};
-			},
-			onQueryStarted(arg, { queryFulfilled, dispatch: _dispatch }) {
-				console.log(`searchPosts(${arg}) network request started.`);
-
-				queryFulfilled
-					.then((res) => {
-						console.log(`✅ searchPosts(${arg}) Success:`, res);
-					})
-					.catch((err) => {
-						console.error(`❌ searchPosts(${arg}) failed:`, err);
-					});
-			},
-		}),
 		fetchPostAndComments: builder.query<
 			RedditPostAndComments,
 			{ postId: string; slotToken?: number }
@@ -280,7 +248,6 @@ export const redditApi = createApi({
 					!response ||
 					!Array.isArray(response) ||
 					!Array.isArray(response[0].data.children)
-					// response[1].data.children.length === 0
 				) {
 					throw new Error("Invalid Reddit response");
 				}
@@ -314,7 +281,5 @@ export const redditApi = createApi({
 export const {
 	useFetchPostsBySubredditQuery,
 	useLazyFetchPostsBySubredditQuery,
-	useSearchPostsQuery,
-	useLazySearchPostsQuery,
 	useFetchPostAndCommentsQuery,
 } = redditApi;

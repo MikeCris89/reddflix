@@ -7,8 +7,6 @@ export const dbPromise = async () => {
 
 	dbInstance = await openDB("reddflix-db", 3, {
 		upgrade(db) {
-			if (!db.objectStoreNames.contains("settings"))
-				db.createObjectStore("settings");
 			if (!db.objectStoreNames.contains("seenPosts"))
 				db.createObjectStore("seenPosts");
 			if (!db.objectStoreNames.contains("requestMonitor"))
@@ -23,11 +21,6 @@ export const dbPromise = async () => {
 
 export const clearAllDbStores = async () => {
 	const db = await dbPromise();
-	const stores = [
-		"settings",
-		"seenPosts",
-		"requestMonitor",
-		"subreddits",
-	] as const;
+	const stores = ["seenPosts", "requestMonitor", "subreddits"] as const;
 	await Promise.all(stores.map((store) => db.clear(store)));
 };
