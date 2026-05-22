@@ -5,7 +5,7 @@ export type RateLimit =
 	| { ok: false; delayMs: number; reason: "rateLimit"; timestamp: number }
 	| { ok: false; delayMs: number; reason: "ban" };
 
-const dev = process.env.NODE_ENV !== "production";
+// const dev = process.env.NODE_ENV !== "production";
 
 export const createRateLimiter = ({
 	windowMs,
