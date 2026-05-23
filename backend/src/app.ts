@@ -21,7 +21,7 @@ app.use(
 			callback(new Error(`CORS: origin ${origin} not allowed`));
 		},
 		allowedHeaders: ["Content-Type", "X-Slot-Token"],
-		exposedHeaders: ["Retry-After"],
+		exposedHeaders: ["Retry-After", "X-Cache"],
 	}),
 );
 
