@@ -221,27 +221,24 @@ export const redditApi = createApi({
 				};
 			},
 			onQueryStarted(arg, { queryFulfilled, dispatch }) {
-				console.log(
-					`fetchPostsBySubreddit(${arg.subreddit}) fetch request started.`,
-				);
+				// console.log(
+				// 	`fetchPostsBySubreddit(${arg.subreddit}) fetch request started.`,
+				// );
 
 				queryFulfilled
-					.then((res) => {
-						console.log(
-							`✅ fetchPostsBySubreddit(${arg.subreddit}) Success:`,
-							res,
-						);
+					.then((_res) => {
+						console.log(`✅ fetchPostsBySubreddit(${arg.subreddit}) Success`);
 						dispatch(
 							localAppApi.endpoints.setSubredditLastUpdated.initiate(
 								arg.subreddit,
 							),
 						);
 					})
-					.catch((err) => {
-						console.error(
-							`❌ fetchPostsBySubreddit(${arg.subreddit}) failed:`,
-							err,
-						);
+					.catch((_err) => {
+						// console.error(
+						// 	`❌ fetchPostsBySubreddit(${arg.subreddit}) failed:`,
+						// 	err,
+						// );
 					});
 			},
 		}),
@@ -276,19 +273,15 @@ export const redditApi = createApi({
 				};
 			},
 			onQueryStarted(arg, { queryFulfilled }) {
-				console.log(
-					`fetchPostAndComments(${arg.postId}) fetch request started.`,
-				);
-
 				queryFulfilled
-					.then((res) => {
-						console.log(`✅ fetchPostAndComments(${arg.postId}) Success:`, res);
+					.then((_res) => {
+						console.log(`✅ fetchPostAndComments(${arg.postId}) Success`);
 					})
-					.catch((err) => {
-						console.error(
-							`❌ fetchPostAndComments(${arg.postId}) failed:`,
-							err,
-						);
+					.catch((_err) => {
+						// console.error(
+						// 	`❌ fetchPostAndComments(${arg.postId}) failed:`,
+						// 	err,
+						// );
 					});
 			},
 		}),
