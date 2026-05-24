@@ -29,24 +29,24 @@ const ScrollHeader = ({
 	refreshError,
 }: Props) => {
 	const { isMobile } = useDisplay();
-	const remaining = useCountdown(pendingTime);
+	let remaining = useCountdown(pendingTime);
 	useMinuteClock();
 	const banMinutesLeft =
 		banExpiry > 0
 			? Math.max(0, Math.ceil((banExpiry - Date.now()) / 60000))
 			: 0;
 
-	// keep for button disable
 	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
 	const inCooldown = mLeft > 0;
 
 	const titleStyle3 = `text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
 	}`;
+	remaining = Date.now() + 5000;
 
 	const rateLimitEl = remaining > 0 && (
 		<span className="flex items-center gap-1 text-[#E50914] text-xs">
-			<Spinner size="sm" />
+			<Spinner size="xs" />
 			Retrying in {Math.ceil(remaining / 1000)}s
 		</span>
 	);
@@ -71,9 +71,7 @@ const ScrollHeader = ({
 				<span>r/{subreddit.name}</span>
 				<button
 					onClick={onRefresh}
-					// keep for future
 					disabled={isRefreshing || inCooldown || !!banEl}
-					// disabled={true}
 					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
 					title="Refresh"
 				>
@@ -91,7 +89,7 @@ const ScrollHeader = ({
 				{!isMobile && (rateLimitEl || banEl || errEl)}
 			</div>
 			{isMobile && (rateLimitEl || banEl) && (
-				<div className="flex items-center gap-3 px-3 pb-1 bg-[#212121]">
+				<div className="flex flex-col sm:flex-row items-center justify-center gap-3 px-3 pb-1 bg-[#212121]">
 					{rateLimitEl || banEl || errEl}
 				</div>
 			)}

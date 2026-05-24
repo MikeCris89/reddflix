@@ -24,7 +24,6 @@ const Root = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	const location = useLocation();
 	const state = location.state as { backgroundLocation?: Location };
-	// const backgroundLocation = state?.backgroundLocation;
 	const backgroundLocation =
 		state?.backgroundLocation ||
 		(location.pathname === "/about" ? { pathname: "/" } : undefined);
