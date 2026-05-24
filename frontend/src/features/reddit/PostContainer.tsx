@@ -30,6 +30,7 @@ const PostContainer = ({
 	onErrorMessage,
 	onBanExpiry,
 	onDataUpdated,
+	isRefreshing = false,
 }: {
 	subreddit: Subreddit;
 	postRefs: React.RefObject<(HTMLDivElement | null)[]>;
@@ -37,6 +38,7 @@ const PostContainer = ({
 	onErrorMessage?: (msg: string | null) => void;
 	onBanExpiry?: (timestamp: number) => void;
 	onDataUpdated?: () => void;
+	isRefreshing?: boolean;
 }) => {
 	const [slotToken, setSlotToken] = useState<number | undefined>();
 	const [pendingTime, setPendingTime] = useState<number>(0);
@@ -47,8 +49,6 @@ const PostContainer = ({
 
 	// NOTE: useQuery here (not in ScrollContainer) because of inView gating.
 	// Refresh button in ScrollContainer uses useLazyQuery against same cache.
-	// TODO: Refactor when proxy backend lands — lift state to ScrollContainer
-	// and pass data down, since rate-limit/ban handling will be much simpler.
 
 	const { data, isLoading, error, isError } = useFetchPostsBySubredditQuery(
 		{ subreddit: subreddit.name, slotToken },
@@ -143,8 +143,8 @@ const PostContainer = ({
 
 	return (
 		<>
-			{isLoading && <SkeletonContainer />}
-			{(!isLoading && (
+			{(isLoading || isRefreshing) && <SkeletonContainer />}
+			{(!isLoading && !isRefreshing && (
 				<>
 					<div></div>
 					{allSortedPosts.map((post, i) => (

@@ -115,6 +115,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 								onRateLimit={setPendingTime}
 								onBanExpiry={handleBanExpiry}
 								onDataUpdated={handleDataUpdated}
+								isRefreshing={isRefreshing}
 							/>
 						)}
 					</div>

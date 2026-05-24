@@ -29,7 +29,7 @@ const ScrollHeader = ({
 	refreshError,
 }: Props) => {
 	const { isMobile } = useDisplay();
-	let remaining = useCountdown(pendingTime);
+	const remaining = useCountdown(pendingTime);
 	useMinuteClock();
 	const banMinutesLeft =
 		banExpiry > 0
@@ -42,7 +42,6 @@ const ScrollHeader = ({
 	const titleStyle3 = `text-white font-semibold pl-3 pt-2 pb-1 border-l-4 border-[#E50914] bg-[#212121] rounded-t-md ${
 		isMobile ? "text-base" : "text-lg"
 	}`;
-	remaining = Date.now() + 5000;
 
 	const rateLimitEl = remaining > 0 && (
 		<span className="flex items-center gap-1 text-[#E50914] text-xs">
