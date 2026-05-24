@@ -273,11 +273,13 @@ Frontend (RTK Query customBaseQuery)
 reddflix/
 ├── frontend/          # React SPA
 │   └── src/
+│       ├── app/			  # Redux store config (store.ts)
 │       ├── features/
 │       │   ├── reddit/       # RTK Query API, types, post components
 │       │   └── localApp/     # IndexedDB CRUD via RTK Query
 │       ├── components/       # UI: scroll rows, modals, media renderers
-│       ├── pages/            # Route-level components + app init/request queue
+│       ├── hooks/            # Custom hooks (useMinuteClock)
+│       ├── pages/            # Route-level components + app bootstrap
 │       └── utils/            # Router, IndexedDB wrapper, helpers
 └── backend/           # Express proxy
     └── src/
