@@ -16,118 +16,6 @@ If you hit a "Retrying in Xs" countdown after a few requests, that's the limiter
 
 ---
 
-## Wireframe
-
-![Wireframe](./frontend/docs/main-page-wireframe.svg)
-
----
-
-## Stack
-
-**Frontend**
-
-- React 19 + TypeScript (Vite)
-- Redux Toolkit — state management
-- RTK Query — data fetching and cache
-- Redux Persist + localForage — RTK cache persisted to IndexedDB
-- React Router v7
-- Tailwind CSS v3
-- Framer Motion — animations
-- HLS.js — video playback
-- DOMPurify — safe HTML rendering for Reddit markdown
-
-**Backend**
-
-- Express 5 + TypeScript (tsx)
-- Custom in-memory TTL cache — keyed by request URL, 5-minute default TTL
-- Sliding window rate limiter with slot-token reservations — prevents exceeding Reddit's API limits and propagates 429s with retry metadata to the client
-- CORS — configurable allowed origins via `ALLOWED_ORIGINS` env var
-- Morgan — request logging
-- Vitest + Supertest — unit and integration tests
-- GitHub Actions — CI on every push
-- Railway — hosted with CD on main
-
-## Testing
-
-33 tests across:
-
-- **Unit** — cache, rate limiter (Vitest)
-- **Integration** — full request flow with mocked Reddit (Vitest + Supertest)
-- **CI** — GitHub Actions on every push and PR
-
----
-
-## Project Structure
-
-```
-reddflix/
-├── frontend/          # React SPA
-│   └── src/
-│       ├── features/
-│       │   ├── reddit/       # RTK Query API, types, post components
-│       │   └── localApp/     # IndexedDB CRUD via RTK Query
-│       ├── components/       # UI: scroll rows, modals, media renderers
-│       ├── pages/            # Route-level components + app init/request queue
-│       └── utils/            # Router, IndexedDB wrapper, helpers
-└── backend/           # Express proxy
-    └── src/
-        ├── lib/              # cache.ts, rateLimiter.ts, proxyFetch.ts, logger.ts
-        ├── middleware/       # cacheCheck.ts, rateLimitGuard.ts
-        └── routes/           # posts.ts, comments.ts
-```
-
----
-
-## Getting Started
-
-### Backend
-
-```bash
-cd backend
-npm install
-npm run dev        # tsx watch on port 3001
-```
-
-| Command                 | Description                       |
-| ----------------------- | --------------------------------- |
-| `npm run dev`           | Start with hot-reload (tsx watch) |
-| `npm run build`         | Compile TypeScript                |
-| `npm start`             | Run compiled output               |
-| `npm test`              | Run Vitest in watch mode          |
-| `npm run test:run`      | Run Vitest once                   |
-| `npm run test:coverage` | Coverage report                   |
-
-**Environment variables** (`.env`):
-
-| Variable          | Description                                  |
-| ----------------- | -------------------------------------------- |
-| `PORT`            | Server port (default `3001`)                 |
-| `ALLOWED_ORIGINS` | Comma-separated list of allowed CORS origins |
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-| Command           | Description                          |
-| ----------------- | ------------------------------------ |
-| `npm run dev`     | Start the Vite dev server            |
-| `npm run build`   | Type-check and build for production  |
-| `npm run lint`    | Run ESLint                           |
-| `npm run preview` | Preview the production build locally |
-| `npm test`        | Run Vitest unit tests                  |
-
-**Environment variables** (`.env`):
-
-| Variable       | Description              |
-| -------------- | ------------------------ |
-| `VITE_API_URL` | Backend URL (production) |
-
----
-
 ## Features
 
 - Horizontal, per-subreddit row layout
@@ -424,6 +312,118 @@ Frontend (RTK Query customBaseQuery)
             429/403 → recordBan, propagate upstream
             200     → store in cache, return to client
 ```
+
+---
+
+## Stack
+
+**Frontend**
+
+- React 19 + TypeScript (Vite)
+- Redux Toolkit — state management
+- RTK Query — data fetching and cache
+- Redux Persist + localForage — RTK cache persisted to IndexedDB
+- React Router v7
+- Tailwind CSS v3
+- Framer Motion — animations
+- HLS.js — video playback
+- DOMPurify — safe HTML rendering for Reddit markdown
+
+**Backend**
+
+- Express 5 + TypeScript (tsx)
+- Custom in-memory TTL cache — keyed by request URL, 5-minute default TTL
+- Sliding window rate limiter with slot-token reservations — prevents exceeding Reddit's API limits and propagates 429s with retry metadata to the client
+- CORS — configurable allowed origins via `ALLOWED_ORIGINS` env var
+- Morgan — request logging
+- Vitest + Supertest — unit and integration tests
+- GitHub Actions — CI on every push
+- Railway — hosted with CD on main
+
+## Testing
+
+33 tests across:
+
+- **Unit** — cache, rate limiter (Vitest)
+- **Integration** — full request flow with mocked Reddit (Vitest + Supertest)
+- **CI** — GitHub Actions on every push and PR
+
+---
+
+## Project Structure
+
+```
+reddflix/
+├── frontend/          # React SPA
+│   └── src/
+│       ├── features/
+│       │   ├── reddit/       # RTK Query API, types, post components
+│       │   └── localApp/     # IndexedDB CRUD via RTK Query
+│       ├── components/       # UI: scroll rows, modals, media renderers
+│       ├── pages/            # Route-level components + app init/request queue
+│       └── utils/            # Router, IndexedDB wrapper, helpers
+└── backend/           # Express proxy
+    └── src/
+        ├── lib/              # cache.ts, rateLimiter.ts, proxyFetch.ts, logger.ts
+        ├── middleware/       # cacheCheck.ts, rateLimitGuard.ts
+        └── routes/           # posts.ts, comments.ts
+```
+
+---
+
+## Wireframe
+
+![Wireframe](./frontend/docs/main-page-wireframe.svg)
+
+---
+
+## Getting Started
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev        # tsx watch on port 3001
+```
+
+| Command                 | Description                       |
+| ----------------------- | --------------------------------- |
+| `npm run dev`           | Start with hot-reload (tsx watch) |
+| `npm run build`         | Compile TypeScript                |
+| `npm start`             | Run compiled output               |
+| `npm test`              | Run Vitest in watch mode          |
+| `npm run test:run`      | Run Vitest once                   |
+| `npm run test:coverage` | Coverage report                   |
+
+**Environment variables** (`.env`):
+
+| Variable          | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `PORT`            | Server port (default `3001`)                 |
+| `ALLOWED_ORIGINS` | Comma-separated list of allowed CORS origins |
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the Vite dev server            |
+| `npm run build`   | Type-check and build for production  |
+| `npm run lint`    | Run ESLint                           |
+| `npm run preview` | Preview the production build locally |
+| `npm test`        | Run Vitest unit tests                |
+
+**Environment variables** (`.env`):
+
+| Variable       | Description              |
+| -------------- | ------------------------ |
+| `VITE_API_URL` | Backend URL (production) |
 
 ---
 
