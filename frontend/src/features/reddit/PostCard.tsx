@@ -40,7 +40,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 	} w-72 md:w-80 flex-shrink-0 overflow-hidden flex flex-col justify-between bg-[#212121] rounded-xl text-neutral-100
 		shadow-[0_10px_24px_rgba(0,0,0,0.5)] hover:shadow-[0_14px_30px_rgba(0,0,0,0.7)] hover:scale-[1.02]
 		active:scale-[0.97] active:shadow-[0_6px_20px_rgba(0,0,0,0.5)]
-		transition-all duration-200 ease-in-out`;
+		transition-all duration-200 ease-in-out relative `;
 
 	const isSample = post.sample === true;
 
@@ -50,7 +50,8 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 		<div
 			ref={postRef}
 			className={clsx(
-				"h-full cursor-pointer  " + " " + className,
+				"h-full cursor-pointer snap-always",
+				className,
 				isMobile ? "snap-center pt-3 pb-5" : "snap-start pt-5 pb-7",
 			)}
 			onClick={() => {
@@ -59,7 +60,7 @@ const PostCard = forwardRef<HTMLDivElement, PostCardProps>((props, postRef) => {
 				});
 			}}
 		>
-			<div ref={ref} className={cardStyle2 + " relative"}>
+			<div ref={ref} className={cardStyle2}>
 				{/* Top-right badges — "seen" for all, + time for isTitleAsPost */}
 				<div className="w-full flex flex-col items-end gap-0.5">
 					<div className={clsx("flex w-full justify-between items-center")}>

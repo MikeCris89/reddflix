@@ -99,13 +99,17 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 				>
 					<div
 						ref={scrollRef}
-						className="flex items-center gap-5 md:gap-7 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth scroll-px-5 md:scroll-px-10 lg:scroll-px-11 hide-scrollbar h-full w-full"
+						className={clsx(
+							"flex items-center gap-5 md:gap-7 overflow-x-auto overflow-y-hidden snap-x scroll-smooth overscroll-x-contain scroll-px-5 md:scroll-px-10 lg:scroll-px-11 hide-scrollbar h-full w-full",
+							// isMobile ? "snap-proximity" : "snap-mandatory",
+							"snap-mandatory",
+						)}
 					>
 						{/* Left Shadow  */}
-						<div className="absolute left-0 top-0 bottom-0 w-6 md:8 bg-gradient-to-r from-[#242424] to-transparent pointer-events-none z-10 rounded-b-md" />
+						<div className="absolute left-0 top-0 bottom-0 w-6 md:w-8 bg-gradient-to-r from-[#242424] to-transparent pointer-events-none z-10 rounded-b-md" />
 
 						{/* Right Shadow  */}
-						<div className="absolute right-0 top-0 bottom-0 w-6 md:8 bg-gradient-to-l from-[#242424] to-transparent pointer-events-none z-10 rounded-b-md" />
+						<div className="absolute right-0 top-0 bottom-0 w-6 md:w-8 bg-gradient-to-l from-[#242424] to-transparent pointer-events-none z-10 rounded-b-md" />
 
 						{!inView && <SkeletonContainer />}
 						{inView && (
@@ -139,13 +143,13 @@ const ScrollButton = ({
 		<div
 			onClick={() => onClick(dir)}
 			className={clsx(
-				"absolute top-1/2 -translate-y-1/2 z-20 h-full rounded-1 bg-neutral-900/10 hover:bg-neutral-900/60 transition p-2 flex items-center hover:cursor-pointer group",
+				"absolute top-1/2 -translate-y-1/2 z-20 h-full rounded-sm bg-neutral-900/10 hover:bg-neutral-900/60 transition p-2 flex items-center hover:cursor-pointer group",
 				position,
 			)}
 		>
 			<div
 				className={clsx(
-					"bg-neutral-800/60 group-hover:bg-cyan-700/80 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]",
+					"bg-neutral-800/60 group-hover:bg-[#E50914] transition p-2 rounded-full shadow-md ring-1 ring-[#E5091470]",
 				)}
 			>
 				<Icon size={20} className="text-neutral-100" />
