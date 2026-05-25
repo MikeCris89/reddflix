@@ -139,7 +139,7 @@ const PostContainer = ({
 			if (!isFirstLoad.current) onDataUpdated?.();
 			else isFirstLoad.current = false;
 		}
-	}, [data]);
+	}, [data, onDataUpdated]);
 
 	return (
 		<>

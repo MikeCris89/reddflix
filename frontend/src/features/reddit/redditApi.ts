@@ -244,10 +244,10 @@ export const redditApi = createApi({
 		}),
 		fetchPostAndComments: builder.query<
 			RedditPostAndComments,
-			{ postId: string; slotToken?: number }
+			{ postId: string; slotToken?: number; shared?: boolean }
 		>({
-			query: ({ postId, slotToken }) => ({
-				url: `comments/${postId}`,
+			query: ({ postId, slotToken, shared }) => ({
+				url: `${shared ? "shared" : "comments"}/${postId}`,
 				headers:
 					slotToken !== undefined
 						? { "X-Slot-Token": String(slotToken) }
@@ -292,4 +292,5 @@ export const {
 	useFetchPostsBySubredditQuery,
 	useLazyFetchPostsBySubredditQuery,
 	useFetchPostAndCommentsQuery,
+	useLazyFetchPostAndCommentsQuery,
 } = redditApi;

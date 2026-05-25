@@ -8,6 +8,7 @@ import { getMinutesLeft, relativeTime } from "../utils/helpers";
 import { Subreddit } from "../utils/types";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
+import RetryLabel from "./RetryLabel";
 
 const COOLDOWN_MS = 10 * 60 * 1000;
 
@@ -43,12 +44,7 @@ const ScrollHeader = ({
 		isMobile ? "text-base" : "text-lg"
 	}`;
 
-	const rateLimitEl = remaining > 0 && (
-		<span className="flex items-center gap-1 text-[#E50914] text-xs">
-			<Spinner size="xs" />
-			Retrying in {Math.ceil(remaining / 1000)}s
-		</span>
-	);
+	const rateLimitEl = remaining > 0 && <RetryLabel remainingMs={remaining} />;
 
 	const banEl = remaining <= 0 && banMinutesLeft > 0 && (
 		<span className="flex items-center gap-1 text-blue-400 text-xs">

@@ -1,5 +1,8 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
+import {
+	useFetchPostsBySubredditQuery,
+	useLazyFetchPostAndCommentsQuery,
+} from "../features/reddit/redditApi";
 import { useFetchSeenPostsQuery } from "../features/localApp/localAppApi";
 import { useEffect, useState } from "react";
 import Post from "../features/reddit/Post";
@@ -11,6 +14,8 @@ import { isTitleAsPost, RedditPost } from "../features/reddit/redditTypes";
 import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
 import { skipToken } from "@reduxjs/toolkit/query";
+import Spinner from "./Spinner";
+import { isAppHandledError } from "../utils/types";
 
 const PostModal = ({
 	setLayoutSize,
@@ -20,14 +25,15 @@ const PostModal = ({
 	const navigate = useNavigate();
 	const { subreddit, postId } = useParams();
 	const [post, setPost] = useState<RedditPost | null>(null);
+	const [errMsg, setErrMsg] = useState<string | null>(null);
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
 	const location = useLocation();
 	const state = location.state as { backgroundLocation?: Location };
 	const backgroundLocation = state?.backgroundLocation;
 
-	const { data, isLoading: _loadingPosts } = useFetchPostsBySubredditQuery(
-		subreddit ? { subreddit } : skipToken,
+	const { data, isLoading: loadingPosts } = useFetchPostsBySubredditQuery(
+		subreddit && backgroundLocation ? { subreddit } : skipToken,
 		{
 			selectFromResult: ({ data, isLoading }) => {
 				return {
@@ -37,6 +43,9 @@ const PostModal = ({
 			},
 		},
 	);
+
+	const [fetchPost, { isLoading: fetchingPost, isError, error }] =
+		useLazyFetchPostAndCommentsQuery();
 
 	const { data: seenPosts } = useFetchSeenPostsQuery(
 		(data as RedditPost | undefined)?.subreddit ?? "",
@@ -49,11 +58,22 @@ const PostModal = ({
 	useEffect(() => {
 		if (!subreddit) return;
 		if (data) return setPost(data);
+		if (!backgroundLocation && postId) {
+			fetchPost({ postId, shared: true })
+				.unwrap()
+				.then((resp) => setPost(resp.post ?? null))
+				.catch(() => {
+					getFallbackPosts(subreddit).then((posts) =>
+						setPost(posts.find((el) => el.id === postId) ?? null),
+					);
+				});
+			return;
+		}
 
 		getFallbackPosts(subreddit).then((posts) =>
 			setPost(posts.find((el) => el.id === postId) ?? null),
 		);
-	}, []);
+	}, [data, backgroundLocation, subreddit, postId, fetchPost]);
 
 	useEffect(() => {
 		if (backgroundLocation && setLayoutSize) {
@@ -85,6 +105,13 @@ const PostModal = ({
 	if (!post) {
 		return <p>Post Not Found - {postId}</p>;
 	}
+
+	if (loadingPosts || fetchingPost)
+		return (
+			<div className="w-full h-full flex justify-center">
+				<Spinner />
+			</div>
+		);
 
 	return (
 		<div
