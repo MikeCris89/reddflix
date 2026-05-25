@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 import postRouter from "./routes/posts";
 import commentRouter from "./routes/comments";
+import sharedRouter from "./routes/shared";
 import morgan from "morgan";
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? "")
@@ -29,6 +30,7 @@ app.use(morgan("dev"));
 
 app.use("/r", postRouter);
 app.use("/comments", commentRouter);
+app.use("/shared", sharedRouter);
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 	console.error(err);
