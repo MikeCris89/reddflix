@@ -10,6 +10,8 @@ import PostContainer, {
 } from "../features/reddit/PostContainer";
 import { useLazyFetchPostsBySubredditQuery } from "../features/reddit/redditApi";
 import ScrollHeader from "./ScrollHeader";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
 
 interface Props {
 	direction?: "row" | "col";
@@ -29,11 +31,16 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 	const isRefreshing = refreshResult.isFetching;
 	const refreshError = refreshResult.isError ? refreshResult.error : undefined;
 
-	const [pendingTime, setPendingTime] = useState(0);
-	const [banExpiry, setBanExpiry] = useState(0);
-	const handleBanExpiry = useCallback((timestamp: number) => {
-		setBanExpiry((prev) => (prev === timestamp ? prev : timestamp));
-	}, []);
+	const [postsError, setPostsError] = useState<
+		FetchBaseQueryError | SerializedError | undefined
+	>(undefined);
+	const handlePostsError = useCallback(
+		(err: FetchBaseQueryError | SerializedError | undefined) => {
+			setPostsError(err);
+		},
+		[],
+	);
+	const error = refreshError ?? postsError;
 
 	const handleRefresh = () => trigger({ subreddit: subreddit.name }, false);
 
@@ -74,11 +81,9 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 		<div className="flex flex-col bg-[#1a1a1a] rounded-md">
 			<ScrollHeader
 				subreddit={subreddit}
-				pendingTime={pendingTime}
-				banExpiry={banExpiry}
 				isRefreshing={isRefreshing}
 				onRefresh={handleRefresh}
-				refreshError={refreshError}
+				error={error}
 			/>
 
 			<div className="relative">
@@ -116,8 +121,7 @@ const ScrollContainer = ({ direction = "row", subreddit }: Props) => {
 							<PostContainer
 								subreddit={subreddit}
 								postRefs={postRefs}
-								onRateLimit={setPendingTime}
-								onBanExpiry={handleBanExpiry}
+								onError={handlePostsError}
 								onDataUpdated={handleDataUpdated}
 								isRefreshing={isRefreshing}
 							/>

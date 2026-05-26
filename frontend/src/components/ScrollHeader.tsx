@@ -1,41 +1,31 @@
 import { RefreshCw } from "lucide-react";
 import useDisplay from "../hooks/useDisplay";
-import useCountdown from "../hooks/useCountdown";
 import { useMinuteClock } from "../hooks/useMinuteClock";
-import Spinner from "./Spinner";
 import MinutesLeft from "./MinutesLeft";
 import { getMinutesLeft, relativeTime } from "../utils/helpers";
-import { Subreddit } from "../utils/types";
+import { isAppHandledError, Subreddit } from "../utils/types";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
-import RetryLabel from "./RetryLabel";
+import QueryErrorMessage from "./QueryErrorMessage";
 
 const COOLDOWN_MS = 10 * 60 * 1000;
 
 interface Props {
 	subreddit: Subreddit;
-	pendingTime: number;
-	banExpiry: number;
 	isRefreshing: boolean;
 	onRefresh: () => void;
-	refreshError?: FetchBaseQueryError | SerializedError;
+	error?: FetchBaseQueryError | SerializedError;
 }
 
-const ScrollHeader = ({
-	subreddit,
-	pendingTime,
-	banExpiry,
-	isRefreshing,
-	onRefresh,
-	refreshError,
-}: Props) => {
+const ScrollHeader = ({ subreddit, isRefreshing, onRefresh, error }: Props) => {
 	const { isMobile } = useDisplay();
-	const remaining = useCountdown(pendingTime);
 	useMinuteClock();
-	const banMinutesLeft =
-		banExpiry > 0
-			? Math.max(0, Math.ceil((banExpiry - Date.now()) / 60000))
-			: 0;
+
+	const isActiveBan =
+		!!error &&
+		isAppHandledError(error) &&
+		error.data.reason === "ban" &&
+		error.data.pendingTimestamp > Date.now();
 
 	const mLeft = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated);
 	const inCooldown = mLeft > 0;
@@ -44,19 +34,7 @@ const ScrollHeader = ({
 		isMobile ? "text-base" : "text-lg"
 	}`;
 
-	const rateLimitEl = remaining > 0 && <RetryLabel remainingMs={remaining} />;
-
-	const banEl = remaining <= 0 && banMinutesLeft > 0 && (
-		<span className="flex items-center gap-1 text-blue-400 text-xs">
-			Temp banned · {banMinutesLeft}m left
-		</span>
-	);
-
-	const errEl = !rateLimitEl && !banEl && refreshError && (
-		<span className="flex items-center gap-1 text-[#E50914] text-xs">
-			Something went wrong.
-		</span>
-	);
+	const errorEl = error && <QueryErrorMessage error={error} variant="inline" />;
 
 	return (
 		<>
@@ -66,7 +44,7 @@ const ScrollHeader = ({
 				<span>r/{subreddit.name}</span>
 				<button
 					onClick={onRefresh}
-					disabled={isRefreshing || inCooldown || !!banEl}
+					disabled={isRefreshing || inCooldown || isActiveBan}
 					className="text-zinc-400 hover:text-white transition-colors flex gap-2 items-center text-[12px] disabled:opacity-40 disabled:cursor-not-allowed"
 					title="Refresh"
 				>
@@ -76,16 +54,16 @@ const ScrollHeader = ({
 						initTime={subreddit.lastUpdated}
 					/>
 				</button>
-				{remaining <= 0 && subreddit.lastUpdated && (
+				{!error && subreddit.lastUpdated && (
 					<span className="text-zinc-500 text-xs">
 						{relativeTime(subreddit.lastUpdated / 1000)} ago
 					</span>
 				)}
-				{!isMobile && (rateLimitEl || banEl || errEl)}
+				{!isMobile && errorEl}
 			</div>
-			{isMobile && (rateLimitEl || banEl) && (
+			{isMobile && errorEl && (
 				<div className="flex flex-col sm:flex-row items-center justify-center gap-3 px-3 pb-1 bg-[#212121]">
-					{rateLimitEl || banEl || errEl}
+					{errorEl}
 				</div>
 			)}
 		</>

@@ -5,6 +5,8 @@ import { useFetchPostsBySubredditQuery } from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
 import { getFallbackPosts, hasPostFallback } from "../../utils/helpers";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import { SerializedError } from "@reduxjs/toolkit";
 
 export const PostSkeleton = () => (
 	<div className="animate-pulse h-[400px] bg-zinc-800 w-80 md:w-90 rounded-xl ">
@@ -26,17 +28,13 @@ export const SkeletonContainer = () =>
 const PostContainer = ({
 	subreddit,
 	postRefs,
-	onRateLimit,
-	onErrorMessage,
-	onBanExpiry,
+	onError,
 	onDataUpdated,
 	isRefreshing = false,
 }: {
 	subreddit: Subreddit;
 	postRefs: React.RefObject<(HTMLDivElement | null)[]>;
-	onRateLimit?: (pendingTime: number) => void;
-	onErrorMessage?: (msg: string | null) => void;
-	onBanExpiry?: (timestamp: number) => void;
+	onError?: (error: FetchBaseQueryError | SerializedError | undefined) => void;
 	onDataUpdated?: () => void;
 	isRefreshing?: boolean;
 }) => {
@@ -114,25 +112,12 @@ const PostContainer = ({
 				new Date(error.data.pendingTimestamp).toLocaleDateString(),
 			);
 			setPendingTime(error.data.pendingTimestamp);
-			onRateLimit?.(error.data.pendingTimestamp);
 		}
-	}, [isError, error, subreddit, onRateLimit]);
+	}, [isError, error, subreddit]);
 
 	useEffect(() => {
-		if (!isError || !error) {
-			onErrorMessage?.(null);
-			onBanExpiry?.(0);
-			return;
-		}
-		if (!isAppHandledError(error)) {
-			onErrorMessage?.("Error loading posts");
-		} else if (error.data.reason === "ban") {
-			onErrorMessage?.(error.data.message);
-			onBanExpiry?.(error.data.pendingTimestamp);
-		} else if (error.data.reason === "rateLimit") {
-			onErrorMessage?.("Reddit's rate limit reached.");
-		}
-	}, [isError, error, onErrorMessage, onBanExpiry]);
+		onError?.(isError ? error : undefined);
+	}, [isError, error, onError]);
 
 	useEffect(() => {
 		if (data) {
