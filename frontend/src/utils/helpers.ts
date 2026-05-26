@@ -112,15 +112,11 @@ export const getErrorMessage = (
 // 	}
 // };
 
-export const handleNativeShare = async (
-	url: string,
-	text: string = "Check out this post from ReddFlix!",
-) => {
+export const handleNativeShare = async (url: string) => {
 	if (navigator.share) {
 		try {
 			await navigator.share({
 				title: "ReddFlix",
-				text,
 				url,
 			});
 		} catch (err) {

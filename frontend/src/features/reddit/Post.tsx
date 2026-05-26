@@ -83,10 +83,7 @@ const Post = ({
 					<InfoBubble
 						icon={BUBBLE_ICON.share}
 						onClick={() =>
-							handleNativeShare(
-								`${window.location.origin}${location.pathname}`,
-								post.title,
-							)
+							handleNativeShare(`${window.location.origin}${location.pathname}`)
 						}
 					/>
 				</div>
