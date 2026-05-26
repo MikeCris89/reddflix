@@ -95,22 +95,22 @@ export const getErrorMessage = (
 	}
 };
 
-export const showCache = (storeName: string) => {
-	const store_ = window.store;
-	if (!store_) {
-		console.warn(`Redux store ${storeName} not found on window`);
-		return;
-	}
-	const state = store_.getState();
-	const queries = state.redditApi?.queries;
+// export const showCache = (storeName: string) => {
+// 	const store_ = window.store;
+// 	if (!store_) {
+// 		console.warn(`Redux store ${storeName} not found on window`);
+// 		return;
+// 	}
+// 	const state = store_.getState();
+// 	const queries = state.redditApi?.queries;
 
-	for (const [key, value] of Object.entries(queries || {})) {
-		if (key.includes(`${storeName}`)) {
-			console.log(`Found ${storeName} query:`);
-			console.log(key, value);
-		}
-	}
-};
+// 	for (const [key, value] of Object.entries(queries || {})) {
+// 		if (key.includes(`${storeName}`)) {
+// 			console.log(`Found ${storeName} query:`);
+// 			console.log(key, value);
+// 		}
+// 	}
+// };
 
 export const handleNativeShare = async (
 	url: string,

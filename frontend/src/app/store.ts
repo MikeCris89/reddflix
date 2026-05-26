@@ -13,12 +13,14 @@ import {
 } from "redux-persist";
 import { redditApi } from "../features/reddit/redditApi";
 import { localAppApi } from "../features/localApp/localAppApi";
+import { sanitizeQueries } from "./sanitizeQueries";
 
 // RTK Query cache is stored under 'api.reducerPath'
 const persistConfig = {
 	key: redditApi.reducerPath,
 	storage: localForage,
 	version: 1,
+	transforms: [sanitizeQueries],
 };
 
 localForage.config({
@@ -45,11 +47,6 @@ export const store = configureStore({
 			},
 		}).concat(redditApi.middleware, localAppApi.middleware),
 });
-
-// 👇 Dev-only access to Redux store
-if (import.meta.env.DEV) {
-	window.store = store;
-}
 
 export const persistor = persistStore(store);
 
