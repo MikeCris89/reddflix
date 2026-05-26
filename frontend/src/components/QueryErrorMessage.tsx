@@ -17,14 +17,14 @@ const QueryErrorMessage = ({ error, variant = "panel" }: Props) => {
 			? error.data.pendingTimestamp
 			: 0;
 	const banExpiry =
-		appHandled && error.data.reason === "ban"
-			? error.data.pendingTimestamp
-			: 0;
+		appHandled && error.data.reason === "ban" ? error.data.pendingTimestamp : 0;
 
 	const remaining = useCountdown(pendingTimestamp);
 	useMinuteClock();
 	const banMinutesLeft =
-		banExpiry > 0 ? Math.max(0, Math.ceil((banExpiry - Date.now()) / 60000)) : 0;
+		banExpiry > 0
+			? Math.max(0, Math.ceil((banExpiry - Date.now()) / 60000))
+			: 0;
 
 	if (appHandled && error.data.reason === "rateLimit" && remaining > 0) {
 		if (variant === "inline") return <RetryLabel remainingMs={remaining} />;
