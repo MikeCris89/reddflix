@@ -337,7 +337,7 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 		}
 	}, [isError, error]);
 
-	if (hasFallback && isError && error) {
+	if (!hasFallback && isError && error) {
 		return (
 			<div className="flex flex-col h-[300px] justify-center items-center">
 				<QueryErrorMessage error={error} variant="panel" />

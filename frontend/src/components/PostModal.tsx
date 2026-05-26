@@ -6,7 +6,11 @@ import {
 import { useFetchSeenPostsQuery } from "../features/localApp/localAppApi";
 import { useEffect, useState } from "react";
 import Post from "../features/reddit/Post";
-import { getCreatedTime, getFallbackPosts } from "../utils/helpers";
+import {
+	getCreatedTime,
+	getFallbackPosts,
+	isFallbackPost,
+} from "../utils/helpers";
 import clsx from "clsx";
 import Comments from "../features/reddit/Comments";
 import useDisplay from "../hooks/useDisplay";
@@ -16,6 +20,7 @@ import NoMatch from "../pages/NoMatch";
 import { skipToken } from "@reduxjs/toolkit/query";
 import Spinner from "./Spinner";
 import QueryErrorMessage from "./QueryErrorMessage";
+import { isAppHandledError } from "../utils/types";
 
 const PostModal = ({
 	setLayoutSize,
@@ -25,14 +30,16 @@ const PostModal = ({
 	const navigate = useNavigate();
 	const { subreddit, postId } = useParams();
 	const [post, setPost] = useState<RedditPost | null>(null);
+	const [pendingTime, setPendingTime] = useState(0);
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
 	const location = useLocation();
 	const state = location.state as { backgroundLocation?: Location };
 	const backgroundLocation = state?.backgroundLocation;
+	const isFallback = !!(postId && isFallbackPost(postId));
 
 	const { data, isLoading: loadingPosts } = useFetchPostsBySubredditQuery(
-		subreddit && backgroundLocation ? { subreddit } : skipToken,
+		subreddit && backgroundLocation && !isFallback ? { subreddit } : skipToken,
 		{
 			selectFromResult: ({ data, isLoading }) => {
 				return {
@@ -52,27 +59,57 @@ const PostModal = ({
 			skip: !data?.subreddit,
 		},
 	);
+
 	const isSeen = !!(postId && seenPosts?.[postId]);
 
 	useEffect(() => {
 		if (!subreddit) return;
+
+		if (postId && isFallbackPost(postId)) {
+			getFallbackPosts(subreddit).then((posts) =>
+				setPost(posts.find((el) => el.id === postId) ?? null),
+			);
+			return;
+		}
+
 		if (data) return setPost(data);
 		if (!backgroundLocation && postId) {
 			fetchPost({ postId, shared: true })
 				.unwrap()
 				.then((resp) => setPost(resp.post ?? null))
-				.catch(() => {
-					getFallbackPosts(subreddit).then((posts) =>
-						setPost(posts.find((el) => el.id === postId) ?? null),
-					);
+				.catch((err) => {
+					if (
+						isAppHandledError(err) &&
+						err.data.reason === "rateLimit" &&
+						err.data.pendingTimestamp > 0
+					) {
+						setPendingTime(err.data.pendingTimestamp);
+						return;
+					}
 				});
 			return;
 		}
-
-		getFallbackPosts(subreddit).then((posts) =>
-			setPost(posts.find((el) => el.id === postId) ?? null),
-		);
 	}, [data, backgroundLocation, subreddit, postId, fetchPost]);
+
+	useEffect(() => {
+		if (!pendingTime || pendingTime <= Date.now()) return;
+		if (!postId) return;
+		const timeout = setTimeout(() => {
+			fetchPost({ postId, shared: true })
+				.unwrap()
+				.then((resp) => setPost(resp.post ?? null))
+				.catch((err) => {
+					if (
+						isAppHandledError(err) &&
+						err.data.reason === "rateLimit" &&
+						err.data.pendingTimestamp > 0
+					) {
+						setPendingTime(err.data.pendingTimestamp);
+					}
+				});
+		}, pendingTime - Date.now());
+		return () => clearTimeout(timeout);
+	}, [pendingTime, postId, fetchPost]);
 
 	useEffect(() => {
 		if (backgroundLocation && setLayoutSize) {

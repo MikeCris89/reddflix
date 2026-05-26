@@ -205,6 +205,10 @@ export const hasCommentFallback = (sub: string): boolean => {
 	return (commentsManifest as string[]).includes(sub);
 };
 
+export const isFallbackPost = (postId: string): boolean => {
+	return (commentsManifest as string[]).includes(postId);
+};
+
 export const getFallbackPosts = async (sub: string): Promise<RedditPost[]> => {
 	if (!hasPostFallback(sub)) return [];
 	const module = await import(`../data/fallback/posts/${sub}.json`);
