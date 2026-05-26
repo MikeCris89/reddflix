@@ -21,7 +21,7 @@ import {
 } from "../../utils/helpers";
 import { motion, AnimatePresence } from "framer-motion";
 import Spinner from "../../components/Spinner";
-import useCountdown from "../../hooks/useCountdown";
+import QueryErrorMessage from "../../components/QueryErrorMessage";
 import { skipToken } from "@reduxjs/toolkit/query";
 
 const getDescendants = (comment: RedditCommentFormatted): string[] => {
@@ -267,7 +267,6 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 	const [fallbackComments, setFallbackComments] = useState<
 		RedditCommentFormatted[] | null
 	>(null);
-	const remaining = useCountdown(pendingTime);
 	const location = useLocation();
 	const commRef = useRef<HTMLDivElement>(null);
 	const { isPortrait, isMobile } = useDisplay();
@@ -341,28 +340,7 @@ const Comments = ({ hideComments }: { hideComments: () => void }) => {
 	if (hasFallback && isError && error) {
 		return (
 			<div className="flex flex-col h-[300px] justify-center items-center">
-				{isError && error && (
-					<div className="flex flex-col gap-2 items-center justify-center w-full h-full">
-						{!isAppHandledError(error) && (
-							<p>{"Error occurred. Please try again later."}</p>
-						)}
-						{isAppHandledError(error) && error.data.reason === "ban" && (
-							<p>{error.data.message}</p>
-						)}
-						{isAppHandledError(error) &&
-							error.data.reason === "rateLimit" &&
-							remaining > 0 && (
-								<>
-									<p className="text-sm text-[#E50914]">
-										Reddit's Rate limit reached.
-									</p>
-									<p className="text-lg text-[#E50914]">
-										Retrying in {Math.ceil(remaining / 1000)}s
-									</p>
-								</>
-							)}
-					</div>
-				)}
+				<QueryErrorMessage error={error} variant="panel" />
 			</div>
 		);
 	}
