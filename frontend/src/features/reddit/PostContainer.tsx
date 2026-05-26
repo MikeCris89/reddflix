@@ -1,11 +1,18 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { isAppHandledError, Subreddit } from "../../utils/types";
+import { COOLDOWN_MS, isAppHandledError, Subreddit } from "../../utils/types";
 import { useFetchSeenPostsQuery } from "../localApp/localAppApi";
-import { useFetchPostsBySubredditQuery } from "./redditApi";
+import {
+	useFetchPostsBySubredditQuery,
+	useLazyFetchPostsBySubredditQuery,
+} from "./redditApi";
 import { RedditPost } from "./redditTypes";
 import PostCard from "./PostCard";
-import { getFallbackPosts, hasPostFallback } from "../../utils/helpers";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
+import {
+	getFallbackPosts,
+	getMinutesLeft,
+	hasPostFallback,
+} from "../../utils/helpers";
+import { FetchBaseQueryError, skipToken } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 
 export const PostSkeleton = () => (
@@ -38,7 +45,6 @@ const PostContainer = ({
 	onDataUpdated?: () => void;
 	isRefreshing?: boolean;
 }) => {
-	const [slotToken, setSlotToken] = useState<number | undefined>();
 	const [pendingTime, setPendingTime] = useState<number>(0);
 	const [fallbackPosts, setFallbackPosts] = useState<RedditPost[] | null>(null);
 	const isFirstLoad = useRef(true);
@@ -48,8 +54,13 @@ const PostContainer = ({
 	// NOTE: useQuery here (not in ScrollContainer) because of inView gating.
 	// Refresh button in ScrollContainer uses useLazyQuery against same cache.
 
-	const { data, isLoading, error, isError } = useFetchPostsBySubredditQuery(
-		{ subreddit: subreddit.name, slotToken },
+	const {
+		data,
+		isLoading: postLoading,
+		isError,
+		error,
+	} = useFetchPostsBySubredditQuery(
+		{ subreddit: subreddit.name },
 		{
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
@@ -57,11 +68,19 @@ const PostContainer = ({
 		},
 	);
 
+	const [
+		fetchPosts,
+		{ isLoading: fetchLoading, error: fetchError, isError: fetchIsError },
+	] = useLazyFetchPostsBySubredditQuery();
+
 	const { data: seenPosts } = useFetchSeenPostsQuery(subreddit.name);
 
+	const isLoading = isRefreshing || postLoading || fetchLoading;
+
 	useEffect(() => {
+		if (isLoading || data) return setFallbackPosts(null);
 		getFallbackPosts(subreddit.name).then(setFallbackPosts);
-	}, [subreddit]);
+	}, [subreddit, isLoading, data]);
 
 	const resolvedData = useMemo(() => {
 		if (data) return data;
@@ -92,11 +111,11 @@ const PostContainer = ({
 		if (!pendingTime || pendingTime < Date.now()) return;
 
 		const timeout = setTimeout(() => {
-			setSlotToken(pendingTime);
+			fetchPosts({ subreddit: subreddit.name, slotToken: pendingTime });
 		}, pendingTime - Date.now());
 
 		return () => clearTimeout(timeout);
-	}, [pendingTime]);
+	}, [pendingTime, fetchPosts, subreddit]);
 
 	useEffect(() => {
 		if (
@@ -107,29 +126,38 @@ const PostContainer = ({
 			error.data.reason === "rateLimit"
 		) {
 			console.warn(
-				"Pending request: ",
+				"(Post container) Pending request: ",
 				subreddit.name,
-				new Date(error.data.pendingTimestamp).toLocaleDateString(),
+				new Date(error.data.pendingTimestamp).toLocaleString(),
+				error.data.message,
 			);
 			setPendingTime(error.data.pendingTimestamp);
 		}
 	}, [isError, error, subreddit]);
 
 	useEffect(() => {
-		onError?.(isError ? error : undefined);
-	}, [isError, error, onError]);
+		const activeError = fetchIsError ? fetchError : isError ? error : undefined;
+		onError?.(activeError);
+	}, [isError, error, fetchIsError, fetchError, onError]);
 
 	useEffect(() => {
-		if (data) {
-			if (!isFirstLoad.current) onDataUpdated?.();
-			else isFirstLoad.current = false;
+		if (!data) return;
+		if (!isFirstLoad.current) return onDataUpdated?.();
+
+		// wait until seenPosts is also ready before consuming the first-load slot
+		if (!seenPosts) return;
+
+		isFirstLoad.current = false;
+		const inCooldown = getMinutesLeft(COOLDOWN_MS, subreddit.lastUpdated) > 0;
+		if (!inCooldown && data.posts.every((p) => !!seenPosts[p.id])) {
+			fetchPosts({ subreddit: subreddit.name });
 		}
-	}, [data, onDataUpdated]);
+	}, [data, onDataUpdated, seenPosts, subreddit, fetchPosts]);
 
 	return (
 		<>
-			{(isLoading || isRefreshing) && <SkeletonContainer />}
-			{(!isLoading && !isRefreshing && (
+			{isLoading && <SkeletonContainer />}
+			{(!isLoading && (
 				<>
 					<div></div>
 					{allSortedPosts.map((post, i) => (
