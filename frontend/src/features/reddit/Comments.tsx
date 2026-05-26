@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useFetchPostAndCommentsQuery } from "./redditApi";
 import { RedditCommentFormatted } from "./redditTypes";
 import InfoBubble from "../../components/InfoBubble";
@@ -260,22 +260,23 @@ const CommentThread = ({ comment }: { comment: RedditCommentFormatted }) => {
 const btnTextClass = "text-xs md:text-sm";
 
 const Comments = ({ hideComments }: { hideComments: () => void }) => {
+	const { postId } = useParams();
 	const [pendingTime, setPendingTime] = useState(0);
 	const [slotToken, setSlotToken] = useState<number | undefined>();
-	const { postId } = useParams();
-	const PAGE_SIZE = 20;
 	const [page, setPage] = useState(0);
-	const { isPortrait, isMobile } = useDisplay();
-	const commRef = useRef<HTMLDivElement>(null);
 	const [fallbackComments, setFallbackComments] = useState<
 		RedditCommentFormatted[] | null
 	>(null);
 	const remaining = useCountdown(pendingTime);
-
+	const location = useLocation();
+	const commRef = useRef<HTMLDivElement>(null);
+	const { isPortrait, isMobile } = useDisplay();
+	const PAGE_SIZE = 20;
+	const shared = !location.state?.backgroundLocation;
 	const hasFallback = postId ? hasCommentFallback(postId) : false;
 
 	const { data, isLoading, isError, error } = useFetchPostAndCommentsQuery(
-		postId && !hasFallback ? { postId, slotToken } : skipToken,
+		postId && !hasFallback ? { postId, slotToken, shared } : skipToken,
 		{
 			refetchOnMountOrArgChange: false,
 			refetchOnReconnect: false,
