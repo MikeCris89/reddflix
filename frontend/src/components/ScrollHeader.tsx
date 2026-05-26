@@ -3,12 +3,10 @@ import useDisplay from "../hooks/useDisplay";
 import { useMinuteClock } from "../hooks/useMinuteClock";
 import MinutesLeft from "./MinutesLeft";
 import { getMinutesLeft, relativeTime } from "../utils/helpers";
-import { isAppHandledError, Subreddit } from "../utils/types";
+import { COOLDOWN_MS, isAppHandledError, Subreddit } from "../utils/types";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 import QueryErrorMessage from "./QueryErrorMessage";
-
-const COOLDOWN_MS = 10 * 60 * 1000;
 
 interface Props {
 	subreddit: Subreddit;

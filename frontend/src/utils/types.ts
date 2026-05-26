@@ -1,3 +1,7 @@
+// Constants
+export const COOLDOWN_MS = 10 * 60 * 1000;
+
+// Types
 export const MODE = {
 	preview: "preview",
 	full: "full",
