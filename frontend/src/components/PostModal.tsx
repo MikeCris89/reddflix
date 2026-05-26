@@ -15,7 +15,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import NoMatch from "../pages/NoMatch";
 import { skipToken } from "@reduxjs/toolkit/query";
 import Spinner from "./Spinner";
-import { isAppHandledError } from "../utils/types";
+import QueryErrorMessage from "./QueryErrorMessage";
 
 const PostModal = ({
 	setLayoutSize,
@@ -25,7 +25,6 @@ const PostModal = ({
 	const navigate = useNavigate();
 	const { subreddit, postId } = useParams();
 	const [post, setPost] = useState<RedditPost | null>(null);
-	const [errMsg, setErrMsg] = useState<string | null>(null);
 	const [showComments, setShowComments] = useState(false);
 	const { isPortrait } = useDisplay();
 	const location = useLocation();
@@ -102,16 +101,24 @@ const PostModal = ({
 		"min-h-[40%]": isPortrait && showComments && backgroundLocation,
 	});
 
-	if (!post) {
-		return <p>Post Not Found - {postId}</p>;
-	}
-
 	if (loadingPosts || fetchingPost)
 		return (
 			<div className="w-full h-full flex justify-center">
 				<Spinner />
 			</div>
 		);
+
+	if (!post && isError && error) {
+		return (
+			<div className="w-full h-full flex justify-center items-center p-3">
+				<QueryErrorMessage error={error} variant="panel" />
+			</div>
+		);
+	}
+
+	if (!post) {
+		return <p>Post Not Found - {postId}</p>;
+	}
 
 	return (
 		<div
