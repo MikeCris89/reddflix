@@ -1,11 +1,14 @@
-import { getItem } from "./dbHelpers";
+import { getItem, setItem } from "./dbHelpers";
 
 const createMemoryBan = () => {
 	let inMemoryBannedUntil: number = 0;
 
 	const get = () => inMemoryBannedUntil;
 
-	const set = (timestamp: number) => (inMemoryBannedUntil = timestamp);
+	const set = (timestamp: number) => {
+		inMemoryBannedUntil = timestamp;
+		setItem("requestMonitor", "bannedUntil", timestamp);
+	};
 
 	return {
 		get,

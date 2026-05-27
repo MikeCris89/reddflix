@@ -21,7 +21,6 @@ import { refinePost } from "../../utils/helpers";
 import { localAppApi } from "../localApp/localAppApi";
 import { isBannedResponse, isRateLimitedResponse } from "../../utils/types";
 import { memoryBan } from "../../utils/memoryBan";
-import { setItem } from "../../utils/dbHelpers";
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -102,6 +101,7 @@ const customBaseQuery: BaseQueryFn<
 			: import.meta.env.VITE_API_URL,
 	});
 	const result = await rawBaseQuery(args, api, extraOptions);
+	console.log("proxy fetch response: ", result);
 
 	const cacheStatus = result.meta?.response?.headers.get("x-cache");
 	if (cacheStatus) console.log(`🗄️ cache ${cacheStatus}`);
@@ -129,7 +129,6 @@ const customBaseQuery: BaseQueryFn<
 
 			const banTime = now + Number(retryAfter) * 1000;
 			memoryBan.set(banTime);
-			setItem("requestMonitor", "bannedUntil", banTime);
 			return {
 				error: {
 					status: 403,
@@ -234,11 +233,11 @@ export const redditApi = createApi({
 							),
 						);
 					})
-					.catch((_err) => {
-						// console.error(
-						// 	`❌ fetchPostsBySubreddit(${arg.subreddit}) failed:`,
-						// 	err,
-						// );
+					.catch((err) => {
+						console.error(
+							`❌ fetchPostsBySubreddit(${arg.subreddit}) failed:`,
+							err,
+						);
 					});
 			},
 		}),
@@ -277,11 +276,11 @@ export const redditApi = createApi({
 					.then((_res) => {
 						console.log(`✅ fetchPostAndComments(${arg.postId}) Success`);
 					})
-					.catch((_err) => {
-						// console.error(
-						// 	`❌ fetchPostAndComments(${arg.postId}) failed:`,
-						// 	err,
-						// );
+					.catch((err) => {
+						console.error(
+							`❌ fetchPostAndComments(${arg.postId}) failed:`,
+							err,
+						);
 					});
 			},
 		}),

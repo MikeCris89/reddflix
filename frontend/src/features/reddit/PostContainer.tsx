@@ -12,7 +12,7 @@ import {
 	getMinutesLeft,
 	hasPostFallback,
 } from "../../utils/helpers";
-import { FetchBaseQueryError, skipToken } from "@reduxjs/toolkit/query";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
 import { SerializedError } from "@reduxjs/toolkit";
 
 export const PostSkeleton = () => (

@@ -19,8 +19,12 @@ export const proxyFetch = async (
 	const resp = await fetch(url, {
 		headers: { "User-Agent": USER_AGENT },
 	});
+	const { body: _body, ...restResp } = resp;
+	console.log("Reddit Raw resp: ", restResp);
+	if (!resp.ok) console.log("Reddit resp - ok false: ", resp);
 
 	if (resp.status === 429) {
+		console.error("429 Rate limit - Reddit Error: ", resp);
 		const slot = Date.now() + RATE_DURATION_MS;
 		const delaySec = Math.ceil(RATE_DURATION_MS / 1000);
 		const retryAfterHeader = resp.headers.get("retry-after");
@@ -40,6 +44,7 @@ export const proxyFetch = async (
 	}
 
 	if (resp.status === 403) {
+		console.error("403 Ban - Reddit Error: ", resp);
 		const delaySec = Math.ceil(BAN_DURATION_MS / 1000);
 		const retryAfterHeader = resp.headers.get("retry-after");
 		const retryAfterSec =
