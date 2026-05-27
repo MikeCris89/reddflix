@@ -22,8 +22,8 @@ import { localAppApi } from "../localApp/localAppApi";
 import { isBannedResponse, isRateLimitedResponse } from "../../utils/types";
 import { memoryBan } from "../../utils/memoryBan";
 
-const BAN_DURATION_MS = 1000 * 60 * 20;
-const RATE_DURATION_MS = 1000 * 15;
+export const BAN_DURATION_MS = 1000 * 60 * 20;
+export const RATE_DURATION_MS = 1000 * 15;
 
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
@@ -81,18 +81,18 @@ const customBaseQuery: BaseQueryFn<
 	const now = Date.now();
 
 	// TEMP block to fix errors
-	if (import.meta.env.DEV || import.meta.env.PROD)
-		return {
-			error: {
-				status: 403,
-				data: {
-					message: `Reddit has temporarily blocked requests.`,
-					pendingTimestamp: memoryBan.get(),
-					isAppHandledError: false,
-					reason: "ban",
-				},
-			},
-		};
+	// if (import.meta.env.DEV || import.meta.env.PROD)
+	// 	return {
+	// 		error: {
+	// 			status: 403,
+	// 			data: {
+	// 				message: `Reddit has temporarily blocked requests.`,
+	// 				pendingTimestamp: memoryBan.get(),
+	// 				isAppHandledError: false,
+	// 				reason: "ban",
+	// 			},
+	// 		},
+	// 	};
 
 	// Synchronous check — blocks concurrent requests the moment a ban is set
 	if (now < memoryBan.get()) {
@@ -105,6 +105,7 @@ const customBaseQuery: BaseQueryFn<
 					pendingTimestamp: memoryBan.get(),
 					isAppHandledError: false,
 					reason: "ban",
+					blockedLocally: true,
 				},
 			},
 		};
@@ -167,19 +168,12 @@ const customBaseQuery: BaseQueryFn<
 					},
 				};
 
-			const retryAfterHeader =
-				result.meta?.response?.headers.get("retry-after");
-			const parsed = Number(retryAfterHeader);
-			const retryAfter =
-				retryAfterHeader && !isNaN(parsed) && parsed > 0
-					? parsed
-					: RATE_DURATION_MS / 1000;
 			const slot = result.error.data.slotToken;
 			return {
 				error: {
 					status: 429,
 					data: {
-						message: `You've reached Reddit's rate limit. Retrying in ~${retryAfter}s`,
+						message: `You've reached Reddit's rate limit.`,
 						pendingTimestamp: slot,
 						isAppHandledError: true,
 						reason: result.error.data.reason,

@@ -42,9 +42,9 @@ export const defaultMonitor: RequestMonitor = {
 export interface AppHandledError {
 	message: string;
 	pendingTimestamp: number;
-	status?: number;
 	reason?: "rateLimit" | "ban";
 	isAppHandledError: boolean;
+	blockedLocally?: boolean;
 }
 
 // ==== TYPEGUARDS ====

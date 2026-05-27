@@ -4,6 +4,7 @@ import { vi } from "vitest";
 
 vi.mock("./dbHelpers", () => ({
 	getItem: vi.fn(),
+	setItem: vi.fn(),
 }));
 
 describe("memoryBan", () => {
