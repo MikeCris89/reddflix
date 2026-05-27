@@ -22,6 +22,9 @@ import { localAppApi } from "../localApp/localAppApi";
 import { isBannedResponse, isRateLimitedResponse } from "../../utils/types";
 import { memoryBan } from "../../utils/memoryBan";
 
+const BAN_DURATION_MS = 1000 * 60 * 20;
+const RATE_DURATION_MS = 1000 * 15;
+
 const PLACEHOLDER_COMMENT: RedditCommentFormatted = {
 	id: "",
 	author: "[deleted]",
@@ -77,6 +80,20 @@ const customBaseQuery: BaseQueryFn<
 > = async (args, api, extraOptions) => {
 	const now = Date.now();
 
+	// TEMP block to fix errors
+	if (import.meta.env.DEV || import.meta.env.PROD)
+		return {
+			error: {
+				status: 403,
+				data: {
+					message: `Reddit has temporarily blocked requests.`,
+					pendingTimestamp: memoryBan.get(),
+					isAppHandledError: false,
+					reason: "ban",
+				},
+			},
+		};
+
 	// Synchronous check — blocks concurrent requests the moment a ban is set
 	if (now < memoryBan.get()) {
 		console.log("🚫 blocked by ban — no request sent");
@@ -118,14 +135,13 @@ const customBaseQuery: BaseQueryFn<
 					},
 				};
 
-			const retryAfter = result.meta?.response?.headers.get("retry-after");
-			if (!retryAfter || isNaN(Number(retryAfter)))
-				return {
-					error: {
-						status: "CUSTOM_ERROR",
-						error: "403 missing Retry-After header.",
-					},
-				};
+			const retryAfterHeader =
+				result.meta?.response?.headers.get("retry-after");
+			const parsed = Number(retryAfterHeader);
+			const retryAfter =
+				retryAfterHeader && !isNaN(parsed) && parsed > 0
+					? parsed
+					: BAN_DURATION_MS / 1000;
 
 			const banTime = now + Number(retryAfter) * 1000;
 			memoryBan.set(banTime);
@@ -134,7 +150,7 @@ const customBaseQuery: BaseQueryFn<
 					status: 403,
 					data: {
 						message: `Reddit has temporarily blocked further requests. Retry after cooldown.`,
-						pendingTimestamp: memoryBan.get(),
+						pendingTimestamp: banTime,
 						isAppHandledError: false,
 						reason: "ban",
 					},
@@ -151,22 +167,19 @@ const customBaseQuery: BaseQueryFn<
 					},
 				};
 
-			const retryAfter = result.meta?.response?.headers.get("retry-after");
-			if (!retryAfter || isNaN(Number(retryAfter)))
-				return {
-					error: {
-						status: "CUSTOM_ERROR",
-						error: "429 missing Retry-After header.",
-					},
-				};
-
-			const delaySec = Number(retryAfter);
+			const retryAfterHeader =
+				result.meta?.response?.headers.get("retry-after");
+			const parsed = Number(retryAfterHeader);
+			const retryAfter =
+				retryAfterHeader && !isNaN(parsed) && parsed > 0
+					? parsed
+					: RATE_DURATION_MS / 1000;
 			const slot = result.error.data.slotToken;
 			return {
 				error: {
 					status: 429,
 					data: {
-						message: `You've reached Reddit's rate limit. Retrying in ~${delaySec}s`,
+						message: `You've reached Reddit's rate limit. Retrying in ~${retryAfter}s`,
 						pendingTimestamp: slot,
 						isAppHandledError: true,
 						reason: result.error.data.reason,

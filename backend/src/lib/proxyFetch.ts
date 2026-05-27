@@ -5,8 +5,8 @@ import { USER_AGENT } from "../config";
 import { cache } from "./cache";
 import { log } from "./logger";
 
-export const BAN_DURATION_MS = 1000 * 60 * 5;
-export const RATE_DURATION_MS = 1000 * 63;
+export const BAN_DURATION_MS = 1000 * 60 * 20;
+export const RATE_DURATION_MS = 1000 * 15;
 
 export const proxyFetch = async (
 	url: string,

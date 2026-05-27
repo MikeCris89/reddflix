@@ -11,7 +11,7 @@ export const createCache = () => {
 		return entry.body;
 	};
 
-	const set = (key: string, body: string, ttlMs: number = 1000 * 60 * 5) => {
+	const set = (key: string, body: string, ttlMs: number = 1000 * 60 * 60) => {
 		store.set(key, { body, expiresAt: Date.now() + ttlMs });
 	};
 
