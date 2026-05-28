@@ -10,9 +10,13 @@ Built as a portfolio project. The work I'm proudest of is the rate-limiting prot
 
 ## About the Live Demo
 
-The deployed instance runs with a deliberately low rate limit — **2 requests per 15 seconds** — so the rate limiter and cache layers are observable in normal use. Production tuning is 10 requests per 60 seconds (matching Reddit's actual limit).
+The deployed instance runs with a deliberately low rate limit — **2 requests per 15 seconds** — so the rate limiter and cache layers are observable in normal use and also in tests.
 
-If you hit a "Retrying in Xs" countdown after a few requests, that's the limiter working as designed. Wait for the countdown, watch the request go through automatically with its reserved slot, and the cache will serve the same data instantly for the next 5 minutes.
+If you hit a "Retrying in Xs" countdown after a few requests, that's the limiter working as designed. Wait for the countdown, watch the request go through automatically with its reserved slot, and the cache will serve the same data instantly for the next hour.
+
+## A Note on Live Data
+
+Reddit applies stricter limits and aggressive bot detection to traffic from server IPs, and may block proxies for extended periods. When that happens, the deployed instance serves data from a pre-scraped fallback dataset so the UI keeps working. The rate limiter, cache, and ban-handling code paths remain observable in the codebase and test suite (see [Testing](#testing)).
 
 ---
 
@@ -40,7 +44,7 @@ If you hit a "Retrying in Xs" countdown after a few requests, that's the limiter
 
 Reddit's public JSON API rate-limits at 10 requests per 60 seconds. The backend enforces its own limit and rejects requests that would cross the threshold _before_ they reach Reddit, protecting every client behind the proxy from a shared ban.
 
-The limiter is configurable: it runs at 2 req / 15s on the live demo so the behavior is observable (see [About the Live Demo](#about-the-live-demo)), and would run at 10 req / 63s in production — Reddit's 10/60 with a 3-second safety buffer.
+The limiter is configurable: it runs at 2 req / 15s on the live demo so the behavior is observable (see [About the Live Demo](#about-the-live-demo)).
 
 ### Slot reservations
 
@@ -69,12 +73,6 @@ Without reservations, a client's eventual retry isn't recorded, so fresh request
 403s use the same short-circuit pattern. The backend records the ban duration from Reddit's `Retry-After`, and subsequent requests get rejected at the guard until it expires — no wasted calls to Reddit, and no need to keep retrying just to confirm the ban is still in place.
 
 On the client, the ban timestamp is stored in IndexedDB and rehydrated into a module-scoped variable before the app mounts, so it survives reloads and blocks concurrent requests synchronously.
-
-### Known limitation: ghost reservations
-
-If a client abandons before retrying (closing the tab, refreshing the page), the reserved slot becomes a ghost. The limiter stays slightly more conservative than reality for one window, but recovers naturally as the ghost ages out.
-
-A deliberate trade: reserving only once a retry arrives would reintroduce the starvation above. A few ghost slots per session costs less than retries that never resolve.
 
 ## How the Cache Works
 
@@ -110,37 +108,19 @@ cache.set(originalUrl, body, ttlMs);
 res.type("application/json").send(body);
 ```
 
+## Persisted Cache Sanitization
+
+RTK Query's cache is persisted to IndexedDB so a reload skips the network entirely — but persisted errors come along for the ride. A 9pm rate-limit error rehydrates 12 hours later as a stale error blocking the UI.
+
+A redux-persist transform runs on each write to the queries cache. Stuck-pending entries are stripped, stale rejected errors are dropped (or flipped to fulfilled if they have cached data underneath), and live rate-limit errors with a future timestamp are preserved so the countdown resumes after refresh.
+
+Sanitizing at persist-time means the working query stays as a normal subscription — no read-side filtering, no extra hooks.
+
 ## Fallback-First Data Strategy
 
-The deployed instance proxies through Railway, which keeps Reddit happy most of the time, but bans still happen. Every subreddit ships with pre-scraped JSON so the UI has something to render even when the network path is dead.
+Reddit can rate-limit or block proxy traffic for extended periods. Every subreddit ships with a pre-scraped JSON dataset, loaded on demand via Vite dynamic imports — only the subreddits a user actually views get pulled into the bundle.
 
-### Manifest
-
-Each manifest is just a flat array of the subreddit names that have data.
-
-The manifest is imported statically (small, always loaded), and the JSON files are loaded on demand via Vite dynamic imports — only the subreddits a user actually views get pulled into the bundle.
-
-```ts
-export const hasPostFallback = (sub: string): boolean =>
-	(postsManifest as string[]).includes(sub);
-
-export const getFallbackPosts = async (sub: string): Promise<RedditPost[]> => {
-	if (!hasPostFallback(sub)) return [];
-	const module = await import(`../data/fallback/posts/${sub}.json`);
-	return (module.default as RedditPost[]).map((post) => ({
-		...post,
-		type: getPostType(post),
-	}));
-};
-```
-
-### Re-running the type guard on load
-
-`getPostType` is re-applied to every post when fallback data is loaded, not baked into the JSON at generation time. This means changes to the type-classification logic — say, reclassifying a `post_hint=image` with a `.gif` URL as a video — propagate to existing fallback files immediately, with no regeneration step.
-
-### Render priority
-
-Live data always wins; fallback fills the gap until (or unless) the live fetch returns. The refresh button fires the live fetch explicitly via `useLazyQuery` — no automatic background upgrade, since fallback exists for when the network can't be trusted.
+Live data takes priority; fallback fills the gap until (or unless) the live fetch resolves. The refresh button fires the live fetch explicitly via `useLazyQuery` — no automatic background upgrade, since fallback exists for when the network can't be trusted.
 
 ## How Comments Are Built
 
@@ -148,17 +128,13 @@ Reddit's comment API returns a deeply nested tree with awkward shape: `replies` 
 
 ### Recursive normalization
 
-`formatCommentTree` walks the raw response and produces a clean recursive type:
+`formatCommentTree` walks the raw response and produces a clean recursive type. It strips unused fields, normalizes the `replies: "" | object` discriminator into a real array, and recurses into children. By the time the data hits the component, `replies` is always an array and the tree can be walked without defensive checks.
 
 ```ts
 type RedditCommentFormatted = RefinedCommentBase & {
 	replies: RedditCommentFormatted[];
 };
 ```
-
-The function strips unused fields, normalizes the `replies: "" | object` discriminator into a real array, and recurses into children. By the time the data hits the component, `replies` is always an array and the tree can be walked without defensive checks.
-
-This refined version is what gets persisted to IndexedDB via RTK Query — keeping client storage small and load times fast.
 
 ### Threaded rendering
 
@@ -181,19 +157,7 @@ Reddit posts contain heavy media — videos, GIFs, high-res images — and a gri
 
 ### GIFs are MP4s, mounted only when on screen
 
-Reddit classifies animated `.gif` files as `post_hint=image`, but ships an MP4 version under `preview.images[0].variants.mp4`. The type guard catches this case and reroutes them to render as `<video>` instead of `<img>` — smaller payload, smoother scroll, and the option to mount/unmount the element as it enters and leaves the viewport.
-
-```ts
-if (
-	post.post_hint === "image" &&
-	post.url?.endsWith(".gif") &&
-	post.preview?.images?.[0]?.variants?.mp4
-) {
-	return true; // treat as gif (which renders as video)
-}
-```
-
-In the card, the GIF's `<video>` element only mounts when its card enters the viewport (with a 300px rightward margin to pre-mount just before it appears) and unmounts when it leaves. Combined with `preload="none"`, the browser doesn't fetch any GIF bytes until the user is about to see it. A preview image fills the same slot whenever the video isn't mounted, so layout stays stable through the swap.
+Reddit classifies animated `.gif` files as `post_hint=image`, but ships an MP4 version alongside. The type guard catches these and renders them as `<video>` — smaller payload, smoother scroll. The element only mounts when its card enters the viewport (with `preload="none"`), and a static preview image fills the slot otherwise so layout stays stable.
 
 ## Seen Posts
 
@@ -245,6 +209,7 @@ Frontend (RTK Query customBaseQuery)
 - Framer Motion — animations
 - HLS.js — video playback
 - DOMPurify — safe HTML rendering for Reddit markdown
+- Vitest + MSW + React Testing Library — unit, integration, and component tests
 
 **Backend**
 
@@ -259,11 +224,18 @@ Frontend (RTK Query customBaseQuery)
 
 ## Testing
 
-33 tests across:
+**Backend** — 33 tests (Vitest + Supertest)
 
-- **Unit** — cache, rate limiter (Vitest)
-- **Integration** — full request flow with mocked Reddit (Vitest + Supertest)
-- **CI** — GitHub Actions on every push and PR
+- Unit: cache, rate limiter
+- Integration: full request flow with mocked Reddit, slot-token round-trips, 429/403 propagation
+
+**Frontend** — 17 tests (Vitest + MSW + React Testing Library)
+
+- customBaseQuery integration: 403 ban handling, 429 rate-limit shape, Retry-After: 0 fallback, ban short-circuit
+- sanitizeQueries transform: persistence path coverage
+- QueryErrorMessage component: render branches for ban/rate-limit/generic across inline+panel variants
+
+**CI** — GitHub Actions on every push and PR (backend; frontend CI pending)
 
 ---
 
@@ -273,13 +245,14 @@ Frontend (RTK Query customBaseQuery)
 reddflix/
 ├── frontend/          # React SPA
 │   └── src/
-│       ├── app/			  # Redux store config (store.ts)
+│       ├── app/			  # Redux store config (store.ts, sanitizeQueries.ts)
 │       ├── features/
 │       │   ├── reddit/       # RTK Query API, types, post components
 │       │   └── localApp/     # IndexedDB CRUD via RTK Query
 │       ├── components/       # UI: scroll rows, modals, media renderers
 │       ├── hooks/            # Custom hooks (useMinuteClock)
 │       ├── pages/            # Route-level components + app bootstrap
+|       ├── test/             # MSW server, setup, render helper
 │       └── utils/            # Router, IndexedDB wrapper, helpers
 └── backend/           # Express proxy
     └── src/
@@ -349,3 +322,6 @@ npm run dev
 ## Author
 
 **Michael Cristofaro**
+
+- [LinkedIn](www.linkedin.com/in/michael-cristofaro-a4695740a)
+- [Email](mikecris89@icloud.com)
