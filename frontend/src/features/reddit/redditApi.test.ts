@@ -5,6 +5,7 @@ import { server } from "../../test/server";
 import { wrapper } from "../../test/renderWithStore";
 import { BAN_DURATION_MS, useFetchPostsBySubredditQuery } from "./redditApi";
 import { memoryBan } from "../../utils/memoryBan"; // adjust path if different
+import { sanitizeQueries } from "../../app/sanitizeQueries";
 
 const URL = "*/r/aww";
 const subreddit = "aww";
@@ -163,5 +164,18 @@ describe("redditApi — ban handling", () => {
 		);
 		expect(error.data.pendingTimestamp).toBe(memoryBan.get());
 		expect(error.data.blockedLocally).toBe(true);
+	});
+
+	it("drops rejected entries with no data", () => {
+		const input = {
+			[subreddit]: {
+				status: "rejected",
+				error: { status: 500 } /* no data field */,
+			},
+		};
+		const output = sanitizeQueries.in(input, "queries", {});
+		// assert: someKey is gone from output
+
+		expect(sanitizeQueries.out(subreddit));
 	});
 });
