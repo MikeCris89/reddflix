@@ -80,20 +80,6 @@ const customBaseQuery: BaseQueryFn<
 > = async (args, api, extraOptions) => {
 	const now = Date.now();
 
-	// TEMP block to fix errors
-	// if (import.meta.env.DEV || import.meta.env.PROD)
-	// 	return {
-	// 		error: {
-	// 			status: 403,
-	// 			data: {
-	// 				message: `Reddit has temporarily blocked requests.`,
-	// 				pendingTimestamp: memoryBan.get(),
-	// 				isAppHandledError: true,
-	// 				reason: "ban",
-	// 			},
-	// 		},
-	// 	};
-
 	// Synchronous check — blocks concurrent requests the moment a ban is set
 	if (now < memoryBan.get()) {
 		console.log("🚫 blocked by ban — no request sent");

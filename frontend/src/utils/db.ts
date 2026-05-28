@@ -3,8 +3,15 @@ import { openDB, IDBPDatabase } from "idb";
 let dbInstance: IDBPDatabase | null = null;
 
 export const dbPromise = async () => {
-	if (dbInstance) return dbInstance;
-
+	if (dbInstance) {
+		try {
+			// Cheap operation to verify connection is alive
+			await dbInstance.count("seenPosts"); // any read works
+			return dbInstance;
+		} catch {
+			dbInstance = null; // dead connection, reopen
+		}
+	}
 	dbInstance = await openDB("reddflix-db", 3, {
 		upgrade(db) {
 			if (!db.objectStoreNames.contains("seenPosts"))

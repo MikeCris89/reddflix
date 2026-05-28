@@ -33,7 +33,7 @@ const Root = () => {
 		data: subreddits,
 		isError,
 		isLoading: subloading,
-	} = useFetchSubredditsQuery();
+	} = useFetchSubredditsQuery(undefined, { refetchOnFocus: true });
 	const [setSubredditList] = useSetSubbredditListMutation();
 	const [setSubreddit] = useSetSubredditMutation();
 
@@ -77,7 +77,7 @@ const Root = () => {
 			<Navbar />
 			<DemoBanner />
 			<main className="flex-1 overflow-hidden w-full flex justify-center">
-				{(isLoading || subloading) && (
+				{(isLoading || subloading) && !isError && (
 					<div className="h-full w-full flex justify-center items-center">
 						<Spinner size="lg" />
 					</div>
