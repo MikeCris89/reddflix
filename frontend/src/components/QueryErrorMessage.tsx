@@ -3,7 +3,7 @@ import { SerializedError } from "@reduxjs/toolkit";
 import { isAppHandledError } from "../utils/types";
 import useCountdown from "../hooks/useCountdown";
 import { useMinuteClock } from "../hooks/useMinuteClock";
-import RetryLabel from "./RetryLabel";
+import Spinner from "./Spinner";
 
 interface Props {
 	error: FetchBaseQueryError | SerializedError;
@@ -27,7 +27,13 @@ const QueryErrorMessage = ({ error, variant = "panel" }: Props) => {
 			: 0;
 
 	if (appHandled && error.data.reason === "rateLimit" && remaining > 0) {
-		if (variant === "inline") return <RetryLabel remainingMs={remaining} />;
+		if (variant === "inline")
+			return (
+				<span className="flex items-center gap-1 text-[#E50914] text-xs">
+					<Spinner size="xs" />
+					Retrying in {Math.ceil(remaining / 1000)}s
+				</span>
+			);
 		return (
 			<div className="flex flex-col gap-2 items-center justify-center w-full h-full">
 				<p className="text-sm text-[#E50914]">Reddit's Rate limit reached.</p>
@@ -42,13 +48,15 @@ const QueryErrorMessage = ({ error, variant = "panel" }: Props) => {
 		if (variant === "inline") {
 			return (
 				<span className="flex items-center gap-1 text-blue-400 text-xs">
-					Temp banned · {banMinutesLeft}m left
+					Temp ban · {banMinutesLeft}m left
 				</span>
 			);
 		}
 		return (
 			<div className="flex flex-col gap-2 items-center justify-center w-full h-full">
-				<p className="text-blue-400">{error.data.message}</p>
+				<p className="text-blue-400">
+					Temporary ban from Reddit · {banMinutesLeft}m left
+				</p>
 			</div>
 		);
 	}
@@ -60,6 +68,7 @@ const QueryErrorMessage = ({ error, variant = "panel" }: Props) => {
 			</span>
 		);
 	}
+
 	return (
 		<div className="flex flex-col gap-2 items-center justify-center w-full h-full">
 			<p>Error occurred. Please try again later.</p>

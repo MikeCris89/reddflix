@@ -88,7 +88,7 @@ const customBaseQuery: BaseQueryFn<
 	// 			data: {
 	// 				message: `Reddit has temporarily blocked requests.`,
 	// 				pendingTimestamp: memoryBan.get(),
-	// 				isAppHandledError: false,
+	// 				isAppHandledError: true,
 	// 				reason: "ban",
 	// 			},
 	// 		},
@@ -103,7 +103,7 @@ const customBaseQuery: BaseQueryFn<
 				data: {
 					message: `Reddit has temporarily blocked requests.`,
 					pendingTimestamp: memoryBan.get(),
-					isAppHandledError: false,
+					isAppHandledError: true,
 					reason: "ban",
 					blockedLocally: true,
 				},
@@ -152,7 +152,7 @@ const customBaseQuery: BaseQueryFn<
 					data: {
 						message: `Reddit has temporarily blocked further requests. Retry after cooldown.`,
 						pendingTimestamp: banTime,
-						isAppHandledError: false,
+						isAppHandledError: true,
 						reason: "ban",
 					},
 				},
