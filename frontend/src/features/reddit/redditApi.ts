@@ -105,7 +105,6 @@ const customBaseQuery: BaseQueryFn<
 			: import.meta.env.VITE_API_URL,
 	});
 	const result = await rawBaseQuery(args, api, extraOptions);
-	console.log("proxy fetch response: ", result);
 
 	const cacheStatus = result.meta?.response?.headers.get("x-cache");
 	if (cacheStatus) console.log(`🗄️ cache ${cacheStatus}`);

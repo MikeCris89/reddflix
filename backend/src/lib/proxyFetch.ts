@@ -19,9 +19,8 @@ export const proxyFetch = async (
 	const resp = await fetch(url, {
 		headers: { "User-Agent": USER_AGENT },
 	});
-	const { body: _body, ...restResp } = resp;
-	console.log("Reddit Raw resp: ", restResp);
-	if (!resp.ok) console.log("Reddit resp - ok false: ", resp);
+
+	if (!resp.ok) console.log("Reddit error resp: ", resp);
 
 	if (resp.status === 429) {
 		console.error("429 Rate limit - Reddit Error: ", resp);
