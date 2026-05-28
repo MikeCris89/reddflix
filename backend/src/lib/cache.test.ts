@@ -30,12 +30,12 @@ describe("cache", () => {
 	it("uses default TTL when none is passed in", () => {
 		cache.set(KEY_1, VALUE_1);
 
-		vi.advanceTimersByTime(1000 * 60 * 4);
+		vi.advanceTimersByTime(1000 * 60 * 40);
 
 		const data = cache.get(KEY_1);
 		expect(data).toEqual(VALUE_1);
 
-		vi.advanceTimersByTime(1000 * 60 * 2);
+		vi.advanceTimersByTime(1000 * 60 * 62);
 
 		const data2 = cache.get(KEY_1);
 		expect(data2).toBeNull();
