@@ -16,7 +16,7 @@ describe("sanitizeQueries transform", () => {
 			},
 		};
 
-		const output = sanitize(input);
+		const output = sanitize(input) as Record<string, any>;
 
 		expect(output).toEqual({});
 	});
@@ -29,7 +29,7 @@ describe("sanitizeQueries transform", () => {
 		};
 		const input = { aww: entry };
 
-		const output = sanitize(input);
+		const output = sanitize(input) as Record<string, any>;
 
 		expect(output.aww).toEqual(entry);
 	});
@@ -50,7 +50,7 @@ describe("sanitizeQueries transform", () => {
 		};
 		const input = { aww: entry };
 
-		const output = sanitize(input);
+		const output = sanitize(input) as Record<string, any>;
 
 		// Live rate-limit error survives intact so countdown can resume on reload
 		expect(output.aww).toEqual(entry);
