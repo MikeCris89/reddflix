@@ -8,13 +8,23 @@ import { log } from "./logger";
 export const BAN_DURATION_MS = 1000 * 60 * 20;
 export const RATE_DURATION_MS = 1000 * 15;
 
+const logRedditError = (resp: globalThis.Response) => {
+	return {
+		status: resp.status,
+		statusText: resp.statusText,
+		retryAfter: resp.headers.get("retry-after"),
+		contentType: resp.headers.get("content-type"),
+		url: resp.url,
+	};
+};
+
 export const proxyFetch = async (
 	url: string,
 	res: Response,
 	originalUrl: string,
 	ttlMs?: number,
 ) => {
-	log.info("📡 Network request started.", { url: originalUrl });
+	log.info("📡 Network request started with Reddit.", { url: originalUrl });
 
 	const resp = await fetch(url, {
 		headers: { "User-Agent": USER_AGENT },
@@ -23,14 +33,13 @@ export const proxyFetch = async (
 	if (!resp.ok) console.log("Reddit error resp: ", resp);
 
 	if (resp.status === 429) {
-		console.error("429 Rate limit - Reddit Error: ", resp);
+		log.warn("Reddit 429 - rate limit", logRedditError(resp));
 		const slot = Date.now() + RATE_DURATION_MS;
 		const delaySec = Math.ceil(RATE_DURATION_MS / 1000);
 		const retryAfterHeader = resp.headers.get("retry-after");
+		const parsed = Number(retryAfterHeader);
 		const retryAfterSec =
-			retryAfterHeader && !isNaN(Number(retryAfterHeader))
-				? Number(retryAfterHeader)
-				: delaySec;
+			retryAfterHeader && !isNaN(parsed) && parsed > 0 ? parsed : delaySec;
 		rateLimiter.saturateRateLimit(slot);
 		res
 			.status(429)
@@ -43,13 +52,12 @@ export const proxyFetch = async (
 	}
 
 	if (resp.status === 403) {
-		console.error("403 Ban - Reddit Error: ", resp);
+		log.warn("Reddit 403 - ban", logRedditError(resp));
 		const delaySec = Math.ceil(BAN_DURATION_MS / 1000);
 		const retryAfterHeader = resp.headers.get("retry-after");
+		const parsed = Number(retryAfterHeader);
 		const retryAfterSec =
-			retryAfterHeader && !isNaN(Number(retryAfterHeader))
-				? Number(retryAfterHeader)
-				: delaySec;
+			retryAfterHeader && !isNaN(parsed) && parsed > 0 ? parsed : delaySec;
 
 		rateLimiter.recordBan(retryAfterSec * 1000);
 
@@ -61,6 +69,7 @@ export const proxyFetch = async (
 	}
 
 	if (!resp.ok) {
+		log.error("Reddit unexpected error", logRedditError(resp));
 		throw new Error(`Reddit responded with ${resp.status}`);
 	}
 
