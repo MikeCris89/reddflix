@@ -30,8 +30,6 @@ export const proxyFetch = async (
 		headers: { "User-Agent": USER_AGENT },
 	});
 
-	if (!resp.ok) console.log("Reddit error resp: ", resp);
-
 	if (resp.status === 429) {
 		log.warn("Reddit 429 - rate limit", logRedditError(resp));
 		const slot = Date.now() + RATE_DURATION_MS;
