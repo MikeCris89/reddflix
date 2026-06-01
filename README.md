@@ -6,6 +6,8 @@ A Netflix-style Reddit media browser. Browse posts by subreddit and read threade
 
 Built as a portfolio project. The work I'm proudest of is the rate-limiting protocol, the response cache, and the UX details that keep scrolling and media smooth.
 
+**Live:** [https://reddflix-app.web.app](https://reddflix-app.web.app)
+
 ---
 
 ## About the Live Demo
