@@ -325,5 +325,5 @@ npm run dev
 
 **Michael Cristofaro**
 
-- [LinkedIn](www.linkedin.com/in/michael-cristofaro-a4695740a)
-- [Email](mikecris89@icloud.com)
+- [LinkedIn](https://www.linkedin.com/in/michael-cristofaro-a4695740a)
+- [Email](mailto:mikecris89@icloud.com)
