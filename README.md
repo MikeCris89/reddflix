@@ -1,6 +1,6 @@
 # Reddflix
 
-![Tests](https://github.com/MikeCris89/reddflix/actions/workflows/test.yml/badge.svg)
+[![CI](https://github.com/MikeCris89/reddflix/actions/workflows/ci.yml/badge.svg)](https://github.com/MikeCris89/reddflix/actions/workflows/ci.yml)
 
 A Netflix-style Reddit media browser. Browse posts by subreddit and read threaded comments — all in a clean, Netflix-themed interface.
 
